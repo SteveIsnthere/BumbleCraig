@@ -1,0 +1,10 @@
+<main>
+  <div id="preview">
+    <div *ngFor="let row of data; let i = index" class="color-row">
+      <div *ngFor="let color of row; let j = index" class="color-cell" [style.background-color]="color" (click)="fillPixel(i,j)"></div>
+    </div>
+  </div>
+
+  <button (click)="save()">Save</button>
+
+</main>

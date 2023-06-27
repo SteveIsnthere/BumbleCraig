@@ -1,0 +1,14 @@
+main{
+  display: flex;
+  flex-direction: column;
+}
+
+.color-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.color-cell{
+  flex: 1;
+  aspect-ratio: 1;
+}

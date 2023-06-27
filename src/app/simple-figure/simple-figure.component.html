@@ -1,0 +1,5 @@
+<main>
+  <div *ngFor="let row of data" class="color-row">
+    <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>
+  </div>
+</main>
