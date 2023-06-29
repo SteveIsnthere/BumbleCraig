@@ -1,0 +1,85 @@
+<main *ngIf="essentialUserData.figure_id != 0">
+  <div id="main-frame">
+    <mat-icon color="warn" style="transform: scale(2); margin-bottom: 30px">account_circle</mat-icon>
+
+    <div id="figure" *ngIf="essentialUserData.figure_id != 0">
+      <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
+    </div>
+
+    <button mat-mini-fab (click)="editFigure()" id="figure-edit-btn">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <!--name-->
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>
+        <mat-icon>person_book</mat-icon>
+      </mat-label>
+      <input matInput type="text" [ngModel]="inputName" (input)="changeInputName($event)">
+      <button *ngIf="inputName" matSuffix mat-icon-button aria-label="Clear" (click)="inputName=''">
+        <mat-icon color="accent">close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-mini-fab class="confirm-btn"
+            color="primary"
+            *ngIf="inputName  != essentialUserData.name"
+            (click)="saveName()">
+      <mat-icon>check</mat-icon>
+    </button>
+
+    <!--description-->
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>
+        <mat-icon>view_headline</mat-icon>
+      </mat-label>
+      <textarea matInput placeholder="Ex. I'm a dip..." [ngModel]="inputDescription"
+                [cdkTextareaAutosize]="true"
+                (input)="changeInputDescription($event)"></textarea>
+    </mat-form-field>
+
+    <button mat-mini-fab color="primary" class="confirm-btn"
+            *ngIf="userDescription != inputDescription"
+            (click)="saveDescription()">
+      <mat-icon>check</mat-icon>
+    </button>
+
+    <!--email-->
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>
+        <mat-icon>email</mat-icon>
+      </mat-label>
+      <input matInput type="email" [ngModel]="inputEmail" (input)="changeInputEmail($event)">
+      <button *ngIf="inputEmail" matSuffix mat-icon-button aria-label="Clear" (click)="inputEmail=''">
+        <mat-icon color="accent">close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-mini-fab class="confirm-btn"
+            color="primary"
+            *ngIf="inputEmail  != userEmail"
+            (click)="saveEmail()">
+      <mat-icon>check</mat-icon>
+    </button>
+
+    <!--password-->
+    <mat-form-field class="input" appearance="outline">
+      <mat-label>
+        <mat-icon>vpn_key</mat-icon>
+      </mat-label>
+      <input matInput [type]="hidePassword ? 'password' : 'text'" [ngModel]="inputPassword"
+             (input)="changeInputPassword($event)">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword">
+        <mat-icon color="accent">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-mini-fab class="confirm-btn"
+            color="primary"
+            *ngIf="inputPassword  != userPassword"
+            (click)="savePassword()">
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+</main>

@@ -1,7 +1,19 @@
-<div style="width: 50px">
-  <app-simple-figure [figureID]=7></app-simple-figure>
+<div>
+  <button [routerLink]="['/home']" mat-mini-fab class="top-floating-buttons" style="left: 0">
+    <mat-icon>first_page</mat-icon>
+  </button>
+  <button mat-mini-fab class="top-floating-buttons" style="right: 0">
+    <mat-icon>menu_open</mat-icon>
+  </button>
 </div>
 
-<div style="width: 100%; margin-top: 10px">
-  <app-figure-edit-view [figureID]=7></app-figure-edit-view>
-</div>
+
+<!--<app-figure-edit-view [figureID]=2></app-figure-edit-view>-->
+
+<!--<app-user [userID]="1"></app-user>-->
+<!--<app-user [userID]="2"></app-user>-->
+
+<!--<app-user-detailed-view [userID]="1"></app-user-detailed-view>-->
+
+
+<router-outlet></router-outlet>

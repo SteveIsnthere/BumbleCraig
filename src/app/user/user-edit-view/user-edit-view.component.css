@@ -1,0 +1,43 @@
+main{
+  width: 100vw;
+  height: 100vh;
+}
+
+#main-frame {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#figure {
+  width: 250px;
+}
+
+#figure-edit-btn{
+  transform: translate(94px, -60px);
+}
+
+#name {
+  color: white;
+  font-size: 23px;
+  font-weight: lighter;
+}
+
+.input{
+  width: 300px
+}
+
+.confirm-btn{
+  margin-bottom: 20px
+}
+
+@media only screen and (min-height: 800px) {
+  main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

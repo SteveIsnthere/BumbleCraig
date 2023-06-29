@@ -1,10 +1,26 @@
 <main>
   <div id="preview">
     <div *ngFor="let row of data; let i = index" class="color-row">
-      <div *ngFor="let color of row; let j = index" class="color-cell" [style.background-color]="color" (click)="fillPixel(i,j)"></div>
+      <div *ngFor="let color of row; let j = index" class="color-cell"
+           [style.background-color]="color"
+           (click)="fillPixel(i,j)"></div>
     </div>
   </div>
 
-  <button (click)="save()">Save</button>
+  <div id="actions">
+    <button mat-mini-fab color="warn" (click)="save()">
+      <mat-icon>add_photo_alternate</mat-icon>
+    </button>
 
+    <button mat-mini-fab color="primary" (click)="save()">
+      <mat-icon>check_small</mat-icon>
+    </button>
+  </div>
+
+  <div id="color-selection">
+    <button mat-fab *ngFor="let color of colors"
+            [style.background-color]="color"
+            [style.border]="color === selectedFillColor ? '3px dotted lightgrey' : 'none'"
+            (click)="selectedFillColor = color"></button>
+  </div>
 </main>

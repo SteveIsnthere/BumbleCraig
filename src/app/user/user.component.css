@@ -1,0 +1,16 @@
+main{
+  display: inline-flex;
+  align-items: center;
+  background-color: #525252;
+  padding: 5px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+#name{
+  color: white;
+  font-size: 23px;
+  margin-left: 5px;
+  margin-right: 10px;
+  font-weight: lighter;
+}

@@ -1,0 +1,30 @@
+main{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  max-width: 40em;
+  margin: 15px auto;
+  gap: 20px;
+}
+#figure{
+  width: 250px;
+  cursor: pointer;
+}
+
+.clipped{
+  clip-path: circle(125px at center);
+}
+
+#name{
+  color: white;
+  font-size: 23px;
+  font-weight: lighter;
+}
+
+#description{
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  text-align: center;
+}

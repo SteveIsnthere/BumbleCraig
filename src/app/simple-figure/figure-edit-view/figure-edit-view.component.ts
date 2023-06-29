@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {SimpleFigureComponent} from "../simple-figure.component";
 import {getLetter} from "../figure-dep";
-import {apiEndPoint} from "../../env";
+import {apiEndPoint, colors} from "../../env";
+import {HttpClient} from "@angular/common/http";
+import {MAT_BOTTOM_SHEET_DATA, MatBottomSheet} from "@angular/material/bottom-sheet";
 
 @Component({
   selector: 'app-figure-edit-view',
@@ -11,9 +13,13 @@ import {apiEndPoint} from "../../env";
 export class FigureEditViewComponent extends SimpleFigureComponent {
   selectedFillColor: string = "blue"
 
+  constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet) {
+    super(http);
+    this.figureID = figureID;
+  }
+
   fillPixel(i: number, j: number) {
     this.data[i][j] = this.selectedFillColor
-    console.log(this.colorArrayToDataString())
   }
 
   colorArrayToDataString() {
@@ -29,8 +35,11 @@ export class FigureEditViewComponent extends SimpleFigureComponent {
   save() {
     this.http.put(apiEndPoint + "/simple_figure/" + this.figureID,
       this.colorArrayToDataString())
-      .subscribe((data: any) => {
-        console.log(data)
+      .subscribe(() => {
+        console.log('saved')
+        this.bottomSheet.dismiss();
       })
   }
+
+  protected readonly colors = colors;
 }

@@ -1,0 +1,37 @@
+<main *ngIf="essentialUserData.figure_id != 0">
+  <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
+    <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
+  </div>
+
+  <div id="name">
+    <span>{{essentialUserData.name}}</span>
+  </div>
+
+  <div id="description">
+    <span>{{userDescription}}</span>
+  </div>
+
+  <div id="actions">
+    <button mat-mini-fab color="primary"
+            *ngIf="!isFriend && !friendRequestSent"
+            (click)="sendFriendRequest()">
+      <mat-icon>person_add</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="warn"
+            *ngIf="friendRequestSent"
+            disabled>
+      <mat-icon>hourglass_top</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="warn"
+            *ngIf="isFriend"
+            (click)="removeFriend()">
+      <mat-icon>person_remove</mat-icon>
+    </button>
+  </div>
+
+  <div>
+    <span>posts</span>
+  </div>
+</main>
