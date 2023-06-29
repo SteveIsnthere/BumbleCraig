@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {apiEndPoint, colors} from "../env";
+import {apiEndPoint} from "../env";
 import {HttpClient} from "@angular/common/http";
 import {convertToColorArray} from "./figure-dep";
 
