@@ -19,10 +19,20 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { FriendRequestsListComponent } from './user/friend-requests-list/friend-requests-list.component';
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
+import { ChatComponent } from './chat/chat.component';
+import { GroupComponent } from './chat/group/group.component';
+import { GroupChatViewComponent } from './chat/group/group-chat-view/group-chat-view.component';
+import {MatCardModule} from "@angular/material/card";
+import { UserMiniComponent } from './user/user-mini/user-mini.component';
+import { FileShareComponent } from './file-share/file-share.component';
 
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'chat', component: ChatComponent},
+  {path: 'group/:id', component: GroupChatViewComponent},
   {path: 'user/:id', component: UserDetailedViewComponent},
   {path: 'user-profile-edit', component: UserEditViewComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -38,7 +48,12 @@ const appRoutes: Routes = [
     UserDetailedViewComponent,
     UserEditViewComponent,
     HomeComponent,
-    FriendRequestsListComponent
+    FriendRequestsListComponent,
+    ChatComponent,
+    GroupComponent,
+    GroupChatViewComponent,
+    UserMiniComponent,
+    FileShareComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +67,9 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule,
     MatSnackBarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

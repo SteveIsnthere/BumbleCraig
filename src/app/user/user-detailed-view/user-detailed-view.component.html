@@ -1,4 +1,9 @@
 <main *ngIf="essentialUserData.figure_id != 0">
+
+  <div *ngIf="userID == auth.selfUserID">
+    <button mat-fab [routerLink]="['/user-profile-edit']"><mat-icon>edit</mat-icon></button>
+  </div>
+
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
   </div>

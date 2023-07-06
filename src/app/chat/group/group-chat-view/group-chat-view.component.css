@@ -1,0 +1,63 @@
+#group-info {
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#messages-section {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  /*background-color: green;*/
+}
+
+#messages-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 20px);
+  margin: 10px;
+  color: wheat;
+  gap: 5px;
+}
+
+.self-msg {
+  flex-direction: row-reverse;
+}
+
+.text-content {
+  max-width: 60%;
+  background-color: black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.file-content {
+  max-width: 60%;
+  background-color: black;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+#action-section {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

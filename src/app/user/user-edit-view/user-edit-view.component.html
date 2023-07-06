@@ -3,7 +3,7 @@
     <mat-icon color="warn" style="transform: scale(2); margin-bottom: 30px">account_circle</mat-icon>
 
     <div id="figure" *ngIf="essentialUserData.figure_id != 0">
-      <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
+      <app-simple-figure [figureID]="essentialUserData.figure_id" #figure></app-simple-figure>
     </div>
 
     <button mat-mini-fab (click)="editFigure()" id="figure-edit-btn">

@@ -1,6 +1,9 @@
 main{
-  width: 100vw;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 #main-frame {
@@ -34,10 +37,16 @@ main{
   margin-bottom: 20px
 }
 
-@media only screen and (min-height: 800px) {
-  main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*@media only screen and (min-height: 800px) {*/
+/*  main{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*  }*/
+/*}*/
+
+@media screen and (max-height: 600px) {
+  main {
+    align-items: flex-start; /* Align to the top */
   }
 }

@@ -1,0 +1,21 @@
+#group-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  width: 310px;
+  background-color: #4f4f4f;
+  border-radius: 200px;
+  padding: 8px;
+}
+
+#group-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: wheat;
+  margin-right: 5px;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

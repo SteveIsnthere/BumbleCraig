@@ -1,6 +1,5 @@
 <main *ngIf="essentialUserData.figure_id != 0" [routerLink]="['/user/' + userID]">
-  <div style="width: 40px;clip-path: circle(20px at center)">
+  <div style="width: 40px;clip-path: circle(20px at center); cursor: pointer">
     <app-simple-figure [figureID]=essentialUserData.figure_id></app-simple-figure>
   </div>
-  <span id="name">{{essentialUserData.name}}</span>
 </main>

@@ -1,0 +1,10 @@
+<main>
+  <button mat-icon-button (click)="createGroup()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+
+  <div id="group-list">
+    <app-group *ngFor="let groupID of groupIDs" [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)></app-group>
+  </div>
+
+</main>

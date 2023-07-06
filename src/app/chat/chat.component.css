@@ -1,0 +1,16 @@
+main{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#group-list{
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

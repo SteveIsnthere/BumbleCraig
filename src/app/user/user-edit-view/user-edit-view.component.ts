@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserComponent} from "../user.component";
 import {apiEndPoint} from "../../env";
 import {HttpClient} from "@angular/common/http";
@@ -13,6 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./user-edit-view.component.css']
 })
 export class UserEditViewComponent extends UserComponent implements OnInit {
+  @ViewChild('figure', {static: false}) figureComponent: any;
   userDescription = 'loading...';
   userEmail = 'loading...';
   userPassword = 'loading...';
@@ -21,6 +22,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
   inputEmail = '';
   inputPassword = '';
   hidePassword = true;
+
 
   constructor(http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, private _snackBar: MatSnackBar) {
     super(http);
@@ -48,10 +50,8 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
 
   editFigure(): void {
     const bottomSheetRef = this._bottomSheet.open(FigureEditViewComponent, {data: this.essentialUserData.figure_id});
-
     bottomSheetRef.afterDismissed().subscribe(() => {
-      // refresh page, because figure changed
-      window.location.reload();
+      this.figureComponent.ngOnInit();
     });
   }
 
@@ -89,7 +89,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
     const descriptionMaxLength = 100;
     if (this.inputDescription.length > descriptionMaxLength) {
       this.inputDescription = this.inputDescription.slice(0, descriptionMaxLength);
-      this.openSnackBar('TLNC: TOO DAMN LONG NO BODY CARES', 'close');
+      this.openSnackBar('TL-NC: TOO DAMN LONG NO BODY CARES', 'close');
       noError = false;
     }
 
@@ -135,6 +135,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
       return;
     }
     this.http.get<string>(apiEndPoint + '/user/password/' + this.userID + '/' + this.inputPassword).subscribe((res) => {
+      this.userPassword = this.inputPassword;
       this.openSnackBar(res, 'close');
     });
   }

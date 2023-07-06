@@ -2,7 +2,7 @@ main{
   display: inline-flex;
   align-items: center;
   background-color: #525252;
-  padding: 5px;
+  padding: 6px;
   border-radius: 100px;
   cursor: pointer;
 }
@@ -10,7 +10,7 @@ main{
 #name{
   color: white;
   font-size: 23px;
-  margin-left: 5px;
-  margin-right: 10px;
+  margin-left: 7px;
+  margin-right: 7px;
   font-weight: lighter;
 }
