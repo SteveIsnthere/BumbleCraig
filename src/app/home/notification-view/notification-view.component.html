@@ -1,0 +1,48 @@
+<main>
+
+
+  <div class="notification-container" *ngIf="main.friendRequestUserIDs.length > 0">
+    <div class="title">
+      <mat-icon>person_add</mat-icon>
+      <span>Friend Requests</span>
+    </div>
+    <div class="friend-req-row" *ngFor="let id of this.main.friendRequestUserIDs">
+      <button mat-mini-fab color="warn" (click)="rejectFriendRequest(id)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <app-user [userID]=id></app-user>
+      <button mat-mini-fab color="primary" (click)="acceptFriendRequest(id)">
+        <mat-icon>check</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="notification-container" *ngIf="main.groupInvitations.length > 0">
+    <div class="title">
+      <mat-icon>group_add</mat-icon>
+      <span>Group Invites</span>
+    </div>
+    <div class="group-inv-row" *ngFor="let invitation of this.main.groupInvitations">
+      <div style="display: flex; align-items: flex-end;gap:5px">
+        <app-user [userID]=invitation.inviter_id></app-user>
+        <span>invited you to join</span>
+      </div>
+      <div style="display: flex; gap: 10px">
+        <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
+          <mat-icon>close</mat-icon>
+        </button>
+        <span style="font-size: larger; background-color: wheat; color: black; padding: 10px;border-radius: 7px">
+        {{invitation.group_name}}
+      </span>
+        <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
+          <mat-icon>check</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+
+  </div>
+</main>

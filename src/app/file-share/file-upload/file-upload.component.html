@@ -1,0 +1,7 @@
+<main>
+  <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()">
+    <mat-icon>upload</mat-icon>
+  </button>
+
+  <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+</main>

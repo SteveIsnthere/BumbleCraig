@@ -1,10 +1,19 @@
 <main>
-  <button mat-icon-button (click)="createGroup()">
+  <button mat-icon-button (click)="createGroup()" color="primary">
     <mat-icon>add_circle</mat-icon>
   </button>
 
-  <div id="group-list">
-    <app-group *ngFor="let groupID of groupIDs" [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)></app-group>
-  </div>
+  <button mat-mini-fab (click)="editMode = !editMode" style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
+    <mat-icon *ngIf="!editMode">edit</mat-icon>
+    <mat-icon *ngIf="editMode">check</mat-icon>
+  </button>
 
+  <div id="group-list">
+    <div class="group-row" *ngFor="let groupID of groupIDs">
+      <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID) style="flex: 1;max-width: 310px;"></app-group>
+    </div>
+  </div>
 </main>

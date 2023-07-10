@@ -4,3 +4,11 @@ main{
   align-items: center;
   justify-content: center;
 }
+
+.top-floating-buttons{
+  display: flex;
+  position: fixed;
+  top: 0;
+  margin: 20px;
+  z-index: 10;
+}

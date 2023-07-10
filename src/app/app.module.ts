@@ -18,15 +18,20 @@ import {HomeComponent} from './home/home.component';
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { FriendRequestsListComponent } from './user/friend-requests-list/friend-requests-list.component';
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
-import { ChatComponent } from './chat/chat.component';
-import { GroupComponent } from './chat/group/group.component';
-import { GroupChatViewComponent } from './chat/group/group-chat-view/group-chat-view.component';
+import {ChatComponent} from './chat/chat.component';
+import {GroupComponent} from './chat/group/group.component';
+import {GroupChatViewComponent} from './chat/group/group-chat-view/group-chat-view.component';
 import {MatCardModule} from "@angular/material/card";
-import { UserMiniComponent } from './user/user-mini/user-mini.component';
-import { FileShareComponent } from './file-share/file-share.component';
+import {UserMiniComponent} from './user/user-mini/user-mini.component';
+import {FileShareComponent} from './file-share/file-share.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {FileUploadComponent} from './file-share/file-upload/file-upload.component';
+import {TextEditViewComponent} from './chat/text-edit-view/text-edit-view.component';
+import {InviteViewComponent} from './chat/group/invite-view/invite-view.component';
+import {NotificationViewComponent} from './home/notification-view/notification-view.component';
+import {MatBadgeModule} from "@angular/material/badge";
 
 
 const appRoutes: Routes = [
@@ -48,12 +53,15 @@ const appRoutes: Routes = [
     UserDetailedViewComponent,
     UserEditViewComponent,
     HomeComponent,
-    FriendRequestsListComponent,
     ChatComponent,
     GroupComponent,
     GroupChatViewComponent,
     UserMiniComponent,
-    FileShareComponent
+    FileShareComponent,
+    FileUploadComponent,
+    TextEditViewComponent,
+    InviteViewComponent,
+    NotificationViewComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +78,8 @@ const appRoutes: Routes = [
     MatListModule,
     MatMenuModule,
     MatCardModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

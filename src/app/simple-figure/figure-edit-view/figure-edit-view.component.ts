@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, ElementRef, Inject} from '@angular/core';
 import {SimpleFigureComponent} from "../simple-figure.component";
 import {getLetter} from "../figure-dep";
 import {apiEndPoint, colors} from "../../env";
@@ -13,8 +13,8 @@ import {MAT_BOTTOM_SHEET_DATA, MatBottomSheet} from "@angular/material/bottom-sh
 export class FigureEditViewComponent extends SimpleFigureComponent {
   selectedFillColor: string = "blue"
 
-  constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet) {
-    super(http);
+  constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet, el:ElementRef) {
+    super(http,el);
     this.figureID = figureID;
   }
 

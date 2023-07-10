@@ -7,10 +7,17 @@ main{
   justify-content: center;
 }
 
-
 #group-list{
-  max-width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 100%;
   gap: 20px;
+}
+
+.group-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }

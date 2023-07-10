@@ -1,3 +1,6 @@
-<main>
-  <mat-icon>folder</mat-icon>
+<main *ngIf="fileShareInfo!=null" (click)="downloadFile()">
+  <mat-icon>{{fileIcon()}}</mat-icon>
+  <span>{{fileName()}}</span>
+  <mat-icon>file_download</mat-icon>
+  <span>{{fileSize()}}</span>
 </main>

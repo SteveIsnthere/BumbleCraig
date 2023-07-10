@@ -23,9 +23,4 @@ export class GroupComponent implements OnInit {
       this.groupEssentialData = data;
     })
   }
-
-  viewGroup(): void {
-    this.http.get(apiEndPoint + '/group/visit/' + this.groupID + '/' + this.selfID).subscribe(() => {
-    })
-  }
 }

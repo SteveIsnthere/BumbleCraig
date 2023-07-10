@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../services/auth.service";
+import {MainService} from "../services/main.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {NotificationViewComponent} from "./notification-view/notification-view.component";
 
 @Component({
   selector: 'app-home',
@@ -7,4 +11,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  constructor(public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet) {
+  }
+
+  openNotificationView() {
+    this._bottomSheet.open(NotificationViewComponent);
+  }
 }

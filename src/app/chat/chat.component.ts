@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
 import {AuthService} from "../services/auth.service";
+import {TextEditViewComponent} from "./text-edit-view/text-edit-view.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
 @Component({
   selector: 'app-chat',
@@ -12,8 +14,9 @@ export class ChatComponent implements OnInit {
 
   groupIDs: number[] = [];
   groupWithUnreadIDs: number[] = [];
+  editMode: boolean = false;
 
-  constructor(public http: HttpClient, public auth: AuthService) {
+  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
@@ -26,15 +29,31 @@ export class ChatComponent implements OnInit {
   }
 
   createGroup(): void {
-    let groupName = prompt("Enter group name");
-    if (groupName != null) {
+    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: "Please enter the group name"});
+    bottomSheetRef.afterDismissed().subscribe(groupName => {
+      if (typeof groupName != 'string') {
+        console.log('groupName is not a string')
+        return
+      }
+
+      if (groupName.length == 0) {
+        console.log('groupName is empty')
+        return
+      }
+
       this.http.get(apiEndPoint + '/group/create_new/' + this.auth.selfUserID + '/' + groupName).subscribe(() => {
         this.ngOnInit();
       })
-    }
+    });
   }
 
   isGroupUnread(groupID: number): boolean {
     return this.groupWithUnreadIDs.includes(groupID);
+  }
+
+  leaveGroup(groupID: number) {
+    this.http.get(apiEndPoint + '/group/leave/' + groupID + '/' + this.auth.selfUserID).subscribe(() => {
+      this.ngOnInit();
+    })
   }
 }

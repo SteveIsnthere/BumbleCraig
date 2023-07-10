@@ -5,6 +5,10 @@
       <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
     </div>
   </div>
+  <button mat-mini-fab color="primary" (click)="openInviteView()"
+          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
+    <mat-icon>person_add</mat-icon>
+  </button>
   <div id="messages-section" #messagesSection>
     <div id="messages-container">
       <div style="height: 150px"></div>
@@ -25,14 +29,13 @@
   </div>
 
   <div id="action-section">
-    <button mat-mini-fab (click)="sendMessage()" style="margin-left: 20px; margin-right: 5px">
-      <mat-icon>add</mat-icon>
+    <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">
+      <mat-icon>upload</mat-icon>
     </button>
-    <mat-form-field appearance="outline" style="transform: translate(0,12%); flex: 1">
-      <input matInput [autocomplete]="false">
-    </mat-form-field>
-    <button mat-mini-fab (click)="sendMessage()" color="warn" style="margin-right: 20px; margin-left: 5px">
-      <mat-icon>done</mat-icon>
+    <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+
+    <button mat-mini-fab (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px">
+      <mat-icon>edit_note</mat-icon>
     </button>
   </div>
 

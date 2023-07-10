@@ -1,5 +1,25 @@
 <main>
-  <app-friend-requests-list></app-friend-requests-list>
+  <button mat-mini-fab class="top-floating-buttons" style="right: 0" [matMenuTriggerFor]="menu"
+          matBadge="{{main.getTotalMessageCount()}}" [matBadgeHidden]="main.getTotalMessageCount()==0">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
+      <mat-icon>account_circle</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
+      <mat-icon>person_search</mat-icon>
+      <span>Search</span>
+    </button>
+    <div style="display: flex">
+      <button mat-menu-item (click)="openNotificationView()" [disabled]="main.getTotalMessageCount()==0">
+        <mat-icon>notifications</mat-icon>
+        <span>Notifications</span>
+      </button>
+      <div style="width: 6px;background-color:#c72a68" *ngIf="main.getTotalMessageCount()>0"></div>
+    </div>
+  </mat-menu>
 
   this is home
 </main>

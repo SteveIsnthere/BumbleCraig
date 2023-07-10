@@ -5,7 +5,6 @@ import {Injectable} from '@angular/core';
 })
 export class AuthService {
   selfUserID = 1;
-
   constructor() {
   }
 }

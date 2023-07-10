@@ -1,5 +1,11 @@
 <main>
-  <div *ngFor="let row of data" class="color-row">
-    <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>
-  </div>
+  <ng-container *ngIf="data.length === 0; else realShit">
+    <mat-spinner [diameter]="width"></mat-spinner>
+  </ng-container>
+
+  <ng-template #realShit>
+    <div *ngFor="let row of data" class="color-row">
+      <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>
+    </div>
+  </ng-template>
 </main>

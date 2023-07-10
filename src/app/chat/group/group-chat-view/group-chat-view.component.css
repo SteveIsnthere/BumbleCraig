@@ -10,9 +10,8 @@
 
 #messages-section {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   scroll-behavior: smooth;
-  /*background-color: green;*/
 }
 
 #messages-container{
@@ -26,8 +25,8 @@
   align-items: center;
   width: calc(100% - 20px);
   margin: 10px;
-  color: wheat;
-  gap: 5px;
+  color: black;
+  gap: 10px;
 }
 
 .self-msg {
@@ -36,15 +35,15 @@
 
 .text-content {
   max-width: 60%;
-  background-color: black;
-  border-radius: 20px;
+  background-color: #f55246;
+  border-radius: 5px;
   padding: 10px;
 }
 
 .file-content {
   max-width: 60%;
-  background-color: black;
-  border-radius: 20px;
+  background-color: #c72a68;
+  border-radius: 5px;
   padding: 10px;
 }
 

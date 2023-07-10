@@ -16,7 +16,7 @@
     <span>{{userDescription}}</span>
   </div>
 
-  <div id="actions">
+  <div id="actions" *ngIf="auth.selfUserID != userID">
     <button mat-mini-fab color="primary"
             *ngIf="!isFriend && !friendRequestSent"
             (click)="sendFriendRequest()">

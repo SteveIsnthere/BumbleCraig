@@ -4,7 +4,7 @@
   align-items: center;
   cursor: pointer;
   gap: 10px;
-  width: 310px;
+  max-width: 310px;
   background-color: #4f4f4f;
   border-radius: 200px;
   padding: 8px;
