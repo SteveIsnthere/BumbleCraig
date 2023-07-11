@@ -32,6 +32,8 @@ import {TextEditViewComponent} from './chat/text-edit-view/text-edit-view.compon
 import {InviteViewComponent} from './chat/group/invite-view/invite-view.component';
 import {NotificationViewComponent} from './home/notification-view/notification-view.component';
 import {MatBadgeModule} from "@angular/material/badge";
+import { PostComponent } from './home/post/post.component';
+import { PostFullViewComponent } from './home/post/post-full-view/post-full-view.component';
 
 
 const appRoutes: Routes = [
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
     FileUploadComponent,
     TextEditViewComponent,
     InviteViewComponent,
-    NotificationViewComponent
+    NotificationViewComponent,
+    PostComponent,
+    PostFullViewComponent
   ],
   imports: [
     BrowserModule,
