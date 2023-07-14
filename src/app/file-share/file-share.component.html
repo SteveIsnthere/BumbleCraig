@@ -1,6 +1,13 @@
-<main *ngIf="fileShareInfo!=null" (click)="downloadFile()">
-  <mat-icon>{{fileIcon()}}</mat-icon>
-  <span>{{fileName()}}</span>
-  <mat-icon>file_download</mat-icon>
-  <span>{{fileSize()}}</span>
+<main *ngIf="fileShareInfo!=null">
+
+  <div id="file" (click)="downloadFile()" *ngIf="!isImage();">
+    <mat-icon>{{fileIcon()}}</mat-icon>
+    <span>{{fileName()}}</span>
+    <mat-icon>file_download</mat-icon>
+    <span>{{fileSize()}}</span>
+  </div>
+
+  <div *ngIf="isImage();" (click)="openImageFullView()">
+    <img id="image-element" src="{{fileShareLink()}}" alt="file">
+  </div>
 </main>

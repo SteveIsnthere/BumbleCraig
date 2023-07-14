@@ -1,9 +1,22 @@
-main {
+main{
+  cursor: pointer;
+}
+
+#file {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   gap: 10px;
-  cursor: pointer;
+}
+
+#image-element{
+  aspect-ratio: initial;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  /*width: 200px;*/
+  /*height: 200px;*/
+  /*object-fit: cover;*/
 }

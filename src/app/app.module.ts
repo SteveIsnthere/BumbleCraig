@@ -34,7 +34,8 @@ import {NotificationViewComponent} from './home/notification-view/notification-v
 import {MatBadgeModule} from "@angular/material/badge";
 import { PostComponent } from './home/post/post.component';
 import { PostFullViewComponent } from './home/post/post-full-view/post-full-view.component';
-
+import { ImageFullViewComponent } from './file-share/image-full-view/image-full-view.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     InviteViewComponent,
     NotificationViewComponent,
     PostComponent,
-    PostFullViewComponent
+    PostFullViewComponent,
+    ImageFullViewComponent
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatProgressSpinnerModule,
     MatBadgeModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

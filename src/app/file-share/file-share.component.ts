@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
+import {MatDialog} from "@angular/material/dialog";
+import {ImageFullViewComponent} from "./image-full-view/image-full-view.component";
 
 export interface FileShareInfo {
   file_share_id: number,
@@ -17,7 +19,7 @@ export class FileShareComponent implements OnInit {
   @Input() fileShareID: number = 0;
   fileShareInfo: FileShareInfo | null = null;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public dialog: MatDialog) {
 
   }
 
@@ -62,6 +64,10 @@ export class FileShareComponent implements OnInit {
     }
   }
 
+  openImageFullView() {
+    this.dialog.open(ImageFullViewComponent, {data: this.fileShareLink()});
+  }
+
   fileSize(): string {
     let size = this.fileShareInfo?.file_size!;
     if (size < 1024) {
@@ -84,8 +90,32 @@ export class FileShareComponent implements OnInit {
     return name;
   }
 
+  fileShareLink(): string {
+    return apiEndPoint + '/basic_user_content/download_file_share/' + this.fileShareID;
+  }
+
+  isImage(): boolean {
+    let ext = this.fileShareInfo?.file_name!.split('.').pop();
+    if (ext === undefined) {
+      return false;
+    }
+    switch (ext.toLowerCase()) {
+      case 'jpg':
+      case 'jpeg':
+      case 'png':
+      case 'gif':
+      case 'bmp':
+      case 'heic':
+      case 'webp':
+      case 'tiff':
+        return true;
+      default:
+        return false;
+    }
+  }
+
   downloadFile() {
-    this.http.get(apiEndPoint + '/basic_user_content/download_file_share/' + this.fileShareID, {responseType: 'blob'}).subscribe(
+    this.http.get(this.fileShareLink(), {responseType: 'blob'}).subscribe(
       (response) => {
         const url = window.URL.createObjectURL(response);
         const a = document.createElement('a');
