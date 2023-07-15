@@ -1,0 +1,8 @@
+<main>
+  <div id="posts-section-top-bar">
+    <span>Top Bar</span>
+  </div>
+  <div id="posts-section">
+    <app-post [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+  </div>
+</main>

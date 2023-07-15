@@ -1,5 +1,4 @@
-main{
-  margin: 20px;
+main {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -7,7 +6,7 @@ main{
   justify-content: center;
 }
 
-#group-list{
+#group-list {
   display: flex;
   flex-direction: column;
   justify-content: center;

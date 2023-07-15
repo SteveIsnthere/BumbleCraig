@@ -1,9 +1,10 @@
 <main>
-  <button mat-icon-button (click)="createGroup()" color="primary">
+  <button mat-icon-button (click)="createGroup()" color="primary" style="margin-top: 20px">
     <mat-icon>add_circle</mat-icon>
   </button>
 
-  <button mat-mini-fab (click)="editMode = !editMode" style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
+  <button mat-mini-fab (click)="editMode = !editMode"
+          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
     <mat-icon *ngIf="!editMode">edit</mat-icon>
     <mat-icon *ngIf="editMode">check</mat-icon>
   </button>
@@ -13,7 +14,8 @@
       <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
         <mat-icon>remove</mat-icon>
       </button>
-      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID) style="flex: 1;max-width: 310px;"></app-group>
+      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
+                 style="flex: 1;max-width: 310px;"></app-group>
     </div>
   </div>
 </main>

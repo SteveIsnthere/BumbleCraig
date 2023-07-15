@@ -1,11 +1,11 @@
-main{
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.top-floating-buttons{
+.top-floating-buttons {
   display: flex;
   position: fixed;
   top: 0;

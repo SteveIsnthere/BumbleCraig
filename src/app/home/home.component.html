@@ -8,9 +8,9 @@
       <mat-icon>account_circle</mat-icon>
       <span>Profile</span>
     </button>
-    <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
-      <mat-icon>person_search</mat-icon>
-      <span>Search</span>
+    <button mat-menu-item [routerLink]="['/friends']">
+      <mat-icon>diversity_1</mat-icon>
+      <span>Friends</span>
     </button>
     <div style="display: flex">
       <button mat-menu-item (click)="openNotificationView()" [disabled]="main.getTotalMessageCount()==0">
@@ -21,5 +21,5 @@
     </div>
   </mat-menu>
 
-  this is home
+  <app-post-section-view></app-post-section-view>
 </main>

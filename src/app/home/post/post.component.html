@@ -1,1 +1,4 @@
-<p>post works!</p>
+<main>
+  <p>{{post?.title}}</p>
+  <p *ngFor="let content of post?.content">{{content.sender_id}}: {{content.content}}</p>
+</main>

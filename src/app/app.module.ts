@@ -36,6 +36,9 @@ import { PostComponent } from './home/post/post.component';
 import { PostFullViewComponent } from './home/post/post-full-view/post-full-view.component';
 import { ImageFullViewComponent } from './file-share/image-full-view/image-full-view.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { FriendsViewComponent } from './home/friends-view/friends-view.component';
+import { FindUserViewComponent } from './home/friends-view/find-user-view/find-user-view.component';
+import { PostSectionViewComponent } from './home/post/post-section-view/post-section-view.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -43,6 +46,7 @@ const appRoutes: Routes = [
   {path: 'group/:id', component: GroupChatViewComponent},
   {path: 'user/:id', component: UserDetailedViewComponent},
   {path: 'user-profile-edit', component: UserEditViewComponent},
+  {path: 'friends', component: FriendsViewComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -67,7 +71,10 @@ const appRoutes: Routes = [
     NotificationViewComponent,
     PostComponent,
     PostFullViewComponent,
-    ImageFullViewComponent
+    ImageFullViewComponent,
+    FriendsViewComponent,
+    FindUserViewComponent,
+    PostSectionViewComponent
   ],
   imports: [
     BrowserModule,
