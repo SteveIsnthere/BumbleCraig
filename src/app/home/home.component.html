@@ -1,6 +1,6 @@
 <main>
-  <button mat-mini-fab class="top-floating-buttons" style="right: 0" [matMenuTriggerFor]="menu"
-          matBadge="{{main.getTotalMessageCount()}}" [matBadgeHidden]="main.getTotalMessageCount()==0">
+  <button mat-mini-fab class="top-floating-buttons" style="right: 0;" [matMenuTriggerFor]="menu"
+          [ngStyle]="{'border': (main.getTotalMessageCount()>0) ? '3px solid #c72a68' : 'none'}">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
