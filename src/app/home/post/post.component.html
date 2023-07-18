@@ -1,5 +1,19 @@
 <main>
-  <p>{{post?.title}}</p>
-  <p *ngFor="let content of post?.content">{{content.sender_id}}: {{content.content}}</p>
-
+  <mat-card class="example-card">
+    <mat-card-header>
+      <app-user-mini mat-card-avatar [userID]="post?.author_id!" *ngIf="post?.author_id! != null"></app-user-mini>
+      <mat-card-title>{{post?.title}}</mat-card-title>
+      <mat-card-subtitle>{{post?.time_since_posted}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p *ngFor="let content of post?.content">
+        {{content.content}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </main>
