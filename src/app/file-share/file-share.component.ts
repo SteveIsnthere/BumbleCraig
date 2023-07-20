@@ -17,6 +17,7 @@ export interface FileShareInfo {
 })
 export class FileShareComponent implements OnInit {
   @Input() fileShareID: number = 0;
+  @Input() interactive: boolean = true;
   fileShareInfo: FileShareInfo | null = null;
 
   constructor(public http: HttpClient, public dialog: MatDialog) {
@@ -65,6 +66,9 @@ export class FileShareComponent implements OnInit {
   }
 
   openImageFullView() {
+    if (!this.interactive) {
+      return;
+    }
     this.dialog.open(ImageFullViewComponent, {data: this.fileShareLink()});
   }
 
@@ -115,6 +119,9 @@ export class FileShareComponent implements OnInit {
   }
 
   downloadFile() {
+    if (!this.interactive) {
+      return;
+    }
     this.http.get(this.fileShareLink(), {responseType: 'blob'}).subscribe(
       (response) => {
         const url = window.URL.createObjectURL(response);

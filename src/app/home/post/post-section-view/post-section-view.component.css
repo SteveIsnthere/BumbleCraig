@@ -1,5 +1,18 @@
-#posts-section-top-bar{
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+#posts-section-top-bar {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+#posts-section-wrapper {
+  flex: 1 1;
+  overflow: auto;
 }
 
 #posts-section {
@@ -7,4 +20,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 20px 20px;
+  gap: 20px;
+}
+
+.post {
+  width: 100%;
+}
+
+
+@media only screen and (min-width: 800px) {
+  #posts-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 20px 20px;
+    gap: 20px;
+  }
+
+  .post {
+    width: 45%;
+  }
 }

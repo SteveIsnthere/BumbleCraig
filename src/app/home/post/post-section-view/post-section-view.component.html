@@ -1,8 +1,16 @@
 <main>
   <div id="posts-section-top-bar">
-    <span>Top Bar</span>
+    <mat-form-field>
+      <mat-label>Ranking Mode</mat-label>
+      <mat-select [(value)]="selectedMode">
+        <mat-option [value]="option" *ngFor="let option of rankingModes">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <div id="posts-section">
-    <app-post [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+
+  <div id="posts-section-wrapper">
+    <div id="posts-section">
+      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+    </div>
   </div>
 </main>

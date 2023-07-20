@@ -1,0 +1,17 @@
+.text-content {
+  color: antiquewhite;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#comment-section{
+  color: antiquewhite;
+}
+
+mat-card-content{
+  cursor: pointer;
+}

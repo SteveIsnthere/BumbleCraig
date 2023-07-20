@@ -39,9 +39,11 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { FriendsViewComponent } from './home/friends-view/friends-view.component';
 import { FindUserViewComponent } from './home/friends-view/find-user-view/find-user-view.component';
 import { PostSectionViewComponent } from './home/post/post-section-view/post-section-view.component';
+import {MatSelectModule} from "@angular/material/select";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'post/:id', component: PostFullViewComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'group/:id', component: GroupChatViewComponent},
   {path: 'user/:id', component: UserDetailedViewComponent},
@@ -93,7 +95,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatProgressSpinnerModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

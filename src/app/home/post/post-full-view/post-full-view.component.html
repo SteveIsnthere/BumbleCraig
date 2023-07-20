@@ -1,1 +1,10 @@
-<p>post-full-view works!</p>
+<main>
+  <p *ngFor="let content of post?.content">
+    <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+      <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
+    </ng-container>
+    <ng-template #textMsg>
+      <span class="text-content">{{content.content}}</span>
+    </ng-template>
+  </p>
+</main>

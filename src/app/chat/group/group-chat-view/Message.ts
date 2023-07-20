@@ -4,3 +4,12 @@ export interface Message {
   content: string;
   time: string;
 }
+
+export function dummyMessage(): Message {
+  return {
+    sender_id: 0,
+    file_share_id: 0,
+    content: '...',
+    time: ''
+  }
+}
