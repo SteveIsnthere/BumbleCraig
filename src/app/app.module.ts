@@ -40,6 +40,7 @@ import { FriendsViewComponent } from './home/friends-view/friends-view.component
 import { FindUserViewComponent } from './home/friends-view/find-user-view/find-user-view.component';
 import { PostSectionViewComponent } from './home/post/post-section-view/post-section-view.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -78,26 +79,27 @@ const appRoutes: Routes = [
     FindUserViewComponent,
     PostSectionViewComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatBottomSheetModule,
-    RouterModule.forRoot(appRoutes),
-    MatInputModule,
-    FormsModule,
-    MatSnackBarModule,
-    MatListModule,
-    MatMenuModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatBadgeModule,
-    MatDialogModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatBottomSheetModule,
+        RouterModule.forRoot(appRoutes),
+        MatInputModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatListModule,
+        MatMenuModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatBadgeModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatExpansionModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
