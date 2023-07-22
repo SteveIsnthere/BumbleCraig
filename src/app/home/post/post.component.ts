@@ -3,6 +3,8 @@ import {Post} from "./Post";
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
 import {dummyMessage, Message} from "../../chat/group/group-chat-view/Message";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 
 @Component({
   selector: 'app-post',
@@ -14,7 +16,7 @@ export class PostComponent implements OnInit {
   post: Post | null = null;
   postPreviewContents: Message[] = [];
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
@@ -64,5 +66,11 @@ export class PostComponent implements OnInit {
     if (numberOfAttachments > 2) {
       this.postPreviewContents.push(dummyMessage())
     }
+  }
+
+  openCommentSection(): void {
+    this._bottomSheet.open(PostCommentsViewComponent, {
+      data: this.postID,
+    });
   }
 }

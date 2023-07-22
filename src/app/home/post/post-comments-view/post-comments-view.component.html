@@ -1,0 +1,13 @@
+<main>
+  <button mat-raised-button color="accent">Leave a comment</button>
+  <div id="comments">
+    <div *ngFor="let comment of comments" class="comment-wrapper">
+      <app-user-mini [userID]="comment.author_id"></app-user-mini>
+      <div class="comment-content">
+        <p>{{comment.content}}</p>
+        <p>{{comment.time_since_posted}}</p>
+        <app-post-perception-bar [popularity]="comment.popularity" [rating]="comment.rating"></app-post-perception-bar>
+      </div>
+    </div>
+  </div>
+</main>

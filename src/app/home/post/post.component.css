@@ -8,16 +8,17 @@
   -webkit-box-orient: vertical;
 }
 
-#comment-section{
+#comment-section {
   color: antiquewhite;
+  cursor: pointer;
 }
 
-mat-card-content{
+mat-card-content {
   cursor: pointer;
 }
 
 @media only screen and (min-width: 800px) {
-  mat-card-content{
+  mat-card-content {
     height: 300px;
     overflow: hidden;
   }

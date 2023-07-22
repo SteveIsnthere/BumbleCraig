@@ -1,0 +1,23 @@
+<main>
+  <div id="ranking-mode-section">
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option *ngFor="let option of rankingModes" (click)="selectRankingMode(option)"
+                       [selected]="option == selectedRankingMode" color="primary">
+        {{option}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+
+  <div id="genres-section">
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)" [selected]="genre == genreSelected"
+                       color="warn">
+        {{genre}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+
+  <button mat-fab (click)="closeBottomSheet()" color="primary">
+    <mat-icon>check</mat-icon>
+  </button>
+</main>

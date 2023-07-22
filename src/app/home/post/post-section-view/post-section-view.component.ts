@@ -4,6 +4,7 @@ import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
+import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 
 @Component({
   selector: 'app-post-section-view',
@@ -12,20 +13,32 @@ import {apiEndPoint} from "../../../env";
 })
 export class PostSectionViewComponent implements OnInit {
   postIDs: number[] = [];
-  rankingModes = [
-    'Newest',
-    'Oldest',
-    'Most Liked',
-    'Most Commented'
-  ];
-  selectedMode = this.rankingModes[2];
+  selectedRankingMode = 'Recommended';
+  genreSelected = "All-Genres";
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/1').subscribe((data) => {
+    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected).subscribe((data) => {
       this.postIDs = data;
     })
+  }
+
+  openBottomSheet(): void {
+    const bottomSheetRef = this._bottomSheet.open(PostSectionOptionsComponent, {
+      data: [this.selectedRankingMode, this.genreSelected],
+    });
+
+    // subscribe to observable that emit event when bottom sheet closes
+    bottomSheetRef.afterDismissed().subscribe((dataFromChild) => {
+      // update the selectedRankingMode and genreSelected
+      if (dataFromChild == undefined) return;
+      this.selectedRankingMode = dataFromChild[0];
+      this.genreSelected = dataFromChild[1];
+
+      // update the postIDs
+      this.ngOnInit();
+    });
   }
 }

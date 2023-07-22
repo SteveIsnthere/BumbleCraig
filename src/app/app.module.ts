@@ -41,6 +41,11 @@ import { FindUserViewComponent } from './home/friends-view/find-user-view/find-u
 import { PostSectionViewComponent } from './home/post/post-section-view/post-section-view.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { PostSectionOptionsComponent } from './home/post/post-section-view/post-section-options/post-section-options.component';
+import {MatChipsModule} from "@angular/material/chips";
+import { PostCommentsViewComponent } from './home/post/post-comments-view/post-comments-view.component';
+import { PostPerceptionBarComponent } from './home/post/post-perception-bar/post-perception-bar.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -77,29 +82,34 @@ const appRoutes: Routes = [
     ImageFullViewComponent,
     FriendsViewComponent,
     FindUserViewComponent,
-    PostSectionViewComponent
+    PostSectionViewComponent,
+    PostSectionOptionsComponent,
+    PostCommentsViewComponent,
+    PostPerceptionBarComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatBottomSheetModule,
-        RouterModule.forRoot(appRoutes),
-        MatInputModule,
-        FormsModule,
-        MatSnackBarModule,
-        MatListModule,
-        MatMenuModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatBadgeModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatExpansionModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatBottomSheetModule,
+    RouterModule.forRoot(appRoutes),
+    MatInputModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatProgressBarModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

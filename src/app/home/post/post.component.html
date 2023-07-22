@@ -1,8 +1,8 @@
-<mat-card class="example-card">
+<mat-card class="example-card" *ngIf="post?.popularity != null">
   <mat-card-header>
-    <app-user-mini mat-card-avatar [userID]="post?.author_id!" *ngIf="post?.author_id! != null"></app-user-mini>
-    <mat-card-title>{{post?.title}}</mat-card-title>
-    <mat-card-subtitle>{{post?.time_since_posted}}</mat-card-subtitle>
+    <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
+    <mat-card-title [routerLink]="['/post/' + post?.post_id]">{{post?.title}}</mat-card-title>
+    <mat-card-subtitle [routerLink]="['/post/' + post?.post_id]">{{post?.time_since_posted}}</mat-card-subtitle>
   </mat-card-header>
 
 
@@ -18,8 +18,11 @@
   </mat-card-content>
 
 
-  <mat-card-actions style="justify-content: flex-end">
-    <div id="comment-section">
+  <mat-card-actions style="justify-content: flex-end; gap: 10px">
+    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
+                             [routerLink]="['/post/' + post?.post_id]"
+                             style="flex: 1"></app-post-perception-bar>
+    <div id="comment-section" (click)="openCommentSection()">
       <span style="margin-right: 3px">{{post?.number_of_comments}}</span>
       <mat-icon style="vertical-align: middle;">comment</mat-icon>
     </div>
