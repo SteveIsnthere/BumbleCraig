@@ -46,6 +46,8 @@ import {MatChipsModule} from "@angular/material/chips";
 import { PostCommentsViewComponent } from './home/post/post-comments-view/post-comments-view.component';
 import { PostPerceptionBarComponent } from './home/post/post-perception-bar/post-perception-bar.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { NewPostViewComponent } from './home/post/new-post-view/new-post-view.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -85,7 +87,8 @@ const appRoutes: Routes = [
     PostSectionViewComponent,
     PostSectionOptionsComponent,
     PostCommentsViewComponent,
-    PostPerceptionBarComponent
+    PostPerceptionBarComponent,
+    NewPostViewComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +111,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatExpansionModule,
     MatChipsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
+import {rankingModes} from "../../../../env";
+import {genres} from "../../../../env";
 
 @Component({
   selector: 'app-post-section-options',
@@ -12,23 +14,9 @@ export class PostSectionOptionsComponent {
     this.genreSelected = data[1];
   }
 
-  rankingModes = [
-    'Recommended',
-    'Trending',
-    'Newest',
-    'Best',
-    'Worst',
-    'Friends',
-  ];
+  rankingModes = rankingModes;
   selectedRankingMode = this.rankingModes[0];
-  genres = [
-    'All-Genres',
-    'Action',
-    'Adventure',
-    'Comedy',
-    'Drama',
-    'Fantasy',
-  ];
+  genres = genres;
   genreSelected = this.genres[0];
 
   closeBottomSheet() {

@@ -1,0 +1,61 @@
+<main>
+  <mat-stepper orientation="vertical" style="overflow: auto; max-height: 95vh">
+    <mat-step> <!-- genre selection -->
+      <form>
+        <ng-template matStepLabel>Genre</ng-template>
+        <mat-chip-listbox aria-label="Fish selection">
+          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)" [selected]="genre == genreSelected"
+                           color="warn">
+            {{genre}}
+          </mat-chip-option>
+        </mat-chip-listbox>
+        <div>
+          <button mat-button matStepperNext (click)="updateGenre()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="Title"> <!-- Post name -->
+      <form>
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="DipShit 1" autocomplete="off" [(ngModel)]="title" required
+                 [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="updateTitle()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step> <!-- contents -->
+      <ng-template matStepLabel>Content</ng-template>
+
+      <div id="contents">
+        <div class="content" *ngFor="let content of contents">
+          <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+            <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
+          </ng-container>
+          <ng-template #textMsg>
+            <span class="text-content">{{content.content}}</span>
+          </ng-template>
+        </div>
+      </div>
+
+      <div id="action-section">
+        <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">
+          <mat-icon>upload</mat-icon>
+        </button>
+        <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+
+        <button mat-mini-fab (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px">
+          <mat-icon>edit_note</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="publishPost()">Post!</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</main>

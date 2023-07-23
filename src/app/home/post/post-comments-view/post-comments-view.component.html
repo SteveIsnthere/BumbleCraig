@@ -1,5 +1,4 @@
 <main>
-  <button mat-raised-button color="accent">Leave a comment</button>
   <div id="comments">
     <div *ngFor="let comment of comments" class="comment-wrapper">
       <app-user-mini [userID]="comment.author_id"></app-user-mini>

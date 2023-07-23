@@ -5,3 +5,22 @@ export const colors = [
 ];
 
 export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
+
+export const rankingModes = [
+  'Recommended',
+  'Trending',
+  'Newest',
+  'Best',
+  'Worst',
+  'Friends',
+];
+
+
+export const genres = [
+  'All-Genres',
+  'Action',
+  'Adventure',
+  'Comedy',
+  'Drama',
+  'Fantasy',
+];
