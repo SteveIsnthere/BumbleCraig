@@ -7,6 +7,7 @@ import {Post} from "../Post";
 import {Message} from "../../../chat/group/group-chat-view/Message";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-new-post-view',
@@ -24,7 +25,7 @@ export class NewPostViewComponent implements OnInit {
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
 
-  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>) {
 
   }
 
@@ -70,6 +71,7 @@ export class NewPostViewComponent implements OnInit {
   publishPost() {
     this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID).subscribe((res: any) => {
       console.log(res);
+      this.dialogRef.close();
     })
   }
 

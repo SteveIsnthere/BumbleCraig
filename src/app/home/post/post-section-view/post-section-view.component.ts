@@ -5,6 +5,8 @@ import {MainService} from "../../../services/main.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
+import {MatDialog} from "@angular/material/dialog";
+import {NewPostViewComponent} from "../new-post-view/new-post-view.component";
 
 @Component({
   selector: 'app-post-section-view',
@@ -16,7 +18,7 @@ export class PostSectionViewComponent implements OnInit {
   selectedRankingMode = 'Recommended';
   genreSelected = "All-Genres";
 
-  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -38,6 +40,13 @@ export class PostSectionViewComponent implements OnInit {
       this.genreSelected = dataFromChild[1];
 
       // update the postIDs
+      this.ngOnInit();
+    });
+  }
+
+  openNewPostView() {
+    let dialogRef = this.dialog.open(NewPostViewComponent);
+    dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
     });
   }
