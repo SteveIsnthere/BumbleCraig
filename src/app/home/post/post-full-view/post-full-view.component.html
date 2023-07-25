@@ -6,6 +6,7 @@
 
   <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
   <p id="title">{{post.title}}</p>
+  <mat-divider></mat-divider>
   <p *ngFor="let content of post.content">
     <ng-container *ngIf="content.file_share_id != 0; else textMsg">
       <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
