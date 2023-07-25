@@ -1,30 +1,59 @@
-main{
+main {
   display: flex;
   flex-direction: column;
-  padding: 10px;
   align-items: center;
-  max-width: 40em;
-  margin: 15px auto;
+  padding: 15px 0;
   gap: 20px;
 }
-#figure{
+
+#figure {
   width: 250px;
   cursor: pointer;
 }
 
-.clipped{
+.clipped {
   clip-path: circle(125px at center);
 }
 
-#name{
+#name {
   color: white;
   font-size: 23px;
   font-weight: lighter;
 }
 
-#description{
+#description {
   color: white;
   font-size: 15px;
   font-weight: lighter;
   text-align: center;
+}
+
+#posts-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px 20px;
+  gap: 20px;
+}
+
+.post {
+  width: 100%;
+  min-width: 300px;
+}
+
+@media only screen and (min-width: 800px) {
+  #posts-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 20px 20px;
+    gap: 20px;
+  }
+
+  .post {
+    width: 45%;
+  }
 }

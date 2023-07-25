@@ -1,8 +1,10 @@
-<mat-card class="example-card" *ngIf="post?.popularity != null">
+<mat-card class="example-card" *ngIf="post?.popularity != null; else loadingBar">
   <mat-card-header>
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
-    <mat-card-title [routerLink]="['/post/' + post?.post_id]">{{post?.title}}</mat-card-title>
-    <mat-card-subtitle [routerLink]="['/post/' + post?.post_id]">{{post?.time_since_posted}}</mat-card-subtitle>
+    <mat-card-title [routerLink]="['/post/' + post?.post_id]"
+                    style="color: antiquewhite">{{post?.title}}</mat-card-title>
+    <mat-card-subtitle [routerLink]="['/post/' + post?.post_id]"
+                       style="color: black">{{post?.time_since_posted}}</mat-card-subtitle>
   </mat-card-header>
 
 
@@ -18,7 +20,7 @@
   </mat-card-content>
 
 
-  <mat-card-actions style="justify-content: flex-end; gap: 10px">
+  <mat-card-actions style="justify-content: flex-end; gap: 10px; padding: 0 13px">
     <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
                              [routerLink]="['/post/' + post?.post_id]"
                              style="flex: 1"></app-post-perception-bar>
@@ -28,3 +30,7 @@
     </div>
   </mat-card-actions>
 </mat-card>
+
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate" style="height: 300px"></mat-progress-bar>
+</ng-template>

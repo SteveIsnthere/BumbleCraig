@@ -16,7 +16,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {UserEditViewComponent} from './user/user-edit-view/user-edit-view.component';
 import {HomeComponent} from './home/home.component';
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
@@ -32,21 +32,23 @@ import {TextEditViewComponent} from './chat/text-edit-view/text-edit-view.compon
 import {InviteViewComponent} from './chat/group/invite-view/invite-view.component';
 import {NotificationViewComponent} from './home/notification-view/notification-view.component';
 import {MatBadgeModule} from "@angular/material/badge";
-import { PostComponent } from './home/post/post.component';
-import { PostFullViewComponent } from './home/post/post-full-view/post-full-view.component';
-import { ImageFullViewComponent } from './file-share/image-full-view/image-full-view.component';
+import {PostComponent} from './home/post/post.component';
+import {PostFullViewComponent} from './home/post/post-full-view/post-full-view.component';
+import {ImageFullViewComponent} from './file-share/image-full-view/image-full-view.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { FriendsViewComponent } from './home/friends-view/friends-view.component';
-import { FindUserViewComponent } from './home/friends-view/find-user-view/find-user-view.component';
-import { PostSectionViewComponent } from './home/post/post-section-view/post-section-view.component';
+import {FriendsViewComponent} from './home/friends-view/friends-view.component';
+import {FindUserViewComponent} from './home/friends-view/find-user-view/find-user-view.component';
+import {PostSectionViewComponent} from './home/post/post-section-view/post-section-view.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
-import { PostSectionOptionsComponent } from './home/post/post-section-view/post-section-options/post-section-options.component';
+import {
+  PostSectionOptionsComponent
+} from './home/post/post-section-view/post-section-options/post-section-options.component';
 import {MatChipsModule} from "@angular/material/chips";
-import { PostCommentsViewComponent } from './home/post/post-comments-view/post-comments-view.component';
-import { PostPerceptionBarComponent } from './home/post/post-perception-bar/post-perception-bar.component';
+import {PostCommentsViewComponent} from './home/post/post-comments-view/post-comments-view.component';
+import {PostPerceptionBarComponent} from './home/post/post-perception-bar/post-perception-bar.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import { NewPostViewComponent } from './home/post/new-post-view/new-post-view.component';
+import {NewPostViewComponent} from './home/post/new-post-view/new-post-view.component';
 import {MatStepperModule} from "@angular/material/stepper";
 
 const appRoutes: Routes = [
@@ -112,7 +114,8 @@ const appRoutes: Routes = [
     MatExpansionModule,
     MatChipsModule,
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

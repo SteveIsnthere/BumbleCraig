@@ -1,11 +1,16 @@
 <main>
   <div id="posts-section-top-bar" (click)="openBottomSheet()">
-    <button mat-icon-button color="accent"><mat-icon>settings</mat-icon></button>
+    <mat-chip-option selectable="false">{{selectedRankingMode}}</mat-chip-option>
   </div>
 
   <div id="posts-section-wrapper">
-    <div style="height: 90px"></div>
-    <div id="posts-section">
+    <ng-template #loadingBar>
+      <p style="width: 100vw; position: fixed; top: 0; left: 0">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </p>
+    </ng-template>
+    <div style="height: 75px"></div>
+    <div id="posts-section" *ngIf="postIDs.length>0; else loadingBar">
       <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
     </div>
   </div>
@@ -15,3 +20,4 @@
     <mat-icon>add</mat-icon>
   </button>
 </main>
+

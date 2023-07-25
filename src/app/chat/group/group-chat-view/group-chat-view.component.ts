@@ -46,7 +46,7 @@ export class GroupChatViewComponent implements OnInit {
       this.messages = data;
       setTimeout(() => {
         this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
-      }, 200);
+      }, 1500);
       setTimeout(() => {
         this.viewGroup();
       }, 1000);

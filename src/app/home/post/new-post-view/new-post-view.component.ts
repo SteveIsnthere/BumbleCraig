@@ -8,11 +8,13 @@ import {Message} from "../../../chat/group/group-chat-view/Message";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {MatDialogRef} from "@angular/material/dialog";
+import {FormBuilder, Validators} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-new-post-view',
   templateUrl: './new-post-view.component.html',
-  styleUrls: ['./new-post-view.component.css']
+  styleUrls: ['./new-post-view.component.css'],
 })
 export class NewPostViewComponent implements OnInit {
   postID: number = 0;
@@ -25,8 +27,11 @@ export class NewPostViewComponent implements OnInit {
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
 
-  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>) {
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
 
+  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -62,6 +67,7 @@ export class NewPostViewComponent implements OnInit {
   }
 
   updateTitle() {
+    if (!this.firstFormGroup.valid) return;
     this.http.get(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.title).subscribe((res: any) => {
       console.log(this.title)
       console.log(res);
@@ -71,6 +77,10 @@ export class NewPostViewComponent implements OnInit {
   publishPost() {
     this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID).subscribe((res: any) => {
       console.log(res);
+      this._snackBar.open('Your Post is live!!', 'yay', {
+        verticalPosition: 'top',
+        duration: 2000,
+      });
       this.dialogRef.close();
     })
   }
@@ -101,16 +111,30 @@ export class NewPostViewComponent implements OnInit {
         console.log('Text content is not a string')
         return
       }
-
       if (textContent.length == 0) {
         console.log('Text content is empty')
         return
       }
-
       this.http.get(apiEndPoint + this.textUploadRoute + "/" + textContent)
         .subscribe(() => {
           this.reloadPost();
         })
     });
+  }
+
+  deleteAttachment(content: Message) {
+    if (content.file_share_id != 0) {
+      this.http.get(apiEndPoint + '/post/delete_file_attachment/' + content.file_share_id).subscribe(() => {
+        this.reloadPost();
+      })
+    } else {
+      this.http.get(apiEndPoint + '/post/delete_text_attachment/' + content.content + '/' + content.sender_id + '/' + content.time).subscribe(() => {
+        this.reloadPost();
+      })
+    }
+  }
+
+  changeTitle(event: any) {
+    this.title = event.target.value;
   }
 }

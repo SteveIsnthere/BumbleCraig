@@ -1,5 +1,5 @@
 <main>
-  <mat-stepper orientation="vertical" style="overflow: auto; max-height: 95vh">
+  <mat-stepper linear orientation="vertical" style="overflow: auto; max-height: 95vh">
     <mat-step> <!-- genre selection -->
       <form>
         <ng-template matStepLabel>Genre</ng-template>
@@ -14,12 +14,12 @@
         </div>
       </form>
     </mat-step>
-    <mat-step label="Title"> <!-- Post name -->
-      <form>
+    <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
+      <form [formGroup]="firstFormGroup">
         <mat-form-field>
           <mat-label>Title</mat-label>
-          <input matInput placeholder="DipShit 1" autocomplete="off" [(ngModel)]="title" required
-                 [ngModelOptions]="{standalone: true}">
+          <input matInput formControlName="firstCtrl" placeholder="DipShit 1" autocomplete="off" required
+                 [value]="title" (input)="changeTitle($event)">
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -29,19 +29,29 @@
     </mat-step>
     <mat-step> <!-- contents -->
       <ng-template matStepLabel>Content</ng-template>
-
       <div id="contents">
         <div class="content" *ngFor="let content of contents">
-          <ng-container *ngIf="content.file_share_id != 0; else textMsg">
-            <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
-          </ng-container>
-          <ng-template #textMsg>
-            <span class="text-content">{{content.content}}</span>
-          </ng-template>
+          <div>
+            <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+              <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
+            </ng-container>
+            <ng-template #textMsg>
+              <span class="text-content">{{content.content}}</span>
+            </ng-template>
+          </div>
+          <div style="flex: 1"></div>
+          <div>
+            <button mat-mini-fab color="primary" (click)="deleteAttachment(content)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div id="action-section">
+      <mat-divider style="margin: 20px 0" *ngIf="contents.length>0"></mat-divider>
+
+      <div id="action-section" style="display: flex; gap: 10px">
+        <div style="flex: 1"></div>
         <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">
           <mat-icon>upload</mat-icon>
         </button>
@@ -50,12 +60,12 @@
         <button mat-mini-fab (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px">
           <mat-icon>edit_note</mat-icon>
         </button>
+        <div style="flex: 1"></div>
       </div>
-
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="publishPost()">Post!</button>
-      </div>
+      <button mat-fab style="position: fixed; bottom: 20px; right: 20px;"
+              (click)="publishPost()" color="primary">
+        <mat-icon>check</mat-icon>
+      </button>
     </mat-step>
   </mat-stepper>
 </main>

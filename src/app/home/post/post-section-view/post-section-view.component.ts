@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import {apiEndPoint} from "../../../env";
+import {apiEndPoint, rankingModes} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
 import {NewPostViewComponent} from "../new-post-view/new-post-view.component";
@@ -50,4 +50,6 @@ export class PostSectionViewComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+    protected readonly rankingModes = rankingModes;
 }

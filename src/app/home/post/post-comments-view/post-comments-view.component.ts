@@ -12,6 +12,7 @@ import {MAT_BOTTOM_SHEET_DATA} from "@angular/material/bottom-sheet";
 export class PostCommentsViewComponent implements OnInit {
   postID: number = 0;
   comments: Comment[] = [];
+  completeLoading: boolean = false;
 
   constructor(private http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
     this.postID = data;
@@ -20,6 +21,7 @@ export class PostCommentsViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<Comment[]>(apiEndPoint + '/post/get_comments/' + this.postID).subscribe(comments => {
       this.comments = comments;
+      this.completeLoading = true;
     })
   }
 }

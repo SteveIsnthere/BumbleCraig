@@ -21,7 +21,6 @@ export class FileShareComponent implements OnInit {
   fileShareInfo: FileShareInfo | null = null;
 
   constructor(public http: HttpClient, public dialog: MatDialog) {
-
   }
 
   ngOnInit(): void {

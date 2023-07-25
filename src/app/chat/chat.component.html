@@ -9,7 +9,7 @@
     <mat-icon *ngIf="editMode">check</mat-icon>
   </button>
 
-  <div id="group-list">
+  <div id="group-list" *ngIf="loadingComplete; else loadingBar">
     <div class="group-row" *ngFor="let groupID of groupIDs">
       <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
         <mat-icon>remove</mat-icon>
@@ -18,4 +18,7 @@
                  style="flex: 1;max-width: 310px;"></app-group>
     </div>
   </div>
+  <ng-template #loadingBar>
+    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>
+  </ng-template>
 </main>

@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit {
   groupIDs: number[] = [];
   groupWithUnreadIDs: number[] = [];
   editMode: boolean = false;
+  loadingComplete: boolean = false;
 
   constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
   }
@@ -22,6 +23,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups/' + this.auth.selfUserID).subscribe((data) => {
       this.groupIDs = data;
+      this.loadingComplete = true;
       this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups_with_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
         this.groupWithUnreadIDs = data;
       })

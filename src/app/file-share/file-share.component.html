@@ -1,13 +1,18 @@
-<main *ngIf="fileShareInfo!=null">
-
+<main *ngIf="fileShareInfo!=null; else loadingBar">
   <div id="file" (click)="downloadFile()" *ngIf="!isImage();">
-    <mat-icon>{{fileIcon()}}</mat-icon>
     <span>{{fileName()}}</span>
-    <mat-icon>file_download</mat-icon>
-    <span>{{fileSize()}}</span>
+    <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px">
+      <mat-icon style="vertical-align: middle;">{{fileIcon()}}</mat-icon>
+      <span>{{fileSize()}}</span>
+      <mat-icon style="vertical-align: middle;">file_download</mat-icon>
+    </div>
   </div>
 
   <div *ngIf="isImage();" (click)="openImageFullView()">
     <img id="image-element" src="{{fileShareLink()}}" alt="file">
   </div>
 </main>
+
+<ng-template #loadingBar>
+  <mat-progress-spinner></mat-progress-spinner>
+</ng-template>

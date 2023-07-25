@@ -1,7 +1,8 @@
-<main *ngIf="essentialUserData.figure_id != 0">
-
+<main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
   <div *ngIf="userID == auth.selfUserID">
-    <button mat-fab [routerLink]="['/user-profile-edit']"><mat-icon>edit</mat-icon></button>
+    <button mat-fab [routerLink]="['/user-profile-edit']">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
 
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
@@ -36,7 +37,17 @@
     </button>
   </div>
 
-  <div>
-    <span>posts</span>
+  <div id="posts-section">
+    <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
   </div>
+
+  <ng-container *ngIf="postIDs.length == 0">
+    <mat-icon>sentiment_very_dissatisfied</mat-icon>
+    <p>This user hasn't made any post yet</p>
+  </ng-container>
 </main>
+
+
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
