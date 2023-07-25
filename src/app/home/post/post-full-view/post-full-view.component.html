@@ -1,4 +1,9 @@
 <main *ngIf="post != null; else loadingBar">
+
+  <button mat-mini-fab *ngIf="auth.selfUserID == post.author_id" (click)="deletePost()">
+    <mat-icon>delete</mat-icon>
+  </button>
+
   <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
   <p id="title">{{post.title}}</p>
   <p *ngFor="let content of post.content">
@@ -9,6 +14,15 @@
       <span class="text-content">{{content.content}}</span>
     </ng-template>
   </p>
+
+  <div id="comment-section" (click)="openCommentSection()" style="position: fixed; bottom: 20px; left: 20px">
+    <mat-icon style="vertical-align: middle;margin-right: 6px">comment</mat-icon>
+    <span>{{post.number_of_comments}}</span>
+  </div>
+
+  <button mat-mini-fab color="warn" style="position: fixed; bottom: 20px; right: 20px" (click)="writeComment()">
+    <mat-icon>rate_review</mat-icon>
+  </button>
 </main>
 
 <ng-template #loadingBar>

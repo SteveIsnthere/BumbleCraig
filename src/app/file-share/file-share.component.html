@@ -1,6 +1,6 @@
 <main *ngIf="fileShareInfo!=null; else loadingBar">
   <div id="file" (click)="downloadFile()" *ngIf="!isImage();">
-    <span>{{fileName()}}</span>
+    <b>{{fileName()}}</b>
     <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px">
       <mat-icon style="vertical-align: middle;">{{fileIcon()}}</mat-icon>
       <span>{{fileSize()}}</span>

@@ -1,5 +1,5 @@
 <main>
-  <mat-stepper linear orientation="vertical" style="overflow: auto; max-height: 95vh">
+  <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)" style="overflow: auto; max-height: 95vh">
     <mat-step> <!-- genre selection -->
       <form>
         <ng-template matStepLabel>Genre</ng-template>
@@ -29,7 +29,7 @@
     </mat-step>
     <mat-step> <!-- contents -->
       <ng-template matStepLabel>Content</ng-template>
-      <div id="contents">
+      <div id="contents" (click)="test()">
         <div class="content" *ngFor="let content of contents">
           <div>
             <ng-container *ngIf="content.file_share_id != 0; else textMsg">

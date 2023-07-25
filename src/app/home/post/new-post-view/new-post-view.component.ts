@@ -10,6 +10,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {StepperSelectionEvent} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'app-new-post-view',
@@ -75,6 +76,12 @@ export class NewPostViewComponent implements OnInit {
   }
 
   publishPost() {
+    if (this.post?.content?.length == 0) {
+      this._snackBar.open("Post can't be empty", 'Understood', {
+        duration: 2000,
+      });
+      return;
+    }
     this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID).subscribe((res: any) => {
       console.log(res);
       this._snackBar.open('Your Post is live!!', 'yay', {
@@ -102,6 +109,10 @@ export class NewPostViewComponent implements OnInit {
         console.error('Error uploading file:', error);
       }
     );
+  }
+
+  test() {
+    console.log('test')
   }
 
   openTextEditor() {
@@ -136,5 +147,13 @@ export class NewPostViewComponent implements OnInit {
 
   changeTitle(event: any) {
     this.title = event.target.value;
+  }
+
+  selectionChange($event: StepperSelectionEvent) {
+    if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
+      this.updateTitle();
+    } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
+      this.updateGenre();
+    }
   }
 }
