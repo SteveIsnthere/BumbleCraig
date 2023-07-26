@@ -117,6 +117,25 @@ export class FileShareComponent implements OnInit {
     }
   }
 
+  isVideo(): boolean {
+    let ext = this.fileShareInfo?.file_name!.split('.').pop();
+    if (ext === undefined) {
+      return false;
+    }
+    switch (ext.toLowerCase()) {
+      case 'mp4':
+      case 'avi':
+      case 'wmv':
+      case 'mov':
+      case 'mkv':
+      case 'flv':
+      case 'webm':
+        return true;
+      default:
+        return false;
+    }
+  }
+
   downloadFile() {
     if (!this.interactive) {
       return;

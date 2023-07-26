@@ -1,5 +1,5 @@
 <main *ngIf="fileShareInfo!=null; else loadingBar">
-  <div id="file" (click)="downloadFile()" *ngIf="!isImage();">
+  <div id="file" (click)="downloadFile()" *ngIf="!isImage()&&!isVideo()">
     <b>{{fileName()}}</b>
     <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px">
       <mat-icon style="vertical-align: middle;">{{fileIcon()}}</mat-icon>
@@ -10,6 +10,13 @@
 
   <div *ngIf="isImage();" (click)="openImageFullView()">
     <img id="image-element" src="{{fileShareLink()}}" alt="file">
+  </div>
+
+  <div *ngIf="isVideo();">
+    <video id="video-element" controls>
+      <source src="{{fileShareLink()}}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 </main>
 

@@ -25,6 +25,7 @@ export class NewPostViewComponent implements OnInit {
   genreSelected = this.genres[0];
   contents: Message[] = [];
   fileToUpload: File | null = null;
+  uploadingFile: boolean = false;
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
 
@@ -93,6 +94,7 @@ export class NewPostViewComponent implements OnInit {
   }
 
   uploadFile(event: any) {
+    this.uploadingFile = true;
     this.fileToUpload = event.target.files[0];
     if (this.fileToUpload === null || this.fileUploadRoute === null) {
       return;
@@ -102,10 +104,13 @@ export class NewPostViewComponent implements OnInit {
     this.http.post<string>(apiEndPoint + this.fileUploadRoute, formData).subscribe(
       () => {
         this.fileToUpload = null;
+        this.uploadingFile = false;
         console.log('File uploaded successfully');
         this.reloadPost();
       },
       (error) => {
+        this.fileToUpload = null;
+        this.uploadingFile = false;
         console.error('Error uploading file:', error);
       }
     );
