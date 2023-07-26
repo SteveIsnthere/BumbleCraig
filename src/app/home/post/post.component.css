@@ -20,6 +20,6 @@ mat-card-content {
 @media only screen and (min-width: 800px) {
   mat-card-content {
     height: 300px;
-    overflow: hidden;
+    overflow: auto;
   }
 }

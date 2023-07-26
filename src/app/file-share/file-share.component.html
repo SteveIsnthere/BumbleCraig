@@ -13,7 +13,7 @@
   </div>
 
   <div *ngIf="isVideo();">
-    <video id="video-element" controls>
+    <video id="video-element" controls preload="none">
       <source src="{{fileShareLink()}}" type="video/mp4">
       Your browser does not support the video tag.
     </video>

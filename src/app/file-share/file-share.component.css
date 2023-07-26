@@ -1,4 +1,4 @@
-main{
+main {
   cursor: pointer;
 }
 
@@ -11,18 +11,18 @@ main{
   gap: 10px;
 }
 
-#image-element{
+#image-element {
   aspect-ratio: initial;
   width: 100%;
-  max-width: 400px;
+  /*max-width: 400px;*/
   border-radius: 5px;
   /*width: 200px;*/
   /*height: 200px;*/
   /*object-fit: cover;*/
 }
 
-#video-element{
+#video-element {
   width: 100%;
-  max-width: 400px;
+  /*max-width: 400px;*/
   border-radius: 5px;
 }
