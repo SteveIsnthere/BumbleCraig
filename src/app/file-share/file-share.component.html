@@ -9,13 +9,13 @@
   </div>
 
   <div *ngIf="isImage();" (click)="openImageFullView()">
-    <img id="image-element" src="{{fileShareLink()}}" alt="file">
+    <img id="image-element" src="{{fileShareLink()}}" loading="lazy" alt="file">
   </div>
 
   <div *ngIf="isVideo();">
     <video id="video-element" controls preload="none">
       <source src="{{fileShareLink()}}" type="video/mp4">
-      Your browser does not support the video tag.
+      Your browser does not support the video tag
     </video>
   </div>
 </main>

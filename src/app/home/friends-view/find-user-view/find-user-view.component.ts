@@ -24,7 +24,7 @@ export class FindUserViewComponent {
   }
 
   searchUser(): void {
-    this.http.get<number[]>(apiEndPoint + '/user/find_user/' + this.auth.selfUserID + '/' + this.nameInput).subscribe((data: any) => {
+    this.http.post<number[]>(apiEndPoint + '/user/find_user/' + this.auth.selfUserID, this.nameInput).subscribe((data: any) => {
       this.sentFriendRequests = [];
       this.searchResults = data;
     })

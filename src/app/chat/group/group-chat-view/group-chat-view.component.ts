@@ -78,7 +78,7 @@ export class GroupChatViewComponent implements OnInit {
         return
       }
 
-      this.http.get(apiEndPoint + "/group/create_message/" + this.groupID + "/" + this.auth.selfUserID + "/" + textContent)
+      this.http.post(apiEndPoint + "/group/create_message/" + this.groupID + "/" + this.auth.selfUserID, textContent)
         .subscribe(() => {
           this.initMessages();
         })

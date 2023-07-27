@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
         return
       }
 
-      this.http.get(apiEndPoint + '/group/create_new/' + this.auth.selfUserID + '/' + groupName).subscribe(() => {
+      this.http.post(apiEndPoint + '/group/create_new/' + this.auth.selfUserID, groupName).subscribe(() => {
         this.ngOnInit();
       })
     });

@@ -19,8 +19,9 @@
       <form [formGroup]="firstFormGroup">
         <mat-form-field>
           <mat-label>Title</mat-label>
-          <input matInput formControlName="firstCtrl" placeholder="DipShit 1" autocomplete="off" required
-                 [value]="title" (input)="changeTitle($event)">
+          <textarea matInput [cdkTextareaAutosize]=true formControlName="firstCtrl" placeholder="DipShit 1"
+                    autocomplete="off" required
+                    [value]="title" (input)="changeTitle($event)"></textarea>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>

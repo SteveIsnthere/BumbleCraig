@@ -17,6 +17,7 @@ export class PostFullViewComponent implements OnInit {
   post: Post | null = null;
   postID: number = 0;
   commentUploadRoute: string = '/post/create_comment/';
+  perceptionStatus: number = 3; // 0 - none, 1 - like, 2 - dislike
 
   constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private router: Router) {
   }
@@ -28,6 +29,11 @@ export class PostFullViewComponent implements OnInit {
         this.post = data;
         this.commentUploadRoute += this.postID;
         this.commentUploadRoute += '/' + this.auth.selfUserID;
+        this.http.get(apiEndPoint + '/post/view_post/' + this.post?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
+        })
+      })
+      this.http.get<number>(apiEndPoint + '/post/get_perception_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((data) => {
+        this.perceptionStatus = data;
       })
     });
   }
@@ -40,7 +46,22 @@ export class PostFullViewComponent implements OnInit {
 
   deletePost(): void {
     this.http.get(apiEndPoint + '/post/delete_post/' + this.postID).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']).then(() => {
+      });
+    })
+  }
+
+  likePost(): void {
+    if (this.perceptionStatus != 0) return
+    this.http.get(apiEndPoint + '/post/like_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {
+      this.perceptionStatus = 1;
+    })
+  }
+
+  dislikePost(): void {
+    if (this.perceptionStatus != 0) return
+    this.http.get(apiEndPoint + '/post/dislike_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {
+      this.perceptionStatus = 2;
     })
   }
 
@@ -55,7 +76,7 @@ export class PostFullViewComponent implements OnInit {
         console.log('Text content is empty')
         return
       }
-      this.http.get(apiEndPoint + this.commentUploadRoute + "/" + textContent)
+      this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
         .subscribe(() => {
           this.post!.number_of_comments++;
         })

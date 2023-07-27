@@ -5,6 +5,7 @@ import {apiEndPoint} from "../../env";
 import {dummyMessage, Message} from "../../chat/group/group-chat-view/Message";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post',
@@ -16,7 +17,7 @@ export class PostComponent implements OnInit {
   post: Post | null = null;
   postPreviewContents: Message[] = [];
 
-  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient,private router: Router, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
@@ -24,6 +25,11 @@ export class PostComponent implements OnInit {
       this.post = data;
       this.buildPostPreviewContent()
     })
+  }
+
+  openPost(): void {
+    this.router.navigate(['/post/' + this.post?.post_id]).then(() => {
+    });
   }
 
   buildPostPreviewContent(): void {

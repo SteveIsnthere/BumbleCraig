@@ -71,7 +71,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
       return;
     }
 
-    this.http.get<string>(apiEndPoint + '/user/name/' + this.userID + '/' + this.inputName).subscribe((res) => {
+    this.http.post<string>(apiEndPoint + '/user/name/' + this.userID, this.inputName).subscribe((res) => {
       if (res == 'Name successfully changed') {
         this.essentialUserData.name = this.inputName;
       }
@@ -98,7 +98,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
       this.openSnackBar('YOU ARE A LAZY WALNUT', 'close');
       noError = false;
     }
-    this.http.get(apiEndPoint + '/user/description/' + this.userID + '/' + this.inputDescription).subscribe(() => {
+    this.http.post(apiEndPoint + '/user/description/' + this.userID, this.inputDescription).subscribe(() => {
       this.userDescription = this.inputDescription;
       if (noError) {
         this.openSnackBar('Description changed', 'close');
@@ -118,7 +118,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
       this.openSnackBar('Invalid email', 'close');
       return;
     }
-    this.http.get<string>(apiEndPoint + '/user/email/' + this.userID + '/' + this.inputEmail).subscribe((res) => {
+    this.http.post<string>(apiEndPoint + '/user/email/' + this.userID, this.inputEmail).subscribe((res) => {
       this.userEmail = this.inputEmail;
       this.openSnackBar(res, 'close');
     });
@@ -134,7 +134,7 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
       this.openSnackBar('Password must be at least 8 characters', 'close');
       return;
     }
-    this.http.get<string>(apiEndPoint + '/user/password/' + this.userID + '/' + this.inputPassword).subscribe((res) => {
+    this.http.post<string>(apiEndPoint + '/user/password/' + this.userID, this.inputPassword).subscribe((res) => {
       this.userPassword = this.inputPassword;
       this.openSnackBar(res, 'close');
     });

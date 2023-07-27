@@ -1,5 +1,5 @@
 main {
-
+ width: 100vw;
 }
 
 #posts-section-top-bar {
@@ -31,6 +31,7 @@ main {
 
 .post {
   width: 100%;
+  overflow: hidden;
   min-width: 300px;
 }
 

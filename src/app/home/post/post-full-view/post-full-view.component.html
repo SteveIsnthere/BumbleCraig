@@ -4,8 +4,27 @@
     <mat-icon>delete</mat-icon>
   </button>
 
-  <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
+  <div id="action-bar" *ngIf="perceptionStatus != 3">
+    <button mat-mini-fab color="primary" (click)="likePost()"
+            *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="warn" (click)="dislikePost()" *ngIf="perceptionStatus == 0 || perceptionStatus == 2">
+      <mat-icon>thumb_down</mat-icon>
+    </button>
+
+    <span *ngIf="perceptionStatus==1" style="color: green">Shilled</span>
+
+    <span *ngIf="perceptionStatus==2" style="color: red">Cancelled</span>
+  </div>
+
+  <app-post-perception-bar [popularity]="post.popularity" [rating]="post.rating"
+                           style="width: 200px"></app-post-perception-bar>
+
   <p id="title">{{post.title}}</p>
+  <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
+
   <mat-divider></mat-divider>
   <p *ngFor="let content of post.content">
     <ng-container *ngIf="content.file_share_id != 0; else textMsg">

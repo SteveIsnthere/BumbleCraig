@@ -69,8 +69,15 @@ export class NewPostViewComponent implements OnInit {
   }
 
   updateTitle() {
+    const maxTitleLength = 70;
     if (!this.firstFormGroup.valid) return;
-    this.http.get(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.title).subscribe((res: any) => {
+    if (this.title.length > maxTitleLength) {
+      this.title = this.title.slice(0, maxTitleLength);
+      this._snackBar.open('Title too long, will be trimmed', 'Understood', {
+        duration: 2000,
+      });
+    }
+    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID, this.title).subscribe((res: any) => {
       console.log(this.title)
       console.log(res);
     })
@@ -131,7 +138,7 @@ export class NewPostViewComponent implements OnInit {
         console.log('Text content is empty')
         return
       }
-      this.http.get(apiEndPoint + this.textUploadRoute + "/" + textContent)
+      this.http.post(apiEndPoint + this.textUploadRoute, textContent)
         .subscribe(() => {
           this.reloadPost();
         })
