@@ -1,4 +1,5 @@
 main {
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +12,24 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 20px 0;
   gap: 20px;
 }
 
 .comment-wrapper {
   display: flex;
-  padding: 10px 0;
+  padding: 10px;
+  background-color: #525252;
+  border-radius: 3px;
+}
+
+.actions {
+  display: flex;
+  margin: 10px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: large;
 }
 
 .comment-content {
@@ -25,4 +38,7 @@ main {
   justify-content: center;
   margin-left: 10px;
   width: 100%;
+  color: antiquewhite;
+  font-size: medium;
+  overflow: hidden;
 }

@@ -1,17 +1,36 @@
 <main *ngIf="completeLoading; else loadingBar">
   <div id="comments" *ngIf="comments.length > 0; else noComments">
-    <div *ngFor="let comment of comments" class="comment-wrapper">
-      <app-user-mini [userID]="comment.author_id"></app-user-mini>
-      <div class="comment-content">
-        <p>{{comment.content}}</p>
-        <p style="color: black">{{comment.time_since_posted}}</p>
-        <app-post-perception-bar [popularity]="comment.popularity" [rating]="comment.rating"></app-post-perception-bar>
+    <div *ngFor="let comment of comments">
+      <div class="comment-wrapper">
+        <app-user-mini [userID]="comment.author_id"></app-user-mini>
+        <div class="comment-content">
+          <span>{{comment.content}}</span>
+          <p style="color: black; font-size: small">{{comment.time_since_posted}}</p>
+          <app-post-perception-bar [popularity]="comment.popularity"
+                                   [rating]="comment.rating"></app-post-perception-bar>
+        </div>
+      </div>
+      <div class="actions">
+        <button mat-mini-fab color="primary" (click)="likeComment(comment)"
+                *ngIf="comment.perception_status == 0 || comment.perception_status == 1">
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+
+        <button mat-mini-fab color="warn" (click)="dislikeComment(comment)"
+                *ngIf="comment.perception_status == 0 || comment.perception_status  == 2">
+          <mat-icon>thumb_down</mat-icon>
+        </button>
+
+        <span *ngIf="comment.perception_status ==1" style="color: green">Shilled</span>
+
+        <span *ngIf="comment.perception_status ==2" style="color: red">Cancelled</span>
       </div>
     </div>
   </div>
 
   <ng-template #noComments>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 10px; gap: 10px">
+    <div
+      style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 10px; gap: 10px">
       <mat-icon>sentiment_dissatisfied</mat-icon>
       <p>No comments yet</p>
     </div>
@@ -19,7 +38,7 @@
 </main>
 
 <ng-template #loadingBar>
-  <div class="loading-bar">
+  <div class="loading-bar" style="height: 200px">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 </ng-template>

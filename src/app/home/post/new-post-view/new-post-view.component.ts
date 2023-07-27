@@ -63,8 +63,7 @@ export class NewPostViewComponent implements OnInit {
   }
 
   updateGenre() {
-    this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected).subscribe((res: any) => {
-      console.log(res);
+    this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected).subscribe(() => {
     })
   }
 
@@ -77,9 +76,7 @@ export class NewPostViewComponent implements OnInit {
         duration: 2000,
       });
     }
-    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID, this.title).subscribe((res: any) => {
-      console.log(this.title)
-      console.log(res);
+    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID, this.title).subscribe(() => {
     })
   }
 
@@ -112,7 +109,6 @@ export class NewPostViewComponent implements OnInit {
       () => {
         this.fileToUpload = null;
         this.uploadingFile = false;
-        console.log('File uploaded successfully');
         this.reloadPost();
       },
       (error) => {

@@ -1,16 +1,12 @@
 <main>
   <div id="search-row">
-    <mat-form-field class="example-form-field">
+    <mat-form-field>
       <mat-label>Search by name</mat-label>
       <input matInput type="text" placeholder="Ex. User1" (input)="changeContent($event)" [(ngModel)]="nameInput">
       <button *ngIf="nameInput" matSuffix mat-icon-button aria-label="Clear" (click)="nameInput=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-
-    <!--    <button mat-mini-fab color="primary" (click)="searchUser()">-->
-    <!--      <mat-icon>search</mat-icon>-->
-    <!--    </button>-->
   </div>
 
   <div id="search-results">
@@ -23,5 +19,5 @@
     </div>
   </div>
 
-  <span *ngIf="searchResults.length == 0 && nameInput != ''">No user was found with such name</span>
+  <span *ngIf="searchResults.length == 0 && nameInput != ''" style="padding-bottom: 30px">No user was found with such name</span>
 </main>

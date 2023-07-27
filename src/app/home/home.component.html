@@ -1,4 +1,9 @@
 <main>
+  <button [routerLink]="['/chat']" color="warn" mat-mini-fab class="top-floating-buttons" style="left: 0"
+          [ngStyle]="{'border': (haveUnreadMsg) ? '3px solid #9932CC' : 'none'}">
+    <mat-icon>chat</mat-icon>
+  </button>
+
   <button mat-mini-fab class="top-floating-buttons" style="right: 0;" [matMenuTriggerFor]="menu"
           [ngStyle]="{'border': (main.getTotalMessageCount()>0) ? '3px solid #c72a68' : 'none'}">
     <mat-icon>menu</mat-icon>

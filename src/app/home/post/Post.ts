@@ -20,4 +20,5 @@ export interface Comment {
   time_since_posted: string
   rating: number
   popularity: number
+  perception_status: number
 }
