@@ -1,5 +1,5 @@
 <main *ngIf="groupEssentialData.group_id != 0; else loadingBar">
-  <div id="group-container" [routerLink]="['/group/' + groupID]">
+  <div class="group-container" [routerLink]="['/group/' + groupID]">
     <div style="width: 40px;clip-path: circle(20px at center)">
       <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
     </div>
@@ -14,5 +14,6 @@
 </main>
 
 <ng-template #loadingBar>
-  <mat-progress-bar mode="indeterminate" style="height: 50px"></mat-progress-bar>
+  <div class="group-container" style="height: 40px;">
+  </div>
 </ng-template>

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Message} from "./Message";
@@ -15,7 +15,7 @@ import {InviteViewComponent} from "../invite-view/invite-view.component";
   templateUrl: './group-chat-view.component.html',
   styleUrls: ['./group-chat-view.component.css']
 })
-export class GroupChatViewComponent implements OnInit {
+export class GroupChatViewComponent implements OnInit, OnDestroy {
   @ViewChild('messagesSection', {static: true}) messagesSection: any;
   @ViewChild('figure', {static: false}) figureComponent: any;
   groupID: number = 0;
@@ -24,8 +24,10 @@ export class GroupChatViewComponent implements OnInit {
   groupEssentialData: GroupEssentialData = dummyGroupEssentialData();
   uploadRoute: string = '/group/create_file_share/';
   fileToUpload: File | null = null;
+  observer: any;
+  messagesContainer: any;
 
-  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
   }
 
@@ -38,19 +40,32 @@ export class GroupChatViewComponent implements OnInit {
         this.groupEssentialData = data;
       })
       this.initMessages()
+
+      this.messagesContainer = this.elementRef.nativeElement.querySelector(
+        '#messages-container'
+      );
+      this.observer = new ResizeObserver(() => this.onHeightChange());
+      this.observer.observe(this.messagesContainer);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.observer.unobserve(this.messagesContainer);
   }
 
   initMessages() {
     this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID).subscribe((data) => {
       this.messages = data;
       setTimeout(() => {
-        this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
-      }, 1500);
-      setTimeout(() => {
         this.viewGroup();
       }, 1000);
     })
+  }
+
+  onHeightChange() {
+    setTimeout(() => {
+      this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
+    }, 150);
   }
 
   viewGroup(): void {

@@ -1,4 +1,4 @@
-#group-container {
+.group-container {
   display: flex;
   justify-content: space-around;
   align-items: center;

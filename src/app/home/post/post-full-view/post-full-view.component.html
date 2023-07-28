@@ -4,7 +4,7 @@
     <mat-icon>delete</mat-icon>
   </button>
 
-  <div class="action-bar" *ngIf="perceptionStatus != 3">
+  <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id">
     <button mat-mini-fab color="primary" (click)="likePost()"
             *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
       <mat-icon>thumb_up</mat-icon>
@@ -22,10 +22,9 @@
   <app-post-perception-bar [popularity]="post.popularity" [rating]="post.rating"
                            style="width: 200px"></app-post-perception-bar>
 
-  <p id="title">{{post.title}}</p>
+  <span id="title">{{post.title}}</span>
   <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
 
-  <mat-divider></mat-divider>
   <p *ngFor="let content of post.content">
     <ng-container *ngIf="content.file_share_id != 0; else textMsg">
       <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>

@@ -50,6 +50,7 @@ import {PostPerceptionBarComponent} from './home/post/post-perception-bar/post-p
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {NewPostViewComponent} from './home/post/new-post-view/new-post-view.component';
 import {MatStepperModule} from "@angular/material/stepper";
+import {httpInterceptorProviders} from "./services/http.interceptor";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -117,7 +118,7 @@ const appRoutes: Routes = [
     MatStepperModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

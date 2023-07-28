@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit{
     this._bottomSheet.open(NotificationViewComponent);
   }
   ngOnInit(): void {
-    this.http.get<boolean>(apiEndPoint + '/others/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
+    this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
       this.haveUnreadMsg = data;
     })
   }
