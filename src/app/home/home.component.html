@@ -5,7 +5,7 @@
   </button>
 
   <button mat-mini-fab class="top-floating-buttons" style="right: 0;" [matMenuTriggerFor]="menu"
-          [ngStyle]="{'border': (main.getTotalMessageCount()>0) ? '3px solid #c72a68' : 'none'}">
+          [ngStyle]="{'border': (main.getTotalMessageCount()>0 || auth.isVisitor) ? '3px solid #c72a68' : 'none'}">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -24,9 +24,15 @@
       </button>
       <div style="width: 6px;background-color:#c72a68" *ngIf="main.getTotalMessageCount()>0"></div>
     </div>
+    <div style="display: flex; background-color: #c72a68" *ngIf="auth.isVisitor">
+      <button mat-menu-item (click)="userSetUp()">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Setup Account</span>
+      </button>
+    </div>
     <button mat-menu-item [routerLink]="['/login']">
-      <mat-icon>login</mat-icon>
-      <span>Login</span>
+      <mat-icon>logout</mat-icon>
+      <span>Switch</span>
     </button>
   </mat-menu>
 

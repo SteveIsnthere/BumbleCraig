@@ -30,7 +30,7 @@ export class NewPostViewComponent implements OnInit {
   textUploadRoute: string = '/post/create_text_attachment/';
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
+    nameCtrl: ['', Validators.required],
   });
 
   constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {

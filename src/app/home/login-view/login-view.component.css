@@ -3,13 +3,30 @@ main {
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 20px;
 }
 
-#logo {
+#welcome {
   color: antiquewhite;
+  padding: 20px;
+  margin: 20px;
+    border-radius: 10px;
+  background-color: #4f4f4f;
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: antiquewhite;
+  font-size: x-large;
+  font-weight: lighter;
+  background-color: #4f4f4f;
+  border-radius: 500px;
+  padding: 7px;
 }
 
 

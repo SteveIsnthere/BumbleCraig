@@ -1,5 +1,5 @@
 <main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
-  <div *ngIf="userID == auth.selfUserID">
+  <div *ngIf="userID == auth.selfUserID && !auth.isVisitor">
     <button mat-fab [routerLink]="['/user-profile-edit']">
       <mat-icon>edit</mat-icon>
     </button>

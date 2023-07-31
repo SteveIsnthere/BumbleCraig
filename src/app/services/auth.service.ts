@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
   loggedIn = false;
-  selfUserID = 2;
+  selfUserID = 0;
   isVisitor = true;
 
   constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router) {

@@ -52,6 +52,8 @@ import {NewPostViewComponent} from './home/post/new-post-view/new-post-view.comp
 import {MatStepperModule} from "@angular/material/stepper";
 import {httpInterceptorProviders} from "./services/http.interceptor";
 import { LoginViewComponent } from './home/login-view/login-view.component';
+import {CdkDrag} from "@angular/cdk/drag-drop";
+import { UserSetUpComponent } from './user/user-set-up/user-set-up.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -94,33 +96,35 @@ const appRoutes: Routes = [
     PostCommentsViewComponent,
     PostPerceptionBarComponent,
     NewPostViewComponent,
-    LoginViewComponent
+    LoginViewComponent,
+    UserSetUpComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatBottomSheetModule,
-    RouterModule.forRoot(appRoutes),
-    MatInputModule,
-    FormsModule,
-    MatSnackBarModule,
-    MatListModule,
-    MatMenuModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatBadgeModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatProgressBarModule,
-    MatStepperModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatBottomSheetModule,
+        RouterModule.forRoot(appRoutes),
+        MatInputModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatListModule,
+        MatMenuModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatBadgeModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatChipsModule,
+        MatProgressBarModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        CdkDrag
+    ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

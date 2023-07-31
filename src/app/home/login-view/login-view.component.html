@@ -1,21 +1,44 @@
 <main>
 
-<div id="logo">
-  <h1>Tiddler</h1>
-</div>
+  <div id="logo" cdkDrag>
+    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0">
+      <app-simple-figure [figureID]="logoFigID"></app-simple-figure>
+    </div>
 
-<form>
-  <mat-form-field>
-    <mat-label>Username</mat-label>
-    <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-  </mat-form-field>
+    <span style="margin-right: 2px">Tidder</span>
+  </div>
 
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-  </mat-form-field>
+  <ng-container *ngIf="loginView; else welcomeView">
+    <form>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
 
-  <button mat-raised-button (click)="login()">Log In</button>
-</form>
-<button mat-raised-button (click)="continueAsVisitor()">Continue as a guest</button>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="login()">Log In <mat-icon>login</mat-icon></button>
+    </form>
+    <button mat-raised-button (click)="continueAsVisitor()">Continue as a Guest</button>
+  </ng-container>
+
+    <ng-template #welcomeView>
+    <div id="welcome">
+      <h1>Welcome to Tidder!</h1>
+      <p>Here you can share your thoughts with the world, and see what others are thinking about.</p>
+      <p>Click the button below to get started!</p>
+      <div style="display: flex; justify-content: center; margin-top: 40px">
+        <button mat-fab color="primary" (click)="continueAsVisitor()">
+          <mat-icon>start</mat-icon>
+        </button>
+      </div>
+
+    </div>
+    <button mat-raised-button (click)="loginView = true">Have an account?</button>
+  </ng-template>
+
+
 </main>
