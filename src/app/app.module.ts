@@ -51,19 +51,20 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {NewPostViewComponent} from './home/post/new-post-view/new-post-view.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {httpInterceptorProviders} from "./services/http.interceptor";
-import { LoginViewComponent } from './home/login-view/login-view.component';
+import {LoginViewComponent} from './home/login-view/login-view.component';
 import {CdkDrag} from "@angular/cdk/drag-drop";
-import { UserSetUpComponent } from './user/user-set-up/user-set-up.component';
+import {UserSetUpComponent} from './user/user-set-up/user-set-up.component';
+import {authGuard} from "./services/auth.guard";
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginViewComponent},
-  {path: 'post/:id', component: PostFullViewComponent},
-  {path: 'chat', component: ChatComponent},
-  {path: 'group/:id', component: GroupChatViewComponent},
-  {path: 'user/:id', component: UserDetailedViewComponent},
-  {path: 'user-profile-edit', component: UserEditViewComponent},
-  {path: 'friends', component: FriendsViewComponent},
+  {path: 'post/:id', component: PostFullViewComponent, canActivate: [authGuard]},
+  {path: 'chat', component: ChatComponent, canActivate: [authGuard]},
+  {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
+  {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
+  {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
+  {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -99,32 +100,32 @@ const appRoutes: Routes = [
     LoginViewComponent,
     UserSetUpComponent
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatBottomSheetModule,
-        RouterModule.forRoot(appRoutes),
-        MatInputModule,
-        FormsModule,
-        MatSnackBarModule,
-        MatListModule,
-        MatMenuModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatBadgeModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatExpansionModule,
-        MatChipsModule,
-        MatProgressBarModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        CdkDrag
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatBottomSheetModule,
+    RouterModule.forRoot(appRoutes),
+    MatInputModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    CdkDrag
+  ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
