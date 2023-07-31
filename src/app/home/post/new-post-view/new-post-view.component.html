@@ -15,6 +15,7 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
         <mat-form-field>
@@ -29,9 +30,10 @@
         </div>
       </form>
     </mat-step>
+
     <mat-step> <!-- contents -->
       <ng-template matStepLabel>Content</ng-template>
-      <div id="contents" (click)="test()">
+      <div id="contents">
         <div class="content" *ngFor="let content of contents">
           <div>
             <ng-container *ngIf="content.file_share_id != 0; else textMsg">

@@ -1,9 +1,7 @@
 import {Component} from '@angular/core';
-import {Post} from "../../home/post/Post";
 import {FormBuilder, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
-import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../env";
@@ -20,11 +18,11 @@ export class UserSetUpComponent {
   inputEmail: string = '';
 
   firstFormGroup = this._formBuilder.group({
-    nameCtrl: ['', [Validators.required, Validators.min(3), Validators.max(20)]],
+    nameCtrl: ['', [Validators.minLength(5), Validators.maxLength(20)]],
   });
 
   secondFormGroup = this._formBuilder.group({
-    passwordCtrl: ['', [Validators.required, Validators.min(8)]],
+    passwordCtrl: ['', Validators.minLength(8)],
   });
 
 
@@ -41,13 +39,23 @@ export class UserSetUpComponent {
 
   updateName() {
     const nameMaxLength = 20;
-    if (!this.firstFormGroup.valid) return;
     if (this.inputName.length > nameMaxLength) {
       this.inputName = this.inputName.slice(0, nameMaxLength);
-      this._snackBar.open('Name too long, will be trimmed', 'Understood', {
+      this._snackBar.open('Name too long', 'Understood', {
         duration: 2000,
       });
+      return;
     }
+
+    if (this.inputName.length < 5) {
+      this._snackBar.open('Name too short', 'Understood', {
+        duration: 2000,
+      });
+      return;
+    }
+
+    if (!this.firstFormGroup.valid) return;
+
 
     this.http.post<string>(apiEndPoint + '/user/name/' + this.auth.selfUserID, this.inputName).subscribe((res) => {
       if (res == 'Name successfully changed') {
@@ -61,12 +69,13 @@ export class UserSetUpComponent {
   }
 
   updatePassword() {
-    if (!this.secondFormGroup.valid) return;
-
     if (this.inputPassword.length < 8) {
       this.openSnackBar('Password must be at least 8 characters', 'close');
       return;
     }
+
+    if (!this.secondFormGroup.valid) return;
+
     this.http.post<string>(apiEndPoint + '/user/password/' + this.auth.selfUserID, this.inputPassword).subscribe((res) => {
       this.openSnackBar(res, 'close');
     });
@@ -77,6 +86,11 @@ export class UserSetUpComponent {
   }
 
   updateEmail() {
+    const emailRegex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+    if (!emailRegex.test(this.inputEmail)) {
+      this.openSnackBar('Invalid email', 'close');
+      return;
+    }
     this.http.post<string>(apiEndPoint + '/user/email/' + this.auth.selfUserID, this.inputEmail).subscribe((res) => {
       this.openSnackBar(res, 'close');
     });
@@ -84,12 +98,18 @@ export class UserSetUpComponent {
 
 
   confirmSetup() {
-
+    this.http.get(apiEndPoint + '/user/setup_visitor/' + this.auth.selfUserID).subscribe(() => {
+      this.auth.loginUsingSessionPassword()
+      this.openSnackBar('Account setup complete', 'close')
+      this.dialogRef.close();
+    })
   }
 
 
   selectionChange($event: StepperSelectionEvent) {
     if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
+      this.updatePassword();
+    } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
       this.updateName();
     }
   }

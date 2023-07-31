@@ -2,8 +2,8 @@
   <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)"
                style="overflow: auto; max-height: 95vh">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
-      <ng-template matStepLabel>Username</ng-template>
       <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Username</ng-template>
         <mat-form-field>
           <input matInput formControlName="nameCtrl" placeholder="DipShit"
                  autocomplete="off" required
@@ -16,8 +16,7 @@
       </form>
     </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel>Password</ng-template>
+    <mat-step label="Password" [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
           <mat-label>Password</mat-label>
@@ -32,10 +31,9 @@
       </form>
     </mat-step>
 
-    <mat-step> <!-- contents -->
-      <ng-template matStepLabel>Email (Optional)</ng-template>
-      <form>
-        <span style="color: antiquewhite">Email will be used solely for account recovery</span>
+    <mat-step label="Email (Optional)">
+      <div>
+        <span style="color: antiquewhite">Email will be used solely for account recovery</span><br>
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput placeholder="DipShit.com"
@@ -43,12 +41,36 @@
                  [value]="inputEmail" (input)="changeEmail($event)">
         </mat-form-field>
         <div>
+          <button mat-button matStepperNext (click)="updateEmail()">Update Email</button>
+          <button mat-button matStepperNext>Skip</button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Finish up</ng-template>
+      <div>
+        <div class="acc-info-row">
+          <mat-chip>Username</mat-chip>
+          <span class="acc-info">{{inputName}}</span>
+        </div>
+
+        <div class="acc-info-row">
+          <mat-chip>Password</mat-chip>
+          <span class="acc-info">{{inputPassword}}</span>
+        </div>
+
+        <div class="acc-info-row">
+          <mat-chip>Email</mat-chip>
+          <span class="acc-info">{{inputEmail}}</span>
+        </div>
+
+        <div>
           <button mat-fab (click)="confirmSetup()" color="primary">
             <mat-icon>check</mat-icon>
           </button>
         </div>
-      </form>
-
+      </div>
     </mat-step>
   </mat-stepper>
 </main>

@@ -14,3 +14,17 @@
 .text-content {
   color: antiquewhite;
 }
+
+
+.acc-info {
+  color: antiquewhite;
+  font-weight: bold;
+}
+
+.acc-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 7px 0;
+}

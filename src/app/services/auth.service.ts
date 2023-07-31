@@ -42,7 +42,6 @@ export class AuthService {
       this.loggedIn = true;
       this.http.get<boolean>(apiEndPoint + '/user/is_visitor/' + this.selfUserID).subscribe((data) => {
         this.isVisitor = data;
-        console.log("isVisitor: " + this.isVisitor);
       });
       this.cookieService.set('sessionPassword', this.authData.sessionPassword);
       this.router.navigate(["home"]).then();

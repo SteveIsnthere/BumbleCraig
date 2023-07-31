@@ -1,3 +1,7 @@
+/*main{*/
+/*  background-color: #3a3a3a;*/
+/*}*/
+
 #group-info {
   position: fixed;
   left: 50%;
@@ -9,10 +13,9 @@
 }
 
 #messages-section {
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   scroll-behavior: smooth;
-  background-color: #3a3a3a;
 }
 
 #messages-container{

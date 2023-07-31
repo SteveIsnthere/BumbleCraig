@@ -1,8 +1,8 @@
-main{
+main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -19,7 +19,7 @@ main{
   width: 250px;
 }
 
-#figure-edit-btn{
+#figure-edit-btn {
   transform: translate(94px, -60px);
 }
 
@@ -29,11 +29,11 @@ main{
   font-weight: lighter;
 }
 
-.input{
+.input {
   width: 300px
 }
 
-.confirm-btn{
+.confirm-btn {
   margin-bottom: 20px
 }
 

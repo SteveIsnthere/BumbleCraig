@@ -1,5 +1,4 @@
-<main>
-
+<main *ngIf="loginView != null; else loadingBar">
   <div id="logo" cdkDrag>
     <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0">
       <app-simple-figure [figureID]="logoFigID"></app-simple-figure>
@@ -9,7 +8,9 @@
   </div>
 
   <ng-container *ngIf="loginView; else welcomeView">
+
     <form>
+      <mat-chip style="margin-bottom: 20px;" *ngIf="wrongCredentials">Wrong password or username</mat-chip>
       <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
@@ -20,25 +21,44 @@
         <input matInput [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
-      <button mat-raised-button (click)="login()">Log In <mat-icon>login</mat-icon></button>
+      <button mat-raised-button (click)="login()" *ngIf="!loginLoading; else loadingWheel2">Log In
+        <mat-icon>login</mat-icon>
+      </button>
     </form>
-    <button mat-raised-button (click)="continueAsVisitor()">Continue as a Guest</button>
+    <button mat-raised-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2">Continue as a
+      Guest
+    </button>
+    <ng-template #loadingWheel2>
+      <div style="display: flex; justify-content: center;">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+    </ng-template>
   </ng-container>
 
-    <ng-template #welcomeView>
+  <ng-template #welcomeView>
     <div id="welcome">
       <h1>Welcome to Tidder!</h1>
       <p>Here you can share your thoughts with the world, and see what others are thinking about.</p>
       <p>Click the button below to get started!</p>
-      <div style="display: flex; justify-content: center; margin-top: 40px">
+      <div style="display: flex; justify-content: center; margin-top: 40px" *ngIf="!newUserLoading; else loadingWheel">
         <button mat-fab color="primary" (click)="continueAsVisitor()">
           <mat-icon>start</mat-icon>
         </button>
       </div>
+      <ng-template #loadingWheel>
+        <div style="display: flex; justify-content: center; margin-top: 20px">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+      </ng-template>
 
     </div>
-    <button mat-raised-button (click)="loginView = true">Have an account?</button>
+    <button mat-raised-button (click)="loginView = true">Have an account?
+    </button>
   </ng-template>
-
-
 </main>
+
+<ng-template #loadingBar>
+  <div id="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>

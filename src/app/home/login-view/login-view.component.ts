@@ -15,7 +15,10 @@ export class LoginViewComponent implements OnInit {
   password = "";
 
   logoFigID = 0;
-  loginView = false;
+  loginView: boolean | null = null;
+  newUserLoading = false;
+  loginLoading = false;
+  wrongCredentials = false;
 
   constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient) {
   }
@@ -29,16 +32,23 @@ export class LoginViewComponent implements OnInit {
 
   login() {
     if (this.username === "" || this.password === "") return;
+    this.loginLoading = true;
     this.http.post<number>(apiEndPoint + '/auth/login', {
       username: this.username,
       password: this.password
     }).subscribe((data) => {
-      this.authDataService.sessionPassword = data.toString();
-      this.auth.loginUsingSessionPassword()
-    })
+        this.authDataService.sessionPassword = data.toString();
+        this.auth.loginUsingSessionPassword()
+      },
+      () => {
+        this.loginLoading = false;
+        this.wrongCredentials = true;
+      }
+    )
   }
 
   continueAsVisitor() {
+    this.newUserLoading = true;
     this.http.get<number>(apiEndPoint + '/auth/login_as_new_user').subscribe((data) => {
       this.authDataService.sessionPassword = data.toString();
       this.auth.loginUsingSessionPassword()
