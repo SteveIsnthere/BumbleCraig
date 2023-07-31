@@ -51,9 +51,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {NewPostViewComponent} from './home/post/new-post-view/new-post-view.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {httpInterceptorProviders} from "./services/http.interceptor";
+import { LoginViewComponent } from './home/login-view/login-view.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginViewComponent},
   {path: 'post/:id', component: PostFullViewComponent},
   {path: 'chat', component: ChatComponent},
   {path: 'group/:id', component: GroupChatViewComponent},
@@ -91,7 +93,8 @@ const appRoutes: Routes = [
     PostSectionOptionsComponent,
     PostCommentsViewComponent,
     PostPerceptionBarComponent,
-    NewPostViewComponent
+    NewPostViewComponent,
+    LoginViewComponent
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,10 @@
       </button>
       <div style="width: 6px;background-color:#c72a68" *ngIf="main.getTotalMessageCount()>0"></div>
     </div>
+    <button mat-menu-item [routerLink]="['/login']">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
   </mat-menu>
 
   <app-post-section-view></app-post-section-view>

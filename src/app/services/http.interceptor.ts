@@ -10,24 +10,18 @@ import {
 } from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
-import {AuthService} from "./auth.service";
+import {AuthDataService} from "./auth-data.service";
 
 @Injectable()
 export class Auth implements HttpInterceptor {
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private authData: AuthDataService, private router: Router) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
-      // headers: new HttpHeaders({
-      //   'name': this.auth.selfUserName,
-      //   'sessionPassword': this.auth.sessionPassword,
-      // })
       headers: new HttpHeaders({
-        'name': 'test',
-        'sessionPassword': 'test',
+        'sessionPassword': this.authData.sessionPassword,
       })
-
     });
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
