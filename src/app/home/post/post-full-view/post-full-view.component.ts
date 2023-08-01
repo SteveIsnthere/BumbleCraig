@@ -7,6 +7,7 @@ import {apiEndPoint} from "../../../env";
 import {PostCommentsViewComponent} from "../post-comments-view/post-comments-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-post-full-view',
@@ -19,7 +20,7 @@ export class PostFullViewComponent implements OnInit {
   commentUploadRoute: string = '/post/create_comment/';
   perceptionStatus: number = 3; // 0 - none, 1 - like, 2 - dislike
 
-  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private router: Router) {
+  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -45,8 +46,11 @@ export class PostFullViewComponent implements OnInit {
   }
 
   deletePost(): void {
-    this.http.get(apiEndPoint + '/post/delete_post/' + this.postID).subscribe(() => {
+    this.http.get(apiEndPoint + '/post/delete_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {
       this.router.navigate(['/home']).then(() => {
+        this.snackBar.open('Post deleted', 'OK', {
+          duration: 2000,
+        })
       });
     })
   }

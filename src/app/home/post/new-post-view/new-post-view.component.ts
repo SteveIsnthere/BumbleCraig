@@ -63,7 +63,7 @@ export class NewPostViewComponent implements OnInit {
   }
 
   updateGenre() {
-    this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected).subscribe(() => {
+    this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe(() => {
     })
   }
 
@@ -76,7 +76,7 @@ export class NewPostViewComponent implements OnInit {
         duration: 2000,
       });
     }
-    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID, this.title).subscribe(() => {
+    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.auth.selfUserID, this.title).subscribe(() => {
     })
   }
 
@@ -87,7 +87,7 @@ export class NewPostViewComponent implements OnInit {
       });
       return;
     }
-    this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID).subscribe((res: any) => {
+    this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((res: any) => {
       console.log(res);
       this._snackBar.open('Your Post is live!!', 'yay', {
         verticalPosition: 'top',
@@ -143,7 +143,7 @@ export class NewPostViewComponent implements OnInit {
 
   deleteAttachment(content: Message) {
     if (content.file_share_id != 0) {
-      this.http.get(apiEndPoint + '/post/delete_file_attachment/' + content.file_share_id).subscribe(() => {
+      this.http.get(apiEndPoint + '/post/delete_file_attachment/' + content.file_share_id + '/' + this.auth.selfUserID).subscribe(() => {
         this.reloadPost();
       })
     } else {

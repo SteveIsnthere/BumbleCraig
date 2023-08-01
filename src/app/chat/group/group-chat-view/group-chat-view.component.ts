@@ -54,7 +54,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   initMessages() {
-    this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID).subscribe((data) => {
+    this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
       this.messages = data;
       setTimeout(() => {
         this.viewGroup();
