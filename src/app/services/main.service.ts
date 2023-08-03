@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GroupInvitation} from "../home/notification-view/groupInvitation";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
@@ -10,6 +10,7 @@ import {apiEndPoint} from "../env";
 export class MainService {
   groupInvitations: GroupInvitation[] = [];
   friendRequestUserIDs: number[] = [];
+  newCommentIDs: number[] = [];
 
   constructor(public http: HttpClient, public auth: AuthService) {
     this.init()

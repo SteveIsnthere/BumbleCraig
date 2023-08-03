@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   }
 
   openNotificationView() {
+    this.http.get<any>(apiEndPoint + '/others/visit_notification/' + this.auth.selfUserID).subscribe(() => {
+    })
     this._bottomSheet.open(NotificationViewComponent);
   }
 
