@@ -26,6 +26,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   fileToUpload: File | null = null;
   observer: any;
   messagesContainer: any;
+  updateInterval: any = 0;
 
   constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
@@ -46,21 +47,41 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       );
       this.observer = new ResizeObserver(() => this.onHeightChange());
       this.observer.observe(this.messagesContainer);
+
+      this.updateInterval = setInterval(() => {
+        this.initMessages();
+      }, 10000)
     });
   }
 
   ngOnDestroy(): void {
     this.observer.unobserve(this.messagesContainer);
+    clearInterval(this.updateInterval);
   }
 
   initMessages() {
     this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
+      if (!this.messagesHasChanged(data)) {
+        return;
+      }
       this.messages = data;
       this.onHeightChange()
       setTimeout(() => {
         this.viewGroup();
       }, 1000);
     })
+  }
+
+  messagesHasChanged(newData: Message[]) {
+    if (this.messages.length != newData.length) {
+      return true;
+    }
+    for (let i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].content != newData[i].content) {
+        return true;
+      }
+    }
+    return false;
   }
 
   onHeightChange() {

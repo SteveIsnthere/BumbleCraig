@@ -1,8 +1,8 @@
 <main>
-  <div style="width: 120px; height: 120px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;
+  <div style="width: 70px; height: 70px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;
   left: 50%;top: 10px;transform: translate(-50%, 0);"></div>
   <div id="group-info" *ngIf="groupEssentialData.figure_id != 0">
-    <div style="width: 120px;clip-path: circle(60px at center); cursor: pointer;" (click)="editFigure()">
+    <div style="width: 70px;clip-path: circle(35px at center); cursor: pointer;" (click)="editFigure()">
       <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
     </div>
   </div>
