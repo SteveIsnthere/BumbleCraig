@@ -27,8 +27,8 @@ main {
   background-color: #4f4f4f;
   border-radius: 500px;
   padding: 7px;
+  min-height: 40px;
 }
-
 
 form {
   display: flex;

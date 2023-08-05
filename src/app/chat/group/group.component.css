@@ -9,6 +9,7 @@
   border-radius: 200px;
   padding: 8px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
+  min-height: 35px;
 }
 
 #group-name {
