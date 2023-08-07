@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
 import {MatDialog} from "@angular/material/dialog";
 import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
+import {dummyEssentialUserData} from "../user/UserModel";
 
 @Component({
   selector: 'app-home',
@@ -34,4 +35,6 @@ export class HomeComponent implements OnInit {
   userSetUp() {
     this.dialog.open(UserSetUpComponent);
   }
+
+  protected readonly dummyEssentialUserData = dummyEssentialUserData;
 }

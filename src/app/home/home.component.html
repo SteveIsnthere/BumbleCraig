@@ -4,9 +4,20 @@
     <mat-icon>chat</mat-icon>
   </button>
 
-  <button mat-mini-fab class="top-floating-buttons" style="right: 0;" [matMenuTriggerFor]="menu"
-          [ngStyle]="{'border': (main.getTotalMessageCount()>0 || auth.isVisitor) ? '3px solid #c72a68' : 'none'}">
-    <mat-icon>menu</mat-icon>
+  <!--  <button mat-mini-fab class="top-floating-buttons" style="right: 0;width: 40px; height: 40px" [matMenuTriggerFor]="menu"-->
+  <!--          [ngStyle]="{'border': (main.getTotalMessageCount()>0 || auth.isVisitor) ? '3px solid #c72a68' : 'none'}">-->
+  <!--    &lt;!&ndash;<mat-icon>menu</mat-icon>&ndash;&gt;-->
+  <!--    <div style="width: 40px;clip-path: circle(20px at center);z-index: -1">-->
+  <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
+  <!--    </div>-->
+  <!--  </button>-->
+  <button mat-mini-fab class="top-floating-buttons" style="right: 0;width: 40px; height: 40px"
+          [matMenuTriggerFor]="menu"
+          matBadge="{{main.getTotalMessageCount()}}" matBadgePosition="before" matBadgeColor="primary" [matBadgeHidden]="main.getTotalMessageCount() == 0">
+    <!--<mat-icon>menu</mat-icon>-->
+    <div style="width: 40px;clip-path: circle(20px at center);z-index: -1">
+      <app-simple-figure [figureID]=1></app-simple-figure>
+    </div>
   </button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
