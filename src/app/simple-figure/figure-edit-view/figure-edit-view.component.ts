@@ -11,7 +11,7 @@ import {MAT_BOTTOM_SHEET_DATA, MatBottomSheet} from "@angular/material/bottom-sh
   styleUrls: ['./figure-edit-view.component.css']
 })
 export class FigureEditViewComponent extends SimpleFigureComponent {
-  selectedFillColor: string = "blue"
+  selectedFillColor: string = colors[3];
 
   constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet, el:ElementRef) {
     super(http,el);

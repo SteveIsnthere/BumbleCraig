@@ -13,10 +13,11 @@
   <!--  </button>-->
   <button mat-mini-fab class="top-floating-buttons" style="right: 0;width: 40px; height: 40px"
           [matMenuTriggerFor]="menu"
-          matBadge="{{main.getTotalMessageCount()}}" matBadgePosition="before" matBadgeColor="primary" [matBadgeHidden]="main.getTotalMessageCount() == 0">
+          matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="primary"
+          [matBadgeHidden]="notificationCount() == 0">
     <!--<mat-icon>menu</mat-icon>-->
-    <div style="width: 40px;clip-path: circle(20px at center);z-index: -1">
-      <app-simple-figure [figureID]=1></app-simple-figure>
+    <div style="width: 42px;clip-path: circle(21px at center)">
+      <app-simple-figure [figureID]=selfFigID *ngIf="selfFigID != 0"></app-simple-figure>
     </div>
   </button>
   <mat-menu #menu="matMenu">

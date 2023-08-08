@@ -1,6 +1,8 @@
 <main>
   <ng-container *ngIf="data.length === 0; else realShit">
-    <mat-spinner [diameter]="width"></mat-spinner>
+    <!--<mat-spinner [diameter]="width"></mat-spinner>-->
+    <div [style.width]="width + 'px'" [style.height]="width + 'px'"
+         style="background-color: #c2175b;border-radius: 100%;"></div>
   </ng-container>
 
   <ng-template #realShit>

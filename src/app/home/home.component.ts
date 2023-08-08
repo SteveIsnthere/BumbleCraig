@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
 import {MatDialog} from "@angular/material/dialog";
 import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
-import {dummyEssentialUserData} from "../user/UserModel";
+import {dummyEssentialUserData, EssentialUserData} from "../user/UserModel";
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,7 @@ import {dummyEssentialUserData} from "../user/UserModel";
 })
 export class HomeComponent implements OnInit {
   haveUnreadMsg: boolean = false;
+  selfFigID: number = 0;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
   }
@@ -30,6 +31,17 @@ export class HomeComponent implements OnInit {
     this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
       this.haveUnreadMsg = data;
     })
+    this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.auth.selfUserID).subscribe((data) => {
+      this.selfFigID = data.figure_id;
+    })
+  }
+
+
+  notificationCount() {
+    let result = 0;
+    result += this.main.getTotalMessageCount();
+    if (this.auth.isVisitor) result++;
+    return result;
   }
 
   userSetUp() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {AuthDataService} from "../../services/auth-data.service";
 import {HttpClient} from "@angular/common/http";
@@ -9,7 +9,7 @@ import {apiEndPoint} from "../../env";
   templateUrl: './login-view.component.html',
   styleUrls: ['./login-view.component.css']
 })
-export class LoginViewComponent implements OnInit {
+export class LoginViewComponent implements OnInit, OnDestroy {
 
   username = "";
   password = "";
@@ -19,6 +19,7 @@ export class LoginViewComponent implements OnInit {
   newUserLoading = false;
   loginLoading = false;
   wrongCredentials = false;
+  figUpdateInterval: any = 0;
 
   constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient) {
   }
@@ -28,6 +29,17 @@ export class LoginViewComponent implements OnInit {
       this.logoFigID = data;
       this.loginView = this.auth.loggedIn;
     })
+
+    this.figUpdateInterval = setInterval(() => {
+      this.logoFigID = 0;
+      this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
+        this.logoFigID = data;
+      })
+    }, 7000)
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.figUpdateInterval);
   }
 
   login() {

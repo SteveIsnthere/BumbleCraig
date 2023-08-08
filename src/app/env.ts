@@ -1,11 +1,13 @@
 export const colors = [
-  "black", "white", "aqua", "blue", "fuchsia", "gray", "green", "lime", "maroon", "navy",
-  "olive", "purple", "red", "silver", "teal", "yellow", "aliceblue", "antiquewhite", "aquamarine",
-  "beige", "bisque", "chocolate", "cornsilk", "darkcyan", "darkslategray"
+  "#c62828", "#e53935", "#d81b60", "#8e24aa", "#5e35b1",
+  "#3949ab", "#1e88e5", "#039be5", "#00acc1", "#00897b",
+  "#43a047", "#7cb342", "#c0ca33", "#fdd835", "#ffb300",
+  "#fb8c00", "#f4511e", "#6d4c41", "#757575", "#546e7a",
+  "#263238", "#90a4ae", "#ec407a", "#ab47bc", "#42a5f5"
 ];
 
-//export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
-export const apiEndPoint: string = 'https://25fa-2001-569-58aa-1400-e418-13a5-8ac3-8da3.ngrok-free.app/tidder'
+export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
+//export const apiEndPoint: string = 'https://25fa-2001-569-58aa-1400-e418-13a5-8ac3-8da3.ngrok-free.app/tidder'
 
 
 export const rankingModes = [

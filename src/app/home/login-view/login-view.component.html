@@ -1,8 +1,11 @@
 <main *ngIf="loginView != null; else loadingBar">
   <div id="logo" cdkDrag>
-    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0">
+    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">
       <app-simple-figure [figureID]="logoFigID"></app-simple-figure>
     </div>
+    <ng-template #loadingFig>
+      <div style="width: 40px; height: 40px; background-color: #c2175b; border-radius: 100%;"></div>
+    </ng-template>
 
     <span style="margin-right: 2px">Tidder</span>
   </div>
@@ -46,8 +49,8 @@
         </button>
       </div>
       <ng-template #loadingWheel>
-        <div style="display: flex; justify-content: center; margin-top: 20px">
-          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        <div style="display: flex; justify-content: center; margin-top: 40px">
+          <mat-spinner [diameter]="56"></mat-spinner>
         </div>
       </ng-template>
 
@@ -57,7 +60,7 @@
   </ng-template>
 </main>
 
-<ng-template #loadingBar>
+  <ng-template #loadingBar>
   <div id="loading">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
