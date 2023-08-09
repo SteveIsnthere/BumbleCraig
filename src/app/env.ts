@@ -6,8 +6,8 @@ export const colors = [
   "#263238", "#90a4ae", "#ec407a", "#ab47bc", "#42a5f5"
 ];
 
-//export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
-export const apiEndPoint: string = 'https://562f-2001-569-58aa-1400-b072-63a6-13b6-6ef9.ngrok-free.app/tidder'
+export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
+//export const apiEndPoint: string = 'https://steveapi.ngrok.io/tidder'
 
 
 export const rankingModes = [
@@ -22,9 +22,31 @@ export const rankingModes = [
 
 export const genres = [
   'All-Genres',
-  'Action',
-  'Adventure',
-  'Comedy',
-  'Drama',
-  'Fantasy',
+  'News',
+  'Jokes',
+  'Creativity',
+  'Life',
+  'Science',
+  'Technology',
+  'Entertainment',
+  'Sports',
+  'Anime',
+  'Games',
+  'Music',
+  'Movies',
+  'TV',
+  'Books',
+  'Comics',
+  'Fashion',
+  'Food',
+  'Travel',
+  'Fitness',
+  'Health',
+  'Beauty',
+  'Relationship',
+  'Advice',
+  'Education',
+  'Career',
+  'Chinese',
+  'Other'
 ];
