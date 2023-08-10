@@ -14,6 +14,7 @@ export class PostCommentsViewComponent implements OnInit {
   postID: number = 0;
   comments: Comment[] = [];
   completeLoading: boolean = false;
+  panelStates: boolean[] = [];
 
   constructor(private http: HttpClient, private auth: AuthService, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
     this.postID = data;
@@ -22,6 +23,9 @@ export class PostCommentsViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<Comment[]>(apiEndPoint + '/post/get_comments/' + this.postID + '/' + this.auth.selfUserID).subscribe(comments => {
       this.comments = comments;
+      for (let i = 0; i < this.comments.length; i++) {
+        this.panelStates.push(false);
+      }
       this.completeLoading = true;
     })
   }

@@ -1,14 +1,13 @@
 <mat-card *ngIf="post?.popularity != null; else loadingBar">
   <mat-card-header>
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
-    <mat-card-title [routerLink]="['/post/' + post?.post_id]"
-                    style="color: antiquewhite;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
+    <mat-card-title style="color: antiquewhite;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
     <!--<mat-card-subtitle [routerLink]="['/post/' + post?.post_id]"-->
     <!--                    style="">{{post?.time_since_posted}}</mat-card-subtitle>-->
   </mat-card-header>
 
 
-  <mat-card-content [routerLink]="['/post/' + post?.post_id]">
+  <mat-card-content (click)="openPostFullView()">
     <p *ngFor="let content of postPreviewContents">
       <ng-container *ngIf="content.file_share_id != 0; else textMsg">
         <app-file-share [fileShareID]=content.file_share_id [interactive]="false" class="file-content"></app-file-share>
@@ -22,7 +21,6 @@
 
   <mat-card-actions style="justify-content: flex-end; gap: 10px; padding: 0 13px">
     <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
-                             [routerLink]="['/post/' + post?.post_id]"
                              style="flex: 1"></app-post-perception-bar>
     <div id="comment-section" (click)="openCommentSection()">
       <span style="margin-right: 3px">{{post?.number_of_comments}}</span>

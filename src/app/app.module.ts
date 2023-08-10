@@ -59,13 +59,12 @@ import {authGuard} from "./services/auth.guard";
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginViewComponent},
-  {path: 'post/:id', component: PostFullViewComponent, canActivate: [authGuard]},
   {path: 'chat', component: ChatComponent, canActivate: [authGuard]},
   {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  // {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

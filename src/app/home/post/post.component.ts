@@ -6,6 +6,8 @@ import {dummyMessage, Message} from "../../chat/group/group-chat-view/Message";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 
 @Component({
   selector: 'app-post',
@@ -17,7 +19,7 @@ export class PostComponent implements OnInit {
   post: Post | null = null;
   postPreviewContents: Message[] = [];
 
-  constructor(public http: HttpClient,private router: Router, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, private router: Router, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -77,6 +79,12 @@ export class PostComponent implements OnInit {
   openCommentSection(): void {
     this._bottomSheet.open(PostCommentsViewComponent, {
       data: this.postID,
+    });
+  }
+
+  openPostFullView(): void {
+    this.dialog.open(PostFullViewComponent, {
+      data: this.post
     });
   }
 }

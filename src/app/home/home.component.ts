@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {MainService} from "../services/main.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
@@ -14,9 +14,10 @@ import {dummyEssentialUserData, EssentialUserData} from "../user/UserModel";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   haveUnreadMsg: boolean = false;
   selfFigID: number = 0;
+  msgFetchInterval: any = 0;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
   }
@@ -28,14 +29,24 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
-      this.haveUnreadMsg = data;
-    })
+    this.fetchUnreadMsg();
     this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.auth.selfUserID).subscribe((data) => {
       this.selfFigID = data.figure_id;
     })
+    this.msgFetchInterval = setInterval(() => {
+      this.fetchUnreadMsg();
+    }, 15000)
   }
 
+  ngOnDestroy(): void {
+    clearInterval(this.msgFetchInterval);
+  }
+
+  fetchUnreadMsg() {
+    this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
+      this.haveUnreadMsg = data;
+    })
+  }
 
   notificationCount() {
     let result = 0;
