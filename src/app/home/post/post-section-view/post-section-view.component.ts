@@ -22,7 +22,7 @@ export class PostSectionViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected).subscribe((data) => {
+    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       this.postIDs = data;
     })
   }
@@ -51,5 +51,5 @@ export class PostSectionViewComponent implements OnInit {
     });
   }
 
-    protected readonly rankingModes = rankingModes;
+  protected readonly rankingModes = rankingModes;
 }
