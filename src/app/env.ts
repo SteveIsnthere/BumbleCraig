@@ -7,7 +7,7 @@ export const colors = [
 ];
 
 //export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
-export const apiEndPoint: string = 'https://steveapi.ngrok.io/tidder'
+export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
 
 
 export const rankingModes = [
