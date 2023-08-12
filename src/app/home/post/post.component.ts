@@ -71,9 +71,9 @@ export class PostComponent implements OnInit {
       }
     }
 
-    if (numberOfAttachments > 2) {
-      this.postPreviewContents.push(dummyMessage())
-    }
+    // if (numberOfAttachments > 2) {
+    //   this.postPreviewContents.push(dummyMessage())
+    // }
   }
 
   openCommentSection(): void {

@@ -1,5 +1,5 @@
 <mat-card *ngIf="post?.popularity != null; else loadingBar">
-  <mat-card-header>
+  <mat-card-header (click)="openPostFullView()" style="cursor: pointer">
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
     <mat-card-title style="color: antiquewhite;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
     <!--<mat-card-subtitle [routerLink]="['/post/' + post?.post_id]"-->
@@ -20,7 +20,7 @@
 
 
   <mat-card-actions style="justify-content: flex-end; gap: 10px; padding: 0 13px">
-    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
+    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"
                              style="flex: 1"></app-post-perception-bar>
     <div id="comment-section" (click)="openCommentSection()">
       <span style="margin-right: 3px">{{post?.number_of_comments}}</span>
