@@ -30,5 +30,4 @@ mat-card-title {
   -webkit-line-clamp: 2; /* Limit to 2 lines */
   overflow: hidden;
   line-height: 1.2; /* Adjust this value for spacing between lines */
-  max-height: 2.4em; /* Adjust this value for maximum height of two lines */
 }
