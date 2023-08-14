@@ -52,6 +52,16 @@ export class PostFullViewComponent implements OnInit {
     })
   }
 
+  isLink(text:string): boolean {
+    let url;
+    try {
+      url = new URL(text);
+    } catch (_) {
+      return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
   likePost(): void {
     if (this.perceptionStatus != 0) return
     this.http.get(apiEndPoint + '/post/like_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {

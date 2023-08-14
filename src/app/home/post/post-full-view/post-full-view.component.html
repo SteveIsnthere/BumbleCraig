@@ -32,12 +32,14 @@
         </ng-container>
         <ng-template #textMsg>
           <div class="text-wrapper">
-            <span class="text-content">{{content.content}}</span>
+            <span class="text-content" *ngIf="!isLink(content.content); else link">{{content.content}}</span>
+            <ng-template #link>
+              <a [href]="content.content" target="_blank" style="color: #c2175b">Link to External website</a>
+            </ng-template>
           </div>
         </ng-template>
       </div>
     </div>
-
 
 
     <div id="comment-section" (click)="openCommentSection()"
@@ -51,6 +53,10 @@
 
     <button mat-mini-fab color="warn" style="position: fixed; bottom: 20px; right: 20px" (click)="writeComment()">
       <mat-icon>rate_review</mat-icon>
+    </button>
+
+    <button mat-mini-fab color="primary" style="position: fixed; top: 20px; left: 20px" mat-dialog-close>
+      <mat-icon>close</mat-icon>
     </button>
   </main>
 </mat-dialog-content>

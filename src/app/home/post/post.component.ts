@@ -81,8 +81,7 @@ export class PostComponent implements OnInit {
   openPostFullView(): void {
     this.dialog.open(PostFullViewComponent, {
       data: this.post,
-      maxWidth: '100vw',
-      width: '90%',
+      maxWidth: '95vw',
     });
   }
 }
