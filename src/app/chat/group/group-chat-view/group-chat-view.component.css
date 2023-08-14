@@ -43,10 +43,14 @@
   background-color: #f55246;
   border-radius: 5px;
   padding: 10px;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
 }
 
 .file-content {
-  max-width: 60%;
+  max-width: min(60%, 300px);
   background-color: #c72a68;
   border-radius: 5px;
   padding: 10px;

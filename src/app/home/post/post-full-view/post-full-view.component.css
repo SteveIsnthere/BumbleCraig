@@ -34,7 +34,28 @@ main {
   color: antiquewhite;
 }
 
+.contents{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.content{
+  max-width: 350px;
+}
+
+.text-wrapper{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #303030;
+}
 .text-content {
+  text-align: justify-all;
   color: antiquewhite;
 }
 

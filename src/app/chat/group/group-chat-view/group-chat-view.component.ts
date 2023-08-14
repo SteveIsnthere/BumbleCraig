@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Message} from "./Message";
+import {dummyMessage, Message} from "./Message";
 import {apiEndPoint} from "../../../env";
 import {AuthService} from "../../../services/auth.service";
 import {dummyGroupEssentialData, GroupEssentialData} from "../GroupEssentialData";
@@ -64,7 +64,23 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       if (!this.messagesHasChanged(data)) {
         return;
       }
-      this.messages = data;
+
+      if (this.messages.length > 0) {
+        let numberOfNewMessages = 0;
+        for (let i = 0; i < data.length; i++) {
+          if (this.areMessagesSame(data[data.length - 1 - i], this.messages[this.messages.length - 1])) {
+            break;
+          }
+          numberOfNewMessages++;
+        }
+        for (let i = data.length - numberOfNewMessages; i < data.length; i++) {
+          this.messages.push(data[i]);
+        }
+      }
+      else {
+        this.messages = data;
+      }
+
       this.onHeightChange()
       setTimeout(() => {
         this.viewGroup();
@@ -73,15 +89,22 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   messagesHasChanged(newData: Message[]) {
-    if (this.messages.length != newData.length) {
+    const newDataLength = newData.length;
+    const oldDataLength = this.messages.length;
+    if (newDataLength != oldDataLength) {
       return true;
     }
-    for (let i = 0; i < this.messages.length; i++) {
-      if (this.messages[i].content != newData[i].content) {
-        return true;
-      }
+    return !this.areMessagesSame(newData[newDataLength - 1], this.messages[oldDataLength - 1]);
+  }
+
+  areMessagesSame(msg1: Message, msg2: Message) {
+    if (msg1.content != msg2.content) {
+      return false;
     }
-    return false;
+    if (msg1.sender_id != msg2.sender_id) {
+      return false;
+    }
+    return msg1.file_share_id == msg2.file_share_id;
   }
 
   onHeightChange() {

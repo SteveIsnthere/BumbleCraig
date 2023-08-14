@@ -23,9 +23,10 @@ export class PostPerceptionBarComponent {
   ratingColor(): string {
     const score = this.ratingScore();
     if (score == 1) return '#FF0000';
-    if (score == 2) return '#ffb700';
-    if (score == 3) return '#e6ff00';
-    if (score == 4) return '#00FF00';
-    return '#0000FF';
+    if (score == 2) return '#eeff00';
+    if (score == 3) return '#1f1f1f';
+    if (score == 4) return '#a2ff00';
+    if (score == 5) return '#00FF00';
+    return '#0048ff';
   }
 }

@@ -25,14 +25,20 @@
 
     <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
 
-    <p *ngFor="let content of post.content">
-      <ng-container *ngIf="content.file_share_id != 0; else textMsg">
-        <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
-      </ng-container>
-      <ng-template #textMsg>
-        <span class="text-content">{{content.content}}</span>
-      </ng-template>
-    </p>
+    <div class="contents">
+      <div *ngFor="let content of post.content" class="content">
+        <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+          <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
+        </ng-container>
+        <ng-template #textMsg>
+          <div class="text-wrapper">
+            <span class="text-content">{{content.content}}</span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+
 
     <div id="comment-section" (click)="openCommentSection()"
          style="position: fixed; bottom: 20px;left: 50%;transform: translate(-50%, 0);">
