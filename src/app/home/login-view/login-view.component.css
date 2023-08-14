@@ -12,8 +12,9 @@ main {
   color: antiquewhite;
   padding: 20px;
   margin: 20px;
-    border-radius: 10px;
+  border-radius: 10px;
   background-color: #4f4f4f;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
 }
 
 #logo {
@@ -28,6 +29,7 @@ main {
   border-radius: 500px;
   padding: 7px;
   min-height: 40px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
 }
 
 form {

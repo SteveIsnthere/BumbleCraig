@@ -2,7 +2,7 @@
   <div id="comments" *ngIf="comments.length > 0; else noComments">
     <div *ngFor="let comment of comments; let i = index">
       <div class="comment-wrapper">
-        <app-user-mini [userID]="comment.author_id"></app-user-mini>
+        <app-user-mini [userID]="comment.author_id" (click)="closeCommentsSection()"></app-user-mini>
         <div class="comment-content">
           <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;">
             <mat-expansion-panel-header>

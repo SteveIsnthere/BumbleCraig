@@ -119,10 +119,6 @@ export class NewPostViewComponent implements OnInit {
     );
   }
 
-  test() {
-    console.log('test')
-  }
-
   openTextEditor() {
     const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Enter your message'});
     bottomSheetRef.afterDismissed().subscribe(textContent => {

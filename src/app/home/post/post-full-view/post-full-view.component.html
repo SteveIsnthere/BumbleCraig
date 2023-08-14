@@ -1,12 +1,11 @@
-<mat-dialog-content
-  style="max-height: 75vh; max-height: 75dvh;height: 75vh; height: 75dvh; width: 80vw; width: 80dvw">
+<mat-dialog-content id="wrapper">
   <main *ngIf="post != null">
     <button mat-mini-fab *ngIf="auth.selfUserID == post.author_id" (click)="deletePost()">
       <mat-icon>delete</mat-icon>
     </button>
 
     <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id"
-         style="position: fixed; top: 11vh;top: 11dvh;left: 50%;transform: translate(-50%, -100%); background-color: #939393;
+         style="position: fixed; top: 10px;left: 50%;transform: translate(-50%, 0); background-color: #939393;
          border-radius: 130px; padding: 5px">
       <button mat-mini-fab color="primary" (click)="likePost()"
               *ngIf="perceptionStatus == 0 || perceptionStatus == 1">

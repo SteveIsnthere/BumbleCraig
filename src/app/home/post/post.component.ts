@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Post} from "./Post";
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
-import {dummyMessage, Message} from "../../chat/group/group-chat-view/Message";
+import {Message} from "../../chat/group/group-chat-view/Message";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {Router} from "@angular/router";
@@ -25,13 +25,9 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
       this.post = data;
+      // console.log(this.post.rating)
       this.buildPostPreviewContent()
     })
-  }
-
-  openPost(): void {
-    this.router.navigate(['/post/' + this.post?.post_id]).then(() => {
-    });
   }
 
   buildPostPreviewContent(): void {
@@ -84,7 +80,9 @@ export class PostComponent implements OnInit {
 
   openPostFullView(): void {
     this.dialog.open(PostFullViewComponent, {
-      data: this.post
+      data: this.post,
+      maxWidth: '100vw',
+      width: '90%',
     });
   }
 }

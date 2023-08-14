@@ -13,7 +13,8 @@
     <!--name-->
     <mat-form-field class="input" appearance="outline">
       <mat-label>
-        <mat-icon>person_book</mat-icon>
+        <mat-icon style="vertical-align: middle;">person_book</mat-icon>
+        username
       </mat-label>
       <input matInput type="text" [ngModel]="inputName" (input)="changeInputName($event)">
       <button *ngIf="inputName" matSuffix mat-icon-button aria-label="Clear" (click)="inputName=''">
@@ -31,7 +32,8 @@
     <!--description-->
     <mat-form-field class="input" appearance="outline">
       <mat-label>
-        <mat-icon>view_headline</mat-icon>
+        <mat-icon style="vertical-align: middle;">view_headline</mat-icon>
+        description
       </mat-label>
       <textarea matInput placeholder="Ex. I'm a dip..." [ngModel]="inputDescription"
                 [cdkTextareaAutosize]="true"
@@ -47,7 +49,8 @@
     <!--email-->
     <mat-form-field class="input" appearance="outline">
       <mat-label>
-        <mat-icon>email</mat-icon>
+        <mat-icon style="vertical-align: middle;">email</mat-icon>
+        email
       </mat-label>
       <input matInput type="email" [ngModel]="inputEmail" (input)="changeInputEmail($event)">
       <button *ngIf="inputEmail" matSuffix mat-icon-button aria-label="Clear" (click)="inputEmail=''">
@@ -65,7 +68,8 @@
     <!--password-->
     <mat-form-field class="input" appearance="outline">
       <mat-label>
-        <mat-icon>vpn_key</mat-icon>
+        <mat-icon style="vertical-align: middle;">vpn_key</mat-icon>
+        password
       </mat-label>
       <input matInput [type]="hidePassword ? 'password' : 'text'" [ngModel]="inputPassword"
              (input)="changeInputPassword($event)">

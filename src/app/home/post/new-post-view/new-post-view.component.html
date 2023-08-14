@@ -3,7 +3,7 @@
                style="overflow: auto; max-height: 95vh">
     <mat-step> <!-- genre selection -->
       <form>
-        <ng-template matStepLabel>Genre</ng-template>
+        <ng-template matStepLabel>Select Genre</ng-template>
         <mat-chip-listbox aria-label="Fish selection">
           <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)" [selected]="genre == genreSelected"
                            color="warn">
@@ -16,7 +16,7 @@
       </form>
     </mat-step>
 
-    <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
+    <mat-step label="Post title" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
         <mat-form-field>
           <mat-label>Title</mat-label>
@@ -32,7 +32,7 @@
     </mat-step>
 
     <mat-step> <!-- contents -->
-      <ng-template matStepLabel>Content</ng-template>
+      <ng-template matStepLabel>Add attachments</ng-template>
       <div id="contents">
         <div class="content" *ngFor="let content of contents">
           <div>
@@ -55,22 +55,25 @@
 
       <mat-divider style="margin: 20px 0" *ngIf="contents.length>0"></mat-divider>
 
-      <div id="action-section" style="display: flex; gap: 10px">
-        <div style="flex: 1"></div>
-        <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">
+      <div id="action-section" style="display: flex; gap: 10px; flex-direction: column; justify-content: center; align-items: center;">
+        <!--<div style="flex: 1"></div>-->
+        <button id="upload-button" mat-raised-button color="primary" (click)="fileInput.click()">
           <mat-icon>upload</mat-icon>
+          File
         </button>
-        <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
-        <button mat-mini-fab (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px">
+        <button mat-raised-button (click)="openTextEditor()" color="warn">
           <mat-icon>edit_note</mat-icon>
+          Text
         </button>
-        <div style="flex: 1"></div>
+        <!--<div style="flex: 1"></div>-->
       </div>
-      <button mat-fab style="position: fixed; bottom: 20px; right: 20px;transform: scale(1.4)"
+      <button mat-raised-button style="position: fixed; bottom: 20px; right: 20px;transform: scale(1.2)"
               (click)="publishPost()" color="primary">
         <mat-icon>check</mat-icon>
+        Publish
       </button>
     </mat-step>
   </mat-stepper>
+  <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 </main>

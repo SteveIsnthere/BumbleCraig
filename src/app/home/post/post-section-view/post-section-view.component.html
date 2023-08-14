@@ -9,15 +9,14 @@
         <mat-progress-bar mode="indeterminate"></mat-progress-bar>
       </p>
     </ng-template>
-    <div style="height: 75px"></div>
+    <div style="height: 65px"></div>
     <div id="posts-section" *ngIf="postIDs.length>0; else loadingBar">
       <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
     </div>
   </div>
 
   <button mat-mini-fab color="primary" (click)="openNewPostView()"
-          style="position: fixed; bottom: 20px; left: 20px; z-index: 10" cdkDrag>
+          style="position: fixed; bottom: 20px; right: 20px; z-index: 10" cdkDrag>
     <mat-icon>add</mat-icon>
   </button>
 </main>
-

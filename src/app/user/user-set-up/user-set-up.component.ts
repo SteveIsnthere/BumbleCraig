@@ -17,6 +17,9 @@ export class UserSetUpComponent {
   inputPassword: string = '';
   inputEmail: string = '';
 
+  nameGood: boolean = false;
+  passwordGood: boolean = false;
+
   firstFormGroup = this._formBuilder.group({
     nameCtrl: ['', [Validators.minLength(5), Validators.maxLength(20)]],
   });
@@ -60,6 +63,7 @@ export class UserSetUpComponent {
     this.http.post<string>(apiEndPoint + '/user/name/' + this.auth.selfUserID, this.inputName).subscribe((res) => {
       if (res == 'Name successfully changed') {
         this.openSnackBar(res, 'close');
+        this.nameGood = true;
       }
     });
   }
@@ -78,6 +82,7 @@ export class UserSetUpComponent {
 
     this.http.post<string>(apiEndPoint + '/user/password/' + this.auth.selfUserID, this.inputPassword).subscribe((res) => {
       this.openSnackBar(res, 'close');
+      this.passwordGood = true;
     });
   }
 
@@ -98,6 +103,14 @@ export class UserSetUpComponent {
 
 
   confirmSetup() {
+    if (!this.nameGood) {
+      this.openSnackBar('Please update your name again', 'close')
+      return;
+    }
+    if (!this.passwordGood) {
+      this.openSnackBar('Please update your password again', 'close')
+      return;
+    }
     this.http.get(apiEndPoint + '/user/setup_visitor/' + this.auth.selfUserID).subscribe(() => {
       this.auth.loginUsingSessionPassword()
       this.openSnackBar('Account setup complete', 'close')

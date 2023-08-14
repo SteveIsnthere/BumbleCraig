@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Comment} from "../Post";
 import {apiEndPoint} from "../../../env";
-import {MAT_BOTTOM_SHEET_DATA} from "@angular/material/bottom-sheet";
+import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
 import {AuthService} from "../../../services/auth.service";
 
 @Component({
@@ -16,7 +16,7 @@ export class PostCommentsViewComponent implements OnInit {
   completeLoading: boolean = false;
   panelStates: boolean[] = [];
 
-  constructor(private http: HttpClient, private auth: AuthService, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {
+  constructor(private http: HttpClient, private auth: AuthService, @Inject(MAT_BOTTOM_SHEET_DATA) public data: any, private bottomSheetRef: MatBottomSheetRef<PostCommentsViewComponent>) {
     this.postID = data;
   }
 
@@ -40,5 +40,10 @@ export class PostCommentsViewComponent implements OnInit {
     this.http.get(apiEndPoint + '/post/dislike_comment/' + comment.comment_id + '/' + this.auth.selfUserID).subscribe(() => {
       comment.perception_status = 2;
     })
+  }
+
+
+  closeCommentsSection() {
+    this.bottomSheetRef.dismiss();
   }
 }

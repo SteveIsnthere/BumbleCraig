@@ -17,7 +17,7 @@ mat-card-content {
   cursor: pointer;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 850px) {
   mat-card-content {
     height: 300px;
     overflow: hidden;
@@ -30,4 +30,11 @@ mat-card-title {
   -webkit-line-clamp: 2; /* Limit to 2 lines */
   overflow: hidden;
   line-height: 1.2; /* Adjust this value for spacing between lines */
+}
+
+mat-card{
+  /*background-color: #1e1e1e;*/
+  border-radius: 25px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.35);
+  margin: 10px;
 }

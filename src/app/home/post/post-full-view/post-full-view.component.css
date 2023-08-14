@@ -1,4 +1,15 @@
-main{
+#wrapper {
+  max-height: 100vh;
+  max-height: 100dvh;
+  height: calc(100vh - 140px);
+  height: calc(100dvh - 140px);
+  /*border-radius: 25px;*/
+  /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);*/
+  /*margin: 10px;*/
+  /*background-color: #039be5;*/
+}
+
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +19,7 @@ main{
   overflow-wrap: break-word;
 }
 
-.action-bar{
+.action-bar {
   display: flex;
   gap: 7px;
   align-items: center;
@@ -27,7 +38,7 @@ main{
   color: antiquewhite;
 }
 
-#comment-section{
+#comment-section {
   cursor: pointer;
   color: antiquewhite;
 }

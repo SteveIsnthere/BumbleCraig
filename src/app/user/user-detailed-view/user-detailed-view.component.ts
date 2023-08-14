@@ -4,6 +4,7 @@ import {apiEndPoint} from "../../env";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-detailed-view',
@@ -17,11 +18,12 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   showClippedFigure = true
   postIDs: number[] = [];
 
-  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService) {
+  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService,private dialogRef: MatDialog) {
     super(http);
   }
 
   override ngOnInit(): void {
+    this.dialogRef.closeAll();
     this.route.params.subscribe(params => {
       this.userID = params['id'];
     });

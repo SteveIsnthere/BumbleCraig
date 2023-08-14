@@ -3,7 +3,7 @@
                style="overflow: auto; max-height: 95vh">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Username</ng-template>
+        <ng-template matStepLabel>Setup username</ng-template>
         <mat-form-field>
           <input matInput formControlName="nameCtrl" placeholder="DipShit"
                  autocomplete="off" required
@@ -16,7 +16,7 @@
       </form>
     </mat-step>
 
-    <mat-step label="Password" [stepControl]="secondFormGroup">
+    <mat-step label="Setup password" [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
           <mat-label>Password</mat-label>
@@ -48,7 +48,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Finish up</ng-template>
+      <ng-template matStepLabel>Finishing up</ng-template>
       <div>
         <div class="acc-info-row">
           <mat-chip>Username</mat-chip>
