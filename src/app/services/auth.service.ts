@@ -32,6 +32,11 @@ export class AuthService {
     }
   }
 
+  logout() {
+    this.loggedIn = false;
+    this.cookieService.delete('sessionPassword');
+  }
+
   switchToLoginView() {
     this.router.navigate(["login"]).then();
   }

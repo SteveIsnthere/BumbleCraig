@@ -20,9 +20,6 @@
 
     <span id="title">{{post.title}}</span>
 
-    <!--    <app-post-perception-bar [popularity]="post.popularity" [rating]="post.rating"-->
-    <!--                             style="width: 200px"></app-post-perception-bar>-->
-
     <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
 
     <div class="contents">

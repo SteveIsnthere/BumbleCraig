@@ -39,12 +39,12 @@
     <div style="display: flex; background-color: #c72a68" *ngIf="auth.isVisitor">
       <button mat-menu-item (click)="userSetUp()">
         <mat-icon>manage_accounts</mat-icon>
-        <span>Setup Account</span>
+        <span>Signup</span>
       </button>
     </div>
     <button mat-menu-item [routerLink]="['/login']">
       <mat-icon>logout</mat-icon>
-      <span>Switch</span>
+      <span>Logout</span>
     </button>
   </mat-menu>
 
