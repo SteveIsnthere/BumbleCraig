@@ -27,6 +27,17 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 10px 20px;
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%); /* Start position */
+    scale: 2;
+  }
+  100% {
+    transform: translateY(0); /* End position */
+  }
 }
 
 .post {
@@ -34,7 +45,6 @@ main {
   overflow: hidden;
   max-width: 550px;
 }
-
 
 @media only screen and (min-width: 850px) {
   .post {
