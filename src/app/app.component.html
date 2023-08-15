@@ -1,7 +1,13 @@
 <ng-container *ngIf="router.url != '/home' && auth.loggedIn">
-  <button color="warn" onclick="history.back()" cdkDrag mat-icon-button class="top-floating-buttons" style="left: 0">
+  <button color="warn" onclick="history.back()" mat-icon-button class="top-floating-buttons" style="left: 0">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
 </ng-container>
+
+<!--Init load-->
+<p style="width: 100vw; position: fixed; top: 0; left: 0;" *ngIf="!auth.loggedIn && router.url != '/login'">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</p>
+
 
 <router-outlet></router-outlet>

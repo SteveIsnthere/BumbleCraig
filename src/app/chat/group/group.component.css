@@ -12,12 +12,21 @@
   min-height: 40px;
 }
 
+.unread{
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.44);
+}
+
 #group-name {
   font-size: 1.2rem;
   font-weight: bold;
   color: wheat;
   margin-right: 5px;
   max-width: 200px;
-  text-overflow: ellipsis;
+  text-align: end;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
   overflow: hidden;
+  line-height: 1.2; /* Adjust this value for spacing between lines */
 }

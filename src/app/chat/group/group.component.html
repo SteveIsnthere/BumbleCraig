@@ -1,10 +1,10 @@
 <main *ngIf="groupEssentialData.group_id != 0; else loadingBar">
-  <div class="group-container" [routerLink]="['/group/' + groupID]">
+  <div class="group-container" [ngClass]="{'unread': unread}" [routerLink]="['/group/' + groupID]">
     <div style="width: 40px;clip-path: circle(20px at center)">
       <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
     </div>
     <div *ngIf="unread">
-      <mat-icon color="warn" style="vertical-align: middle;">mark_chat_unread</mat-icon>
+      <mat-icon color="warn" style="vertical-align: middle;">mark_email_unread</mat-icon>
     </div>
     <div style="flex: 1"></div>
     <div id="group-name">

@@ -25,7 +25,7 @@ export const genres = [
   'News',
   'Jokes',
   'Creativity',
-  'Social',
+  'irl',
   'Tech',
   'Sports',
   'Memes',

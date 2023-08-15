@@ -15,6 +15,8 @@ import {NewPostViewComponent} from "../new-post-view/new-post-view.component";
 })
 export class PostSectionViewComponent implements OnInit {
   postIDs: number[] = [];
+  loading = true;
+  empty = false;
   selectedRankingMode = 'Recommended';
   genreSelected = "All-Genres";
 
@@ -22,8 +24,12 @@ export class PostSectionViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.loadSettingsFromLocalStorage();
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
+      this.loading = false;
       this.postIDs = data;
+      this.empty = this.postIDs.length == 0;
     })
   }
 
@@ -40,8 +46,25 @@ export class PostSectionViewComponent implements OnInit {
       this.genreSelected = dataFromChild[1];
 
       // update the postIDs
+      this.saveSettingsToLocalStorage();
       this.ngOnInit();
     });
+  }
+
+  loadSettingsFromLocalStorage() {
+    // first check if the local storage is empty
+    let storedRankingMode = localStorage.getItem('rankingMode');
+    let storedGenre = localStorage.getItem('genre');
+    if (storedRankingMode == null || storedGenre == null) return;
+
+    // update the selectedRankingMode and genreSelected
+    this.selectedRankingMode = storedRankingMode;
+    this.genreSelected = storedGenre;
+  }
+
+  saveSettingsToLocalStorage() {
+    localStorage.setItem('rankingMode', this.selectedRankingMode);
+    localStorage.setItem('genre', this.genreSelected);
   }
 
   openNewPostView() {

@@ -35,29 +35,52 @@
 }
 
 .self-msg {
+  animation: slideInSelf 0.3s ease-in-out forwards; /* Apply the animation */
   flex-direction: row-reverse;
+}
+
+.other-msg {
+  animation: slideIn 0.5s ease-in-out forwards; /* Apply the animation */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%); /* Start position */
+  }
+  100% {
+    transform: translateX(0); /* End position */
+  }
+}
+
+@keyframes slideInSelf {
+  0% {
+    transform: translateX(100%); /* Start position */
+  }
+  100% {
+    transform: translateX(0); /* End position */
+  }
 }
 
 .text-content {
   max-width: 60%;
   background-color: #f55246;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 12px;
+  text-align: justify-all;
+  padding: 9px;
   text-rendering: optimizeLegibility;
   font-size: 16px;
   line-height: 1.5;
   font-weight: normal;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
 }
 
 .file-content {
   max-width: min(60%, 300px);
-  background-color: #c72a68;
-  border-radius: 5px;
-  padding: 10px;
 }
 
 #action-section {
   position: fixed;
+  scale: 1.1;
   left: 0;
   bottom: 0;
   width: 100%;

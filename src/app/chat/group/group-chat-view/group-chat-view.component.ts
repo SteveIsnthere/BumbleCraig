@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {dummyMessage, Message} from "./Message";
+import {Message} from "./Message";
 import {apiEndPoint} from "../../../env";
 import {AuthService} from "../../../services/auth.service";
 import {dummyGroupEssentialData, GroupEssentialData} from "../GroupEssentialData";

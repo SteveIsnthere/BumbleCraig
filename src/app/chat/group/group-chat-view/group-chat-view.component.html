@@ -14,7 +14,7 @@
   <div id="messages-section" #messagesSection>
     <div id="messages-container">
       <div style="height: 90px"></div>
-      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender_id == selfID ? 'self-msg' : ''">
+      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
         <div style="width: 40px;clip-path: circle(20px at center)">
           <app-user-mini [userID]=message.sender_id></app-user-mini>
         </div>

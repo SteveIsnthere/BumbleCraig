@@ -64,7 +64,7 @@ const appRoutes: Routes = [
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
-  // {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -97,7 +97,7 @@ const appRoutes: Routes = [
     PostPerceptionBarComponent,
     NewPostViewComponent,
     LoginViewComponent,
-    UserSetUpComponent
+    UserSetUpComponent,
   ],
   imports: [
     BrowserModule,

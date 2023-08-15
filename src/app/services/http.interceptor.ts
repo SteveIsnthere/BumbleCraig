@@ -28,6 +28,7 @@ export class Auth implements HttpInterceptor {
         if (error.status === 401) {
           this.router.navigate(["login"]).then();
           console.error("Unauthorized");
+          localStorage.clear()
         }
         return throwError(error);
       })

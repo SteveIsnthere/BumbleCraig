@@ -35,7 +35,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
       this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
         this.logoFigID = data;
       })
-    }, 7000)
+    }, 15000)
   }
 
   ngOnDestroy(): void {
@@ -49,6 +49,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
       username: this.username,
       password: this.password
     }).subscribe((data) => {
+        localStorage.clear()
         this.authDataService.sessionPassword = data.toString();
         this.auth.loginUsingSessionPassword()
       },
@@ -61,6 +62,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
 
   continueAsVisitor() {
     this.newUserLoading = true;
+    localStorage.clear()
     this.http.get<number>(apiEndPoint + '/auth/login_as_new_user').subscribe((data) => {
       this.authDataService.sessionPassword = data.toString();
       this.auth.loginUsingSessionPassword()
