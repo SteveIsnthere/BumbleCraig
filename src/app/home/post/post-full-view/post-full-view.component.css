@@ -1,7 +1,5 @@
 #wrapper {
-  max-height: 100vh;
   max-height: 100dvh;
-  height: calc(100vh - 140px);
   height: calc(100dvh - 140px);
   cursor: auto;
   /*border-radius: 25px;*/
