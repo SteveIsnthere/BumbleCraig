@@ -8,7 +8,7 @@ main {
   gap: 20px;
 }
 
-.text-wrapper{
+.text-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -24,7 +24,7 @@ main {
   color: antiquewhite;
 }
 
-#welcome {
+#welcome{
   color: antiquewhite;
   padding: 20px;
   margin: 20px;
@@ -32,6 +32,20 @@ main {
   background-color: #4f4f4f;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
   max-width: 480px;
+}
+
+.startUpSlideIn {
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%); /* Start position */
+    scale: 2;
+  }
+  100% {
+    transform: translateY(0); /* End position */
+  }
 }
 
 #logo {
@@ -48,6 +62,19 @@ main {
   min-height: 40px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
 }
+
+.lightUp {
+  animation: lightsOn 2.5s ease infinite alternate forwards;
+}
+
+@keyframes lightsOn {
+  0% {
+  }
+  100% {
+    box-shadow: 0 0 10px 0 rgba(248, 248, 248, 0.44);
+  }
+}
+
 
 form {
   display: flex;

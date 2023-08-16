@@ -26,6 +26,8 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   fileToUpload: File | null = null;
   observer: any;
   messagesContainer: any;
+  loadedScroller: boolean = false;
+  noMessages: boolean = false;
   updateInterval: any = 0;
 
   constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
@@ -41,13 +43,6 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         this.groupEssentialData = data;
       })
       this.initMessages()
-
-      this.messagesContainer = this.elementRef.nativeElement.querySelector(
-        '#messages-container'
-      );
-      this.observer = new ResizeObserver(() => this.onHeightChange());
-      this.observer.observe(this.messagesContainer);
-
       this.updateInterval = setInterval(() => {
         this.initMessages();
       }, 10000)
@@ -55,12 +50,27 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.observer.unobserve(this.messagesContainer);
     clearInterval(this.updateInterval);
+    if (this.loadedScroller) {
+      this.observer.unobserve(this.messagesContainer);
+    }
   }
 
   initMessages() {
     this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
+      if (data.length == 0) {
+        this.noMessages = true;
+        return;
+      } else if (!this.loadedScroller) {
+        this.noMessages = false;
+        this.loadedScroller = true;
+        this.messagesContainer = this.elementRef.nativeElement.querySelector(
+          '#messages-container'
+        );
+        this.observer = new ResizeObserver(() => this.onHeightChange());
+        this.observer.observe(this.messagesContainer);
+      }
+
       if (!this.messagesHasChanged(data)) {
         return;
       }
@@ -76,15 +86,13 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         for (let i = data.length - numberOfNewMessages; i < data.length; i++) {
           this.messages.push(data[i]);
         }
-      }
-      else {
+      } else {
         this.messages = data;
       }
 
-      this.onHeightChange()
       setTimeout(() => {
         this.viewGroup();
-      }, 1000);
+      }, 5000);
     })
   }
 

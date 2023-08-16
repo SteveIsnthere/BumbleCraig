@@ -48,9 +48,10 @@ export class AuthService {
       this.http.get<boolean>(apiEndPoint + '/user/is_visitor/' + this.selfUserID).subscribe((data) => {
         this.isVisitor = data;
       });
-      const dateNow = new Date();
-      dateNow.setDate(dateNow.getDate() + 7);
-      this.cookieService.set('sessionPassword', this.authData.sessionPassword, dateNow);
+      // const dateNow = new Date();
+      // dateNow.setDate(dateNow.getDate() + 7);
+      // this.cookieService.set('sessionPassword', this.authData.sessionPassword, dateNow);
+      this.cookieService.set('sessionPassword', this.authData.sessionPassword);
       console.log(this.selfUserID);
       console.log(this.authData.sessionPassword);
       this.router.navigate(["home"]).then();

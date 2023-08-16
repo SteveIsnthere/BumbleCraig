@@ -60,4 +60,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   protected readonly dummyEssentialUserData = dummyEssentialUserData;
+
+  logout() {
+    this.auth.logout();
+  }
 }

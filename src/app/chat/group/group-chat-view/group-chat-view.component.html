@@ -12,9 +12,19 @@
     <mat-icon>person_add</mat-icon>
   </button>
   <div id="messages-section" #messagesSection>
+
+    <ng-container *ngIf="noMessages">
+      <div style="height: 100px"></div>
+      <div style="text-align: center; color: #9e9e9e; font-weight: 400; margin-top: 20px">
+        <h3>Old messages were destroyed for your privacy</h3>
+        <h1>You're welcome</h1>
+      </div>
+    </ng-container>
+
     <div id="messages-container">
       <div style="height: 90px"></div>
-      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
+      <div *ngFor="let message of messages" class="message"
+           [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
         <div style="width: 40px;clip-path: circle(20px at center)">
           <app-user-mini [userID]=message.sender_id></app-user-mini>
         </div>
@@ -29,6 +39,7 @@
       <div style="height: 65px"></div>
     </div>
   </div>
+
 
   <div id="action-section">
     <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">

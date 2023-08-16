@@ -12,6 +12,7 @@ main {
   justify-content: center;
   width: 100%;
   gap: 20px;
+  animation: slideIn 0.6s ease-in-out forwards; /* Apply the animation */
 }
 
 .group-row {
@@ -19,4 +20,13 @@ main {
   align-items: center;
   justify-content: center;
   gap: 7px;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%); /* Start position */
+  }
+  100% {
+    transform: translateX(0); /* End position */
+  }
 }

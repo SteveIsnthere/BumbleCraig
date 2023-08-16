@@ -27,7 +27,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
       this.logoFigID = data;
-      this.loginView = this.auth.loggedIn;
+      this.loginView = false;
     })
 
     this.figUpdateInterval = setInterval(() => {

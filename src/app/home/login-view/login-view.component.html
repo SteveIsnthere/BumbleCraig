@@ -1,5 +1,5 @@
 <main *ngIf="loginView != null; else loadingBar">
-  <div id="logo" cdkDrag>
+  <div id="logo" class="lightUp" cdkDrag>
     <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">
       <app-simple-figure [figureID]="logoFigID"></app-simple-figure>
     </div>
@@ -38,7 +38,7 @@
   </ng-container>
 
   <ng-template #welcomeView>
-    <div id="welcome">
+    <div id="welcome" [ngClass]="{'lightUp': newUserLoading, 'startUpSlideIn':!newUserLoading}">
       <div class="text-wrapper">
         <span class="text-content" style="font-size: x-large">Welcome to Tidder!</span>
       </div>

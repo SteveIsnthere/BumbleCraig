@@ -42,7 +42,7 @@
         <span>Signup</span>
       </button>
     </div>
-    <button mat-menu-item [routerLink]="['/login']">
+    <button mat-menu-item [routerLink]="['/login']" (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Logout</span>
     </button>
