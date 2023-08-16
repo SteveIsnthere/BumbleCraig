@@ -16,6 +16,7 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   isFriend = false;
   friendRequestSent = false;
   showClippedFigure = true
+  xp = 0;
   postIDs: number[] = [];
 
   constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService,private dialogRef: MatDialog) {
@@ -36,6 +37,9 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
     });
     this.http.get<number[]>(apiEndPoint + '/post/get_post_ids_of_user/' + this.userID).subscribe((data) => {
       this.postIDs = data;
+    })
+    this.http.get<number>(apiEndPoint + '/user/experience/' + this.userID).subscribe((data) => {
+      this.xp = data;
     })
   }
 

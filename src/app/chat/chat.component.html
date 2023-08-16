@@ -1,7 +1,5 @@
 <main>
-  <button mat-icon-button (click)="createGroup()" color="primary" style="margin-top: 20px">
-    <mat-icon>add_circle</mat-icon>
-  </button>
+
 
   <button mat-mini-fab (click)="editMode = !editMode" color="warn"
           style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
@@ -10,6 +8,9 @@
   </button>
 
   <div id="group-list" *ngIf="loadingComplete; else loadingBar">
+    <button mat-icon-button (click)="createGroup()" color="primary" style="margin-top: 20px; align-self: center">
+      <mat-icon>add_circle</mat-icon>
+    </button>
     <div class="group-row" *ngFor="let groupID of groupIDs">
       <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
         <mat-icon>delete</mat-icon>

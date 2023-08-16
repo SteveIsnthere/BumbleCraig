@@ -7,12 +7,12 @@ main {
 }
 
 #figure {
-  width: 250px;
+  width: 150px;
   cursor: pointer;
 }
 
 .clipped {
-  clip-path: circle(125px at center);
+  clip-path: circle(75px at center);
 }
 
 #name {
