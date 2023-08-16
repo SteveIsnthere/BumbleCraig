@@ -12,7 +12,6 @@ main {
   justify-content: flex-start;
   width: 100%;
   gap: 20px;
-  height: 100vh;
   height: 100dvh;
   animation: slideIn 0.7s ease forwards; /* Apply the animation */
 }
