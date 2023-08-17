@@ -19,7 +19,6 @@ export class FileShareComponent implements OnInit {
   @Input() fileShareID: number = 0;
   @Input() interactive: boolean = true;
   fileShareInfo: FileShareInfo | null = null;
-
   constructor(public http: HttpClient, public dialog: MatDialog) {
   }
 

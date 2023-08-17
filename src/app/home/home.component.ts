@@ -22,12 +22,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
   }
 
-  openNotificationView() {
-    this.http.get<any>(apiEndPoint + '/others/visit_notification/' + this.auth.selfUserID).subscribe(() => {
-    })
-    this._bottomSheet.open(NotificationViewComponent);
-  }
-
   ngOnInit(): void {
     this.fetchUnreadMsg();
     this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.auth.selfUserID).subscribe((data) => {
