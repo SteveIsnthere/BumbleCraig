@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     })
   }
 
+  openNotificationView() {
+    this._bottomSheet.open(NotificationViewComponent);
+  }
+
   notificationCount() {
     let result = 0;
     result += this.main.getTotalMessageCount();
@@ -53,9 +57,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.dialog.open(UserSetUpComponent);
   }
 
-  protected readonly dummyEssentialUserData = dummyEssentialUserData;
-
   logout() {
     this.auth.logout();
   }
+
+  protected readonly dummyEssentialUserData = dummyEssentialUserData;
 }

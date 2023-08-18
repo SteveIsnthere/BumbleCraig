@@ -1,5 +1,5 @@
 <main *ngIf="main.notifications != null">
-  <div class="notification-container">
+  <div class="notification-section-container" *ngIf="this.main.notifications?.friend_request_user_ids!.length > 0">
     <div class="title">
       <mat-icon>person_add</mat-icon>
       <span>Friend Requests</span>
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="notification-container">
+  <div class="notification-section-container" *ngIf="this.main.notifications?.group_invites!.length > 0">
     <div class="title">
       <mat-icon>group_add</mat-icon>
       <span>Group Invites</span>
@@ -36,6 +36,19 @@
           <mat-icon>check</mat-icon>
         </button>
       </div>
+    </div>
+  </div>
+
+  <div class="notification-section-container" *ngIf="this.main.notifications?.post_comments!.length > 0">
+    <div *ngFor="let postComment of this.main.notifications?.post_comments">
+      <p>{{postComment.post_id}} {{postComment.number_of_comments}}</p>
+    </div>
+
+  </div>
+
+  <div class="notification-section-container" *ngIf="this.main.notifications?.post_likes!.length > 0">
+    <div *ngFor="let postLike of this.main.notifications?.post_likes">
+      <p>{{postLike.post_id}} {{postLike.number_of_likes}}</p>
     </div>
   </div>
 </main>
