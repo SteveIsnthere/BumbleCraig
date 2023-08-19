@@ -1,4 +1,4 @@
-<main *ngIf="main.notifications != null">
+<main *ngIf="main.notifications != null && main.getTotalMessageCount() > 0 else noMsgView">
   <div class="notification-section-container" *ngIf="this.main.notifications?.friend_request_user_ids!.length > 0">
     <div class="title">
       <mat-icon>person_add</mat-icon>
@@ -52,3 +52,10 @@
     </div>
   </div>
 </main>
+
+<ng-template #noMsgView>
+  <div class="no-msg-view">
+    <mat-icon>notifications_off</mat-icon>
+    <span>No Notifications</span>
+  </div>
+</ng-template>
