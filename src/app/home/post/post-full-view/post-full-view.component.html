@@ -1,27 +1,15 @@
-<mat-dialog-content id="wrapper">
-  <main *ngIf="post != null">
-    <button mat-mini-fab *ngIf="auth.selfUserID == post.author_id" (click)="deletePost()">
-      <mat-icon>delete</mat-icon>
-    </button>
-
-    <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id"
-         style="position: fixed; top: 10px;left: 50%;transform: translate(-50%, 0); background-color: #939393;
-         border-radius: 130px; padding: 5px">
-      <button mat-mini-fab color="primary" (click)="likePost()"
-              *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
-        <mat-icon>thumb_up</mat-icon>
-      </button>
-      <button mat-mini-fab color="warn" (click)="dislikePost()" *ngIf="perceptionStatus == 0 || perceptionStatus == 2">
-        <mat-icon>thumb_down</mat-icon>
-      </button>
-      <span *ngIf="perceptionStatus==1" style="color: green; margin-right: 4px">Shilled</span>
-      <span *ngIf="perceptionStatus==2" style="color: red; margin-right: 4px">Cancelled</span>
-    </div>
-
+<mat-dialog-content id="wrapper" *ngIf="post != null">
+  <main>
     <span id="title">{{post.title}}</span>
 
-    <app-user [userID]=post.author_id *ngIf="post.author_id != null"></app-user>
-
+    <div id="post-details-row">
+      <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
+                     style="align-self: flex-start"></app-user-mini>
+      <span style="font-size: smaller;white-space: nowrap;">{{post.time_since_posted}}</span>
+      <mat-chip-option selectable="false">{{post.genre}}</mat-chip-option>
+      <div style="flex: 1"></div>
+    </div>
+    <mat-divider style="width: 100%"></mat-divider>
     <div class="contents">
       <div *ngFor="let content of post.content" class="content">
         <ng-container *ngIf="content.file_share_id != 0; else textMsg">
@@ -39,20 +27,34 @@
     </div>
 
 
-    <div id="comment-section" (click)="openCommentSection()">
-      <button mat-flat-button color="primary">
-        <!--<span>{{post.number_of_comments}}</span>-->
-        <mat-icon style="vertical-align: middle;margin-left: 2px">comment</mat-icon>
-        <span>See comments</span>
-      </button>
-    </div>
-
-    <button mat-mini-fab color="warn" style="position: fixed; bottom: 20px; right: 20px" (click)="writeComment()">
-      <mat-icon>rate_review</mat-icon>
-    </button>
-
-    <button mat-mini-fab color="primary" style="position: fixed; top: 20px; left: 20px" mat-dialog-close>
-      <mat-icon>close</mat-icon>
+    <button mat-flat-button color="primary" id="comment-section" (click)="openCommentSection()">
+      <!--<span>{{post.number_of_comments}}</span>-->
+      <mat-icon style="vertical-align: middle;margin-left: 2px">comment</mat-icon>
+      <span>See comments</span>
     </button>
   </main>
 </mat-dialog-content>
+
+<mat-dialog-actions *ngIf="post != null" style="background-color: rgba(190,104,190,0.68)">
+  <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id">
+    <button mat-mini-fab color="primary" (click)="likePost()"
+            *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn" (click)="dislikePost()" *ngIf="perceptionStatus == 0 || perceptionStatus == 2">
+      <mat-icon>thumb_down</mat-icon>
+    </button>
+    <span *ngIf="perceptionStatus==1" style="color: green; margin-left: 7px">Shilled</span>
+    <span *ngIf="perceptionStatus==2" style="color: red; margin-left: 7px">Cancelled</span>
+  </div>
+
+  <button mat-mini-fab *ngIf="auth.selfUserID == post.author_id" (click)="deletePost()">
+    <mat-icon>delete</mat-icon>
+  </button>
+
+  <div style="flex: 1"></div>
+
+  <button mat-mini-fab color="warn" (click)="writeComment()">
+    <mat-icon>rate_review</mat-icon>
+  </button>
+</mat-dialog-actions>

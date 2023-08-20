@@ -11,15 +11,16 @@
   <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
   <!--    </div>-->
   <!--  </button>-->
-  <button mat-mini-fab class="top-floating-buttons" style="right: 0;width: 40px; height: 40px"
+  <button mat-mini-fab class="top-floating-buttons"
+          style="right: 0;width: 40px; height: 40px; background-color: transparent"
           [matMenuTriggerFor]="menu"
           matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="primary"
           [matBadgeHidden]="notificationCount() == 0">
     <!--<mat-icon>menu</mat-icon>-->
-    <div style="width: 42px;clip-path: circle(21px at center)">
-      <app-simple-figure [figureID]=selfFigID *ngIf="selfFigID != 0"></app-simple-figure>
-    </div>
   </button>
+  <div style="position: fixed;top: 0;margin: 20px;right:0;width: 40px;clip-path: circle(20px at center); z-index: 2">
+    <app-simple-figure [figureID]=selfFigID *ngIf="selfFigID != 0"></app-simple-figure>
+  </div>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
       <mat-icon>account_circle</mat-icon>

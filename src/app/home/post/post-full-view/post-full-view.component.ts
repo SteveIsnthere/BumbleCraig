@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {Post} from "../Post";
 import {apiEndPoint} from "../../../env";
@@ -21,7 +20,7 @@ export class PostFullViewComponent implements OnInit {
   commentUploadRoute: string = '/post/create_comment/';
   perceptionStatus: number = 3; // 0 - none, 1 - like, 2 - dislike
 
-  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, private router: Router, private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: Post, public dialogRef: MatDialogRef<PostFullViewComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Post, public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<PostFullViewComponent>) {
     this.post = data;
     this.postID = data.post_id;
   }
@@ -52,7 +51,7 @@ export class PostFullViewComponent implements OnInit {
     })
   }
 
-  isLink(text:string): boolean {
+  isLink(text: string): boolean {
     let url;
     try {
       url = new URL(text);

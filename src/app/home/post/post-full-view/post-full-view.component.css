@@ -2,7 +2,6 @@
   max-height: 100dvh;
   height: calc(100dvh - 140px);
   cursor: auto;
-  /*border-radius: 25px;*/
   /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);*/
   /*margin: 10px;*/
   /*background-color: #039be5;*/
@@ -11,16 +10,24 @@
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 20px;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
+#post-details-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+  width: 100%;
+}
+
 .action-bar {
   display: flex;
-  gap: 7px;
   align-items: center;
   font-size: large;
   font-weight: bolder;
@@ -31,9 +38,10 @@ main {
   font-weight: 500;
   line-height: 1.3;
   color: antiquewhite;
+  align-self: flex-start;
 }
 
-.contents{
+.contents {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -42,17 +50,18 @@ main {
   gap: 15px;
 }
 
-.content{
+.content {
   max-width: 350px;
 }
 
-.text-wrapper{
+.text-wrapper {
   display: flex;
   justify-content: center;
   border-radius: 10px;
   padding: 10px;
   background-color: #303030;
 }
+
 .text-content {
   text-align: justify-all;
   color: antiquewhite;
@@ -61,4 +70,16 @@ main {
 #comment-section {
   cursor: pointer;
   color: antiquewhite;
+  align-self: center;
+}
+
+
+#bottom-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  bottom: -10px;
+  width: 100%;
+  z-index: 100;
 }

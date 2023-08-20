@@ -13,6 +13,15 @@
   cursor: pointer;
 }
 
+#post-details-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  white-space: nowrap;
+}
+
 mat-card-content {
   cursor: pointer;
 }
@@ -29,15 +38,18 @@ mat-card-title {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* Limit to 2 lines */
   overflow: hidden;
-  line-height: 1.2; /* Adjust this value for spacing between lines */
+  /*line-height: 1.2; !* Adjust this value for spacing between lines *!*/
 }
 
-mat-card{
+mat-card {
   /*background-color: #1e1e1e;*/
   border-radius: 25px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.35);
   margin: 10px;
 }
 
-
-
+mat-card-actions {
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 13px
+}

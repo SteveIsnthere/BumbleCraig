@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 html, body {
   height: 100%;
 }
@@ -12,5 +11,14 @@ body {
 
 ::-webkit-scrollbar {
   width: 0;
-  background: transparent; /* make scrollbar transparent */
+  background: transparent;
 }
+
+
+.blur-back-drop {
+  backdrop-filter: blur(8px) brightness(0.7) contrast(0.8);
+}
+
+/*mat-progress-bar {*/
+/*  background: #E4E8EB;*/
+/*}*/

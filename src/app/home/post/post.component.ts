@@ -6,13 +6,13 @@ import {Message} from "../../chat/group/group-chat-view/Message";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
@@ -79,9 +79,12 @@ export class PostComponent implements OnInit {
   }
 
   openPostFullView(): void {
-    this.dialog.open(PostFullViewComponent, {
-      data: this.post,
-      maxWidth: '95vw',
-    });
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.maxWidth = '95vw';
+    dialogConfig.data = this.post;
+    dialogConfig.backdropClass = 'blur-back-drop';
+    dialogConfig.autoFocus = false;
+
+    this.dialog.open(PostFullViewComponent, dialogConfig);
   }
 }
