@@ -1,5 +1,6 @@
-<main *ngIf="postComment != null">
-  <div (click)="openCommentSection()">
-    <p>{{postComment.post_id}} {{postComment.number_of_comments}}</p>
+<main *ngIf="postComment != null && postData != null">
+  <div (click)="openCommentSection()" id="post-comment-container">
+    <mat-card-title id="post-title">{{postData.title}}</mat-card-title>
+    <span> Got {{postComment.number_of_comments}} Comments</span>
   </div>
 </main>

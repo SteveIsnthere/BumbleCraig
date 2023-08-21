@@ -17,7 +17,6 @@ export class PostLikeRowComponent implements OnInit {
   postData: Post | null = null;
 
   constructor(public http: HttpClient, public dialog: MatDialog, private auth: AuthService) {
-
   }
 
   ngOnInit(): void {
