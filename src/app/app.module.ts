@@ -55,6 +55,11 @@ import {LoginViewComponent} from './home/login-view/login-view.component';
 import {CdkDrag} from "@angular/cdk/drag-drop";
 import {UserSetUpComponent} from './user/user-set-up/user-set-up.component';
 import {authGuard} from "./services/auth.guard";
+import {PostLikeRowComponent} from './home/notification-view/post-like-row/post-like-row.component';
+import {PostCommentRowComponent} from './home/notification-view/post-comment-row/post-comment-row.component';
+import {FriendReqRowComponent} from './home/notification-view/friend-req-row/friend-req-row.component';
+import {GroupInvRowComponent} from './home/notification-view/group-inv-row/group-inv-row.component';
+import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-row.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -98,6 +103,11 @@ const appRoutes: Routes = [
     NewPostViewComponent,
     LoginViewComponent,
     UserSetUpComponent,
+    PostLikeRowComponent,
+    PostCommentRowComponent,
+    FriendReqRowComponent,
+    GroupInvRowComponent,
+    SysMsgRowComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<main *ngIf="invitation != null">
+  <div style="display: flex; align-items: flex-end;gap:5px">
+    <app-user [userID]=invitation.inviter_id></app-user>
+    <span>invited you to join</span>
+  </div>
+  <div style="display: flex; gap: 10px">
+    <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
+      <mat-icon>close</mat-icon>
+    </button>
+    <span style="font-size: larger; background-color: wheat; color: black; padding: 10px;border-radius: 7px">{{invitation.group_name}}</span>
+    <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+</main>

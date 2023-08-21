@@ -4,15 +4,8 @@
       <mat-icon>person_add</mat-icon>
       <span>Friend Requests</span>
     </div>
-    <div class="friend-req-row" *ngFor="let id of this.main.notifications?.friend_request_user_ids">
-      <button mat-mini-fab color="warn" (click)="rejectFriendRequest(id)">
-        <mat-icon>close</mat-icon>
-      </button>
-      <app-user [userID]=id></app-user>
-      <button mat-mini-fab color="primary" (click)="acceptFriendRequest(id)">
-        <mat-icon>check</mat-icon>
-      </button>
-    </div>
+    <app-friend-req-row [id]="id"
+                        *ngFor="let id of this.main.notifications?.friend_request_user_ids"></app-friend-req-row>
   </div>
 
   <div class="notification-section-container" *ngIf="this.main.notifications?.group_invites!.length > 0">
@@ -20,36 +13,18 @@
       <mat-icon>group_add</mat-icon>
       <span>Group Invites</span>
     </div>
-    <div class="group-inv-row" *ngFor="let invitation of this.main.notifications?.group_invites">
-      <div style="display: flex; align-items: flex-end;gap:5px">
-        <app-user [userID]=invitation.inviter_id></app-user>
-        <span>invited you to join</span>
-      </div>
-      <div style="display: flex; gap: 10px">
-        <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
-          <mat-icon>close</mat-icon>
-        </button>
-        <span style="font-size: larger; background-color: wheat; color: black; padding: 10px;border-radius: 7px">
-        {{invitation.group_name}}
-      </span>
-        <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
-          <mat-icon>check</mat-icon>
-        </button>
-      </div>
-    </div>
+    <app-group-inv-row [invitation]="invitation"
+                       *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
   </div>
 
   <div class="notification-section-container" *ngIf="this.main.notifications?.post_comments!.length > 0">
-    <div *ngFor="let postComment of this.main.notifications?.post_comments">
-      <p>{{postComment.post_id}} {{postComment.number_of_comments}}</p>
-    </div>
-
+    <app-post-comment-row [postComment]="postComment"
+                          *ngFor="let postComment of this.main.notifications?.post_comments"></app-post-comment-row>
   </div>
 
   <div class="notification-section-container" *ngIf="this.main.notifications?.post_likes!.length > 0">
-    <div *ngFor="let postLike of this.main.notifications?.post_likes">
-      <p>{{postLike.post_id}} {{postLike.number_of_likes}}</p>
-    </div>
+    <app-post-like-row [postLike]="postLike"
+                       *ngFor="let postLike of this.main.notifications?.post_likes"></app-post-like-row>
   </div>
 </main>
 

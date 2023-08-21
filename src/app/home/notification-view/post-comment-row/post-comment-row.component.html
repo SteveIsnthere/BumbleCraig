@@ -1,0 +1,5 @@
+<main *ngIf="postComment != null">
+  <div (click)="openCommentSection()">
+    <p>{{postComment.post_id}} {{postComment.number_of_comments}}</p>
+  </div>
+</main>

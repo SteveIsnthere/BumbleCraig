@@ -1,0 +1,6 @@
+<main *ngIf="postLike != null && postData != null" (click)="openPostFullView()">
+  <span>{{postData.title}}</span>
+  <span> Got </span>
+  <span>{{postLike.number_of_likes}}</span>
+  <span> Likes</span>
+</main>

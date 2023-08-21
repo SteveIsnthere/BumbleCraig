@@ -18,18 +18,3 @@ main{
   gap: 20px;
   padding: 20px;
 }
-
-.friend-req-row{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.group-inv-row{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
