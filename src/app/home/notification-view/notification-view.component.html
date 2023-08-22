@@ -17,12 +17,9 @@
                        *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
   </div>
 
-  <div class="notification-section-container" *ngIf="this.main.notifications?.post_comments!.length > 0">
+  <div class="notification-section-container">
     <app-post-comment-row [postComment]="postComment"
                           *ngFor="let postComment of this.main.notifications?.post_comments"></app-post-comment-row>
-  </div>
-
-  <div class="notification-section-container" *ngIf="this.main.notifications?.post_likes!.length > 0">
     <app-post-like-row [postLike]="postLike"
                        *ngFor="let postLike of this.main.notifications?.post_likes"></app-post-like-row>
   </div>

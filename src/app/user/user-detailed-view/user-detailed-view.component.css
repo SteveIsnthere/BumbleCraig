@@ -21,6 +21,10 @@ main {
   font-weight: lighter;
 }
 
+#stats{
+  color: wheat;
+}
+
 #description {
   color: white;
   font-size: 15px;

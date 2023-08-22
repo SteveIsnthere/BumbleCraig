@@ -1,0 +1,20 @@
+#post-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+main {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+
+  background-color: #4f4f4f;
+  border-radius: 10px;
+}

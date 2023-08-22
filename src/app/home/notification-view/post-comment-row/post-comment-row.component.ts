@@ -27,14 +27,6 @@ export class PostCommentRowComponent implements OnInit {
     this.clearNotification()
   }
 
-  postTitle(): string {
-    // return the post title if under 50 characters, otherwise return the first 50 characters
-    if (this.postData?.title.length! > 50) {
-      return this.postData?.title.slice(0, 50) + '...';
-    }
-    return this.postData!.title;
-  }
-
   clearNotification(): void {
     this.http.get(apiEndPoint + '/notification/clear_post_comment_notification/' + this.postComment?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
       console.log('removed notification')

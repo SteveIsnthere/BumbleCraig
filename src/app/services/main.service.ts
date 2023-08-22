@@ -29,10 +29,18 @@ export class MainService implements OnDestroy{
   fetchNotificationsInterval: any = null;
 
   constructor(public http: HttpClient, public auth: AuthService) {
+    this.setupFetchNotificationsInterval()
+  }
+
+  setupFetchNotificationsInterval(): void {
     this.fetchNotifications()
     this.fetchNotificationsInterval = setInterval(() => {
       this.fetchNotifications()
     }, 10000)
+  }
+
+  clearFetchNotificationsInterval(): void {
+    clearInterval(this.fetchNotificationsInterval)
   }
 
   fetchNotifications(): void {
@@ -52,6 +60,6 @@ export class MainService implements OnDestroy{
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.fetchNotificationsInterval)
+    this.clearFetchNotificationsInterval()
   }
 }
