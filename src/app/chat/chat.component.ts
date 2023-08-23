@@ -4,6 +4,7 @@ import {apiEndPoint} from "../env";
 import {AuthService} from "../services/auth.service";
 import {TextEditViewComponent} from "./text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {InviteViewComponent} from "./group/invite-view/invite-view.component";
 
 @Component({
   selector: 'app-chat',
@@ -43,8 +44,11 @@ export class ChatComponent implements OnInit {
         return
       }
 
-      this.http.post(apiEndPoint + '/group/create_new/' + this.auth.selfUserID, groupName).subscribe(() => {
-        this.ngOnInit();
+      this.http.post<string>(apiEndPoint + '/group/create_new/' + this.auth.selfUserID, groupName).subscribe((groupID) => {
+        let ref = this._bottomSheet.open(InviteViewComponent, {data: groupID});
+        ref.afterDismissed().subscribe(() => {
+          this.ngOnInit();
+        })
       })
     });
   }

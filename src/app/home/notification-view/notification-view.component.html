@@ -22,6 +22,13 @@
                           *ngFor="let postComment of this.main.notifications?.post_comments"></app-post-comment-row>
     <app-post-like-row [postLike]="postLike"
                        *ngFor="let postLike of this.main.notifications?.post_likes"></app-post-like-row>
+
+    <button mat-flat-button color="primary" style="border-radius: 7px" (click)="clearSysMessages()"
+            *ngIf="this.main.notifications?.system_messages!.length > 0">Clear Messages
+    </button>
+
+    <app-sys-msg-row [sysMsg]="sysMsg"
+                     *ngFor="let sysMsg of this.main.notifications?.system_messages"></app-sys-msg-row>
   </div>
 </main>
 

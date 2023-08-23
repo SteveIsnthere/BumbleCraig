@@ -11,5 +11,5 @@ main {
   display: flex;
   gap: 10px;
   justify-content: space-around;
-  align-items: center
+  align-items: center;
 }

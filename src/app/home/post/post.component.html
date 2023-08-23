@@ -8,7 +8,8 @@
   <mat-card-content (click)="openPostFullView()">
     <mat-card-subtitle id="post-details-row">
       <mat-chip-option selectable="false">{{post!.genre}}</mat-chip-option>
-      {{post!.time_since_posted}}
+      <span>{{post!.time_since_posted}}</span>
+      <span>{{post!.number_of_comments}} {{post!.number_of_comments <= 1 ? 'comment' : 'comments'}}</span>
     </mat-card-subtitle>
     <p *ngFor="let content of postPreviewContents">
       <ng-container *ngIf="content.file_share_id != 0; else textMsg">
@@ -25,7 +26,7 @@
     <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"
                              style="flex: 1"></app-post-perception-bar>
     <div id="comment-section" (click)="openCommentSection()">
-      <span style="margin-right: 3px">{{post?.number_of_comments}}</span>
+      <!--<span style="margin-right: 3px">{{post?.number_of_comments}}</span>-->
       <mat-icon style="vertical-align: middle;">comment</mat-icon>
     </div>
   </mat-card-actions>

@@ -1,8 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
-import {MAT_BOTTOM_SHEET_DATA, MatBottomSheet} from "@angular/material/bottom-sheet";
+import {MAT_BOTTOM_SHEET_DATA} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-invite-view',
@@ -16,7 +17,7 @@ export class InviteViewComponent implements OnInit {
   groupMemberIDs: number[] = [];
 
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public group_id: number, private http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public group_id: number, private http: HttpClient, public auth: AuthService, private _snackBar: MatSnackBar) {
     this.groupID = group_id;
   }
 
@@ -29,6 +30,11 @@ export class InviteViewComponent implements OnInit {
     })
   }
 
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {duration: 4000, verticalPosition: 'top'});
+  }
+
+
   isInvited(userID: number): boolean {
     return this.invitedIDs.includes(userID);
   }
@@ -40,6 +46,7 @@ export class InviteViewComponent implements OnInit {
   invite(userID: number): void {
     this.http.get(apiEndPoint + '/group/invite/' + this.groupID + '/' + this.auth.selfUserID + '/' + userID).subscribe(() => {
       this.invitedIDs.push(userID);
+      this.openSnackBar('Invitation sent', 'OK');
     })
   }
 }

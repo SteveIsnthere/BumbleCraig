@@ -6,8 +6,8 @@ export const colors = [
   "#263238", "#90a4ae", "#ec407a", "#ab47bc", "#42a5f5"
 ];
 
-export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
-//export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
+//export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
+export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
 
 export const rankingModes = [
   'Recommended',
@@ -20,6 +20,7 @@ export const rankingModes = [
 
 export const genres = [
   'All-Genres',
+  'Others',
   'News',
   'Jokes',
   'Creativity',
@@ -30,5 +31,4 @@ export const genres = [
   'Controversial',
   'Confession',
   'Chinese',
-  'Others'
 ];
