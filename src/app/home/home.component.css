@@ -12,3 +12,7 @@ main {
   margin: 20px;
   z-index: 10;
 }
+
+.back-ground-red {
+  background-color: #c72a68;
+}

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PostComments} from "../../../services/main.service";
+import {MainService, PostComments} from "../../../services/main.service";
 import {PostCommentsViewComponent} from "../../post/post-comments-view/post-comments-view.component";
 import {HttpClient} from "@angular/common/http";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
@@ -17,7 +17,7 @@ export class PostCommentRowComponent implements OnInit {
   @Input() postComment: PostComments | null = null;
   postData: Post | null = null;
 
-  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, private auth: AuthService) {
+  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, private auth: AuthService, private main: MainService) {
   }
 
   openCommentSection(): void {
@@ -29,7 +29,7 @@ export class PostCommentRowComponent implements OnInit {
 
   clearNotification(): void {
     this.http.get(apiEndPoint + '/notification/clear_post_comment_notification/' + this.postComment?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
-      console.log('removed notification')
+      this.main.fetchNotifications();
     })
   }
 

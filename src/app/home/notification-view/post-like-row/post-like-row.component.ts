@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PostLikes} from "../../../services/main.service";
+import {MainService, PostLikes} from "../../../services/main.service";
 import {HttpClient} from "@angular/common/http";
 import {Post} from "../../post/Post";
 import {apiEndPoint} from "../../../env";
@@ -16,7 +16,7 @@ export class PostLikeRowComponent implements OnInit {
   @Input() postLike: PostLikes | null = null;
   postData: Post | null = null;
 
-  constructor(public http: HttpClient, public dialog: MatDialog, private auth: AuthService) {
+  constructor(public http: HttpClient, public dialog: MatDialog, private auth: AuthService, private main: MainService) {
   }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class PostLikeRowComponent implements OnInit {
 
   removeNotification(): void {
     this.http.get(apiEndPoint + '/notification/clear_post_like_notification/' + this.postLike?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
-      console.log('removed notification')
+      this.main.fetchNotifications();
     })
   }
 }
