@@ -4,7 +4,7 @@
     <!--      <mat-icon>person_add</mat-icon>-->
     <!--      <span>Friend Requests</span>-->
     <!--    </div>-->
-    <button mat-stroked-button color="primary" style="border-radius: 100px; margin-bottom: 10px" (click)="clearSysMessages()"
+    <button mat-flat-button color="primary" style="border-radius: 100px; margin-bottom: 10px" (click)="clearSysMessages()"
             *ngIf="this.main.notifications?.system_messages!.length > 0">
       <mat-icon>delete</mat-icon>
       Clear Messages

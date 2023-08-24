@@ -25,6 +25,14 @@ main {
 
 }
 
+#actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 #description {
   color: white;
   font-size: 15px;

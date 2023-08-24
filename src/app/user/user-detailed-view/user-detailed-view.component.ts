@@ -6,6 +6,8 @@ import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
 @Component({
   selector: 'app-user-detailed-view',
@@ -20,7 +22,7 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   xp = 0;
   postIDs: number[] = [];
 
-  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private dialogRef: MatDialog, private _snackBar: MatSnackBar) {
+  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) {
     super(http);
   }
 
@@ -56,6 +58,24 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
       this.isFriend = false;
       this.openSnackBar('Friend removed', 'OK');
     })
+  }
+
+  sendDM() {
+    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Enter your message'});
+    bottomSheetRef.afterDismissed().subscribe(textContent => {
+      if (typeof textContent != 'string') {
+        console.log('Text content is not a string')
+        return
+      }
+      if (textContent.length == 0) {
+        console.log('Text content is empty')
+        return
+      }
+      this.http.post(apiEndPoint + '/user/dm/' + this.auth.selfUserID + '/' + this.userID, textContent).subscribe(() => {
+        this.openSnackBar('DM sent', 'OK');
+      })
+    });
+
   }
 
   openSnackBar(message: string, action: string) {

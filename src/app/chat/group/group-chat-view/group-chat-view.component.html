@@ -42,13 +42,15 @@
 
 
   <div id="action-section">
-    <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()" style="margin-left: 20px;">
+    <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()" style="margin-left: 20px;border-radius: 100px; width: 92px">
       <mat-icon>upload</mat-icon>
+      File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
-    <button mat-mini-fab (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px">
+    <button mat-flat-button (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px">
       <mat-icon>edit_note</mat-icon>
+      Text
     </button>
   </div>
 

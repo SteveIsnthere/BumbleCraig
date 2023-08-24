@@ -25,22 +25,31 @@
   <span style="width: 90%"><mat-divider></mat-divider></span>
 
   <div id="actions" *ngIf="auth.selfUserID != userID">
-    <button mat-mini-fab color="primary"
+    <button mat-flat-button color="primary" style="border-radius: 100px"
             *ngIf="!isFriend && !friendRequestSent"
             (click)="sendFriendRequest()">
       <mat-icon>person_add</mat-icon>
+      Add
     </button>
 
-    <button mat-mini-fab color="warn"
+    <button mat-flat-button color="warn" style="border-radius: 100px"
             *ngIf="friendRequestSent"
             disabled>
       <mat-icon>hourglass_top</mat-icon>
+      Requested
     </button>
 
-    <button mat-mini-fab color="warn"
+    <button mat-flat-button color="warn" style="border-radius: 100px"
             *ngIf="isFriend"
             (click)="removeFriend()">
       <mat-icon>person_remove</mat-icon>
+      Remove
+    </button>
+
+    <button mat-flat-button color="accent" style="border-radius: 100px"
+            (click)="sendDM()">
+      <mat-icon>mail</mat-icon>
+      DM
     </button>
   </div>
 

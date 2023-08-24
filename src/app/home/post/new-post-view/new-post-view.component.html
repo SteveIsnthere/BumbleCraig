@@ -57,18 +57,18 @@
 
       <div id="action-section" style="display: flex; gap: 10px; flex-direction: column; justify-content: center; align-items: center;">
         <!--<div style="flex: 1"></div>-->
-        <button id="upload-button" mat-raised-button color="primary" (click)="fileInput.click()">
+        <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()" style="border-radius: 100px">
           <mat-icon>upload</mat-icon>
           File
         </button>
 
-        <button mat-raised-button (click)="openTextEditor()" color="warn">
+        <button mat-flat-button (click)="openTextEditor()" color="warn" style="border-radius: 100px">
           <mat-icon>edit_note</mat-icon>
           Text
         </button>
         <!--<div style="flex: 1"></div>-->
       </div>
-      <button mat-raised-button style="position: fixed; bottom: 20px; right: 20px;transform: scale(1.2)"
+      <button mat-flat-button style="position: fixed; bottom: 20px; right: 20px;transform: scale(1.2); border-radius: 100px"
               (click)="publishPost()" color="primary">
         <mat-icon>check</mat-icon>
         Publish

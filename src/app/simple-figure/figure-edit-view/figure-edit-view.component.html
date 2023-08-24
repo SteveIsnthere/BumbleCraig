@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="!loading; else loadingView">
   <div id="preview">
     <div *ngFor="let row of data; let i = index" class="color-row">
       <div *ngFor="let color of row; let j = index" class="color-cell"
@@ -8,12 +8,14 @@
   </div>
 
   <div id="actions">
-    <button mat-mini-fab color="warn" (click)="save()">
+    <button mat-flat-button color="warn" (click)="save()" style="border-radius: 100px">
       <mat-icon>add_photo_alternate</mat-icon>
+      Upload Image
     </button>
 
-    <button mat-mini-fab color="primary" (click)="save()">
+    <button mat-flat-button color="primary" (click)="save()" style="border-radius: 100px">
       <mat-icon>check_small</mat-icon>
+      Save
     </button>
   </div>
 
@@ -24,3 +26,7 @@
             (click)="selectedFillColor = color"></button>
   </div>
 </main>
+
+<ng-template #loadingView>
+  <p style="height: 200px"><mat-progress-bar mode="indeterminate"></mat-progress-bar> </p>
+</ng-template>

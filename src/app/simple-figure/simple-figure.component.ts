@@ -13,6 +13,7 @@ export class SimpleFigureComponent implements OnInit {
   @Input() figureID: number = 0;
   data: string[][] = [];
   width: number = 0;
+  loading: boolean = true;
 
   constructor(public http: HttpClient, private elementRef: ElementRef) {
   }
@@ -21,6 +22,7 @@ export class SimpleFigureComponent implements OnInit {
     this.width = this.elementRef.nativeElement.offsetWidth;
     this.http.get<string>(apiEndPoint + '/simple_figure/' + this.figureID).subscribe((data) => {
       this.data = convertToColorArray(data);
+      this.loading = false;
     })
   }
 }
