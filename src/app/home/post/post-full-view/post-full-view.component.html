@@ -4,7 +4,7 @@
 
     <div id="post-details-row">
       <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
-                     style="align-self: flex-start"></app-user-mini>
+                     style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
       <span style="font-size: smaller;white-space: nowrap;">{{post.time_since_posted}}</span>
       <mat-chip-option selectable="false">{{post.genre}}</mat-chip-option>
       <div style="flex: 1"></div>
@@ -55,7 +55,8 @@
 
   <div style="flex: 1"></div>
 
-  <button mat-mini-fab color="warn" (click)="writeComment()">
+  <button mat-flat-button color="warn" (click)="writeComment()" style="border-radius: 100px">
     <mat-icon>rate_review</mat-icon>
+    Comment
   </button>
 </mat-dialog-actions>
