@@ -1,6 +1,7 @@
 #post-title {
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: normal;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* number of lines to show */
   line-clamp: 2;
@@ -12,9 +13,7 @@ main {
   gap: 10px;
   justify-content: center;
   align-items: center;
-
   padding: 10px;
-
   background-color: #4f4f4f;
   border-radius: 10px;
 }

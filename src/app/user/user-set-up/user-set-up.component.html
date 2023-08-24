@@ -3,9 +3,9 @@
                style="overflow: auto; max-height: 95vh">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Setup username</ng-template>
+        <ng-template matStepLabel>Username</ng-template>
         <mat-form-field>
-          <input matInput formControlName="nameCtrl" placeholder="DipShit"
+          <input matInput formControlName="nameCtrl" placeholder="eg. Steve"
                  autocomplete="off" required
                  [value]="inputName" (input)="changeName($event)">
         </mat-form-field>
@@ -16,11 +16,11 @@
       </form>
     </mat-step>
 
-    <mat-step label="Setup password" [stepControl]="secondFormGroup">
+    <mat-step label="Password" [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput formControlName="passwordCtrl" placeholder="DipShit"
+          <input matInput formControlName="passwordCtrl"
                  autocomplete="off" required
                  [value]="inputPassword" (input)="changePassword($event)">
         </mat-form-field>
@@ -36,7 +36,7 @@
         <span style="color: antiquewhite">Email will be used solely for account recovery</span><br>
         <mat-form-field>
           <mat-label>Email</mat-label>
-          <input matInput placeholder="DipShit.com"
+          <input matInput
                  autocomplete="off"
                  [value]="inputEmail" (input)="changeEmail($event)">
         </mat-form-field>
@@ -48,7 +48,7 @@
     </mat-step>
 
     <mat-step>
-      <ng-template matStepLabel>Finishing up</ng-template>
+      <ng-template matStepLabel>Done</ng-template>
       <div>
         <div class="acc-info-row">
           <mat-chip>Username</mat-chip>

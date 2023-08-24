@@ -120,7 +120,7 @@ export class NewPostViewComponent implements OnInit {
   }
 
   openTextEditor() {
-    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Enter your message'});
+    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Enter your text here'});
     bottomSheetRef.afterDismissed().subscribe(textContent => {
       if (typeof textContent != 'string') {
         console.log('Text content is not a string')

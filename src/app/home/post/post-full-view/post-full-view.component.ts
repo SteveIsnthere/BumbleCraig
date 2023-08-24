@@ -76,7 +76,7 @@ export class PostFullViewComponent implements OnInit {
   }
 
   writeComment(): void {
-    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Enter your message'});
+    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
     bottomSheetRef.afterDismissed().subscribe(textContent => {
       if (typeof textContent != 'string') {
         console.log('Text content is not a string')
@@ -89,6 +89,9 @@ export class PostFullViewComponent implements OnInit {
       this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
         .subscribe(() => {
           this.post!.number_of_comments++;
+          this.snackBar.open('Your comment is live', 'OK', {
+            duration: 2000,
+          })
         })
     });
   }

@@ -1,16 +1,17 @@
 <mat-card *ngIf="post?.popularity != null; else loadingBar">
-  <mat-card-header (click)="openPostFullView()" style="cursor: pointer">
+  <mat-card-header (click)="openPostFullView()" style="cursor: pointer;">
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
-    <mat-card-title style="color: antiquewhite;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
+    <mat-card-title style="color: white;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
   </mat-card-header>
 
 
   <mat-card-content (click)="openPostFullView()">
     <mat-card-subtitle id="post-details-row">
-      <mat-chip-option selectable="false">{{post!.genre}}</mat-chip-option>
+      <span>{{post!.genre}}</span>
       <span>{{post!.time_since_posted}}</span>
-      <span>{{post!.number_of_comments}} {{post!.number_of_comments <= 1 ? 'comment' : 'comments'}}</span>
     </mat-card-subtitle>
+    <span><mat-divider></mat-divider></span>
+    <div style="height: 2px"></div>
     <p *ngFor="let content of postPreviewContents">
       <ng-container *ngIf="content.file_share_id != 0; else textMsg">
         <app-file-share [fileShareID]=content.file_share_id [interactive]="false" class="file-content"></app-file-share>
@@ -26,7 +27,7 @@
     <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"
                              style="flex: 1"></app-post-perception-bar>
     <div id="comment-section" (click)="openCommentSection()">
-      <!--<span style="margin-right: 3px">{{post?.number_of_comments}}</span>-->
+      <span style="margin-right: 3px">{{post?.number_of_comments}}</span>
       <mat-icon style="vertical-align: middle;">comment</mat-icon>
     </div>
   </mat-card-actions>

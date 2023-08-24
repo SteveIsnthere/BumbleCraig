@@ -7,7 +7,7 @@
       <div style="width: 40px; height: 40px; background-color: #c2175b; border-radius: 100%;"></div>
     </ng-template>
 
-    <span style="margin-right: 2px">Tidder</span>
+    <span style="margin-right: 7px">Tidder</span>
   </div>
 
   <ng-container *ngIf="loginView; else welcomeView">
@@ -23,11 +23,13 @@
         <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
-      <button mat-raised-button (click)="login()" *ngIf="!loginLoading; else loadingWheel2">Log In
+      <button mat-flat-button (click)="login()" *ngIf="!loginLoading; else loadingWheel2" class="round-btn"
+              color="primary">Log In
         <mat-icon>login</mat-icon>
       </button>
     </form>
-    <button mat-raised-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2">Continue as a
+    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"
+            color="primary">Continue as a
       Guest
     </button>
     <ng-template #loadingWheel2>
@@ -40,9 +42,9 @@
   <ng-template #welcomeView>
     <div id="welcome" [ngClass]="{'lightUp': newUserLoading, 'startUpSlideIn':!newUserLoading}">
       <div class="text-wrapper">
-        <span class="text-content" style="font-size: x-large">Welcome to Tidder!</span>
+        <span class="text-content" style="font-size: x-large; color: white">Welcome to Tidder!</span>
       </div>
-      <p>Finally, a platform for us degenerates, fight for peak degeneracy</p>
+      <p>Finally, a sensible platform for the rest of us, that simply doesn't suck</p>
       <p>Click the button below to get started!</p>
       <div style="display: flex; justify-content: center; margin-top: 40px" *ngIf="!newUserLoading; else loadingWheel">
         <button mat-fab color="primary" (click)="continueAsVisitor()">
@@ -56,8 +58,7 @@
       </ng-template>
 
     </div>
-    <div></div>
-    <button mat-raised-button (click)="loginView = true">Have an account?</button>
+    <button mat-flat-button (click)="loginView = true" class="round-btn" color="primary">Have an account?</button>
   </ng-template>
 </main>
 

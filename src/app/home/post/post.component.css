@@ -9,18 +9,17 @@
 }
 
 #comment-section {
-  color: antiquewhite;
+  color: wheat;
   cursor: pointer;
 }
 
 #post-details-row {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  color: wheat;
+  align-items: flex-end;
   gap: 15px;
-  margin: 5px 0;
   white-space: nowrap;
-  translate: 0 -2px;
 }
 
 mat-card-content {
@@ -47,10 +46,16 @@ mat-card {
   border-radius: 25px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.29);
   margin: 10px;
+  /*border: 2px #c72a68 dashed;*/
+  border: 2px grey solid;
 }
 
 mat-card-actions {
   justify-content: flex-end;
   gap: 10px;
   padding: 0 13px
+}
+
+.file-content{
+
 }

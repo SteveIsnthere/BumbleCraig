@@ -1,13 +1,14 @@
 <main>
   <button mat-mini-fab (click)="editMode = !editMode" color="warn"
-          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
+          style="display: flex;position: fixed;top: 3px; right:0;margin: 20px;z-index: 10;">
     <mat-icon *ngIf="!editMode">delete</mat-icon>
     <mat-icon *ngIf="editMode">check</mat-icon>
   </button>
 
   <div id="group-list" *ngIf="loadingComplete; else loadingBar">
-    <button mat-icon-button (click)="createGroup()" color="primary" style="margin-top: 20px; align-self: center">
+    <button mat-stroked-button (click)="createGroup()" color="primary" style="margin-top: 25px; align-self: center; border-radius: 300px">
       <mat-icon>add_circle</mat-icon>
+      Create New
     </button>
     <div class="group-row" *ngFor="let groupID of groupIDs">
       <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">

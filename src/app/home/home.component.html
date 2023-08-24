@@ -30,16 +30,16 @@
       <mat-icon>group</mat-icon>
       <span>Friends</span>
     </button>
+    <div style="background-color: #e15241" *ngIf="auth.isVisitor">
+      <button mat-menu-item (click)="userSetUp()">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Signup</span>
+      </button>
+    </div>
     <div (click)="openNotificationView()" [ngClass]="main.getTotalMessageCount()>0 ? 'back-ground-red' : ''">
       <button mat-menu-item>
         <mat-icon>notifications</mat-icon>
         <span>Notifications</span>
-      </button>
-    </div>
-    <div style="background-color: #c72a68" *ngIf="auth.isVisitor">
-      <button mat-menu-item (click)="userSetUp()">
-        <mat-icon>manage_accounts</mat-icon>
-        <span>Signup</span>
       </button>
     </div>
     <button mat-menu-item [routerLink]="['/login']" (click)="logout()">
