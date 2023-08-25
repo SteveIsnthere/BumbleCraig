@@ -41,17 +41,28 @@
   </div>
 
 
-  <div id="action-section">
-    <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()" style="margin-left: 20px;border-radius: 100px; width: 92px">
+  <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
+    <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()"
+            style="margin-left: 20px;border-radius: 100px; width: 92px">
       <mat-icon>upload</mat-icon>
       File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
-    <button mat-flat-button (click)="openTextEditor()" color="warn" style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px">
+    <button mat-flat-button (click)="openTextEditor()" color="warn"
+            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px">
       <mat-icon>edit_note</mat-icon>
       Text
     </button>
   </div>
+
+  <ng-template #uploadingFileIndicator>
+    <div id="uploading-file-indicator">
+      <mat-chip-option selectable="false" style="background-color: rgba(194,23,91,0.46)">Uploading</mat-chip-option>
+      <p style="width: 90dvw">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </p>
+    </div>
+  </ng-template>
 
 </main>

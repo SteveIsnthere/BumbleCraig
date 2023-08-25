@@ -29,6 +29,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   loadedScroller: boolean = false;
   noMessages: boolean = false;
   updateInterval: any = 0;
+  uploadingFile: boolean = false;
 
   constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
@@ -154,6 +155,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   uploadFile(event: any) {
+    this.uploadingFile = true;
     this.fileToUpload = event.target.files[0];
     if (this.fileToUpload === null || this.uploadRoute === null) {
       return;
@@ -162,11 +164,13 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
     formData.append('file', this.fileToUpload);
     this.http.post<string>(apiEndPoint + this.uploadRoute, formData).subscribe(
       () => {
+        this.uploadingFile = false;
         this.fileToUpload = null;
         console.log('File uploaded successfully');
         this.initMessages();
       },
       (error) => {
+        this.uploadingFile = false;
         console.error('Error uploading file:', error);
       }
     );

@@ -27,7 +27,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 10px 20px;
-  animation: slideIn 1s ease forwards;
+  /*animation: slideIn 1s ease forwards;*/
 }
 
 @keyframes slideIn {
