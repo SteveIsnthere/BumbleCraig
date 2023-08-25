@@ -24,4 +24,9 @@
           style="position: fixed; bottom: 20px; right: 20px; z-index: 10;" cdkDrag>
     <mat-icon>add</mat-icon>
   </button>
+
+  <button mat-mini-fab color="warn" (click)="ngOnInit()" *ngIf="showReloadButton"
+          style="position: fixed; bottom: 20px; left: 20px; z-index: 10;">
+    <mat-icon>refresh</mat-icon>
+  </button>
 </main>

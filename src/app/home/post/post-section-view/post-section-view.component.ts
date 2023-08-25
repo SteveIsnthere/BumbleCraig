@@ -19,17 +19,27 @@ export class PostSectionViewComponent implements OnInit {
   empty = false;
   selectedRankingMode = 'Recommended';
   genreSelected = "All-Genres";
+  showReloadButton = false;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
+    this.main.reloadEvent.subscribe(() => {
+      if (this.showReloadButton){
+        this.ngOnInit()
+      }
+    })
   }
 
   ngOnInit(): void {
+    this.showReloadButton = false;
     this.loading = true;
     this.loadSettingsFromLocalStorage();
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       this.loading = false;
       this.postIDs = data;
       this.empty = this.postIDs.length == 0;
+      setTimeout(() => {
+        this.showReloadButton = true;
+      }, 15000);
     })
   }
 

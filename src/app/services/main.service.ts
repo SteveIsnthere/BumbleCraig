@@ -1,4 +1,4 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {EventEmitter, Injectable, OnDestroy, Output} from '@angular/core';
 import {GroupInvitation} from "../home/notification-view/groupInvitation";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
@@ -28,8 +28,15 @@ export class MainService implements OnDestroy{
   notifications: Notification|null = null;
   fetchNotificationsInterval: any = null;
 
+  @Output() reloadEvent = new EventEmitter<string>()
+
   constructor(public http: HttpClient, public auth: AuthService) {
     this.setupFetchNotificationsInterval()
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === "visible") {
+        this.reloadEvent.emit("app-reopened")
+      }
+    })
   }
 
   setupFetchNotificationsInterval(): void {

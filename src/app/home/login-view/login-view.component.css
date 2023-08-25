@@ -24,10 +24,12 @@ main {
   color: antiquewhite;
 }
 
-#welcome{
+#welcome {
   color: antiquewhite;
   padding: 20px;
-  margin: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 50px;
   border-radius: 25px;
   background-color: #4f4f4f;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
@@ -85,6 +87,6 @@ form {
 }
 
 
-.round-btn{
+.round-btn {
   border-radius: 100px;
 }
