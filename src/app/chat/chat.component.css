@@ -4,6 +4,8 @@ main {
   gap: 20px;
   align-items: center;
   justify-content: center;
+  width: 100dvw;
+  height: 100dvh;
 }
 
 #group-list {
@@ -12,8 +14,8 @@ main {
   justify-content: flex-start;
   width: 100%;
   gap: 20px;
-  height: 100dvh;
-  animation: slideIn 0.7s ease forwards; /* Apply the animation */
+  min-height: 100dvh;
+  animation: slideIn 0.6s ease forwards;
 }
 
 .group-row {
@@ -25,7 +27,7 @@ main {
 
 @keyframes slideIn {
   0% {
-    transform: translateY(100%);
+    transform: translateY(100dvh);
   }
   100% {
     transform: translateY(0)

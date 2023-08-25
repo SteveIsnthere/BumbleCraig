@@ -32,7 +32,7 @@ main {
 
 @keyframes slideIn {
   0% {
-    transform: translateY(100%); /* Start position */
+    transform: translateY(100dvh); /* Start position */
     scale: 2;
   }
   100% {

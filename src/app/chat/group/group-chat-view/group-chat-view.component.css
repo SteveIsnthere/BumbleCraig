@@ -1,5 +1,7 @@
 main{
   animation: lightsOff 0.6s ease-in-out forwards;
+  width: 100dvw;
+  height: 100dvh;
 }
 
 @keyframes lightsOff {
@@ -48,6 +50,10 @@ main{
   flex-direction: row-reverse;
 }
 
+.self-msg>.text-content {
+  background-color: #4488f5;
+}
+
 .other-msg {
   animation: slideIn 0.6s ease-in-out forwards; /* Apply the animation */
 }
@@ -72,16 +78,15 @@ main{
 
 .text-content {
   max-width: 60%;
-  background-color: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  border-radius: 22px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(9px) saturate(180%) contrast(80%);
+  border-radius: 15px;
   text-align: justify-all;
-  padding: 9px 12px;
+  padding: 10px 10px;
   text-rendering: optimizeLegibility;
   font-size: 16px;
   line-height: 1.5;
-  font-weight: normal;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
+  font-weight: 300;
 }
 
 .file-content {

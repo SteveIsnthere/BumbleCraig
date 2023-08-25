@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -60,6 +60,7 @@ import {PostCommentRowComponent} from './home/notification-view/post-comment-row
 import {FriendReqRowComponent} from './home/notification-view/friend-req-row/friend-req-row.component';
 import {GroupInvRowComponent} from './home/notification-view/group-inv-row/group-inv-row.component';
 import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-row.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -133,7 +134,13 @@ const appRoutes: Routes = [
     MatProgressBarModule,
     MatStepperModule,
     ReactiveFormsModule,
-    CdkDrag
+    CdkDrag,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
