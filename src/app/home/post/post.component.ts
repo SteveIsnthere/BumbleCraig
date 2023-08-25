@@ -80,11 +80,10 @@ export class PostComponent implements OnInit {
 
   openPostFullView(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.maxWidth = '85vw';
+    dialogConfig.width = '85vw';
     dialogConfig.data = this.post;
     dialogConfig.backdropClass = 'blur-back-drop';
     dialogConfig.autoFocus = false;
-    dialogConfig.minWidth = '60vw';
 
     this.dialog.open(PostFullViewComponent, dialogConfig);
   }
