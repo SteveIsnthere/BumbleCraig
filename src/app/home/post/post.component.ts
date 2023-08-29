@@ -83,7 +83,7 @@ export class PostComponent implements OnInit {
     dialogConfig.width = '85vw';
     dialogConfig.data = this.post;
     dialogConfig.backdropClass = 'blur-back-drop';
-    dialogConfig.autoFocus = false;
+    dialogConfig.autoFocus = true;
 
     this.dialog.open(PostFullViewComponent, dialogConfig);
   }
