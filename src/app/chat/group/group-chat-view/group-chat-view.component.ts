@@ -9,6 +9,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FigureEditViewComponent} from "../../../simple-figure/figure-edit-view/figure-edit-view.component";
 import {TextEditViewComponent} from "../../text-edit-view/text-edit-view.component";
 import {InviteViewComponent} from "../invite-view/invite-view.component";
+import {StatesService} from "../../../services/states.service";
 
 @Component({
   selector: 'app-group-chat-view',
@@ -31,7 +32,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   updateInterval: any = 0;
   uploadingFile: boolean = false;
 
-  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
+  constructor(public http: HttpClient, private states:StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
   }
 
@@ -48,9 +49,17 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         this.initMessages();
       }, 10000)
     });
+
+    setTimeout(() => {
+      this.states.showNavBar = false;
+    }, 0);
   }
 
   ngOnDestroy(): void {
+    setTimeout(() => {
+      this.states.showNavBar = true;
+    }, 0);
+
     clearInterval(this.updateInterval);
     if (this.loadedScroller) {
       this.observer.unobserve(this.messagesContainer);

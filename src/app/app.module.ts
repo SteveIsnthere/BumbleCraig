@@ -62,6 +62,7 @@ import {GroupInvRowComponent} from './home/notification-view/group-inv-row/group
 import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-row.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
+import { AccountComponent } from './user/account/account.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
+  {path: 'account', component: AccountComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -110,6 +112,7 @@ const appRoutes: Routes = [
     FriendReqRowComponent,
     GroupInvRowComponent,
     SysMsgRowComponent,
+    AccountComponent,
   ],
     imports: [
         BrowserModule,

@@ -11,15 +11,20 @@
 
 <router-outlet></router-outlet>
 
-<div id="bottom-nav">
-  <div class="btn">
-    <mat-icon class="nav-icon">home</mat-icon>
+<div id="bottom-nav" *ngIf="states.showNavBar && auth.loggedIn">
+  <div class="btn" routerLink="/home">
+    <mat-icon class="nav-icon"
+              [ngClass]="router.url == '/home' || router.url == '/chat' ? 'active-nav-icon':'inactive-nav-icon'">home
+    </mat-icon>
   </div>
-  <div class="btn">
-    <mat-icon class="nav-icon">people</mat-icon>
+  <div class="btn" routerLink="/friends">
+    <mat-icon class="nav-icon" [ngClass]="router.url == '/friends'? 'active-nav-icon':'inactive-nav-icon'">people
+    </mat-icon>
   </div>
-  <div class="btn">
-    <mat-icon class="nav-icon">account_circle</mat-icon>
+  <div class="btn" routerLink="/account">
+    <mat-icon class="nav-icon" [ngClass]="router.url == '/account'? 'active-nav-icon':'inactive-nav-icon'">
+      account_circle
+    </mat-icon>
   </div>
 </div>
 

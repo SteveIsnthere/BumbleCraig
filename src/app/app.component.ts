@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
+import {StatesService} from "./services/states.service";
 
 
 @Component({
@@ -11,6 +12,6 @@ import {AuthService} from "./services/auth.service";
 export class AppComponent {
   title = 'Tidder';
 
-  constructor(public router: Router, public auth: AuthService) {
+  constructor(public router: Router, public auth: AuthService, public states: StatesService) {
   }
 }

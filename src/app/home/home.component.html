@@ -4,49 +4,14 @@
     <mat-icon>chat</mat-icon>
   </button>
 
-  <!--  <button mat-mini-fab class="top-floating-buttons" style="right: 0;width: 40px; height: 40px" [matMenuTriggerFor]="menu"-->
-  <!--          [ngStyle]="{'border': (main.getTotalMessageCount()>0 || auth.isVisitor) ? '3px solid #c72a68' : 'none'}">-->
-  <!--    &lt;!&ndash;<mat-icon>menu</mat-icon>&ndash;&gt;-->
-  <!--    <div style="width: 40px;clip-path: circle(20px at center);z-index: -1">-->
-  <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
-  <!--    </div>-->
-  <!--  </button>-->
   <button mat-mini-fab class="top-floating-buttons"
           style="right: 0;width: 40px; height: 40px; background-color: transparent"
-          [matMenuTriggerFor]="menu"
+          (click)="openNotificationView()"
           matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="primary"
           [matBadgeHidden]="notificationCount() == 0">
-    <!--<mat-icon>menu</mat-icon>-->
   </button>
   <div style="position: fixed;top: 0;margin: 20px;right:0;width: 40px;clip-path: circle(20px at center); z-index: 2">
     <app-simple-figure [figureID]=selfFigID *ngIf="selfFigID != 0"></app-simple-figure>
   </div>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/user/' + auth.selfUserID]">
-      <mat-icon>account_circle</mat-icon>
-      <span>Profile</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/friends']">
-      <mat-icon>group</mat-icon>
-      <span>Friends</span>
-    </button>
-    <div style="background-color: #e15241" *ngIf="auth.isVisitor">
-      <button mat-menu-item (click)="userSetUp()">
-        <mat-icon>manage_accounts</mat-icon>
-        <span>Signup</span>
-      </button>
-    </div>
-    <div (click)="openNotificationView()" [ngClass]="main.getTotalMessageCount()>0 ? 'back-ground-red' : ''">
-      <button mat-menu-item>
-        <mat-icon>notifications</mat-icon>
-        <span>Notifications</span>
-      </button>
-    </div>
-    <button mat-menu-item [routerLink]="['/login']" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      <span>Logout</span>
-    </button>
-  </mat-menu>
-
   <app-post-section-view></app-post-section-view>
 </main>

@@ -6,8 +6,7 @@ import {NotificationViewComponent} from "./notification-view/notification-view.c
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
 import {MatDialog} from "@angular/material/dialog";
-import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
-import {dummyEssentialUserData, EssentialUserData} from "../user/UserModel";
+import {EssentialUserData} from "../user/UserModel";
 
 @Component({
   selector: 'app-home',
@@ -43,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   openNotificationView() {
-    this._bottomSheet.open(NotificationViewComponent);
+    this.dialog.open(NotificationViewComponent);
   }
 
   notificationCount() {
@@ -52,14 +51,4 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.auth.isVisitor) result++;
     return result;
   }
-
-  userSetUp() {
-    this.dialog.open(UserSetUpComponent);
-  }
-
-  logout() {
-    this.auth.logout();
-  }
-
-  protected readonly dummyEssentialUserData = dummyEssentialUserData;
 }
