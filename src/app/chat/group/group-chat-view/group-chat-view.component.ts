@@ -48,6 +48,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       this.updateInterval = setInterval(() => {
         this.initMessages();
       }, 10000)
+      this.viewGroup();
     });
 
     setTimeout(() => {

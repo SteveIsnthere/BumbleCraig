@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="loaded; else loadingBar">
   <button mat-fab color="primary" (click)="searchUser()" style="margin: 20px 0;">
     <mat-icon>person_add</mat-icon>
   </button>
@@ -13,3 +13,6 @@
   </div>
 
 </main>
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

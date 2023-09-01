@@ -3,6 +3,7 @@ import {GroupInvitation} from "../home/notification-view/groupInvitation";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {apiEndPoint} from "../env";
+import {StatesService} from "./states.service";
 export interface PostLikes {
   post_id: string
   number_of_likes: number
@@ -30,7 +31,7 @@ export class MainService implements OnDestroy{
 
   @Output() reloadEvent = new EventEmitter<string>()
 
-  constructor(public http: HttpClient, public auth: AuthService) {
+  constructor(public http: HttpClient, public auth: AuthService, public states: StatesService) {
     this.setupFetchNotificationsInterval()
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === "visible") {
@@ -53,6 +54,9 @@ export class MainService implements OnDestroy{
   fetchNotifications(): void {
     this.http.get<Notification>(apiEndPoint + '/notification/fetch_all_notifications/' + this.auth.selfUserID).subscribe((data) => {
       this.notifications = data;
+    })
+    this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
+      this.states.hasUnreadMsg = data;
     })
   }
 

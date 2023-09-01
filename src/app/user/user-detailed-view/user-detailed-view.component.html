@@ -1,9 +1,5 @@
 <main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
-  <div *ngIf="userID == auth.selfUserID && !auth.isVisitor">
-    <button mat-fab [routerLink]="['/user-profile-edit']">
-      <mat-icon>edit</mat-icon>
-    </button>
-  </div>
+  <app-back-btn *ngIf="userID != auth.selfUserID"></app-back-btn>
 
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
@@ -20,6 +16,26 @@
 
   <div id="description">
     <span>{{userDescription}}</span>
+  </div>
+
+  <div style="display: flex; gap: 20px; justify-content: center" *ngIf="userID == auth.selfUserID">
+    <button mat-flat-button (click)="userSetUp()" *ngIf="auth.isVisitor"
+            style="border-radius: 100px" color="warn">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>Signup</span>
+    </button>
+
+    <button mat-flat-button [routerLink]="['/user-profile-edit']" *ngIf="!auth.isVisitor"
+            style="border-radius: 100px" color="warn">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+
+    <button mat-flat-button [routerLink]="['/login']" (click)="logout()" color="primary"
+            style="border-radius: 100px">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
   </div>
 
   <span style="width: 90%"><mat-divider></mat-divider></span>

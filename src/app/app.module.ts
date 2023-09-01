@@ -60,9 +60,9 @@ import {PostCommentRowComponent} from './home/notification-view/post-comment-row
 import {FriendReqRowComponent} from './home/notification-view/friend-req-row/friend-req-row.component';
 import {GroupInvRowComponent} from './home/notification-view/group-inv-row/group-inv-row.component';
 import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-row.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
-import { AccountComponent } from './user/account/account.component';
+import {BackBtnComponent} from './home/back-btn/back-btn.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -72,7 +72,6 @@ const appRoutes: Routes = [
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
-  {path: 'account', component: AccountComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -112,41 +111,41 @@ const appRoutes: Routes = [
     FriendReqRowComponent,
     GroupInvRowComponent,
     SysMsgRowComponent,
-    AccountComponent,
+    BackBtnComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatBottomSheetModule,
-        RouterModule.forRoot(appRoutes),
-        MatInputModule,
-        FormsModule,
-        MatSnackBarModule,
-        MatListModule,
-        MatMenuModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatBadgeModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatExpansionModule,
-        MatChipsModule,
-        MatProgressBarModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        CdkDrag,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }),
-        MatTabsModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatBottomSheetModule,
+    RouterModule.forRoot(appRoutes),
+    MatInputModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    CdkDrag,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    MatTabsModule
+  ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

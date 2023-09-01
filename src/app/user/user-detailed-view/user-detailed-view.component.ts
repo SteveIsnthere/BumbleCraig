@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {UserSetUpComponent} from "../user-set-up/user-set-up.component";
 
 @Component({
   selector: 'app-user-detailed-view',
@@ -22,7 +23,7 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   xp = 0;
   postIDs: number[] = [];
 
-  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) {
+  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
     super(http);
   }
 
@@ -75,7 +76,14 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
         this.openSnackBar('DM sent', 'OK');
       })
     });
+  }
 
+  userSetUp() {
+    this.dialog.open(UserSetUpComponent);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   openSnackBar(message: string, action: string) {

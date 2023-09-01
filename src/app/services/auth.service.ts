@@ -12,6 +12,7 @@ export class AuthService {
   loggedIn = false;
   selfUserID = 0;
   isVisitor = true;
+  // loadFailed = false;
 
   constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router) {
     console.log("AuthService constructor");
@@ -42,6 +43,12 @@ export class AuthService {
   }
 
   loginUsingSessionPassword() {
+    // setTimeout(() => {
+    //   if (!this.loggedIn) {
+    //     this.loadFailed = true;
+    //   }
+    // }, 4000);
+
     this.http.get<number>(apiEndPoint + '/auth/verify_session').subscribe((data) => {
       this.selfUserID = data;
       this.loggedIn = true;
@@ -52,8 +59,8 @@ export class AuthService {
       // dateNow.setDate(dateNow.getDate() + 7);
       // this.cookieService.set('sessionPassword', this.authData.sessionPassword, dateNow);
       this.cookieService.set('sessionPassword', this.authData.sessionPassword);
-      console.log(this.selfUserID);
-      console.log(this.authData.sessionPassword);
+      // console.log(this.selfUserID);
+      // console.log(this.authData.sessionPassword);
       this.router.navigate(["home"]).then();
     });
   }

@@ -6,16 +6,21 @@ main {
   justify-content: center;
   width: 100dvw;
   height: 100dvh;
+  animation: slideIn 0.6s ease forwards;
+}
+
+#group-list-wrapper{
+  height: 100dvh;
+  overflow-y: auto;
+  width: 100%;
 }
 
 #group-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 100%;
+
   gap: 20px;
-  min-height: 100dvh;
-  animation: slideIn 0.6s ease forwards;
 }
 
 .group-row {

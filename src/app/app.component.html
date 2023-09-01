@@ -1,31 +1,58 @@
-<ng-container *ngIf="router.url != '/home' && auth.loggedIn">
-  <button color="warn" onclick="history.back()" mat-mini-fab class="top-floating-buttons" style="left: 0;">
-    <mat-icon>arrow_back_ios_new</mat-icon>
-  </button>
+<!--<ng-container *ngIf="router.url != '/home' && auth.loggedIn">-->
+<!--  <button color="warn" onclick="history.back()" mat-mini-fab class="top-floating-buttons" style="left: 0;">-->
+<!--    <mat-icon>arrow_back_ios_new</mat-icon>-->
+<!--  </button>-->
+<!--</ng-container>-->
+
+<ng-container *ngIf="!auth.loggedIn && router.url != '/login'">
+  <!--Init load-->
+  <p style="width: 100vw; position: fixed; top: 0; left: 0;">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </p>
+  <!--Load Failed-->
+<!--  <ng-template #LoadFailed>-->
+<!--    <p style="color: white; text-align: center">-->
+<!--      It's either my server fucking died, or you're not connected to internet. Please try again later.-->
+<!--    </p>-->
+<!--  </ng-template>-->
 </ng-container>
 
-<!--Init load-->
-<p style="width: 100vw; position: fixed; top: 0; left: 0;" *ngIf="!auth.loggedIn && router.url != '/login'">
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</p>
 
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
 
-<div id="bottom-nav" *ngIf="states.showNavBar && auth.loggedIn">
-  <div class="btn" routerLink="/home">
-    <mat-icon class="nav-icon"
-              [ngClass]="router.url == '/home' || router.url == '/chat' ? 'active-nav-icon':'inactive-nav-icon'">home
-    </mat-icon>
+  <div id="bottom-nav" *ngIf="states.showNavBar && auth.loggedIn">
+    <div class="btn" routerLink="/home">
+      <mat-icon class="nav-icon"
+                [ngClass]="router.url == '/home' ? 'active-nav-icon':'inactive-nav-icon'">
+        panorama_fish_eye
+      </mat-icon>
+    </div>
+
+    <div class="btn" routerLink="/chat">
+      <mat-icon class="nav-icon"
+                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']"
+                style="scale: 1.2">
+        chat
+      </mat-icon>
+    </div>
+
+    <div class="btn" style="padding: 0 8px">
+      <button mat-mini-fab color="primary" (click)="openNewPostView()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <div class="btn" routerLink="/friends">
+      <mat-icon class="nav-icon" [ngClass]="router.url == '/friends'? 'active-nav-icon':'inactive-nav-icon'">people
+      </mat-icon>
+    </div>
+
+    <div class="btn" [routerLink]="['/user/' + this.auth.selfUserID]">
+      <mat-icon class="nav-icon"
+                [ngClass]="router.url == '/user/' + this.auth.selfUserID? 'active-nav-icon':'inactive-nav-icon'">
+        account_circle
+      </mat-icon>
+    </div>
   </div>
-  <div class="btn" routerLink="/friends">
-    <mat-icon class="nav-icon" [ngClass]="router.url == '/friends'? 'active-nav-icon':'inactive-nav-icon'">people
-    </mat-icon>
-  </div>
-  <div class="btn" routerLink="/account">
-    <mat-icon class="nav-icon" [ngClass]="router.url == '/account'? 'active-nav-icon':'inactive-nav-icon'">
-      account_circle
-    </mat-icon>
-  </div>
-</div>
-
-
+</main>

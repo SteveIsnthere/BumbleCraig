@@ -1,5 +1,5 @@
 main {
-  height: 100%;
+  height: 100dvh;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -52,17 +52,17 @@ main {
 }
 
 #logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  color: antiquewhite;
-  font-size: x-large;
-  font-weight: lighter;
-  background-color: #4f4f4f;
-  border-radius: 500px;
-  padding: 6px;
-  min-height: 40px;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*gap: 8px;*/
+  /*color: antiquewhite;*/
+  /*font-size: x-large;*/
+  /*font-weight: lighter;*/
+  /*background-color: #4f4f4f;*/
+  /*border-radius: 500px;*/
+  /*padding: 6px;*/
+  /*min-height: 40px;*/
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
 }
 

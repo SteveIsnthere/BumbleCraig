@@ -1,5 +1,7 @@
 main {
   width: 100vw;
+  height: 100dvh;
+  overflow: auto;
 }
 
 #posts-section-top-bar {
@@ -26,16 +28,6 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 0 20px;
-  animation: slideIn 1s ease forwards;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(100dvh); /* Start position */
-  }
-  100% {
-    transform: translateY(0); /* End position */
-  }
 }
 
 .post {

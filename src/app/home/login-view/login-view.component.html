@@ -1,14 +1,16 @@
-<main *ngIf="loginView != null; else loadingBar">
-  <div id="logo" class="lightUp" cdkDrag>
-    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">
-      <app-simple-figure [figureID]="logoFigID"></app-simple-figure>
-    </div>
-    <ng-template #loadingFig>
-      <div style="width: 40px; height: 40px; background-color: #c2175b; border-radius: 100%;"></div>
-    </ng-template>
+<main *ngIf="loginView != null; else loadingBar" class="startUpSlideIn">
+  <!--  <div id="logo" class="lightUp" cdkDrag>-->
+  <!--    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">-->
+  <!--      <app-simple-figure [figureID]="logoFigID"></app-simple-figure>-->
+  <!--    </div>-->
+  <!--    <ng-template #loadingFig>-->
+  <!--      <div style="width: 40px; height: 40px; background-color: #c2175b; border-radius: 100%;"></div>-->
+  <!--    </ng-template>-->
 
-    <span style="margin-right: 7px">Tidder</span>
-  </div>
+  <!--    <span style="margin-right: 7px">Tidder</span>-->
+  <!--  </div>-->
+  <img src="assets/logo.png" alt="Tidder Logo" width="100" height="100" id="logo" class="lightUp"
+       style="background-color: black; border-radius: 100px">
 
   <ng-container *ngIf="loginView; else welcomeView">
     <form>
@@ -56,7 +58,6 @@
           <mat-spinner [diameter]="56"></mat-spinner>
         </div>
       </ng-template>
-
     </div>
     <button mat-flat-button (click)="loginView = true" class="round-btn" color="primary">Have an account?</button>
   </ng-template>

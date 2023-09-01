@@ -14,6 +14,7 @@ import {FindUserViewComponent} from "./find-user-view/find-user-view.component";
 })
 export class FriendsViewComponent implements OnInit {
   friendIDs: number[] = [];
+  loaded: boolean = false;
 
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) {
   }
@@ -21,6 +22,7 @@ export class FriendsViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/user/get_friends/' + this.auth.selfUserID).subscribe((data: any) => {
       this.friendIDs = data;
+      this.loaded = true;
     })
   }
 

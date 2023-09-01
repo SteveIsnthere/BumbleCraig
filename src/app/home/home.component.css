@@ -1,4 +1,5 @@
 main {
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,4 +16,18 @@ main {
 
 .back-ground-red {
   background-color: #c72a68;
+}
+
+.startUpSlideIn {
+  animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(100%); /* Start position */
+    scale: 2;
+  }
+  100% {
+    transform: translateY(0); /* End position */
+  }
 }

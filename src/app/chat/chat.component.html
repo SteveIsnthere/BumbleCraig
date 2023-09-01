@@ -5,17 +5,23 @@
     <mat-icon *ngIf="editMode">check</mat-icon>
   </button>
 
-  <div id="group-list" *ngIf="loadingComplete; else loadingBar">
-    <button mat-stroked-button (click)="createGroup()" color="primary" style="margin-top: 25px; align-self: center; border-radius: 300px">
-      <mat-icon>add_circle</mat-icon>
-      Create New
-    </button>
-    <div class="group-row" *ngFor="let groupID of groupIDs">
-      <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
-                 style="flex: 1;max-width: 310px;"></app-group>
+  <button mat-stroked-button (click)="createGroup()" color="primary"
+          style="position: fixed;top: 25px; align-self: center; border-radius: 300px">
+    <mat-icon>add_circle</mat-icon>
+    Create New
+  </button>
+
+  <div id="group-list-wrapper">
+    <div id="group-list" *ngIf="loadingComplete; else loadingBar">
+      <div style="height: 65px"></div>
+      <div class="group-row" *ngFor="let groupID of groupIDs">
+        <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
+                   style="flex: 1;max-width: 310px;"></app-group>
+      </div>
+      <div style="height: 65px"></div>
     </div>
   </div>
   <ng-template #loadingBar>
