@@ -34,9 +34,8 @@ main{
 }
 
 .unreadMsg{
-  color: #bc35fd;
+  color: #f55246;
 }
-
 
 #bottom-nav{
   position: fixed;
@@ -45,10 +44,10 @@ main{
   transform: translate(-50%, 0);
   z-index: 10;
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 100px;
   display: flex;
-  animation: slideIn 1s ease forwards;
+  animation: slideIn 1.5s ease forwards;
   /*border: black 2px solid;*/
 }
 

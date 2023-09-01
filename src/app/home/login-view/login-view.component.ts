@@ -25,10 +25,11 @@ export class LoginViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
-      this.logoFigID = data;
-      this.loginView = false;
-    })
+    this.loginView = false;
+    // this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
+    //   this.logoFigID = data;
+    //   this.loginView = false;
+    // })
   }
 
   ngOnDestroy(): void {

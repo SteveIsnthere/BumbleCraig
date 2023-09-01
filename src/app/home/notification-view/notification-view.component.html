@@ -23,9 +23,7 @@
     <!--    </div>-->
     <app-group-inv-row [invitation]="invitation"
                        *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
-  </div>
 
-  <div class="notification-section-container">
     <app-post-comment-row [postComment]="postComment"
                           *ngFor="let postComment of this.main.notifications?.post_comments"></app-post-comment-row>
     <app-post-like-row [postLike]="postLike"

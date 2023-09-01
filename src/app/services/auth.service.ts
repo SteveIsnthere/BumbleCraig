@@ -4,6 +4,7 @@ import {apiEndPoint} from "../env";
 import {HttpClient} from "@angular/common/http";
 import {AuthDataService} from "./auth-data.service";
 import {Router} from "@angular/router";
+import {StatesService} from "./states.service";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   isVisitor = true;
   // loadFailed = false;
 
-  constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router) {
+  constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService) {
     console.log("AuthService constructor");
     if (!this.haveSessionPasswordSaved()) {
       this.switchToLoginView()
@@ -62,6 +63,7 @@ export class AuthService {
       // console.log(this.selfUserID);
       // console.log(this.authData.sessionPassword);
       this.router.navigate(["home"]).then();
+      this.states.showNavBar = true;
     });
   }
 }

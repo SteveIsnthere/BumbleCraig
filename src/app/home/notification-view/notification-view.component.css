@@ -21,6 +21,7 @@ main{
 
 .no-msg-view{
   display: flex;
+  color: white;
   flex-direction: column;
   align-items: center;
   gap: 10px;
