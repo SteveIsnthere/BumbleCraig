@@ -31,22 +31,6 @@
       </form>
     </mat-step>
 
-    <mat-step label="Email (Optional)">
-      <div>
-        <span style="color: antiquewhite">Email will be used solely for account recovery</span><br>
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput
-                 autocomplete="off"
-                 [value]="inputEmail" (input)="changeEmail($event)">
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext (click)="updateEmail()">Update Email</button>
-          <button mat-button matStepperNext>Skip</button>
-        </div>
-      </div>
-    </mat-step>
-
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
       <div>
@@ -58,11 +42,6 @@
         <div class="acc-info-row">
           <mat-chip>Password</mat-chip>
           <span class="acc-info">{{inputPassword}}</span>
-        </div>
-
-        <div class="acc-info-row">
-          <mat-chip>Email</mat-chip>
-          <span class="acc-info">{{inputEmail}}</span>
         </div>
 
         <div>

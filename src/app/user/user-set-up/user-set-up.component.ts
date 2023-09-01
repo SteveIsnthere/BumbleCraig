@@ -15,7 +15,6 @@ import {StepperSelectionEvent} from "@angular/cdk/stepper";
 export class UserSetUpComponent {
   inputName: string = '';
   inputPassword: string = '';
-  inputEmail: string = '';
 
   nameGood: boolean = false;
   passwordGood: boolean = false;
@@ -85,22 +84,6 @@ export class UserSetUpComponent {
       this.passwordGood = true;
     });
   }
-
-  changeEmail(event: any) {
-    this.inputEmail = event.target.value;
-  }
-
-  updateEmail() {
-    const emailRegex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
-    if (!emailRegex.test(this.inputEmail)) {
-      this.openSnackBar('Invalid email', 'close');
-      return;
-    }
-    this.http.post<string>(apiEndPoint + '/user/email/' + this.auth.selfUserID, this.inputEmail).subscribe((res) => {
-      this.openSnackBar(res, 'close');
-    });
-  }
-
 
   confirmSetup() {
     if (!this.nameGood) {

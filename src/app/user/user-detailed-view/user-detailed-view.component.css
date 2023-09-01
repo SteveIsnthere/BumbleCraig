@@ -4,6 +4,8 @@ main {
   align-items: center;
   padding: 15px 0;
   gap: 20px;
+  height: 100dvh;
+  overflow: auto;
 }
 
 #figure {
