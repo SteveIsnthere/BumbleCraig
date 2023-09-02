@@ -1,4 +1,4 @@
-<main *ngIf="loginView != null; else loadingBar" class="startUpSlideIn">
+<main *ngIf="loginView != null; else loadingBar" class="startUpSlideIn" [ngClass]="{'signUpSlideOut':newUserLoading}">
   <!--  <div id="logo" class="lightUp" cdkDrag>-->
   <!--    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">-->
   <!--      <app-simple-figure [figureID]="logoFigID"></app-simple-figure>-->
@@ -42,20 +42,22 @@
   </ng-container>
 
   <ng-template #welcomeView>
-    <div id="welcome" [ngClass]="{'lightUp': newUserLoading, 'startUpSlideIn':!newUserLoading}">
+    <div id="welcome" [ngClass]="{'startUpSlideIn':!newUserLoading}">
       <div class="text-wrapper">
-        <span class="text-content" style="font-size: x-large; color: white">Welcome to Tidder!</span>
+        <span class="text-content" style="font-size: x-large; color: white">Tidder</span>
       </div>
-      <p>Finally, a sensible platform for the rest of us, that simply doesn't suck</p>
+      <p>Your quest for a sensible platform ends here, no more ads, hassles and censorship</p>
       <p>Click the button below to get started!</p>
-      <div style="display: flex; justify-content: center; margin-top: 40px" *ngIf="!newUserLoading; else loadingWheel">
-        <button mat-fab color="primary" (click)="continueAsVisitor()">
+      <div style="display: flex; justify-content: center; margin-top: 20px" *ngIf="!newUserLoading; else loadingWheel">
+        <div style="flex: 1"></div>
+        <button mat-flat-button (click)="continueAsVisitor()" color="warn" style="border-radius: 100px">
           <mat-icon>start</mat-icon>
+          Let's go!
         </button>
       </div>
       <ng-template #loadingWheel>
-        <div style="display: flex; justify-content: center; margin-top: 40px">
-          <mat-spinner [diameter]="56"></mat-spinner>
+        <div style="display: flex; justify-content: center; margin-top: 51px">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
       </ng-template>
     </div>

@@ -11,9 +11,16 @@
 
   <div id="posts-section-wrapper">
     <div style="height: 65px"></div>
-    <div id="posts-section" *ngIf="!loading">
+    <div class="posts-section" *ngIf="!loading; else loadingPlaceHolder">
       <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
     </div>
+
+    <ng-template #loadingPlaceHolder>
+      <div class="posts-section">
+        <app-post-loading-placeholder class="post" *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
+      </div>
+    </ng-template>
+
     <div *ngIf="empty">
       <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
         genres</p>

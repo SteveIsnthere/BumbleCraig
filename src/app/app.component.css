@@ -11,7 +11,7 @@ main{
 }
 
 #bottom-nav>.btn{
-  padding: 0 14px;
+  padding: 0 17px;
   cursor: pointer;
   height: 45px;
   display: flex;
@@ -42,9 +42,10 @@ main{
   bottom: 20px;
   left: 50%;
   transform: translate(-50%, 0);
+  padding: 2px;
   z-index: 10;
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(211, 211, 211, 0.3);
   border-radius: 100px;
   display: flex;
   animation: slideIn 1.5s ease forwards;

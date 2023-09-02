@@ -63,10 +63,13 @@ import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-r
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BackBtnComponent} from './home/back-btn/back-btn.component';
+import { PostLoadingPlaceholderComponent } from './home/post/post-loading-placeholder/post-loading-placeholder.component';
+import { SignupLoadingViewComponent } from './home/login-view/signup-loading-view/signup-loading-view.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginViewComponent},
+  {path: 'signup-loading', component: SignupLoadingViewComponent},
   {path: 'chat', component: ChatComponent, canActivate: [authGuard]},
   {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
@@ -112,6 +115,8 @@ const appRoutes: Routes = [
     GroupInvRowComponent,
     SysMsgRowComponent,
     BackBtnComponent,
+    PostLoadingPlaceholderComponent,
+    SignupLoadingViewComponent,
   ],
   imports: [
     BrowserModule,

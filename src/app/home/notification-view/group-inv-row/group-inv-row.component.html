@@ -1,7 +1,7 @@
 <main *ngIf="invitation != null">
   <div style="display: flex; align-items: flex-end;gap:5px">
     <app-user [userID]=invitation.inviter_id></app-user>
-    <span>invited you to join</span>
+    <span>invited you to</span>
   </div>
   <div style="display: flex; gap: 10px">
     <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">

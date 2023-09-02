@@ -1,12 +1,19 @@
 main {
+  height: 100dvh;
+  overflow-y: auto;
+}
+
+#top-bar{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 30px;;
+  padding-top: 10px;
 }
 
+#friends-list-wrapper{
+}
 
 #friends-list {
   display: inline-flex;

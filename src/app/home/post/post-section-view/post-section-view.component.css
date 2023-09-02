@@ -21,7 +21,7 @@ main {
   overflow: auto;
 }
 
-#posts-section {
+.posts-section {
   display: flex;
   flex-direction: row;
   align-items: flex-start;

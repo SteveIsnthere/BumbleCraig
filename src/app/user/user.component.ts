@@ -18,7 +18,6 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
       this.essentialUserData = data;
-      // console.log(this.essentialUserData)
     })
   }
 }

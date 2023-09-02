@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class StatesService {
   showNavBar: boolean = true;
   hasUnreadMsg: boolean = false;
+  loadedUp: boolean = false;
   constructor() { }
 }

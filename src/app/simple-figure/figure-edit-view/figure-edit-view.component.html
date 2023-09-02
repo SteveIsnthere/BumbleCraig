@@ -8,10 +8,11 @@
   </div>
 
   <div id="actions">
-    <button mat-flat-button color="warn" (click)="save()" style="border-radius: 100px">
+    <button mat-flat-button color="warn"  (click)="fileInput.click()" style="border-radius: 100px">
       <mat-icon>add_photo_alternate</mat-icon>
       Upload Image
     </button>
+    <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
     <button mat-flat-button color="primary" (click)="save()" style="border-radius: 100px">
       <mat-icon>check_small</mat-icon>

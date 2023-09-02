@@ -37,6 +37,7 @@ export class AuthService {
   logout() {
     this.loggedIn = false;
     this.cookieService.delete('sessionPassword');
+    this.states.loadedUp = false;
   }
 
   switchToLoginView() {
@@ -44,12 +45,6 @@ export class AuthService {
   }
 
   loginUsingSessionPassword() {
-    // setTimeout(() => {
-    //   if (!this.loggedIn) {
-    //     this.loadFailed = true;
-    //   }
-    // }, 4000);
-
     this.http.get<number>(apiEndPoint + '/auth/verify_session').subscribe((data) => {
       this.selfUserID = data;
       this.loggedIn = true;

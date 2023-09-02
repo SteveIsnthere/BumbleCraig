@@ -1,11 +1,12 @@
-<main class="startUpSlideIn">
+<main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
   <!--  <button [routerLink]="['/chat']" color="warn" mat-mini-fab class="top-floating-buttons" style="left: 0"-->
   <!--          [ngStyle]="{'border': (haveUnreadMsg) ? '3px solid #9932CC' : 'none'}">-->
   <!--    <mat-icon>chat</mat-icon>-->
   <!--  </button>-->
 
-  <img src="assets/logo.png" alt="" class="top-floating-buttons" width="40" height="40"
-       style="left: 0; background-color: #000000; border-radius: 100px;cursor: pointer" (click)="reloadPage()">
+  <img src="assets/logo.png" alt="" class="top-floating-buttons"
+       style="left: 0; background-color: #000000; border-radius: 100px;cursor: pointer;
+        width: 40px; height: 40px" (click)="reloadPage()" id="logo">
 
   <button mat-mini-fab class="top-floating-buttons"
           color="warn"

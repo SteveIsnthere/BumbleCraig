@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FigureEditViewComponent} from "../../simple-figure/figure-edit-view/figure-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {EssentialUserData} from "../UserModel";
 
 @Component({
   selector: 'app-user-edit-view',
@@ -30,10 +31,13 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
   }
 
   override ngOnInit(): void {
-    super.ngOnInit();
+    this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
+      this.essentialUserData = data;
+      this.inputName = this.essentialUserData.name;
+    })
+
     this.http.get<string>(apiEndPoint + '/user/description/' + this.userID).subscribe((data) => {
       this.userDescription = data;
-      this.inputName = this.essentialUserData.name;
       this.inputDescription = this.userDescription;
     });
 

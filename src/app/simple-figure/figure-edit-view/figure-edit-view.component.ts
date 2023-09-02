@@ -12,9 +12,10 @@ import {MAT_BOTTOM_SHEET_DATA, MatBottomSheet} from "@angular/material/bottom-sh
 })
 export class FigureEditViewComponent extends SimpleFigureComponent {
   selectedFillColor: string = colors[3];
+  fileToUpload: File | null = null;
 
-  constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet, el:ElementRef) {
-    super(http,el);
+  constructor(http: HttpClient, @Inject(MAT_BOTTOM_SHEET_DATA) figureID: number, private bottomSheet: MatBottomSheet, el: ElementRef) {
+    super(http, el);
     this.figureID = figureID;
   }
 
@@ -39,6 +40,24 @@ export class FigureEditViewComponent extends SimpleFigureComponent {
         console.log('saved')
         this.bottomSheet.dismiss();
       })
+  }
+
+  uploadFile(event: any) {
+    this.fileToUpload = event.target.files[0];
+    if (this.fileToUpload === null) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append('image', this.fileToUpload);
+    this.http.post<string>(apiEndPoint + "/simple_figure/upload/" + this.figureID, formData).subscribe(
+      () => {
+        this.fileToUpload = null;
+        this.ngOnInit()
+      },
+      (error) => {
+        console.error('Error uploading file:', error);
+      }
+    );
   }
 
   protected readonly colors = colors;

@@ -3,6 +3,7 @@ import {AuthService} from "../../services/auth.service";
 import {AuthDataService} from "../../services/auth-data.service";
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-view',
@@ -14,22 +15,17 @@ export class LoginViewComponent implements OnInit, OnDestroy {
   username = "";
   password = "";
 
-  logoFigID = 0;
   loginView: boolean | null = null;
   newUserLoading = false;
   loginLoading = false;
   wrongCredentials = false;
   figUpdateInterval: any = 0;
 
-  constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient) {
+  constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient, private router: Router) {
   }
 
   ngOnInit(): void {
     this.loginView = false;
-    // this.http.get<number>(apiEndPoint + '/others/tidder_logo_fig_id').subscribe((data) => {
-    //   this.logoFigID = data;
-    //   this.loginView = false;
-    // })
   }
 
   ngOnDestroy(): void {
@@ -61,5 +57,9 @@ export class LoginViewComponent implements OnInit, OnDestroy {
       this.authDataService.sessionPassword = data.toString();
       this.auth.loginUsingSessionPassword()
     })
+
+    setTimeout(() => {
+      this.router.navigate(["signup-loading"]).then();
+    }, 1100);
   }
 }
