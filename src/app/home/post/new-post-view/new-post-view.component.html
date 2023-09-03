@@ -1,6 +1,8 @@
 <main>
+<!--  <mat-slide-toggle [(ngModel)]="articleMode">Article Mode</mat-slide-toggle>-->
+
   <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)"
-               style="overflow: auto; max-height: 95vh">
+               style="overflow: auto; max-height: 95vh" *ngIf="articleMode">
     <mat-step> <!-- genre selection -->
       <form>
         <ng-template matStepLabel>Select Genre</ng-template>
