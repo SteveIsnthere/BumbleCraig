@@ -36,6 +36,17 @@ main {
   max-width: 550px;
 }
 
+#refresh-btn {
+  display: flex;
+  justify-content: center;
+  padding-top: 22px;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 60px;
+  left: 0;
+}
+
 @media only screen and (min-width: 850px) {
   .post {
     width: 100%;

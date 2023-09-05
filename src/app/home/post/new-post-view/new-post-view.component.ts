@@ -28,7 +28,7 @@ export class NewPostViewComponent implements OnInit {
   uploadingFile: boolean = false;
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
-  articleMode: boolean = false;
+  articleMode: boolean = true;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
