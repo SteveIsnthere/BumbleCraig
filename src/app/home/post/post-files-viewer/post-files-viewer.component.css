@@ -1,0 +1,15 @@
+main{
+  max-height: 70dvh;
+
+  width: 100%; /* Set the parent's width as needed */
+  overflow: hidden; /* Hide any overflowing child content */
+  position: relative;
+}
+
+.control-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.64);
+  backdrop-filter: blur(3px);
+}
