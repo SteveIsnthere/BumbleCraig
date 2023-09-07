@@ -6,7 +6,6 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint, rankingModes} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
-import {NewPostViewComponent} from "../new-post-view/new-post-view.component";
 
 @Component({
   selector: 'app-post-section-view',
@@ -24,7 +23,7 @@ export class PostSectionViewComponent implements OnInit {
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
     this.main.reloadEvent.subscribe(() => {
-      if (this.canShowReloadButton){
+      if (this.canShowReloadButton) {
         this.showReloadButton = true;
       }
     })
@@ -77,13 +76,6 @@ export class PostSectionViewComponent implements OnInit {
   saveSettingsToLocalStorage() {
     localStorage.setItem('rankingMode', this.selectedRankingMode);
     localStorage.setItem('genre', this.genreSelected);
-  }
-
-  openNewPostView() {
-    let dialogRef = this.dialog.open(NewPostViewComponent);
-    dialogRef.afterClosed().subscribe(() => {
-      this.ngOnInit();
-    });
   }
 
   protected readonly rankingModes = rankingModes;

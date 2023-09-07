@@ -1,8 +1,9 @@
 mat-card {
   border-radius: 25px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.29);
-  margin: 10px;
-  border: 2px grey solid;
+  margin: 7px;
+  /*background-color: transparent;*/
+  border: 4px grey solid;
 
   /*background: linear-gradient(-45deg, rgba(238, 119, 82, 0.5), rgba(231, 60, 126, 0.5), rgba(35, 166, 213, 0.5),*/
   /*rgba(35, 213, 171, 0.5));*/

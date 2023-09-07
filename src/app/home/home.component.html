@@ -1,23 +1,15 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
-  <!--  <button [routerLink]="['/chat']" color="warn" mat-mini-fab class="top-floating-buttons" style="left: 0"-->
-  <!--          [ngStyle]="{'border': (haveUnreadMsg) ? '3px solid #9932CC' : 'none'}">-->
-  <!--    <mat-icon>chat</mat-icon>-->
-  <!--  </button>-->
-
   <img src="assets/logo.png" alt="" class="top-floating-buttons"
        style="left: 0; background-color: #000000; border-radius: 100px;cursor: pointer;
         width: 40px; height: 40px" (click)="reloadPage()" id="logo">
 
   <button mat-mini-fab class="top-floating-buttons"
-          color="warn"
+          color="accent"
           style="right: 0;width: 40px; height: 40px;"
           (click)="openNotificationView()"
           matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="primary"
           [matBadgeHidden]="notificationCount() == 0">
     <mat-icon>notifications</mat-icon>
   </button>
-  <!--  <div style="position: fixed;top: 0;margin: 20px;right:0;width: 40px;clip-path: circle(20px at center); z-index: 2">-->
-  <!--    <app-simple-figure [figureID]=selfFigID *ngIf="selfFigID != 0"></app-simple-figure>-->
-  <!--  </div>-->
   <app-post-section-view></app-post-section-view>
 </main>

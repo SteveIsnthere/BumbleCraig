@@ -4,13 +4,13 @@
 
 <main>
   <div id="posts-section-top-bar" (click)="openBottomSheet()">
-    <mat-chip-option selectable="false"
-                     style="background-color: rgba(128,128,128,0.21); backdrop-filter: blur(8px) contrast(0.9);-webkit-backdrop-filter: blur(6px);">{{selectedRankingMode}}
-      | {{genreSelected}}</mat-chip-option>
+    <button mat-flat-button id="top-option-bar">{{selectedRankingMode}}
+      | {{genreSelected}}
+    </button>
   </div>
 
   <div id="posts-section-wrapper">
-    <div style="height: 65px"></div>
+    <div style="height: 58px"></div>
     <div class="posts-section" *ngIf="!loading; else loadingPlaceHolder">
       <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
     </div>
@@ -25,13 +25,8 @@
       <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
         genres</p>
     </div>
-    <div style="height: 65px"></div>
+    <div style="height: 50px"></div>
   </div>
-
-  <!--  <button mat-mini-fab color="primary" (click)="openNewPostView()"-->
-  <!--          style="position: fixed; bottom: 25px; right: 20px; z-index: 10;" cdkDrag>-->
-  <!--    <mat-icon>add</mat-icon>-->
-  <!--  </button>-->
 
   <div id="refresh-btn">
     <button mat-mini-fab color="warn" (click)="ngOnInit()" *ngIf="showReloadButton">

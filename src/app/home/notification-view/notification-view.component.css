@@ -1,5 +1,7 @@
 main{
   color: antiquewhite;
+  overflow: scroll;
+  max-height: 80dvh;
 }
 
 .title{
