@@ -6,20 +6,18 @@
 
 
   <mat-card-content (click)="openPostFullView()">
-    <mat-card-subtitle id="post-details-row">
-      <span>{{post!.genre}}</span>
-      <span>{{post!.time_since_posted}}</span>
-    </mat-card-subtitle>
-    <span><mat-divider></mat-divider></span>
-    <div style="height: 2px"></div>
-    <p *ngFor="let content of postPreviewContents">
-      <ng-container *ngIf="content.file_share_id != 0; else textMsg">
-        <app-file-share [fileShareID]=content.file_share_id [interactive]="false" class="file-content"></app-file-share>
-      </ng-container>
-      <ng-template #textMsg>
-        <span class="text-content">{{content.content}}</span>
-      </ng-template>
+<!--    <mat-card-subtitle id="post-details-row">-->
+<!--      <span>{{post!.genre}}</span>-->
+<!--      <span>{{post!.time_since_posted}}</span>-->
+<!--    </mat-card-subtitle>-->
+<!--    <span><mat-divider></mat-divider></span>-->
+<!--    <div style="height: 2px"></div>-->
+
+    <p *ngFor="let content of textAttachments">
+      <span class="text-content">{{content.content}}</span>
     </p>
+
+    <app-post-files-viewer [files]="fileAttachments" *ngIf="fileAttachments.length > 0"></app-post-files-viewer>
   </mat-card-content>
 
 

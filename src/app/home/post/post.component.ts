@@ -5,7 +5,6 @@ import {apiEndPoint} from "../../env";
 import {Message} from "../../chat/group/group-chat-view/Message";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
-import {Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 
@@ -17,9 +16,12 @@ import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
   post: Post | null = null;
-  postPreviewContents: Message[] = [];
+  textAttachments: Message[] = [];
+  fileAttachments: Message[] = [];
+  textOnlyMode = false;
 
-  constructor(public http: HttpClient, private router: Router, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
+
+  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -41,34 +43,36 @@ export class PostComponent implements OnInit {
     for (let i = 0; i < this.post!.content.length; i++) {
       if (this.post!.content[i].file_share_id != 0) {
         fileAttachmentIndexes.push(i);
+        this.fileAttachments.push(this.post!.content[i]);
       } else {
         textAttachmentIndexes.push(i);
+        this.textAttachments.push(this.post!.content[i]);
       }
     }
 
-    if (fileAttachmentIndexes.length == 0) {
-      // no file attachment
-      this.postPreviewContents = this.post!.content.slice(0, 2);
-    } else if (textAttachmentIndexes.length == 0) {
-      // no text attachment but file attachments exist
-      this.postPreviewContents.push(this.post!.content[0]);
-    } else {
-      // both file and text attachments exist
-      let firstFileAttachmentIndex = fileAttachmentIndexes[0];
-      let firstTextAttachmentIndex = textAttachmentIndexes[0];
-      if (firstFileAttachmentIndex < firstTextAttachmentIndex) {
-        // file attachment first
-        this.postPreviewContents.push(this.post!.content[firstFileAttachmentIndex]);
-        this.postPreviewContents.push(this.post!.content[firstTextAttachmentIndex]);
-      } else {
-        // text attachment first
-        this.postPreviewContents.push(this.post!.content[firstTextAttachmentIndex]);
-        this.postPreviewContents.push(this.post!.content[firstFileAttachmentIndex]);
-      }
+    if (this.textAttachments.length > 2) {
+      this.textAttachments = this.textAttachments.slice(0, 2);
     }
 
-    // if (numberOfAttachments > 2) {
-    //   this.postPreviewContents.push(dummyMessage())
+    // if (fileAttachmentIndexes.length == 0) {
+    //   // no file attachment
+    //   this.textAttachments = this.post!.content.slice(0, 2);
+    // } else if (textAttachmentIndexes.length == 0) {
+    //   // no text attachment but file attachments exist
+    //   this.textAttachments.push(this.post!.content[0]);
+    // } else {
+    //   // both file and text attachments exist
+    //   let firstFileAttachmentIndex = fileAttachmentIndexes[0];
+    //   let firstTextAttachmentIndex = textAttachmentIndexes[0];
+    //   if (firstFileAttachmentIndex < firstTextAttachmentIndex) {
+    //     // file attachment first
+    //     this.textAttachments.push(this.post!.content[firstFileAttachmentIndex]);
+    //     this.textAttachments.push(this.post!.content[firstTextAttachmentIndex]);
+    //   } else {
+    //     // text attachment first
+    //     this.textAttachments.push(this.post!.content[firstTextAttachmentIndex]);
+    //     this.textAttachments.push(this.post!.content[firstFileAttachmentIndex]);
+    //   }
     // }
   }
 

@@ -66,6 +66,7 @@ import {BackBtnComponent} from './home/back-btn/back-btn.component';
 import { PostLoadingPlaceholderComponent } from './home/post/post-loading-placeholder/post-loading-placeholder.component';
 import { SignupLoadingViewComponent } from './home/login-view/signup-loading-view/signup-loading-view.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { PostFilesViewerComponent } from './home/post/post-files-viewer/post-files-viewer.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -118,6 +119,7 @@ const appRoutes: Routes = [
     BackBtnComponent,
     PostLoadingPlaceholderComponent,
     SignupLoadingViewComponent,
+    PostFilesViewerComponent,
   ],
     imports: [
         BrowserModule,
