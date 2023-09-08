@@ -3,11 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {Post} from "../Post";
 import {apiEndPoint} from "../../../env";
-import {PostCommentsViewComponent} from "../post-comments-view/post-comments-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MainService} from "../../../services/main.service";
 
 @Component({
   selector: 'app-post-full-view',
@@ -20,7 +20,7 @@ export class PostFullViewComponent implements OnInit {
   commentUploadRoute: string = '/post/create_comment/';
   perceptionStatus: number = 3; // 0 - none, 1 - like, 2 - dislike
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Post, public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<PostFullViewComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Post, public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<PostFullViewComponent>) {
     this.post = data;
     this.postID = data.post_id;
   }
@@ -36,18 +36,15 @@ export class PostFullViewComponent implements OnInit {
     })
   }
 
-  openCommentSection(): void {
-    this._bottomSheet.open(PostCommentsViewComponent, {
-      data: this.postID,
-    });
-  }
-
   deletePost(): void {
     this.http.get(apiEndPoint + '/post/delete_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {
       this.dialogRef.close();
+      this.main.reloadPosts();
       this.snackBar.open('Post deleted', 'OK', {
         duration: 2000,
       })
+      //refresh page
+      // window.location.reload();
     })
   }
 

@@ -30,6 +30,7 @@ main {
 #posts-section-wrapper {
   height: 100%;
   overflow: auto;
+  margin: 0 5px;
 }
 
 .posts-section {

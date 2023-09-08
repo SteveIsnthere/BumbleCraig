@@ -22,10 +22,13 @@ export class PostSectionViewComponent implements OnInit {
   showReloadButton = false;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
-    this.main.reloadEvent.subscribe(() => {
+    this.main.appReopenEvent.subscribe(() => {
       if (this.canShowReloadButton) {
         this.showReloadButton = true;
       }
+    })
+    this.main.postReloadEvent.subscribe(() => {
+      this.ngOnInit();
     })
   }
 

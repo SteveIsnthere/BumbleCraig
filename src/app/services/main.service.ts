@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {apiEndPoint} from "../env";
 import {StatesService} from "./states.service";
+
 export interface PostLikes {
   post_id: string
   number_of_likes: number
@@ -25,19 +26,24 @@ export interface Notification {
 @Injectable({
   providedIn: 'root'
 })
-export class MainService implements OnDestroy{
-  notifications: Notification|null = null;
+export class MainService implements OnDestroy {
+  notifications: Notification | null = null;
   fetchNotificationsInterval: any = null;
 
-  @Output() reloadEvent = new EventEmitter<string>()
+  @Output() appReopenEvent = new EventEmitter<string>()
+  @Output() postReloadEvent = new EventEmitter<string>()
 
   constructor(public http: HttpClient, public auth: AuthService, public states: StatesService) {
     this.setupFetchNotificationsInterval()
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === "visible") {
-        this.reloadEvent.emit("app-reopened")
+        this.appReopenEvent.emit("app-reopened")
       }
     })
+  }
+
+  reloadPosts(): void {
+    this.postReloadEvent.emit("reload-posts")
   }
 
   setupFetchNotificationsInterval(): void {

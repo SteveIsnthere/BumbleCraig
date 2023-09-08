@@ -2,7 +2,8 @@ mat-card {
   border-radius: 25px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8) inset,
   -2px -2px 6px rgba(255, 255, 255, 0.3) inset;
-  margin: 5px 10px;
+  margin: 5px;
+  min-height: 150px;
 }
 
 .text-content {
@@ -47,8 +48,7 @@ mat-card-actions {
 
 @media only screen and (min-width: 850px) {
   mat-card-content {
-    height: 300px;
+    max-height: 400px;
     overflow: hidden;
   }
-
 }

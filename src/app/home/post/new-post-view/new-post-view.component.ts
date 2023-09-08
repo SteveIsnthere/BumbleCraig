@@ -11,6 +11,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
+import {MainService} from "../../../services/main.service";
 
 @Component({
   selector: 'app-new-post-view',
@@ -34,7 +35,7 @@ export class NewPostViewComponent implements OnInit {
     firstCtrl: ['', Validators.required],
   });
 
-  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -90,6 +91,7 @@ export class NewPostViewComponent implements OnInit {
     }
     this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((res: any) => {
       console.log(res);
+      this.main.reloadPosts();
       this._snackBar.open('Your Post is live!!', 'yay', {
         verticalPosition: 'top',
         duration: 2000,

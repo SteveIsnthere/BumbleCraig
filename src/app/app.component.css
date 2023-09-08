@@ -1,9 +1,9 @@
-main{
+main {
   height: 100dvh;
   overflow-x: hidden;
 }
 
-.top-floating-buttons{
+.top-floating-buttons {
   display: flex;
   position: fixed;
   top: 0;
@@ -11,7 +11,7 @@ main{
   z-index: 10;
 }
 
-#bottom-nav>.btn{
+#bottom-nav > .btn {
   padding: 0 14px;
   cursor: pointer;
   height: 40px;
@@ -21,39 +21,73 @@ main{
 }
 
 
-.nav-icon{
+.nav-icon {
   scale: 1.3;
   vertical-align: middle;
 }
 
-.active-nav-icon{
+.active-nav-icon {
   color: white;
 }
 
-.inactive-nav-icon{
+.inactive-nav-icon {
   color: black;
 }
 
-.unreadMsg{
+.unreadMsg {
   color: #f55246;
 }
 
-#bottom-nav{
-  position: fixed;
+#bottom-nav {
+  position: absolute;
   bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
   padding: 4px 0;
   z-index: 10;
   backdrop-filter: blur(8px);
-  background-color: rgb(168, 168, 168,0.75);
+  /*background-color: rgba(110, 150, 136, 0.7);*/
   border-radius: 100px;
   display: flex;
-  animation: slideIn 1.5s ease forwards;
+  animation: slideIn 1.5s ease forwards, rainbow 8s forwards infinite;
+  background: linear-gradient(
+    45deg,
+    rgba(238, 119, 82, 0.3), rgba(231, 60, 126, 0.3), rgba(35, 166, 213, 0.3), rgba(35, 213, 171, 0.3)
+  );
+  background-size: 200% 200%;
 }
 
 @keyframes slideIn {
   0% {
     transform: translate(-50%, 150%); /* Start position */
+  }
+}
+
+
+#rainbow-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: -1;
+  animation: rainbow 8s forwards infinite;
+  background: linear-gradient(
+    45deg,
+    rgba(238, 119, 82, 0.15), rgba(231, 60, 126, 0.15), rgba(35, 166, 213, 0.15), rgba(35, 213, 171, 0.15)
+  );
+  background-size: 200% 200%;
+  mask: linear-gradient(white, transparent);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
   }
 }

@@ -1,6 +1,4 @@
 <main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
-  <app-back-btn *ngIf="userID != auth.selfUserID"></app-back-btn>
-
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
   </div>
@@ -81,6 +79,8 @@
   </ng-container>
 
 </main>
+
+<app-back-btn *ngIf="userID != auth.selfUserID"></app-back-btn>
 <ng-template #loadingBar>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
