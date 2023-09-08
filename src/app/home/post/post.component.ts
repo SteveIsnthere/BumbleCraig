@@ -7,6 +7,9 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
+import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-post',
@@ -16,11 +19,12 @@ import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
   post: Post | null = null;
+  commentUploadRoute: string = '/post/create_comment/';
   textAttachments: Message[] = [];
   fileAttachments: Message[] = [];
 
 
-  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
+  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public auth: AuthService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -29,6 +33,8 @@ export class PostComponent implements OnInit {
       // console.log(this.post.rating)
       this.buildPostPreviewContent()
     })
+    this.commentUploadRoute += this.postID;
+    this.commentUploadRoute += '/' + this.auth.selfUserID;
   }
 
   buildPostPreviewContent(): void {
@@ -59,5 +65,26 @@ export class PostComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(PostFullViewComponent, dialogConfig);
+  }
+
+  writeComment(): void {
+    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
+    bottomSheetRef.afterDismissed().subscribe(textContent => {
+      if (typeof textContent != 'string') {
+        console.log('Text content is not a string')
+        return
+      }
+      if (textContent.length == 0) {
+        console.log('Text content is empty')
+        return
+      }
+      this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
+        .subscribe(() => {
+          this.post!.number_of_comments++;
+          this.snackBar.open('Your comment is live', 'OK', {
+            duration: 2000,
+          })
+        })
+    });
   }
 }

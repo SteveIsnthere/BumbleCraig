@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import {apiEndPoint, rankingModes} from "../../../env";
+import {apiEndPoint} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
 
@@ -77,6 +77,4 @@ export class PostSectionViewComponent implements OnInit {
     localStorage.setItem('rankingMode', this.selectedRankingMode);
     localStorage.setItem('genre', this.genreSelected);
   }
-
-  protected readonly rankingModes = rankingModes;
 }

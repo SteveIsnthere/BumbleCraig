@@ -6,13 +6,13 @@
 
 
   <mat-card-content (click)="openPostFullView()">
-<!--    <mat-card-subtitle id="post-details-row">-->
-<!--      <span>{{post!.genre}}</span>-->
-<!--      <span>{{post!.time_since_posted}}</span>-->
-<!--    </mat-card-subtitle>-->
+    <!--    <mat-card-subtitle id="post-details-row">-->
+    <!--      <span>{{post!.genre}}</span>-->
+    <!--      <span>{{post!.time_since_posted}}</span>-->
+    <!--    </mat-card-subtitle>-->
     <ng-container *ngIf="textAttachments.length > 0">
       <span><mat-divider></mat-divider></span>
-      <div style="height: 2px"></div>
+      <div style="height: 5px"></div>
     </ng-container>
 
 
@@ -20,18 +20,34 @@
       <span class="text-content">{{content.content}}</span>
     </p>
 
-    <app-post-files-viewer [files]="fileAttachments" *ngIf="fileAttachments.length > 0"></app-post-files-viewer>
+    <div style="border-radius: 10px; overflow: hidden">
+      <app-post-files-viewer [files]="fileAttachments" *ngIf="fileAttachments.length > 0"></app-post-files-viewer>
+    </div>
   </mat-card-content>
 
 
-<!--  <mat-card-actions>-->
-<!--    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"-->
-<!--                             style="flex: 1"></app-post-perception-bar>-->
-<!--    <div id="comment-section" (click)="openCommentSection()">-->
-<!--      <span style="margin-right: 3px">{{post?.number_of_comments}}</span>-->
-<!--      <mat-icon style="vertical-align: middle;">comment</mat-icon>-->
-<!--    </div>-->
-<!--  </mat-card-actions>-->
+  <!--  <mat-card-actions>-->
+  <!--    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"-->
+  <!--                             style="flex: 1"></app-post-perception-bar>-->
+  <!--    <div id="comment-section" (click)="openCommentSection()">-->
+  <!--      <span style="margin-right: 3px">{{post?.number_of_comments}}</span>-->
+  <!--      <mat-icon style="vertical-align: middle;">comment</mat-icon>-->
+  <!--    </div>-->
+  <!--  </mat-card-actions>-->
+
+  <mat-card-actions>
+    <button mat-stroked-button color="accent" (click)="openCommentSection()" style="border-radius: 100px">
+      <!--        <mat-icon>comment</mat-icon>-->
+      <span>{{ post?.number_of_comments }} {{ post?.number_of_comments! > 1 ? 'Comments' : 'Comment' }}</span>
+    </button>
+
+    <div style="flex: 1"></div>
+
+    <button mat-icon-button color="accent" (click)="writeComment()">
+      <mat-icon>rate_review</mat-icon>
+      <!--        Comment-->
+    </button>
+  </mat-card-actions>
 </mat-card>
 
 <ng-template #loadingBar>

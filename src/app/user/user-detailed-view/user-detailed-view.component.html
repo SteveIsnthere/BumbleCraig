@@ -69,14 +69,17 @@
     </button>
   </div>
 
-  <ng-container *ngIf="postIDs.length == 0">
-    <mat-icon style="color: antiquewhite">sentiment_very_dissatisfied</mat-icon>
-    <p style="color: antiquewhite">This user hasn't made any post yet</p>
+  <ng-container *ngIf="postsLoaded; else loadingBar">
+    <ng-container *ngIf="postIDs.length == 0">
+      <mat-icon style="color: antiquewhite">sentiment_very_dissatisfied</mat-icon>
+      <p style="color: antiquewhite">This user hasn't made any post yet</p>
+    </ng-container>
+
+    <div id="posts-section">
+      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+    </div>
   </ng-container>
 
-  <div id="posts-section">
-    <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
-  </div>
 </main>
 <ng-template #loadingBar>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>

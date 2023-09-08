@@ -54,6 +54,7 @@ export class AuthService {
       // const dateNow = new Date();
       // dateNow.setDate(dateNow.getDate() + 7);
       // this.cookieService.set('sessionPassword', this.authData.sessionPassword, dateNow);
+      this.cookieService.delete('sessionPassword')
       this.cookieService.set('sessionPassword', this.authData.sessionPassword);
       // console.log(this.selfUserID);
       // console.log(this.authData.sessionPassword);

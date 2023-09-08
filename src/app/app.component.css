@@ -46,11 +46,10 @@ main{
   padding: 4px 0;
   z-index: 10;
   backdrop-filter: blur(8px);
-  background-color: rgba(211, 211, 211, 0.3);
+  background-color: rgb(168, 168, 168,0.75);
   border-radius: 100px;
   display: flex;
   animation: slideIn 1.5s ease forwards;
-  border: black 2px dashed;
 }
 
 @keyframes slideIn {

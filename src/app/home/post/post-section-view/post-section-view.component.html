@@ -3,21 +3,20 @@
 <!--</p>-->
 
 <main>
-  <div id="posts-section-top-bar" (click)="openBottomSheet()">
-    <button mat-flat-button id="top-option-bar">{{selectedRankingMode}}
-      | {{genreSelected}}
-    </button>
-  </div>
-
   <div id="posts-section-wrapper">
-    <div style="height: 58px"></div>
+    <div style="display: flex; justify-content: center">
+      <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
+        {{selectedRankingMode}} | {{genreSelected}}
+      </button>
+    </div>
     <div class="posts-section" *ngIf="!loading; else loadingPlaceHolder">
       <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
     </div>
 
     <ng-template #loadingPlaceHolder>
       <div class="posts-section">
-        <app-post-loading-placeholder class="post" *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
+        <app-post-loading-placeholder class="post"
+                                      *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
       </div>
     </ng-template>
 

@@ -1,26 +1,8 @@
 mat-card {
   border-radius: 25px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.29);
-  margin: 7px;
-  /*background-color: transparent;*/
-  border: 4px grey solid;
-
-  /*background: linear-gradient(-45deg, rgba(238, 119, 82, 0.5), rgba(231, 60, 126, 0.5), rgba(35, 166, 213, 0.5),*/
-  /*rgba(35, 213, 171, 0.5));*/
-  /*background-size: 400% 400%;*/
-  /*animation: gradient 15s ease infinite;*/
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8) inset,
+  -2px -2px 6px rgba(255, 255, 255, 0.3) inset;
+  margin: 5px 10px;
 }
 
 .text-content {
@@ -33,10 +15,6 @@ mat-card {
   -webkit-box-orient: vertical;
 }
 
-#comment-section {
-  color: wheat;
-  cursor: pointer;
-}
 
 #post-details-row {
   display: flex;
@@ -60,6 +38,7 @@ mat-card-title {
 
 
 mat-card-actions {
+  display: flex;
   justify-content: flex-end;
   gap: 10px;
   padding: 0 13px
@@ -71,4 +50,5 @@ mat-card-actions {
     height: 300px;
     overflow: hidden;
   }
+
 }
