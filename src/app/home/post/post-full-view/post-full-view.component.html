@@ -1,7 +1,6 @@
 <mat-dialog-content id="wrapper" *ngIf="post != null">
   <main>
     <span id="title">{{post.title}}</span>
-
     <div id="post-details-row">
       <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
                      style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
@@ -25,9 +24,7 @@
         </ng-template>
       </div>
     </div>
-
-
-    <app-reusable-comments-view [postID]="postID"></app-reusable-comments-view>
+    <app-reusable-comments-view [postID]="postID" style="align-self: center"></app-reusable-comments-view>
   </main>
 </mat-dialog-content>
 

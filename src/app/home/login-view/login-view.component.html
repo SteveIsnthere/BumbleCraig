@@ -1,39 +1,28 @@
 <main *ngIf="loginView != null; else loadingBar" class="startUpSlideIn" [ngClass]="{'signUpSlideOut':newUserLoading}">
-  <!--  <div id="logo" class="lightUp" cdkDrag>-->
-  <!--    <div style="width: 40px;clip-path: circle(20px at center);" *ngIf="logoFigID != 0; else loadingFig">-->
-  <!--      <app-simple-figure [figureID]="logoFigID"></app-simple-figure>-->
-  <!--    </div>-->
-  <!--    <ng-template #loadingFig>-->
-  <!--      <div style="width: 40px; height: 40px; background-color: #c2175b; border-radius: 100%;"></div>-->
-  <!--    </ng-template>-->
-
-  <!--    <span style="margin-right: 7px">Tidder</span>-->
-  <!--  </div>-->
-  <img src="assets/logo.png" alt="Tidder Logo" id="logo"
-       style="background-color: black; border-radius: 100px; width: 100px; height: 100px">
+  <img src="assets/logo.png" alt="Tidder Logo" id="logo">
 
   <ng-container *ngIf="loginView; else welcomeView">
     <form>
       <mat-chip style="margin-bottom: 20px;" *ngIf="wrongCredentials">Wrong password or username</mat-chip>
-      <mat-form-field>
+      <mat-form-field  appearance="outline">
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
 
       <button mat-flat-button (click)="login()" *ngIf="!loginLoading; else loadingWheel2" class="round-btn"
-              color="primary">Log In
+              color="warn">Log In
         <mat-icon>login</mat-icon>
       </button>
     </form>
-    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"
-            color="primary">Continue as a
-      Guest
-    </button>
+    <!--    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"-->
+    <!--            color="primary">Continue as a-->
+    <!--      Guest-->
+    <!--    </button>-->
     <ng-template #loadingWheel2>
       <div style="display: flex; justify-content: center;">
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>

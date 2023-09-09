@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {AuthDataService} from "./auth-data.service";
 import {Router} from "@angular/router";
 import {StatesService} from "./states.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   isVisitor = true;
   // loadFailed = false;
 
-  constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService) {
+  constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService, private snackBar: MatSnackBar) {
     console.log("AuthService constructor");
     if (!this.haveSessionPasswordSaved()) {
       this.switchToLoginView()
@@ -28,13 +29,14 @@ export class AuthService {
     const sessionPasswordFromCookie = this.cookieService.get('sessionPassword');
     if (sessionPasswordFromCookie) {
       this.authData.sessionPassword = sessionPasswordFromCookie;
+      this.snackBar.open("Welcome back!", "Dismiss", {duration: 3000, verticalPosition: "top"});
       return true;
     } else {
       return false;
     }
   }
 
-  logout() {
+    logout() {
     this.loggedIn = false;
     this.cookieService.delete('sessionPassword');
     this.states.loadedUp = false;
@@ -60,6 +62,7 @@ export class AuthService {
       // console.log(this.authData.sessionPassword);
       this.router.navigate(["home"]).then();
       this.states.showNavBar = true;
+      this.snackBar.open("login successful", "Dismiss", {duration: 1000, verticalPosition: "top"});
     });
   }
 }

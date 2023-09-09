@@ -16,6 +16,8 @@
     <span>{{userDescription}}</span>
   </div>
 
+  <span style="width: 90%"><mat-divider></mat-divider></span>
+
   <div style="display: flex; gap: 20px; justify-content: center" *ngIf="userID == auth.selfUserID">
     <button mat-flat-button (click)="userSetUp()" *ngIf="auth.isVisitor"
             style="border-radius: 100px" color="warn">
@@ -35,8 +37,6 @@
       <span>Logout</span>
     </button>
   </div>
-
-  <span style="width: 90%"><mat-divider></mat-divider></span>
 
   <div id="actions" *ngIf="auth.selfUserID != userID">
     <button mat-flat-button color="primary" style="border-radius: 100px"

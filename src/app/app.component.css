@@ -74,7 +74,7 @@ main {
   animation: rainbow 8s forwards infinite;
   background: linear-gradient(
     45deg,
-    rgba(238, 119, 82, 0.15), rgba(231, 60, 126, 0.15), rgba(35, 166, 213, 0.15), rgba(35, 213, 171, 0.15)
+    rgba(238, 119, 82, 0.2), rgba(231, 60, 126, 0.2), rgba(35, 166, 213, 0.2), rgba(35, 213, 171, 0.2)
   );
   background-size: 200% 200%;
   mask: linear-gradient(white, transparent);
