@@ -5,6 +5,7 @@ import {AuthService} from "../services/auth.service";
 import {TextEditViewComponent} from "./text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {InviteViewComponent} from "./group/invite-view/invite-view.component";
+import {MainService} from "../services/main.service";
 
 @Component({
   selector: 'app-chat',
@@ -18,7 +19,7 @@ export class ChatComponent implements OnInit {
   editMode: boolean = false;
   loadingComplete: boolean = false;
 
-  constructor(public http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
@@ -27,6 +28,7 @@ export class ChatComponent implements OnInit {
       this.loadingComplete = true;
       this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups_with_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
         this.groupWithUnreadIDs = data;
+        this.main.fetchNotifications()
       })
     })
   }

@@ -69,8 +69,10 @@
 
   <ng-container *ngIf="postsLoaded; else loadingBar">
     <ng-container *ngIf="postIDs.length == 0">
-      <mat-icon style="color: antiquewhite">sentiment_very_dissatisfied</mat-icon>
-      <p style="color: antiquewhite">This user hasn't made any post yet</p>
+      <div style="flex: 1"></div>
+      <mat-icon color="primary">close</mat-icon>
+      <p style="color: white">This user hasn't made any post yet</p>
+      <div style="flex: 1"></div>
     </ng-container>
 
     <div id="posts-section">

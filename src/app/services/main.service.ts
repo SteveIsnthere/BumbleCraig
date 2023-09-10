@@ -38,6 +38,7 @@ export class MainService implements OnDestroy {
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === "visible") {
         this.appReopenEvent.emit("app-reopened")
+        this.fetchNotifications()
       }
     })
   }
