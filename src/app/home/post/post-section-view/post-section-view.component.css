@@ -39,6 +39,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 0 20px;
+  scroll-behavior: smooth;
 }
 
 .post {

@@ -23,7 +23,7 @@ main {
 #name {
   color: white;
   font-size: 23px;
-  font-weight: lighter;
+  font-weight: bold;
 
   border-radius: 25px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8) inset,

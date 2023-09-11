@@ -20,6 +20,8 @@ export class PostSectionViewComponent implements OnInit {
   genreSelected = "All-Genres";
   canShowReloadButton = false;
   showReloadButton = false;
+  firstLoad = true;
+  showPostSection = true;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
     this.main.appReopenEvent.subscribe(() => {
@@ -44,6 +46,15 @@ export class PostSectionViewComponent implements OnInit {
       setTimeout(() => {
         this.canShowReloadButton = true;
       }, 15000);
+
+      if (this.firstLoad) {
+        this.firstLoad = false;
+      } else {
+        this.showPostSection = false;
+        setTimeout(() => {
+          this.showPostSection = true;
+        }, 10);
+      }
     })
   }
 
