@@ -94,7 +94,8 @@ main{
 .file-content {
   max-width: min(60%, 300px);
   font-weight: lighter;
-  max-height: 70dvh;
+  /*max-height: 70dvh;*/
+  /*overflow-y: hidden;*/
 }
 
 #action-section {

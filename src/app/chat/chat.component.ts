@@ -18,14 +18,19 @@ export class ChatComponent implements OnInit {
   groupWithUnreadIDs: number[] = [];
   editMode: boolean = false;
   loadingComplete: boolean = false;
+  cacheKey: string = 'chat-groups-cache';
 
   constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
+    this.loadFromLocalStorage()
     this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups/' + this.auth.selfUserID).subscribe((data) => {
-      this.groupIDs = data;
-      this.loadingComplete = true;
+      if (data != this.groupIDs) {
+        this.groupIDs = data;
+        this.loadingComplete = true;
+        this.saveToLocalStorage()
+      }
       this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups_with_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
         this.groupWithUnreadIDs = data;
         this.main.fetchNotifications()
@@ -63,5 +68,17 @@ export class ChatComponent implements OnInit {
     this.http.get(apiEndPoint + '/group/leave/' + groupID + '/' + this.auth.selfUserID).subscribe(() => {
       this.ngOnInit();
     })
+  }
+
+  private loadFromLocalStorage(): void {
+    const cachedData = localStorage.getItem(this.cacheKey);
+    if (cachedData) {
+      this.groupIDs = JSON.parse(cachedData);
+      this.loadingComplete = true;
+    }
+}
+
+  private saveToLocalStorage(): void {
+    localStorage.setItem(this.cacheKey, JSON.stringify(this.groupIDs));
   }
 }
