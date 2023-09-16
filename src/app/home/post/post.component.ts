@@ -10,6 +10,7 @@ import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../services/auth.service";
+import {PostCachingService} from "../../services/post-caching.service";
 
 @Component({
   selector: 'app-post',
@@ -24,20 +25,29 @@ export class PostComponent implements OnInit {
   fileAttachments: Message[] = [];
 
 
-  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public auth: AuthService, private snackBar: MatSnackBar) {
+  constructor(public http: HttpClient, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public auth: AuthService, private snackBar: MatSnackBar, private cache: PostCachingService) {
   }
 
   ngOnInit(): void {
-    this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
-      this.post = data;
-      // console.log(this.post.rating)
+    let cachedData = this.cache.get(this.postID);
+    if (cachedData) {
+      this.post = cachedData;
       this.buildPostPreviewContent()
+    }
+    this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
+      if (data != this.post) {
+        this.post = data;
+        this.cache.set(data);
+        this.buildPostPreviewContent()
+      }
     })
     this.commentUploadRoute += this.postID;
     this.commentUploadRoute += '/' + this.auth.selfUserID;
   }
 
   buildPostPreviewContent(): void {
+    this.textAttachments = [];
+    this.fileAttachments = [];
     for (let i = 0; i < this.post!.content.length; i++) {
       if (this.post!.content[i].file_share_id != 0) {
         this.fileAttachments.push(this.post!.content[i]);

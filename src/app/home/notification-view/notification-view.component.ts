@@ -26,10 +26,10 @@ export class NotificationViewComponent implements OnInit, OnDestroy {
     this._snackBar.open(message, action, {duration: 4000, verticalPosition: 'top'});
   }
 
-  clearSysMessages(): void {
-    this.http.get(apiEndPoint + '/notification/clear_system_message_notification/' + this.auth.selfUserID).subscribe(() => {
+  clear(): void {
+    this.http.get(apiEndPoint + '/notification/clear_all_notifications/' + this.auth.selfUserID).subscribe(() => {
       this.main.fetchNotifications()
-      this.openSnackBar('System messages cleared', 'Dismiss')
+      this.openSnackBar('All notifications cleared', 'OK')
     })
   }
 

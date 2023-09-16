@@ -22,6 +22,7 @@ export class PostSectionViewComponent implements OnInit {
   showReloadButton = false;
   firstLoad = true;
   showPostSection = true;
+  cacheKey: string = 'post-ids-cache';
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
     this.main.appReopenEvent.subscribe(() => {
@@ -39,9 +40,13 @@ export class PostSectionViewComponent implements OnInit {
     this.canShowReloadButton = false;
     this.loading = true;
     this.loadSettingsFromLocalStorage();
+    this.loadPostIDsFromLocalStorage();
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
-      this.loading = false;
-      this.postIDs = data;
+      if (data != this.postIDs) {
+        this.loading = false;
+        this.postIDs = data;
+        this.savePostIDsToLocalStorage();
+      }
       this.empty = this.postIDs.length == 0;
       setTimeout(() => {
         this.canShowReloadButton = true;
@@ -90,5 +95,17 @@ export class PostSectionViewComponent implements OnInit {
   saveSettingsToLocalStorage() {
     localStorage.setItem('rankingMode', this.selectedRankingMode);
     localStorage.setItem('genre', this.genreSelected);
+  }
+
+  private loadPostIDsFromLocalStorage(): void {
+    const cachedData = localStorage.getItem(this.cacheKey);
+    if (cachedData) {
+      this.postIDs = JSON.parse(cachedData);
+      this.loading = false;
+    }
+  }
+
+  private savePostIDsToLocalStorage(): void {
+    localStorage.setItem(this.cacheKey, JSON.stringify(this.postIDs));
   }
 }

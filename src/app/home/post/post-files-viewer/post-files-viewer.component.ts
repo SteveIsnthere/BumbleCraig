@@ -10,6 +10,7 @@ export class PostFilesViewerComponent {
   @Input() files: Message[] = [];
   showingFileIndex = 0;
 
+
   showBackButton(): boolean {
     return this.showingFileIndex > 0;
   }
