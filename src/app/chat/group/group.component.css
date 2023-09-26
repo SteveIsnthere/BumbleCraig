@@ -5,16 +5,18 @@
   cursor: pointer;
   gap: 10px;
   max-width: 310px;
-  background-color: #4f4f4f;
+  /*background-color: #4f4f4f;*/
+  background-color: rgba(148, 148, 148, 0.25);
   border-radius: 200px;
-  padding: 8px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
+  padding: 10px;
+  /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);*/
   height: 40px;
-  border: 2px solid grey;
+  /*border: 2px solid grey;*/
 }
 
 .unread{
-  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.44);
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.54);
+  background-color: rgba(199, 199, 199, 0.5);
 }
 
 #group-name {

@@ -67,7 +67,7 @@
     </button>
   </div>
 
-  <ng-container *ngIf="postsLoaded; else loadingBar">
+  <ng-container *ngIf="postsLoaded;">
     <ng-container *ngIf="postIDs.length == 0">
       <div style="flex: 1"></div>
       <mat-icon color="primary">close</mat-icon>
