@@ -1,14 +1,14 @@
 <!--<p style="width: 100vw;" *ngIf="loading">-->
 <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 <!--</p>-->
-
+<div style="display: flex; justify-content: center; position: fixed; top: 0; width: 100%;z-index: 9;">
+  <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
+    {{selectedRankingMode}} | {{genreSelected}}
+  </button>
+</div>
 <main>
   <div id="posts-section-wrapper">
-    <div style="display: flex; justify-content: center">
-      <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
-        {{selectedRankingMode}} | {{genreSelected}}
-      </button>
-    </div>
+    <div style="height: 55px"></div>
     <div class="posts-section" *ngIf="showPostSection">
       <ng-container *ngIf="!loading; else loadingPlaceHolder">
         <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>

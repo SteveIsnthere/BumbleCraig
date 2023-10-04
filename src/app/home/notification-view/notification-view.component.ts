@@ -22,6 +22,10 @@ export class NotificationViewComponent implements OnInit, OnDestroy {
     this.main.setupFetchNotificationsInterval()
   }
 
+  showCleanAllButton(): boolean {
+    return this.main.notifications!.system_messages!.length + this.main.notifications!.post_comments!.length + this.main.notifications!.post_likes!.length > 0;
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {duration: 4000, verticalPosition: 'top'});
   }

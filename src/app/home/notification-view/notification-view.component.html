@@ -13,7 +13,7 @@
     </ng-container>
 
     <button mat-flat-button color="primary" style="border-radius: 100px; margin-bottom: 10px" (click)="clear()"
-            *ngIf="this.main.notifications?.system_messages!.length > 0">
+            *ngIf="showCleanAllButton()">
       <mat-icon>delete</mat-icon>
       Clear All
     </button>
