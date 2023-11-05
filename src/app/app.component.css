@@ -49,12 +49,7 @@ main {
   /*background-color: rgba(110, 150, 136, 0.7);*/
   border-radius: 100px;
   display: flex;
-  animation: slideIn 1.5s ease forwards, rainbow 8s forwards infinite;
-  background: linear-gradient(
-    45deg,
-    rgba(238, 119, 82, 0.3), rgba(231, 60, 126, 0.3), rgba(35, 166, 213, 0.3), rgba(35, 213, 171, 0.3)
-  );
-  background-size: 200% 200%;
+  background-color: rgba(158, 158, 158, 0.37);
 }
 
 @keyframes slideIn {
@@ -74,7 +69,7 @@ main {
   animation: rainbow 8s forwards infinite;
   background: linear-gradient(
     45deg,
-    rgba(238, 119, 82, 0.2), rgba(231, 60, 126, 0.2), rgba(35, 166, 213, 0.2), rgba(35, 213, 171, 0.2)
+    rgba(238, 119, 82, 0.15), rgba(231, 60, 126, 0.15), rgba(35, 166, 213, 0.15), rgba(35, 213, 171, 0.15)
   );
   background-size: 200%;
   mask: linear-gradient(white, transparent);

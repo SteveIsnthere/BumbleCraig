@@ -1,11 +1,12 @@
 <main>
   <mat-form-field style="flex: 1">
     <mat-label>{{prompt}}</mat-label>
-    <textarea matInput [cdkTextareaAutosize] = true (input)="changeContent($event)"></textarea>
+    <!--<textarea matInput [cdkTextareaAutosize] = true (input)="changeContent($event)"></textarea>-->
+    <textarea matInput [cdkTextareaAutosize] = true #input></textarea>
   </mat-form-field>
 
   <div style="display: flex">
     <div style="flex: 1"></div>
-    <button mat-fab (click)="upload()" color="primary"><mat-icon>done</mat-icon></button>
+    <button mat-fab (click)="upload(input)" color="primary"><mat-icon>done</mat-icon></button>
   </div>
 </main>

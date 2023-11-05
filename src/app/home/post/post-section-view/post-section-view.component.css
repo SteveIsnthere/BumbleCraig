@@ -40,13 +40,13 @@ main {
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 0 20px;
+  margin: 5px 3px 20px;
   scroll-behavior: smooth;
+  gap: 5px;
 }
 
 .post {
   width: 100%;
-  overflow: hidden;
   max-width: 550px;
 }
 

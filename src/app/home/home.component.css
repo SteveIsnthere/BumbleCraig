@@ -19,7 +19,7 @@ main {
 }
 
 .startUpSlideIn {
-  animation: slideIn 1s ease forwards;
+  animation: slideIn 0.85s ease forwards;
 }
 
 @keyframes slideIn {
@@ -37,5 +37,3 @@ main {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
   background-color: black;
 }
-
-
