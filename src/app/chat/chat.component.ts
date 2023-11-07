@@ -24,7 +24,6 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadFromLocalStorage()
     this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.groupIDs) {
         this.groupIDs = data;
@@ -36,6 +35,7 @@ export class ChatComponent implements OnInit {
         this.main.fetchNotifications()
       })
     })
+    this.loadFromLocalStorage()
   }
 
   createGroup(): void {
