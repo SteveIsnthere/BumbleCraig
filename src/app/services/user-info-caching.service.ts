@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Post} from "../home/post/Post";
+import {EssentialUserData} from "../user/UserModel";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserInfoCachingService {
-  posts: Post[] = [];
+  users: EssentialUserData[] = [];
   maxCacheSize: number = 100;
   cacheKey: string = 'users-cache';
 
@@ -19,16 +19,16 @@ export class UserInfoCachingService {
   private loadFromLocalStorage(): void {
     const cachedData = localStorage.getItem(this.cacheKey);
     if (cachedData) {
-      this.posts = JSON.parse(cachedData);
+      this.users = JSON.parse(cachedData);
     }
   }
 
   private saveToLocalStorage(): void {
-    localStorage.setItem(this.cacheKey, JSON.stringify(this.posts));
+    localStorage.setItem(this.cacheKey, JSON.stringify(this.users));
   }
 
-  get(id: number): Post | null {
-    let data = this.posts.find((item) => item.post_id == id);
+  get(id: number): EssentialUserData | null {
+    let data = this.users.find((item) => item.user_id == id);
     if (data) {
       return data;
     } else {
@@ -36,13 +36,13 @@ export class UserInfoCachingService {
     }
   }
 
-  set(post: Post): void {
-    let id = post.post_id;
-    let index = this.posts.findIndex((item) => item.post_id == id);
+  set(user: EssentialUserData): void {
+    let id = user.user_id;
+    let index = this.users.findIndex((item) => item.user_id == id);
     if (index == -1) {
-      this.posts.push(post);
-      if (this.posts.length > this.maxCacheSize) {
-        this.posts.shift();
+      this.users.push(user);
+      if (this.users.length > this.maxCacheSize) {
+        this.users.shift();
       }
     }
   }

@@ -10,6 +10,7 @@ import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.co
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {UserSetUpComponent} from "../user-set-up/user-set-up.component";
 import {MainService} from "../../services/main.service";
+import {UserInfoCachingService} from "../../services/user-info-caching.service";
 
 @Component({
   selector: 'app-user-detailed-view',
@@ -25,8 +26,8 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   xp = 0;
   postIDs: number[] = [];
 
-  constructor(http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private main: MainService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
-    super(http);
+  constructor(http: HttpClient, cache: UserInfoCachingService, public route: ActivatedRoute, public auth: AuthService, private main: MainService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
+    super(http, cache);
   }
 
   override ngOnInit(): void {

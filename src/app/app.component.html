@@ -31,13 +31,12 @@
 
     <div class="btn" routerLink="/chat">
       <mat-icon class="nav-icon"
-                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']"
-                style="scale: 1.2">
+                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">
         chat
       </mat-icon>
     </div>
 
-    <div class="btn" style="padding: 0 8px">
+    <div class="btn" style="padding: 0 10px">
       <button mat-mini-fab (click)="openNewPostView()" color="primary">
         <mat-icon>add</mat-icon>
       </button>

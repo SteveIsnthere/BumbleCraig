@@ -7,6 +7,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FigureEditViewComponent} from "../../simple-figure/figure-edit-view/figure-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {EssentialUserData} from "../UserModel";
+import {UserInfoCachingService} from "../../services/user-info-caching.service";
 
 @Component({
   selector: 'app-user-edit-view',
@@ -25,8 +26,8 @@ export class UserEditViewComponent extends UserComponent implements OnInit {
   hidePassword = true;
 
 
-  constructor(http: HttpClient, public auth: AuthService, private _bottomSheet: MatBottomSheet, private _snackBar: MatSnackBar) {
-    super(http);
+  constructor(http: HttpClient, cache: UserInfoCachingService, public auth: AuthService, private _bottomSheet: MatBottomSheet, private _snackBar: MatSnackBar) {
+    super(http,cache);
     this.userID = this.auth.selfUserID;
   }
 
