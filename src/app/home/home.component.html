@@ -3,13 +3,21 @@
        style="left: 0; background-color: #000000; border-radius: 100px;cursor: pointer;
         width: 40px; height: 40px" (click)="reloadPage()" id="logo">
 
+  <!--  <button mat-mini-fab class="top-floating-buttons"-->
+  <!--          color="accent"-->
+  <!--          style="right: 0;width: 40px; height: 40px;"-->
+  <!--          (click)="openNotificationView()"-->
+  <!--          matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="warn"-->
+  <!--          [matBadgeHidden]="notificationCount() == 0">-->
+  <!--    <mat-icon>notifications</mat-icon>-->
+  <!--  </button>-->
+
   <button mat-mini-fab class="top-floating-buttons"
-          color="accent"
-          style="right: 0;width: 40px; height: 40px;"
-          (click)="openNotificationView()"
-          matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="warn"
-          [matBadgeHidden]="notificationCount() == 0">
-    <mat-icon>notifications</mat-icon>
+          color="warn"
+          style="right: 0;width: 40px; height: 40px;font-weight: bolder; font-size: 20px;"
+          (click)="openNotificationView()">
+    {{notificationCount()}}
   </button>
+
   <app-post-section-view></app-post-section-view>
 </main>

@@ -97,6 +97,11 @@ export class PostSectionViewComponent implements OnInit {
     localStorage.setItem('genre', this.genreSelected);
   }
 
+  refresh() {
+    // reload the site
+    window.location.reload();
+  }
+
   private loadPostIDsFromLocalStorage(): void {
     const cachedData = localStorage.getItem(this.cacheKey);
     if (cachedData) {

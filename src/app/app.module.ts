@@ -67,7 +67,9 @@ import {PostLoadingPlaceholderComponent} from './home/post/post-loading-placehol
 import {SignupLoadingViewComponent} from './home/login-view/signup-loading-view/signup-loading-view.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {PostFilesViewerComponent} from './home/post/post-files-viewer/post-files-viewer.component';
-import { ReusableCommentsViewComponent } from './home/post/post-comments-view/reusable-comments-view/reusable-comments-view.component';
+import {
+  ReusableCommentsViewComponent
+} from './home/post/post-comments-view/reusable-comments-view/reusable-comments-view.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
