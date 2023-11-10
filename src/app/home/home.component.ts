@@ -3,6 +3,7 @@ import {MainService} from "../services/main.service";
 import {NotificationViewComponent} from "./notification-view/notification-view.component";
 import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
+import {AskTidderComponent} from "./ask-tidder/ask-tidder.component";
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,10 @@ export class HomeComponent {
 
   openNotificationView() {
     this.dialog.open(NotificationViewComponent);
+  }
+
+  openAskTidder() {
+    this.dialog.open(AskTidderComponent);
   }
 
   notificationCount() {

@@ -12,9 +12,6 @@ export class GroupBasicInfoCachingService {
 
   constructor() {
     this.loadFromLocalStorage();
-    window.addEventListener('beforeunload', () => {
-      this.saveToLocalStorage();
-    });
   }
 
   private loadFromLocalStorage(): void {
@@ -45,8 +42,12 @@ export class GroupBasicInfoCachingService {
       if (this.groupEssentialData.length > this.maxCacheSize) {
         this.groupEssentialData.shift();
       }
+      this.saveToLocalStorage();
     } else {
-      this.groupEssentialData[index] = group;
+      if (this.groupEssentialData[index] != group) {
+        this.groupEssentialData[index] = group;
+        this.saveToLocalStorage();
+      }
     }
   }
 }

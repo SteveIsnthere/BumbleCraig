@@ -11,9 +11,6 @@ export class UserInfoCachingService {
 
   constructor() {
     this.loadFromLocalStorage();
-    window.addEventListener('beforeunload', () => {
-      this.saveToLocalStorage();
-    });
   }
 
   private loadFromLocalStorage(): void {
@@ -39,10 +36,16 @@ export class UserInfoCachingService {
   set(user: EssentialUserData): void {
     let id = user.user_id;
     let index = this.users.findIndex((item) => item.user_id == id);
-    if (index == -1) {
+    if (index == -1) { // not found
       this.users.push(user);
       if (this.users.length > this.maxCacheSize) {
         this.users.shift();
+        this.saveToLocalStorage();
+      }
+    } else {
+      if (this.users[index] != user){
+        this.users[index] = user;
+        this.saveToLocalStorage();
       }
     }
   }

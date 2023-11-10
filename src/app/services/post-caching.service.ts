@@ -11,9 +11,6 @@ export class PostCachingService {
 
   constructor() {
     this.loadFromLocalStorage();
-    window.addEventListener('beforeunload', () => {
-      this.saveToLocalStorage();
-    });
   }
 
   private loadFromLocalStorage(): void {
@@ -44,6 +41,7 @@ export class PostCachingService {
       if (this.posts.length > this.maxCacheSize) {
         this.posts.shift();
       }
+      this.saveToLocalStorage();
     }
   }
 }
