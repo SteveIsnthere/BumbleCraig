@@ -12,10 +12,11 @@ import {catchError, Observable, throwError} from 'rxjs';
 import {Router} from "@angular/router";
 import {AuthDataService} from "./auth-data.service";
 import {StatesService} from "./states.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable()
 export class Auth implements HttpInterceptor {
-  constructor(private authData: AuthDataService, private router: Router, private states: StatesService) {
+  constructor(private authData: AuthDataService, private router: Router, private states: StatesService, private cookieService: CookieService) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -31,6 +32,7 @@ export class Auth implements HttpInterceptor {
           this.states.showNavBar = false;
           console.error("damn you hacker! unauthorized access detected!");
           localStorage.clear()
+          this.cookieService.delete('sessionPassword');
         }
         return throwError(error);
       })

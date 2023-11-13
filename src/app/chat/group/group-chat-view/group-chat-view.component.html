@@ -26,7 +26,7 @@
       <div style="height: 90px"></div>
       <div *ngFor="let message of messages" class="message"
            [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
-        <div style="width: 40px;clip-path: circle(20px at center); align-self: flex-start" *ngIf="message.sender_id != selfID">
+        <div style="width: 40px;clip-path: circle(20px at center); align-self: flex-start">
           <app-user-mini [userID]=message.sender_id></app-user-mini>
         </div>
         <ng-container *ngIf="message.file_share_id != 0; else textMsg">

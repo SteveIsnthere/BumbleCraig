@@ -10,11 +10,11 @@
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </p>
   <!--Load Failed-->
-<!--  <ng-template #LoadFailed>-->
-<!--    <p style="color: white; text-align: center">-->
-<!--      It's either my server fucking died, or you're not connected to internet. Please try again later.-->
-<!--    </p>-->
-<!--  </ng-template>-->
+  <!--  <ng-template #LoadFailed>-->
+  <!--    <p style="color: white; text-align: center">-->
+  <!--      It's either my server fucking died, or you're not connected to internet. Please try again later.-->
+  <!--    </p>-->
+  <!--  </ng-template>-->
 </ng-container>
 
 
@@ -25,22 +25,29 @@
     <div class="btn" routerLink="/home">
       <mat-icon class="nav-icon"
                 [ngClass]="router.url == '/home' ? 'active-nav-icon':'inactive-nav-icon'">
-        panorama_fish_eye
+        article
       </mat-icon>
     </div>
 
     <div class="btn" routerLink="/chat">
-      <mat-icon class="nav-icon"
-                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">
+      <mat-icon class="nav-icon" *ngIf="!states.hasUnreadMsg; else unread"
+                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon']">
         chat
       </mat-icon>
+
+      <ng-template #unread>
+        <mat-icon class="nav-icon"
+                  [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">
+          mark_chat_unread
+        </mat-icon>
+      </ng-template>
     </div>
 
-    <div class="btn" style="padding: 0 10px">
-      <button mat-mini-fab (click)="openNewPostView()" color="primary">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+    <button mat-mini-fab style="margin: 0 12px; scale: 1.1;"
+            color="warn"
+            (click)="openAskTidder()">
+      <mat-icon>lightbulb</mat-icon>
+    </button>
 
     <div class="btn" routerLink="/friends">
       <mat-icon class="nav-icon" [ngClass]="router.url == '/friends'? 'active-nav-icon':'inactive-nav-icon'">people

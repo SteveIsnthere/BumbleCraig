@@ -13,6 +13,7 @@ export class AuthService {
   loggedIn = false;
   selfUserID = 0;
   isVisitor = true;
+
   // loadFailed = false;
 
   constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService) {
@@ -33,9 +34,10 @@ export class AuthService {
     }
   }
 
-    logout() {
+  logout() {
     this.loggedIn = false;
     this.cookieService.delete('sessionPassword');
+    localStorage.clear();
     this.states.loadedUp = false;
   }
 

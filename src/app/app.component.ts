@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {StatesService} from "./services/states.service";
-import {NewPostViewComponent} from "./home/post/new-post-view/new-post-view.component";
 import {MatDialog} from "@angular/material/dialog";
+import {AskTidderComponent} from "./home/ask-tidder/ask-tidder.component";
 
 
 @Component({
@@ -17,7 +17,7 @@ export class AppComponent {
   constructor(public router: Router, public auth: AuthService, public states: StatesService, public dialog: MatDialog) {
   }
 
-  openNewPostView() {
-    this.dialog.open(NewPostViewComponent);
+  openAskTidder() {
+    this.dialog.open(AskTidderComponent);
   }
 }

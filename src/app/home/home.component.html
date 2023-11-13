@@ -1,8 +1,17 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
   <img src="assets/logo.png" alt="" class="top-floating-buttons"
-       style="left: 0; background-color: #000000; border-radius: 100px;cursor: pointer;
-        width: 40px; height: 40px" (click)="reloadPage()" id="logo">
-
+       style="left: 0; background-color: rgba(0,0,0,0.7); border-radius: 100px;cursor: pointer;
+        width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="reloadPage()">
+      <mat-icon>refresh</mat-icon>
+      <span>Refresh</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+  </mat-menu>
   <!--  <button mat-mini-fab class="top-floating-buttons"-->
   <!--          color="accent"-->
   <!--          style="right: 0;width: 40px; height: 40px;"-->
@@ -13,17 +22,16 @@
   <!--  </button>-->
 
   <button mat-mini-fab class="top-floating-buttons"
-          color="success"
-          *ngIf="notificationCount()>0; else askTidder"
+          color="primary"
+          style="border: 4px solid #f55246;"
+          *ngIf="notificationCount()>0; else makePost"
           (click)="openNotificationView()">
     {{notificationCount()}}
   </button>
 
-  <ng-template #askTidder>
-    <button mat-mini-fab class="top-floating-buttons"
-            color="primary"
-            (click)="openAskTidder()">
-      <mat-icon>rocket_launch</mat-icon>
+  <ng-template #makePost>
+    <button mat-mini-fab (click)="openNewPostView()" color="primary" class="top-floating-buttons">
+      <mat-icon>post_add</mat-icon>
     </button>
   </ng-template>
 
