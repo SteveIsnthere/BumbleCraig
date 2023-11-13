@@ -71,6 +71,7 @@ import {
   ReusableCommentsViewComponent
 } from './home/post/post-comments-view/reusable-comments-view/reusable-comments-view.component';
 import { AskTidderComponent } from './home/ask-tidder/ask-tidder.component';
+import { LogoComponent } from './home/logo/logo.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -126,6 +127,7 @@ const appRoutes: Routes = [
     PostFilesViewerComponent,
     ReusableCommentsViewComponent,
     AskTidderComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,

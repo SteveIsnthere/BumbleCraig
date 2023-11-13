@@ -1,0 +1,10 @@
+#promptInput{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#imagePreview{
+  width: 100%;
+  object-fit: cover;
+}

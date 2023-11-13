@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./services/auth.service";
 import {StatesService} from "./services/states.service";
-import {MatDialog} from "@angular/material/dialog";
 import {AskTidderComponent} from "./home/ask-tidder/ask-tidder.component";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
 
 @Component({
@@ -14,10 +14,10 @@ import {AskTidderComponent} from "./home/ask-tidder/ask-tidder.component";
 export class AppComponent {
   title = 'Tidder';
 
-  constructor(public router: Router, public auth: AuthService, public states: StatesService, public dialog: MatDialog) {
+  constructor(public router: Router, public auth: AuthService, public states: StatesService, private _bottomSheet: MatBottomSheet) {
   }
 
   openAskTidder() {
-    this.dialog.open(AskTidderComponent);
+    this._bottomSheet.open(AskTidderComponent);
   }
 }

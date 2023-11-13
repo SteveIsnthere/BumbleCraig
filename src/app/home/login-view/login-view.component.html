@@ -1,5 +1,5 @@
 <main *ngIf="loginView != null; else loadingBar" class="startUpSlideIn" [ngClass]="{'signUpSlideOut':newUserLoading}">
-  <img src="assets/logo.png" alt="Tidder Logo" id="logo">
+  <app-logo></app-logo>
 
   <ng-container *ngIf="loginView; else welcomeView">
     <form>
