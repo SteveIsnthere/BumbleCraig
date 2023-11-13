@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-ask-tidder',
@@ -8,11 +9,10 @@ import {apiEndPoint} from "../../env";
   styleUrls: ['./ask-tidder.component.css']
 })
 export class AskTidderComponent {
-  uploadRoute: string = "";
   imageToUpload: File | null = null;
   url: string = "";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
   }
 
   selectImage(event: any) {
@@ -25,28 +25,22 @@ export class AskTidderComponent {
     }
   }
 
-  uploadFile(event: any) {
-    this.imageToUpload = event.target.files[0];
-    if (this.imageToUpload === null || this.uploadRoute === null) {
-      return;
+  submitVisionQuestion(inputElement: any) {
+    let textContent = inputElement.value;
+    if (textContent == null) {
+      return
     }
+    if (this.imageToUpload === null) return;
     const formData = new FormData();
-    formData.append('file', this.imageToUpload);
-    this.http.post<string>(apiEndPoint + this.uploadRoute, formData).subscribe(
-      () => {
-        this.imageToUpload = null;
-        console.log('File uploaded successfully');
+    formData.append('image', this.imageToUpload);
+    formData.append('question', textContent);
+    this.http.post<string>(apiEndPoint + '/ask_tidder/vision_question/' + this.auth.selfUserID, formData).subscribe(
+      (res) => {
+        alert(res)
       },
       (error) => {
         console.error('Error uploading file:', error);
       }
     );
-  }
-
-  upload(inputElement: any) {
-    let textContent = inputElement.value;
-    if (textContent == null) {
-      return
-    }
   }
 }
