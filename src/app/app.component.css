@@ -1,6 +1,8 @@
 main {
   height: 100dvh;
+  width: 100vw;
   overflow-x: hidden;
+  position: fixed;
 }
 
 .top-floating-buttons {
@@ -39,7 +41,7 @@ main {
 }
 
 #bottom-nav {
-  position: absolute;
+  position: fixed;
   bottom: 15px;
   left: 50%;
   transform: translate(-50%, 0);
