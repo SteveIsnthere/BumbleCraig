@@ -67,7 +67,7 @@ main {
 }
 
 .signUpSlideOut {
-  animation: slideOut 1s ease forwards;
+  /*animation: slideOut 1s ease forwards;*/
 }
 
 @keyframes slideOut {

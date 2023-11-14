@@ -3,7 +3,6 @@ import {AuthService} from "../../services/auth.service";
 import {AuthDataService} from "../../services/auth-data.service";
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-view',
@@ -21,7 +20,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
   wrongCredentials = false;
   figUpdateInterval: any = 0;
 
-  constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient, private router: Router) {
+  constructor(private authDataService: AuthDataService, private auth: AuthService, private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -58,8 +57,8 @@ export class LoginViewComponent implements OnInit, OnDestroy {
       this.auth.loginUsingSessionPassword()
     })
 
-    setTimeout(() => {
-      this.router.navigate(["signup-loading"]).then();
-    }, 1100);
+    // setTimeout(() => {
+    //   this.router.navigate(["signup-loading"]).then();
+    // }, 1100);
   }
 }

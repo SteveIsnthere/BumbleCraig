@@ -19,7 +19,7 @@ export interface FileShareInfo {
     trigger('inAnimation', [
       transition(':enter', [
         style({opacity: 0}), // Initial state
-        animate('0.8s ease-out', style({opacity: 1})) // Final state
+        animate('1.2s ease-out', style({opacity: 1})) // Final state
       ]),
     ])
   ]
