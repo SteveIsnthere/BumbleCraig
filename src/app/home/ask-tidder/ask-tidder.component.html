@@ -1,19 +1,27 @@
 <main>
-  <div id="header">
-    <h2>#AskTidder</h2>
+  <div id="header-caption">
+    <h1 style="color: #f55246">Ask Tidder!</h1>
+    <span>Ask a question and Tidder will answer it! You can even attach an image</span>
   </div>
 
-  <div id="promptInput">
-    <img [src]="url" alt="image" *ngIf="url.length>0" id="imagePreview">
 
-    <button id="upload-button" mat-mini-fab color="primary" (click)="fileInput.click()">
-      <mat-icon>add_photo_alternate</mat-icon>
-    </button>
+  <div id="prompts">
+    <ng-container *ngIf="imageToUpload != null; else noImg">
+      <img [src]="url" alt="image" id="imagePreview">
+    </ng-container>
+
+    <ng-template #noImg>
+      <button id="upload-button" mat-button color="primary" (click)="fileInput.click()">
+        <mat-icon>add_photo_alternate</mat-icon>
+        Upload Image
+      </button>
+    </ng-template>
+
     <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
 
-    <mat-form-field style="flex: 1">
+    <mat-form-field appearance="outline" style="min-width: 70vw">
       <mat-label>Question</mat-label>
-      <textarea matInput [cdkTextareaAutosize]=true #input></textarea>
+      <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
     </mat-form-field>
   </div>
 

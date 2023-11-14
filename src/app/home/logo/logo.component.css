@@ -2,7 +2,7 @@
   background-color: rgba(79, 79, 79, 0.15);
   border-radius: 100px;
   width: 150px;
-  aspect-ratio: 1;
+  height: 150px;
   margin-top: 20px;
   border: 3px #e15241 solid;
   /*animation: logoAppear 1.3s ease forwards;*/

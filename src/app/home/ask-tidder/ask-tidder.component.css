@@ -1,10 +1,33 @@
-#promptInput{
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  min-width: 60vw;
+}
+
+
+#header-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 200px;
+
+  border-radius: 20px;
+  border: #f55246 solid 2px;
+  padding: 10px;
+}
+
+#prompts {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-#imagePreview{
+#imagePreview {
   width: 100%;
-  object-fit: cover;
+  max-height: 50vh;
+  object-fit: contain;
+  border-radius: 15px;
 }

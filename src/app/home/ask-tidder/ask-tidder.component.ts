@@ -22,6 +22,7 @@ export class AskTidderComponent {
     reader.readAsDataURL(event.target.files[0]); // read file as data url
     reader.onload = (event) => { // called once readAsDataURL is completed
       this.url = '' + event.target?.result;
+      this.scrollToElement('promptInputField');
     }
   }
 
@@ -42,5 +43,15 @@ export class AskTidderComponent {
         console.error('Error uploading file:', error);
       }
     );
+  }
+
+  scrollToElement(id: string): void {
+    setTimeout(() => {
+      document.getElementById(id)!.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }, 100);
   }
 }
