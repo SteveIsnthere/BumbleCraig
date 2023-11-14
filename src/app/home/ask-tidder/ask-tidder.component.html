@@ -1,34 +1,53 @@
 <main>
-  <div id="header-caption">
-    <h1 style="color: #f55246">Ask Tidder!</h1>
-    <span>Ask a question and Tidder will answer it! You can even attach an image</span>
-  </div>
+  <div *ngIf="!loading && response == ''" id="input">
+    <div id="welcome" *ngIf="imageToUpload == null">
+      <h1 style="color: #f55246">Ask Tidder!</h1>
+      <span>Ask a question and Tidder will answer! You can even attach an image</span>
+    </div>
 
+    <div id="prompts">
+      <ng-container *ngIf="imageToUpload != null; else noImg">
+        <img [src]="url" alt="image" class="imagePreview">
+      </ng-container>
 
-  <div id="prompts">
-    <ng-container *ngIf="imageToUpload != null; else noImg">
-      <img [src]="url" alt="image" id="imagePreview">
-    </ng-container>
+      <ng-template #noImg>
+        <button id="upload-button" mat-button color="warn" (click)="fileInput.click()" style="margin-bottom: 10px">
+          <mat-icon>add_photo_alternate</mat-icon>
+          Upload Image
+        </button>
+      </ng-template>
 
-    <ng-template #noImg>
-      <button id="upload-button" mat-button color="primary" (click)="fileInput.click()">
-        <mat-icon>add_photo_alternate</mat-icon>
-        Upload Image
-      </button>
-    </ng-template>
+      <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
 
-    <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
+      <mat-form-field appearance="outline" style="min-width: 70vw">
+        <mat-label>Question</mat-label>
+        <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field appearance="outline" style="min-width: 70vw">
-      <mat-label>Question</mat-label>
-      <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
-    </mat-form-field>
-  </div>
-
-  <div style="display: flex">
-    <div style="flex: 1"></div>
-    <button mat-fab (click)="submitVisionQuestion(input)" color="primary">
-      <mat-icon>done</mat-icon>
+    <button mat-fab (click)="submit(input)" color="primary" style="align-self: flex-end">
+      <mat-icon>send</mat-icon>
     </button>
   </div>
+
+
+  <div id="loading" *ngIf="loading" [@inOutAnimation]="">
+    <app-logo></app-logo>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <ng-container *ngIf="response != ''">
+    <img [src]="url" alt="image" class="imagePreview" *ngIf="imageToUpload != null;">
+
+    <div id="response" [@inOutAnimation]="">
+      <span>{{response}}</span>
+    </div>
+
+    <button mat-fab (click)="reset()" color="primary" style="margin-top: 20px">
+      <mat-icon>restart_alt</mat-icon>
+    </button>
+  </ng-container>
+
+
+  <div id="rainbow-strip"></div>
 </main>

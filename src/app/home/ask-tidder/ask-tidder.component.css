@@ -1,33 +1,86 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
-  padding: 20px;
+  padding: 35px 10px;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+#input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-width: 60vw;
 }
 
-
-#header-caption {
+#welcome {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   max-width: 200px;
 
-  border-radius: 20px;
-  border: #f55246 solid 2px;
-  padding: 10px;
+  border-radius: 25px;
+  padding: 15px;
+  margin-bottom: 30px;
 }
 
 #prompts {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 20px;
 }
 
-#imagePreview {
-  width: 100%;
-  max-height: 50vh;
+.imagePreview {
+  width: 90%;
+  max-height: 30vh;
   object-fit: contain;
   border-radius: 15px;
+}
+
+#loading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#response {
+  background-color: #303030;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: medium;
+  line-height: 20px;
+}
+
+
+#rainbow-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: -1;
+  animation: rainbow 12s forwards infinite;
+  background: linear-gradient(
+    45deg,
+    rgba(238, 119, 82, 0.35), rgba(231, 60, 126, 0.35), rgba(35, 166, 213, 0.35), rgba(35, 213, 171, 0.35)
+  );
+  background-size: 400%;
+  mask: linear-gradient(white, transparent);
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }

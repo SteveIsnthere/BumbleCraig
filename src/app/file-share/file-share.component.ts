@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../env";
 import {MatDialog} from "@angular/material/dialog";
 import {ImageFullViewComponent} from "./image-full-view/image-full-view.component";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 export interface FileShareInfo {
   file_share_id: number,
@@ -13,7 +14,15 @@ export interface FileShareInfo {
 @Component({
   selector: 'app-file-share',
   templateUrl: './file-share.component.html',
-  styleUrls: ['./file-share.component.css']
+  styleUrls: ['./file-share.component.css'],
+  animations: [
+    trigger('inAnimation', [
+      transition(':enter', [
+        style({opacity: 0}), // Initial state
+        animate('0.8s ease-out', style({opacity: 1})) // Final state
+      ]),
+    ])
+  ]
 })
 export class FileShareComponent implements OnInit {
   @Input() fileShareID: number = 0;

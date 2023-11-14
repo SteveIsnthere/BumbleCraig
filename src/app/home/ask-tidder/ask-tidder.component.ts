@@ -3,14 +3,26 @@ import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
 import {AuthService} from "../../services/auth.service";
 
+import {animate, style, transition, trigger} from "@angular/animations";
+
 @Component({
   selector: 'app-ask-tidder',
   templateUrl: './ask-tidder.component.html',
-  styleUrls: ['./ask-tidder.component.css']
+  styleUrls: ['./ask-tidder.component.css'],
+  animations: [
+    trigger('inOutAnimation', [
+      transition(':enter', [
+        style({opacity: 0, transform: 'translateY(100%)'}), // Initial state
+        animate('0.5s ease-out', style({opacity: 1, transform: 'translateY(0)'})) // Final state
+      ]),
+    ])
+  ]
 })
 export class AskTidderComponent {
   imageToUpload: File | null = null;
   url: string = "";
+  response: string = "";
+  loading: boolean = false;
 
   constructor(private http: HttpClient, private auth: AuthService) {
   }
@@ -26,23 +38,58 @@ export class AskTidderComponent {
     }
   }
 
-  submitVisionQuestion(inputElement: any) {
-    let textContent = inputElement.value;
-    if (textContent == null) {
-      return
-    }
+  getVisionResponse(prompt: string) {
     if (this.imageToUpload === null) return;
     const formData = new FormData();
     formData.append('image', this.imageToUpload);
-    formData.append('question', textContent);
+    formData.append('question', prompt);
     this.http.post<string>(apiEndPoint + '/ask_tidder/vision_question/' + this.auth.selfUserID, formData).subscribe(
       (res) => {
-        alert(res)
+        this.setResponse(res)
       },
       (error) => {
         console.error('Error uploading file:', error);
       }
     );
+  }
+
+  getTextResponse(prompt: string) {
+    this.http.post<string>(apiEndPoint + '/ask_tidder/text_question/' + this.auth.selfUserID, prompt).subscribe(
+      (res) => {
+        this.setResponse(res)
+      },
+      (error) => {
+        console.error('Error uploading file:', error);
+      }
+    );
+  }
+
+  setResponse(response: string) {
+    this.response = response;
+    // this.scrollToElement('response')
+    this.loading = false;
+  }
+
+
+  submit(inputElement: any) {
+    const textContent = inputElement.value;
+    if (textContent == null || textContent === "") {
+      return
+    }
+    this.loading = true;
+
+    if (this.imageToUpload === null) {
+      this.getTextResponse(textContent)
+    } else {
+      this.getVisionResponse(textContent)
+    }
+  }
+
+  reset() {
+    this.imageToUpload = null;
+    this.url = "";
+    this.response = "";
+    this.loading = false;
   }
 
   scrollToElement(id: string): void {

@@ -8,11 +8,11 @@
     </div>
   </div>
 
-  <div *ngIf="isImage();" (click)="openImageFullView()">
+  <div *ngIf="isImage();" (click)="openImageFullView()" [@inAnimation]="">
     <img id="image-element" src="{{fileShareLink()}}" alt="file">
   </div>
 
-  <div *ngIf="isVideo();">
+  <div *ngIf="isVideo();" [@inAnimation]="">
     <video id="video-element" controls preload="none">
       <source src="{{fileShareLink()}}" type="video/mp4">
       Your browser does not support the video tag
