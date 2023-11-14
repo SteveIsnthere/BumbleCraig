@@ -1,7 +1,7 @@
 <mat-card *ngIf="post?.popularity != null; else loadingBar">
   <mat-card-header (click)="openPostFullView()" style="cursor: pointer;">
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
-    <mat-card-title style="color: white;overflow-wrap: break-word;">{{post?.title}}</mat-card-title>
+    <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large">{{post?.title}}</mat-card-title>
   </mat-card-header>
 
 
@@ -11,7 +11,7 @@
     <!--      <span>{{post!.time_since_posted}}</span>-->
     <!--    </mat-card-subtitle>-->
     <ng-container *ngIf="textAttachments.length > 0">
-      <span><mat-divider></mat-divider></span>
+<!--      <span><mat-divider></mat-divider></span>-->
       <div style="height: 5px"></div>
     </ng-container>
 
