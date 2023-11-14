@@ -19,19 +19,19 @@
   <span style="width: 90%"><mat-divider></mat-divider></span>
 
   <div style="display: flex; gap: 20px; justify-content: center" *ngIf="userID == auth.selfUserID">
-    <button mat-flat-button (click)="userSetUp()" *ngIf="auth.isVisitor"
+    <button mat-stroked-button (click)="userSetUp()" *ngIf="auth.isVisitor"
             style="border-radius: 100px" color="warn">
       <mat-icon>manage_accounts</mat-icon>
       <span>Signup</span>
     </button>
 
-    <button mat-flat-button [routerLink]="['/user-profile-edit']" *ngIf="!auth.isVisitor"
+    <button mat-stroked-button [routerLink]="['/user-profile-edit']" *ngIf="!auth.isVisitor"
             style="border-radius: 100px" color="warn">
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
     </button>
 
-    <button mat-flat-button [routerLink]="['/login']" (click)="logout()" color="primary"
+    <button mat-stroked-button [routerLink]="['/login']" (click)="logout()" color="primary"
             style="border-radius: 100px">
       <mat-icon>logout</mat-icon>
       <span>Logout</span>
@@ -39,28 +39,28 @@
   </div>
 
   <div id="actions" *ngIf="auth.selfUserID != userID">
-    <button mat-flat-button color="primary" style="border-radius: 100px"
+    <button mat-stroked-button color="primary" style="border-radius: 100px"
             *ngIf="!isFriend && !friendRequestSent"
             (click)="sendFriendRequest()">
       <mat-icon>person_add</mat-icon>
       Add
     </button>
 
-    <button mat-flat-button color="warn" style="border-radius: 100px"
+    <button mat-stroked-button color="warn" style="border-radius: 100px"
             *ngIf="friendRequestSent"
             disabled>
       <mat-icon>hourglass_top</mat-icon>
       Requested
     </button>
 
-    <button mat-flat-button color="warn" style="border-radius: 100px"
+    <button mat-stroked-button color="warn" style="border-radius: 100px"
             *ngIf="isFriend"
             (click)="removeFriend()">
       <mat-icon>person_remove</mat-icon>
       Remove
     </button>
 
-    <button mat-flat-button color="accent" style="border-radius: 100px"
+    <button mat-stroked-button color="accent" style="border-radius: 100px"
             (click)="sendDM()">
       <mat-icon>mail</mat-icon>
       DM

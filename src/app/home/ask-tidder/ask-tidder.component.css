@@ -4,7 +4,6 @@ main {
   align-items: center;
   padding: 35px 10px;
   justify-content: center;
-
   overflow: hidden;
 }
 
@@ -45,6 +44,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  margin: 20px 0;
 }
 
 #response {

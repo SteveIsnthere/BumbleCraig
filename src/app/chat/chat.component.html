@@ -13,7 +13,6 @@
 
   <div id="group-list-wrapper">
     <div id="group-list" *ngIf="loadingComplete; else loadingBar">
-      <div style="height: 65px"></div>
       <div class="group-row" *ngFor="let groupID of groupIDs">
         <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
           <mat-icon>delete</mat-icon>
@@ -21,7 +20,6 @@
         <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
                    style="flex: 1;max-width: 310px;"></app-group>
       </div>
-      <div style="height: 65px"></div>
     </div>
   </div>
   <ng-template #loadingBar>

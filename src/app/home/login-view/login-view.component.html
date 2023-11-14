@@ -33,15 +33,14 @@
   <ng-template #welcomeView>
     <div id="welcome" [ngClass]="{'startUpSlideIn':!newUserLoading}">
       <div class="text-wrapper">
-        <span class="text-content" style="font-size: x-large; color: white">Tidder</span>
+        <span class="text-content" style="font-size: xx-large; color: #e15241">Tidder</span>
       </div>
-      <p>Your quest for a sensible platform ends here, no more ads, hassles and censorship</p>
-      <p>Click the button below to get started!</p>
+      <p>Finally, a <b style="text-decoration: underline">sensible</b> platform for the rest of us</p>
+      <p>Click the button to get started!</p>
       <div style="display: flex; justify-content: center; margin-top: 20px" *ngIf="!newUserLoading; else loadingWheel">
         <div style="flex: 1"></div>
-        <button mat-flat-button (click)="continueAsVisitor()" color="warn" style="border-radius: 100px">
+        <button mat-fab (click)="continueAsVisitor()" color="primary" style="border-radius: 100px" id="start-btn">
           <mat-icon>start</mat-icon>
-          Let's go!
         </button>
       </div>
       <ng-template #loadingWheel>
@@ -50,7 +49,7 @@
         </div>
       </ng-template>
     </div>
-    <button mat-flat-button (click)="loginView = true" class="round-btn" color="primary">Have an account?</button>
+    <button mat-stroked-button (click)="loginView = true" class="round-btn" color="primary">Have an account?</button>
   </ng-template>
 </main>
 
