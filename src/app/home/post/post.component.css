@@ -3,9 +3,10 @@ mat-card {
   box-shadow: none;
   margin: 5px;
   min-height: 150px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   /*border: 3px grey dashed;*/
+  animation: appear 1s forwards;
 }
 
 .text-content {

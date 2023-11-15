@@ -62,7 +62,7 @@ import {GroupInvRowComponent} from './home/notification-view/group-inv-row/group
 import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-row.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
-import {BackBtnComponent} from './home/back-btn/back-btn.component';
+import {BackBtnComponent} from './compoents/back-btn/back-btn.component';
 import {PostLoadingPlaceholderComponent} from './home/post/post-loading-placeholder/post-loading-placeholder.component';
 import {SignupLoadingViewComponent} from './home/login-view/signup-loading-view/signup-loading-view.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -71,7 +71,8 @@ import {
   ReusableCommentsViewComponent
 } from './home/post/post-comments-view/reusable-comments-view/reusable-comments-view.component';
 import {AskTidderComponent} from './home/ask-tidder/ask-tidder.component';
-import {LogoComponent} from './home/logo/logo.component';
+import {LogoComponent} from './compoents/logo/logo.component';
+import { RainbowStripComponent } from './compoents/rainbow-strip/rainbow-strip.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -128,6 +129,7 @@ const appRoutes: Routes = [
     ReusableCommentsViewComponent,
     AskTidderComponent,
     LogoComponent,
+    RainbowStripComponent,
   ],
   imports: [
     BrowserModule,

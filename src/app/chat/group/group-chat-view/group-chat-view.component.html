@@ -3,7 +3,7 @@
   <div style="width: 70px; height: 70px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;
   left: 50%;top: 10px;transform: translate(-50%, 0);"></div>
   <div id="group-info" *ngIf="groupEssentialData.figure_id != 0">
-    <div style="width: 70px;clip-path: circle(35px at center); cursor: pointer;" (click)="editFigure()">
+    <div style="width: 50px;clip-path: circle(25px at center); cursor: pointer;" (click)="editFigure()">
       <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
     </div>
   </div>
@@ -43,15 +43,15 @@
 
 
   <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
-    <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()"
-            style="margin-left: 20px;border-radius: 100px; width: 92px">
+    <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"
+            style="margin-left: 20px;border-radius: 100px; width: 92px;backdrop-filter: blur(10px);">
       <mat-icon>upload</mat-icon>
       File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
-    <button mat-flat-button (click)="openTextEditor()" color="warn"
-            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px">
+    <button mat-stroked-button (click)="openTextEditor()" color="warn"
+            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px;backdrop-filter: blur(10px);">
       <mat-icon>edit_note</mat-icon>
       Text
     </button>
@@ -65,5 +65,5 @@
       </p>
     </div>
   </ng-template>
-
+  <app-rainbow-strip [bottom]=true></app-rainbow-strip>
 </main>

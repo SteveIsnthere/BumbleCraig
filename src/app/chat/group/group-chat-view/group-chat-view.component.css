@@ -1,4 +1,4 @@
-main{
+main {
   animation: lightsOff 0.6s ease-in-out forwards;
 }
 
@@ -47,17 +47,19 @@ main{
 }
 
 .self-msg {
-  animation: slideInSelf 0.6s ease-in-out forwards; /* Apply the animation */
+  /*animation: slideInSelf 0.6s ease-in-out forwards; !* Apply the animation *!*/
+  animation: appear 1s ease forwards;
   flex-direction: row-reverse;
   margin-right: 10px;
 }
 
-.self-msg>.text-content {
+.self-msg > .text-content {
   background-color: #4488f5;
 }
 
 .other-msg {
-  animation: slideIn 0.6s ease-in-out forwards; /* Apply the animation */
+  /*animation: slideIn 0.6s ease-in-out forwards; !* Apply the animation *!*/
+  animation: appear 1s ease forwards;
 }
 
 @keyframes slideIn {
@@ -81,21 +83,18 @@ main{
 .text-content {
   max-width: 60%;
   background-color: rgba(255, 255, 255, 0.12);
-  /*backdrop-filter: blur(9px) saturate(180%) contrast(80%);*/
-  border-radius: 15px;
+  border-radius: 12px;
   text-align: justify-all;
-  padding: 10px 10px;
+  padding: 7px 10px;
   text-rendering: optimizeLegibility;
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 370;
+  font-weight: 500;
 }
 
 .file-content {
   max-width: min(60%, 300px);
   font-weight: lighter;
-  /*max-height: 70dvh;*/
-  /*overflow-y: hidden;*/
 }
 
 #action-section {
@@ -111,7 +110,7 @@ main{
   gap: 10px;
 }
 
-#uploading-file-indicator{
+#uploading-file-indicator {
   position: absolute;
   left: 50%;
   bottom: 10px;

@@ -2,38 +2,57 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
   height: 100dvh;
   width: 100dvw;
   overflow-x: hidden;
   overflow-y: auto;
+  animation: appear 2s forwards;
 }
 
 #figure {
-  margin-top: 20px;
+  margin-top: 40px;
   width: 150px;
   height: 150px;
   cursor: pointer;
 }
 
-.clipped {
-  clip-path: circle(75px at center);
-}
-
 #name {
-  color: white;
-  background-color: rgba(0,0,0,0.3);
+  color: rgba(0, 0, 0);
+  background-color: white;
   font-size: 23px;
   font-weight: bold;
   border-radius: 25px;
-  padding: 15px;
+  padding: 12px 15px;
+  margin-top: 22px;
 }
 
-#stats{
-
+#stats {
+  font-size: smaller;
+  font-weight: bold;
+  color: white;
+  margin-top: 2px;
 }
 
-#actions {
+#description {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  max-width: 250px;
+  margin-top: 15px;
+  text-align: justify-all;
+
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 7px 10px;
+}
+
+#divider {
+  margin-top: 15px;
+  width: 80%;
+}
+
+.actions {
+  margin-top: 13px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -41,22 +60,17 @@ main {
   gap: 20px;
 }
 
-#description {
-  color: white;
-  font-size: 15px;
-  font-weight: lighter;
-  text-align: center;
-}
 
 #posts-section {
-  max-width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5px;
-  margin: 0 10px 85px;
+  margin: 5px 0 85px;
+  padding: 0 10px;
 }
 
 .post {
@@ -72,4 +86,8 @@ main {
     max-width: 400px;
     min-width: 280px;
   }
+}
+
+.clipped {
+  clip-path: circle(75px at center);
 }

@@ -31,7 +31,7 @@
   </div>
 
 
-  <div id="loading" *ngIf="loading" [@inOutAnimation]="">
+  <div id="loading" *ngIf="loading">
     <app-logo></app-logo>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
@@ -48,6 +48,5 @@
     </button>
   </ng-container>
 
-
-  <div id="rainbow-strip"></div>
+  <app-rainbow-strip [bottom]=true></app-rainbow-strip>
 </main>

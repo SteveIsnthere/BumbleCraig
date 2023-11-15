@@ -8,17 +8,17 @@
   </div>
 
   <div id="stats">
-    <span style="color:#c2175b">#{{userID}}</span>
-    <span style="font-size: small; margin-left: 1em; color: wheat;">Degeneracy: {{xp}}</span>
+    <span>#{{userID}}</span>
+    <span style="margin-left: 1em;">Wisdom: {{xp}}</span>
   </div>
 
   <div id="description">
     <span>{{userDescription}}</span>
   </div>
 
-  <span style="width: 90%"><mat-divider></mat-divider></span>
+  <span id="divider"><mat-divider></mat-divider></span>
 
-  <div style="display: flex; gap: 20px; justify-content: center" *ngIf="userID == auth.selfUserID">
+  <div class="actions" *ngIf="userID == auth.selfUserID">
     <button mat-stroked-button (click)="userSetUp()" *ngIf="auth.isVisitor"
             style="border-radius: 100px" color="warn">
       <mat-icon>manage_accounts</mat-icon>
@@ -38,7 +38,7 @@
     </button>
   </div>
 
-  <div id="actions" *ngIf="auth.selfUserID != userID">
+  <div class="actions" *ngIf="auth.selfUserID != userID">
     <button mat-stroked-button color="primary" style="border-radius: 100px"
             *ngIf="!isFriend && !friendRequestSent"
             (click)="sendFriendRequest()">
@@ -70,8 +70,8 @@
   <ng-container *ngIf="postsLoaded;">
     <ng-container *ngIf="postIDs.length == 0">
       <div style="flex: 1"></div>
+<!--      <span style="color: white">nothing to see here</span>-->
       <mat-icon color="primary">close</mat-icon>
-      <p style="color: white">This user hasn't made any post yet</p>
       <div style="flex: 1"></div>
     </ng-container>
 

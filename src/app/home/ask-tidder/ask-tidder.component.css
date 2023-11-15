@@ -45,6 +45,7 @@ main {
   align-items: center;
   gap: 20px;
   margin: 20px 0;
+  animation: appear 1s ease forwards;
 }
 
 #response {
@@ -54,33 +55,4 @@ main {
   margin-top: 20px;
   font-size: medium;
   line-height: 20px;
-}
-
-
-#rainbow-strip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80%;
-  z-index: -1;
-  animation: rainbow 12s forwards infinite;
-  background: linear-gradient(
-    45deg,
-    rgba(238, 119, 82, 0.35), rgba(231, 60, 126, 0.35), rgba(35, 166, 213, 0.35), rgba(35, 213, 171, 0.35)
-  );
-  background-size: 400%;
-  mask: linear-gradient(white, transparent);
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
 }

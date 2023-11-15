@@ -32,7 +32,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   updateInterval: any = 0;
   uploadingFile: boolean = false;
 
-  constructor(public http: HttpClient, private states:StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
+  constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
   }
 

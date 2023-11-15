@@ -3,11 +3,12 @@
     <app-user [userID]=invitation.inviter_id></app-user>
     <span>invited you to</span>
   </div>
-  <div style="display: flex; gap: 10px">
+  <div style="display: flex; gap: 10px; align-items: center">
     <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
       <mat-icon>close</mat-icon>
     </button>
-    <span style="font-size: larger; background-color: grey; color: black; padding: 10px;border-radius: 100px">{{invitation.group_name}}</span>
+    <span
+      style="font-size: medium;font-weight: bold; background-color: black; color: rgba(255,255,255,0.55); padding: 9px;border-radius: 15px">{{invitation.group_name}}</span>
     <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
       <mat-icon>check</mat-icon>
     </button>
