@@ -62,7 +62,7 @@ main {
 
 
 #posts-section {
-  width: 100%;
+  width: calc(100% - 20px);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -70,7 +70,6 @@ main {
   justify-content: center;
   gap: 5px;
   margin: 5px 0 85px;
-  padding: 0 10px;
 }
 
 .post {

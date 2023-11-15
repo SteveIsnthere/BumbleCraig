@@ -3,7 +3,7 @@
   <div style="width: 70px; height: 70px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;
   left: 50%;top: 10px;transform: translate(-50%, 0);"></div>
   <div id="group-info" *ngIf="groupEssentialData.figure_id != 0">
-    <div style="width: 50px;clip-path: circle(25px at center); cursor: pointer;" (click)="editFigure()">
+    <div style="width: 60px;clip-path: circle(30px at center); cursor: pointer;" (click)="editFigure()">
       <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
     </div>
   </div>
@@ -15,7 +15,7 @@
   <div id="messages-section" #messagesSection>
 
     <ng-container *ngIf="noMessages">
-      <div style="height: 100px"></div>
+      <div style="height: 80px"></div>
       <div style="text-align: center; color: #9e9e9e; font-weight: 400; margin-top: 20px">
         <h3>Old messages were destroyed for your privacy</h3>
         <h1>You're welcome</h1>

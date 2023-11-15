@@ -99,7 +99,7 @@ export class PostSectionViewComponent implements OnInit {
 
   refresh() {
     // reload the site
-    window.location.reload();
+    this.ngOnInit();
   }
 
   private loadPostIDsFromLocalStorage(): void {

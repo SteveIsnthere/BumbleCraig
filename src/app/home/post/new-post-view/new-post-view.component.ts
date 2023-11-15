@@ -53,10 +53,14 @@ export class NewPostViewComponent implements OnInit {
     this.http.get(apiEndPoint + '/post/get_post/' + this.postID).subscribe((res: any) => {
       this.post = res;
       this.title = this.post?.title!;
+      this.firstFormGroup = this._formBuilder.group({
+        firstCtrl: [this.title, Validators.required],
+      });
       if (this.genres.includes(this.post?.genre!)) {
         this.genreSelected = this.post?.genre!;
       }
       this.contents = this.post?.content!;
+      this.scrollToElement('action-section');
     })
   }
 
@@ -136,6 +140,7 @@ export class NewPostViewComponent implements OnInit {
       this.http.post(apiEndPoint + this.textUploadRoute, textContent)
         .subscribe(() => {
           this.reloadPost();
+          this.scrollToElement('action-section');
         })
     });
   }
@@ -162,5 +167,15 @@ export class NewPostViewComponent implements OnInit {
     } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
       this.updateGenre();
     }
+  }
+
+  scrollToElement(id: string): void {
+    setTimeout(() => {
+      document.getElementById(id)!.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }, 100);
   }
 }
