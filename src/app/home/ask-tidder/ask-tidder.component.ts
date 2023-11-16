@@ -18,11 +18,26 @@ import {animate, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
+
 export class AskTidderComponent {
   imageToUpload: File | null = null;
   url: string = "";
   response: string = "";
   loading: boolean = false;
+
+  examplePrompts: string[][] = [
+    ["What is Tidder?", "question_mark"],
+    ["Who made this?", "mood"],
+    ["Tell me a joke", "celebration"],
+    ["Help me with ", "task"]
+  ]
+
+  exampleVisonPrompts: string[][] = [
+    ["What is in the picture?", "question_mark"],
+    ["Why is this funny?", "mood"],
+    ["Make a joke about it", "celebration"],
+    ["Solve it", "task"]
+  ]
 
   constructor(private http: HttpClient, private auth: AuthService) {
   }
@@ -36,6 +51,12 @@ export class AskTidderComponent {
       this.url = '' + event.target?.result;
       this.scrollToElement('promptInputField');
     }
+  }
+
+  applyPrompt(prompt: string) {
+    const promptInputField = document.getElementById('promptInputField') as HTMLInputElement;
+    promptInputField.value = prompt;
+    this.scrollToElement('promptInputField');
   }
 
   getVisionResponse(prompt: string) {

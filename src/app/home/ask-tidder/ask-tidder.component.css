@@ -2,9 +2,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 35px 10px;
+  padding: 15px 10px 35px;
   justify-content: center;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 #input {
@@ -14,22 +14,43 @@ main {
   min-width: 60vw;
 }
 
-#welcome {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  max-width: 200px;
 
-  border-radius: 25px;
+.example-questions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 70vw;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.example-question {
+  width: 220px;
   padding: 15px;
-  margin-bottom: 30px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 0.82);
+
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition-duration: 1s;
+  animation: appear 0.5s ease forwards;
+}
+
+.example-question:hover {
+  color: black;
+  background-color: white;
+  transition-duration: 0.6s;
 }
 
 #prompts {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .imagePreview {
@@ -37,14 +58,15 @@ main {
   max-height: 30vh;
   object-fit: contain;
   border-radius: 15px;
+  margin-bottom: 10px;
 }
 
-#loading{
+#loading {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  margin: 20px 0;
+  margin: 10px 0 20px;
   animation: appear 1s ease forwards;
 }
 

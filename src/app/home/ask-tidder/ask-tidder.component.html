@@ -1,8 +1,10 @@
 <main>
   <div *ngIf="!loading && response == ''" id="input">
-    <div id="welcome" *ngIf="imageToUpload == null">
-      <h1 style="color: #f55246">Ask Tidder!</h1>
-      <span>Ask a question and Tidder will answer! You can even attach an image</span>
+    <div class="example-questions" *ngIf="imageToUpload == null">
+      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p[0])" class="example-question">
+        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
+        <span>{{p[0]}}</span>
+      </div>
     </div>
 
     <div id="prompts">
@@ -11,7 +13,7 @@
       </ng-container>
 
       <ng-template #noImg>
-        <button id="upload-button" mat-button color="warn" (click)="fileInput.click()" style="margin-bottom: 10px">
+        <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
           <mat-icon>add_photo_alternate</mat-icon>
           Upload Image
         </button>
@@ -23,6 +25,13 @@
         <mat-label>Question</mat-label>
         <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
       </mat-form-field>
+    </div>
+
+    <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
+      <div *ngFor="let p of exampleVisonPrompts" (click)="applyPrompt(p[0])" class="example-question">
+        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
+        <span>{{p[0]}}</span>
+      </div>
     </div>
 
     <button mat-fab (click)="submit(input)" color="primary" style="align-self: flex-end">
@@ -47,6 +56,5 @@
       <mat-icon>restart_alt</mat-icon>
     </button>
   </ng-container>
-
   <app-rainbow-strip [bottom]=true></app-rainbow-strip>
 </main>
