@@ -12,10 +12,10 @@ body {
   background-color: #212121;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  background: transparent;
-}
+/*::-webkit-scrollbar {*/
+/*  width: 0;*/
+/*  background: transparent;*/
+/*}*/
 
 @keyframes appear {
   0% {

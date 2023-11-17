@@ -1,36 +1,31 @@
 <!--<p style="width: 100vw;" *ngIf="loading">-->
 <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 <!--</p>-->
-<div style="display: flex; justify-content: center; position: fixed; top: 0; width: 100%;z-index: 9;">
+<div style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);
+width: 100%;display: flex; justify-content: center; ">
   <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
     {{selectedRankingMode}} | {{genreSelected}}
   </button>
 </div>
-<main>
-  <div id="posts-section-wrapper">
-    <div style="height: 55px"></div>
-    <div class="posts-section" *ngIf="showPostSection">
-      <ng-container *ngIf="!loading; else loadingPlaceHolder">
-        <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
-      </ng-container>
-      <ng-template #loadingPlaceHolder>
-        <app-post-loading-placeholder class="post"
-                                      *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
-      </ng-template>
-    </div>
+<div style="height: 55px"></div>
+<div class="posts-section" *ngIf="showPostSection">
+  <ng-container *ngIf="!loading; else loadingPlaceHolder">
+    <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+  </ng-container>
+  <ng-template #loadingPlaceHolder>
+    <app-post-loading-placeholder class="post"
+                                  *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
+  </ng-template>
+</div>
 
-    <div *ngIf="empty">
-      <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
-        genres</p>
-    </div>
-    <div style="height: 50px"></div>
-  </div>
-
-  <div id="refresh-btn">
-    <button mat-mini-fab color="warn" (click)="refresh()" *ngIf="showReloadButton">
-      <mat-icon>refresh</mat-icon>
-    </button>
-  </div>
+<div *ngIf="empty">
+  <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
+    genres</p>
+</div>
+<div id="refresh-btn">
+  <button mat-mini-fab color="warn" (click)="refresh()" *ngIf="showReloadButton">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
 
 <!--  <app-rainbow-strip></app-rainbow-strip>-->
-</main>

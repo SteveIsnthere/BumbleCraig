@@ -4,9 +4,8 @@ mat-card {
   margin: 5px;
   min-height: 150px;
   background-color: rgba(0, 0, 0, 0.4);
-  height: 100%;
   /*border: 3px grey dashed;*/
-  animation: appear 1s forwards;
+  animation: appear 1.5s forwards;
 }
 
 .text-content {
@@ -51,7 +50,7 @@ mat-card-actions {
 
 @media only screen and (min-width: 850px) {
   mat-card-content {
-    height: 300px;
-    overflow: hidden;
+    /*height: 300px;*/
+    /*overflow: hidden;*/
   }
 }

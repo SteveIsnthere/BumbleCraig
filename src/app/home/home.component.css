@@ -1,9 +1,10 @@
 main {
   height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  overflow: auto;
 }
 
 .top-floating-buttons {
@@ -24,18 +25,8 @@ main {
 }
 
 .startUpSlideIn {
-  animation: slideIn 0.85s ease forwards;
+  animation: appear 1s ease forwards;
 }
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(100%); /* Start position */
-  }
-  100% {
-    transform: translateY(0); /* End position */
-  }
-}
-
 
 #logo {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);

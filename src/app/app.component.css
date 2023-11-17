@@ -1,5 +1,5 @@
 main {
-  height: 100dvh;
+  /*height: 100dvh;*/
   width: 100vw;
   overflow-x: hidden;
 }
@@ -47,15 +47,21 @@ main {
   padding: 10px 9px;
   z-index: 10;
   backdrop-filter: blur(8px);
-  /*background-color: rgba(110, 150, 136, 0.7);*/
   border-radius: 20px;
   display: flex;
-  background-color: rgba(158, 158, 158, 0.27);
+  background-color: rgba(158, 158, 158, 0.2);
+  animation: bNavSlideIn 1s ease;
+}
+
+@keyframes bNavSlideIn {
+  0% {
+    transform: translate(-50%, 100%); /* Start position */
+  }
 }
 
 @keyframes slideIn {
   0% {
-    transform: translate(-50%, 150%); /* Start position */
+    /*transform: translate(-50%, 150%); !* Start position *!*/
   }
 }
 

@@ -44,14 +44,14 @@
 
   <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
     <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"
-            style="margin-left: 20px;border-radius: 100px; width: 92px;backdrop-filter: blur(10px);">
+            style="margin-left: 20px;border-radius: 100px; width: 92px;backdrop-filter: blur(9px) brightness(0.9);">
       <mat-icon>upload</mat-icon>
       File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
     <button mat-stroked-button (click)="openTextEditor()" color="warn"
-            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px;backdrop-filter: blur(10px);">
+            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px;backdrop-filter: blur(9px) brightness(0.9);;">
       <mat-icon>edit_note</mat-icon>
       Text
     </button>

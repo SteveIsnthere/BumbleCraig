@@ -6,22 +6,21 @@
   </button>
 
   <button mat-flat-button (click)="createGroup()" color="primary"
-          style="position: fixed;top: 25px; align-self: center; border-radius: 300px">
+          style="position: fixed; border-radius: 300px; left: 50vw; top: 25px; transform: translateX(-50%)">
     <mat-icon>add_circle</mat-icon>
     Create New
   </button>
 
-  <div id="group-list-wrapper">
-    <div id="group-list" *ngIf="loadingComplete; else loadingBar">
-      <div class="group-row" *ngFor="let groupID of groupIDs">
-        <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
-          <mat-icon>delete</mat-icon>
-        </button>
-        <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
-                   style="flex: 1;max-width: 310px;"></app-group>
-      </div>
+  <div id="group-list" *ngIf="loadingComplete; else loadingBar">
+    <div class="group-row" *ngFor="let groupID of groupIDs">
+      <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
+                 style="flex: 1;max-width: 310px;"></app-group>
     </div>
   </div>
+
   <ng-template #loadingBar>
     <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>
   </ng-template>
