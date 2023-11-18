@@ -5,6 +5,7 @@ main {
   /*align-items: center;*/
   /*justify-content: center;*/
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .top-floating-buttons {
