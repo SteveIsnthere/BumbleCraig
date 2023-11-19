@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {apiEndPoint} from "../env";
 import {HttpClient} from "@angular/common/http";
@@ -13,8 +13,9 @@ export class AuthService {
   loggedIn = false;
   selfUserID = 0;
   isVisitor = true;
-
   // loadFailed = false;
+
+  @Output() loginEvent = new EventEmitter<string>()
 
   constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService) {
     if (!this.haveSessionPasswordSaved()) {
@@ -56,6 +57,8 @@ export class AuthService {
       const expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 5);
       this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
+
+      this.loginEvent.emit("login");
 
       this.router.navigate(["home"]).then();
       this.states.showNavBar = true;

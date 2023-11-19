@@ -1,9 +1,11 @@
-import {EventEmitter, Injectable, OnDestroy, Output} from '@angular/core';
+import {EventEmitter, Injectable, Output} from '@angular/core';
 import {GroupInvitation} from "../home/notification-view/groupInvitation";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
 import {apiEndPoint} from "../env";
 import {StatesService} from "./states.service";
+import {forkJoin, map, Observable, of} from "rxjs";
+
 
 export interface PostLikes {
   post_id: string
@@ -26,20 +28,25 @@ export interface Notification {
 @Injectable({
   providedIn: 'root'
 })
-export class MainService implements OnDestroy {
+export class MainService {
   notifications: Notification | null = null;
-  fetchNotificationsInterval: any = null;
+  shouldFetchNotifications = true;
 
   @Output() appReopenEvent = new EventEmitter<string>()
   @Output() postReloadEvent = new EventEmitter<string>()
 
   constructor(public http: HttpClient, public auth: AuthService, public states: StatesService) {
     this.setupFetchNotificationsInterval()
+
     window.addEventListener('visibilitychange', () => {
       if (document.visibilityState === "visible") {
         this.appReopenEvent.emit("app-reopened")
-        this.fetchNotifications()
+        this.fetchNotifications().subscribe()
       }
+    })
+
+    auth.loginEvent.subscribe(() => {
+      this.fetchNotifications().subscribe()
     })
   }
 
@@ -48,23 +55,36 @@ export class MainService implements OnDestroy {
   }
 
   setupFetchNotificationsInterval(): void {
-    this.fetchNotifications()
-    this.fetchNotificationsInterval = setInterval(() => {
-      this.fetchNotifications()
-    }, 10000)
+    this.fetchNotifications().subscribe(() => {
+        setTimeout(() => {
+          this.setupFetchNotificationsInterval()
+        }, 7500)
+      }
+    )
   }
 
-  clearFetchNotificationsInterval(): void {
-    clearInterval(this.fetchNotificationsInterval)
-  }
+  fetchNotifications(override = false): Observable<boolean> {
+    if (!this.auth.loggedIn || !this.shouldFetchNotifications && !override) {
+      return of(true);
+    }
 
-  fetchNotifications(): void {
-    this.http.get<Notification>(apiEndPoint + '/notification/fetch_all_notifications/' + this.auth.selfUserID).subscribe((data) => {
-      this.notifications = data;
-    })
-    this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
-      this.states.hasUnreadMsg = data;
-    })
+    const notificationRequest = this.http.get<Notification>(apiEndPoint + '/notification/fetch_all_notifications/' + this.auth.selfUserID);
+    const unreadMsgRequest = this.http.get<boolean>(apiEndPoint + '/group/have_unread_msg/' + this.auth.selfUserID);
+
+    return forkJoin({
+      notifications: notificationRequest,
+      unreadMsg: unreadMsgRequest
+    }).pipe(
+      map((results: { notifications: Notification, unreadMsg: boolean }) => {
+        if (this.notifications !== results.notifications) {
+          this.notifications = results.notifications;
+        }
+        if (this.states.hasUnreadMsg !== results.unreadMsg) {
+          this.states.hasUnreadMsg = results.unreadMsg;
+        }
+        return true; // Both requests completed successfully
+      })
+    );
   }
 
   getTotalMessageCount(): number {
@@ -75,9 +95,5 @@ export class MainService implements OnDestroy {
     total += this.notifications?.post_comments.length ?? 0;
     total += this.notifications?.system_messages.length ?? 0;
     return total;
-  }
-
-  ngOnDestroy(): void {
-    this.clearFetchNotificationsInterval()
   }
 }

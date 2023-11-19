@@ -39,7 +39,7 @@ export class PostLikeRowComponent implements OnInit {
 
   removeNotification(): void {
     this.http.get(apiEndPoint + '/notification/clear_post_like_notification/' + this.postLike?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 }

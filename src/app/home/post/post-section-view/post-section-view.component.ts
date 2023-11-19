@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
@@ -6,14 +6,18 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
+import {debounceTime, fromEvent, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-post-section-view',
   templateUrl: './post-section-view.component.html',
   styleUrls: ['./post-section-view.component.css']
 })
-export class PostSectionViewComponent implements OnInit {
+export class PostSectionViewComponent implements OnInit, OnDestroy {
+  wideMode = false;
   postIDs: number[] = [];
+  postIDsWide: number[][] = [];
+
   loading = true;
   empty = false;
   selectedRankingMode = 'Recommended';
@@ -23,6 +27,7 @@ export class PostSectionViewComponent implements OnInit {
   firstLoad = true;
   showPostSection = true;
   cacheKey: string = 'post-ids-cache';
+  private resizeSubscription: Subscription = new Subscription();
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
     this.main.appReopenEvent.subscribe(() => {
@@ -47,20 +52,63 @@ export class PostSectionViewComponent implements OnInit {
         this.postIDs = data;
         this.savePostIDsToLocalStorage();
       }
+
       this.empty = this.postIDs.length == 0;
       setTimeout(() => {
         this.canShowReloadButton = true;
       }, 15000);
 
-      if (this.firstLoad) {
-        this.firstLoad = false;
-      } else {
-        this.showPostSection = false;
-        setTimeout(() => {
-          this.showPostSection = true;
-        }, 10);
-      }
+      this.resizeIfNecessary();
+      this.forceReloadIfNecessary();
     })
+
+    // subscribe to the resize event
+    this.resizeSubscription = fromEvent(window, 'resize').pipe(
+      debounceTime(200),
+    ).subscribe(() => {
+      this.resizeIfNecessary()
+    })
+  }
+
+  ngOnDestroy() {
+    this.resizeSubscription.unsubscribe();
+  }
+
+  resizeIfNecessary() {
+    const width = window.innerWidth;
+    const postWidth = 370;
+    const gap = 5;
+    const margin = 5;
+
+    const maxColumns = Math.floor((width - margin * 2) / (postWidth + gap * 2));
+
+    if (maxColumns < 2) {
+      this.wideMode = false;
+      return;
+    }
+
+    if (!this.wideMode) {
+      this.wideMode = true;
+    }
+    let _postIDsWide = [];
+    const numberOfPosts = this.postIDs.length;
+    for (let i = 0; i < maxColumns; i++) {
+      _postIDsWide.push(this.postIDs.slice(i * Math.ceil(numberOfPosts / maxColumns), (i + 1) * Math.ceil(numberOfPosts / maxColumns)));
+    }
+    if (this.postIDsWide != _postIDsWide) {
+      this.postIDsWide = _postIDsWide;
+    }
+  }
+
+  forceReloadIfNecessary() {
+    if (this.firstLoad) {
+      this.firstLoad = false;
+    } else {
+      this.showPostSection = false;
+      setTimeout(() => {
+        this.showPostSection = true;
+      }, 20);
+    }
   }
 
   openBottomSheet(): void {

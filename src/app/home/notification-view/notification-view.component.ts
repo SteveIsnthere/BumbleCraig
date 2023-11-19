@@ -15,11 +15,11 @@ export class NotificationViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.main.clearFetchNotificationsInterval()
+    this.main.shouldFetchNotifications = false;
   }
 
   ngOnDestroy(): void {
-    this.main.setupFetchNotificationsInterval()
+    this.main.shouldFetchNotifications = true;
   }
 
   showCleanAllButton(): boolean {
@@ -32,7 +32,7 @@ export class NotificationViewComponent implements OnInit, OnDestroy {
 
   clear(): void {
     this.http.get(apiEndPoint + '/notification/clear_all_notifications/' + this.auth.selfUserID).subscribe(() => {
-      this.main.fetchNotifications()
+      this.main.fetchNotifications(true).subscribe()
       this.openSnackBar('All notifications cleared', 'OK')
     })
   }

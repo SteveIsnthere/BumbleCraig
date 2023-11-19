@@ -29,7 +29,7 @@ export class PostCommentRowComponent implements OnInit {
 
   clearNotification(): void {
     this.http.get(apiEndPoint + '/notification/clear_post_comment_notification/' + this.postComment?.post_id + '/' + this.auth.selfUserID).subscribe(() => {
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 

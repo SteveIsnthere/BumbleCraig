@@ -8,15 +8,26 @@ width: 100%;display: flex; justify-content: center; ">
   </button>
 </div>
 <div style="height: 55px"></div>
-<div class="posts-section" *ngIf="showPostSection">
+<ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
-    <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+    <ng-container *ngIf="!wideMode; else wide">
+      <div id="single-row-posts-container" class="posts-container">
+        <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+      </div>
+    </ng-container>
+
+    <ng-template #wide>
+      <div id="wide-mode-posts-container" class="posts-container">
+        <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
+          <app-post class="post-wide-mode" [postID]="postID" *ngFor="let postID of postRow"></app-post>
+        </div>
+      </div>
+    </ng-template>
   </ng-container>
   <ng-template #loadingPlaceHolder>
-    <app-post-loading-placeholder class="post"
-                                  *ngFor="let postID of [1,2,3,4,5,6,7,8,9,10]"></app-post-loading-placeholder>
+    <app-post-section-loading-placeholder></app-post-section-loading-placeholder>
   </ng-template>
-</div>
+</ng-container>
 
 <div *ngIf="empty">
   <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other

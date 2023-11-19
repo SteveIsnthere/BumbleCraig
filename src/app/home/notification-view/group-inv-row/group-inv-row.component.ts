@@ -20,14 +20,14 @@ export class GroupInvRowComponent {
   acceptGroupInvitation(groupInvitation: GroupInvitation) {
     this.http.get(apiEndPoint + '/group/accept-invite/' + groupInvitation.group_id + '/' + this.auth.selfUserID).subscribe((data: any) => {
       this.openSnackBar(data, 'Close');
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 
   rejectGroupInvitation(groupInvitation: GroupInvitation) {
     this.http.get(apiEndPoint + '/group/decline-invite/' + groupInvitation.group_id + '/' + this.auth.selfUserID).subscribe((data: any) => {
       this.openSnackBar(data, 'Close');
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 

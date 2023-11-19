@@ -63,7 +63,6 @@ import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-r
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BackBtnComponent} from './compoents/back-btn/back-btn.component';
-import {PostLoadingPlaceholderComponent} from './home/post/post-loading-placeholder/post-loading-placeholder.component';
 import {SignupLoadingViewComponent} from './home/login-view/signup-loading-view/signup-loading-view.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {PostFilesViewerComponent} from './home/post/post-files-viewer/post-files-viewer.component';
@@ -73,6 +72,7 @@ import {
 import {AskTidderComponent} from './home/ask-tidder/ask-tidder.component';
 import {LogoComponent} from './compoents/logo/logo.component';
 import { RainbowStripComponent } from './compoents/rainbow-strip/rainbow-strip.component';
+import { PostSectionLoadingPlaceholderComponent } from './home/post/post-section-view/post-section-loading-placeholder/post-section-loading-placeholder.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -123,13 +123,13 @@ const appRoutes: Routes = [
     GroupInvRowComponent,
     SysMsgRowComponent,
     BackBtnComponent,
-    PostLoadingPlaceholderComponent,
     SignupLoadingViewComponent,
     PostFilesViewerComponent,
     ReusableCommentsViewComponent,
     AskTidderComponent,
     LogoComponent,
     RainbowStripComponent,
+    PostSectionLoadingPlaceholderComponent,
   ],
   imports: [
     BrowserModule,

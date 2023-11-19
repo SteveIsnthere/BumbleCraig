@@ -19,14 +19,14 @@ export class FriendReqRowComponent {
   acceptFriendRequest(friendRequestUserID: number) {
     this.http.get(apiEndPoint + '/user/accept_friend_request/' + this.auth.selfUserID + '/' + friendRequestUserID).subscribe((data: any) => {
       this.openSnackBar(data, 'Close');
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 
   rejectFriendRequest(friendRequestUserID: number) {
     this.http.get(apiEndPoint + '/user/reject_friend_request/' + this.auth.selfUserID + '/' + friendRequestUserID).subscribe((data: any) => {
       this.openSnackBar(data, 'Close');
-      this.main.fetchNotifications();
+      this.main.fetchNotifications(true).subscribe()
     })
   }
 

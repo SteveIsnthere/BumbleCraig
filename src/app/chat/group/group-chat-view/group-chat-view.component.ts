@@ -10,6 +10,7 @@ import {FigureEditViewComponent} from "../../../simple-figure/figure-edit-view/f
 import {TextEditViewComponent} from "../../text-edit-view/text-edit-view.component";
 import {InviteViewComponent} from "../invite-view/invite-view.component";
 import {StatesService} from "../../../services/states.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-group-chat-view',
@@ -29,8 +30,9 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   messagesContainer: any;
   loadedScroller: boolean = false;
   noMessages: boolean = false;
-  updateInterval: any = 0;
+  // updateInterval: any = 0;
   uploadingFile: boolean = false;
+  shouldLoadMessages: boolean = true;
 
   constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
@@ -44,10 +46,11 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       this.http.get<GroupEssentialData>(apiEndPoint + '/group/get_essential_group_data/' + this.groupID).subscribe((data) => {
         this.groupEssentialData = data;
       })
-      this.initMessages()
-      this.updateInterval = setInterval(() => {
-        this.initMessages();
-      }, 10000)
+      // this.initMessages()
+      // this.updateInterval = setInterval(() => {
+      //   this.initMessages();
+      // }, 10000)
+      this.setMessageRefreshLoop()
       this.viewGroup();
     });
 
@@ -61,50 +64,66 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       this.states.showNavBar = true;
     }, 0);
 
-    clearInterval(this.updateInterval);
+    // clearInterval(this.updateInterval);
+    this.shouldLoadMessages = false;
     if (this.loadedScroller) {
       this.observer.unobserve(this.messagesContainer);
     }
   }
 
-  initMessages() {
-    this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
-      if (data.length == 0) {
-        this.noMessages = true;
-        return;
-      } else if (!this.loadedScroller) {
-        this.noMessages = false;
-        this.loadedScroller = true;
-        this.messagesContainer = this.elementRef.nativeElement.querySelector(
-          '#messages-container'
-        );
-        this.observer = new ResizeObserver(() => this.onHeightChange());
-        this.observer.observe(this.messagesContainer);
-      }
-
-      if (!this.messagesHasChanged(data)) {
-        return;
-      }
-
-      if (this.messages.length > 0) {
-        let numberOfNewMessages = 0;
-        for (let i = 0; i < data.length; i++) {
-          if (this.areMessagesSame(data[data.length - 1 - i], this.messages[this.messages.length - 1])) {
-            break;
-          }
-          numberOfNewMessages++;
-        }
-        for (let i = data.length - numberOfNewMessages; i < data.length; i++) {
-          this.messages.push(data[i]);
-        }
-      } else {
-        this.messages = data;
-      }
-
+  setMessageRefreshLoop() {
+    if (!this.shouldLoadMessages) return;
+    this.loadMessages().subscribe(() => {
       setTimeout(() => {
-        this.viewGroup();
+        this.setMessageRefreshLoop();
       }, 5000);
     })
+  }
+
+  loadMessages(): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
+        if (data.length === 0) {
+          this.noMessages = true;
+          observer.next(true);
+          observer.complete();
+          return;
+        } else if (!this.loadedScroller) {
+          this.noMessages = false;
+          this.loadedScroller = true;
+          this.messagesContainer = this.elementRef.nativeElement.querySelector('#messages-container');
+          this.observer = new ResizeObserver(() => this.onHeightChange());
+          this.observer.observe(this.messagesContainer);
+        }
+
+        if (!this.messagesHasChanged(data)) {
+          observer.next(true);
+          observer.complete();
+          return;
+        }
+
+        if (this.messages.length > 0) {
+          let numberOfNewMessages = 0;
+          for (let i = 0; i < data.length; i++) {
+            if (this.areMessagesSame(data[data.length - 1 - i], this.messages[this.messages.length - 1])) {
+              break;
+            }
+            numberOfNewMessages++;
+          }
+          for (let i = data.length - numberOfNewMessages; i < data.length; i++) {
+            this.messages.push(data[i]);
+          }
+        } else {
+          this.messages = data;
+        }
+
+        setTimeout(() => {
+          this.viewGroup();
+        }, 10);
+        observer.next(true);
+        observer.complete();
+      });
+    });
   }
 
   messagesHasChanged(newData: Message[]) {
@@ -159,7 +178,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
 
       this.http.post(apiEndPoint + "/group/create_message/" + this.groupID + "/" + this.auth.selfUserID, textContent)
         .subscribe(() => {
-          this.initMessages();
+          this.loadMessages().subscribe()
         })
     });
   }
@@ -177,7 +196,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         this.uploadingFile = false;
         this.fileToUpload = null;
         console.log('File uploaded successfully');
-        this.initMessages();
+        this.loadMessages().subscribe()
       },
       (error) => {
         this.uploadingFile = false;
@@ -189,4 +208,45 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   openInviteView() {
     this._bottomSheet.open(InviteViewComponent, {data: this.groupID});
   }
+
+  // initMessages() {
+  //   this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
+  //     if (data.length == 0) {
+  //       this.noMessages = true;
+  //       return;
+  //     } else if (!this.loadedScroller) {
+  //       this.noMessages = false;
+  //       this.loadedScroller = true;
+  //       this.messagesContainer = this.elementRef.nativeElement.querySelector(
+  //         '#messages-container'
+  //       );
+  //       this.observer = new ResizeObserver(() => this.onHeightChange());
+  //       this.observer.observe(this.messagesContainer);
+  //     }
+  //
+  //     if (!this.messagesHasChanged(data)) {
+  //       return;
+  //     }
+  //
+  //     if (this.messages.length > 0) {
+  //       let numberOfNewMessages = 0;
+  //       for (let i = 0; i < data.length; i++) {
+  //         if (this.areMessagesSame(data[data.length - 1 - i], this.messages[this.messages.length - 1])) {
+  //           break;
+  //         }
+  //         numberOfNewMessages++;
+  //       }
+  //       for (let i = data.length - numberOfNewMessages; i < data.length; i++) {
+  //         this.messages.push(data[i]);
+  //       }
+  //     } else {
+  //       this.messages = data;
+  //     }
+  //
+  //     // setTimeout(() => {
+  //     //   this.viewGroup();
+  //     // }, 5000);
+  //   })
+  // }
+
 }

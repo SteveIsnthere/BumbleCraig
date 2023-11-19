@@ -4,7 +4,7 @@
       <div class="comment-wrapper">
         <app-user-mini [userID]="comment.author_id"></app-user-mini>
         <div class="comment-content">
-          <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;">
+          <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;" style="box-shadow: none">
             <mat-expansion-panel-header>
               <span
                 style="display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;
@@ -55,7 +55,7 @@
 </main>
 
 <ng-template #loadingBar>
-  <div class="loading-bar" style="height: 75px; width: 300px">
+  <div class="loading-bar" style="height: 75px; width: 150px">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 </ng-template>
