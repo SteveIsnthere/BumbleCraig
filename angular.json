@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Tidder:build:production"
+              "buildTarget": "Tidder:build:production"
             },
             "development": {
-              "browserTarget": "Tidder:build:development"
+              "buildTarget": "Tidder:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Tidder:build"
+            "buildTarget": "Tidder:build"
           }
         },
         "test": {
