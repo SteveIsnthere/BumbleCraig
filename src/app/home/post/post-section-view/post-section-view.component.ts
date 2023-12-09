@@ -46,7 +46,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     this.showReloadButton = false;
     this.canShowReloadButton = false;
     this.loading = true;
-    this.touchDevice = ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 )
+    this.touchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     this.loadSettingsFromLocalStorage();
 
     // subscribe to the resize event
@@ -66,7 +66,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     this.fetchPosts();
   }
 
-    fetchPosts() {
+  fetchPosts() {
     this.showReloadButton = false;
     this.canShowReloadButton = false;
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
