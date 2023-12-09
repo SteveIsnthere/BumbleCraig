@@ -26,10 +26,20 @@ main {
 }
 
 .startUpSlideIn {
-  animation: appear 1s ease forwards;
+  /*animation: slideIn 1.2s ease forwards;*/
 }
 
 #logo {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
   background-color: black;
 }
+
+/*@keyframes slideIn {*/
+/*  0% {*/
+/*    scale: 2;*/
+/*    transform: translateY(100%);*/
+/*  }*/
+/*  100% {*/
+/*    transform: translateY(0);*/
+/*  }*/
+/*}*/

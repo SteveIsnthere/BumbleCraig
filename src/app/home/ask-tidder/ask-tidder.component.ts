@@ -28,15 +28,17 @@ export class AskTidderComponent {
   examplePrompts: string[][] = [
     ["What is Tidder?", "question_mark"],
     ["Who made this?", "mood"],
-    ["Tell me a joke", "celebration"],
-    ["Help me with ", "task"]
+    ["Tell me a lame joke", "celebration"],
+    ["Are you a real person?", "person"]
   ]
 
-  exampleVisonPrompts: string[][] = [
+  exampleVisionPrompts: string[][] = [
     ["What is in the picture?", "question_mark"],
     ["Why is this funny?", "mood"],
     ["Make a joke about it", "celebration"],
-    ["Solve it", "task"]
+    ["Solve it", "task"],
+    ["Explain it", "task"],
+    ["Solve and explain it", "task"]
   ]
 
   constructor(private http: HttpClient, private auth: AuthService) {

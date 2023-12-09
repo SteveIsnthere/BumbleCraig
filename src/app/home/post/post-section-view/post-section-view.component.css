@@ -6,7 +6,7 @@
 .posts-container {
   margin: 5px 8px 85px;
   scroll-behavior: smooth;
-  gap: 5px;
+  /*gap: 5px;*/
 }
 
 #single-row-posts-container {
@@ -25,25 +25,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  /*gap: 5px;*/
 }
 
 .post {
   width: 100%;
-  max-width: 600px;
+  max-width: 950px;
 }
 
 #refresh-btn {
   position: fixed;
   z-index: 3;
-  top: 68px;
+  bottom: 73px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .post-wide-mode {
   width: 100%;
-  max-width: 370px;
+  max-width: 470px;
+}
+
+.divider{
+  width: calc(100% - 38px)
 }
 
 

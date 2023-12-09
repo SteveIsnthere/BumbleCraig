@@ -28,7 +28,7 @@
     </div>
 
     <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
-      <div *ngFor="let p of exampleVisonPrompts" (click)="applyPrompt(p[0])" class="example-question">
+      <div *ngFor="let p of exampleVisionPrompts" (click)="applyPrompt(p[0])" class="example-question">
         <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
         <span>{{p[0]}}</span>
       </div>

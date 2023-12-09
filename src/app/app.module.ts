@@ -73,6 +73,7 @@ import {AskTidderComponent} from './home/ask-tidder/ask-tidder.component';
 import {LogoComponent} from './compoents/logo/logo.component';
 import { RainbowStripComponent } from './compoents/rainbow-strip/rainbow-strip.component';
 import { PostSectionLoadingPlaceholderComponent } from './home/post/post-section-view/post-section-loading-placeholder/post-section-loading-placeholder.component';
+import { AboutComponent } from './compoents/about/about.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -130,6 +131,7 @@ const appRoutes: Routes = [
     LogoComponent,
     RainbowStripComponent,
     PostSectionLoadingPlaceholderComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

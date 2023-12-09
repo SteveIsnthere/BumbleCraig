@@ -13,20 +13,28 @@ export class PostPerceptionBarComponent {
     return Math.floor(this.rating * 5)+1;
   }
 
+  // ratingText(): string {
+  //   const score = this.ratingScore();
+  //   if (score == 1) return 'one';
+  //   if (score == 2) return 'two';
+  //   return score.toString();
+  // }
+
   ratingText(): string {
     const score = this.ratingScore();
-    if (score == 1) return 'one';
-    if (score == 2) return 'two';
-    return score.toString();
+    if (score == 1) return 'sentiment_very_dissatisfied';
+    if (score == 2) return 'sentiment_dissatisfied';
+    if (score == 3) return 'sentiment_satisfied';
+    return 'sentiment_very_satisfied';
   }
 
   ratingColor(): string {
     const score = this.ratingScore();
     if (score == 1) return '#FF0000';
     if (score == 2) return '#eeff00';
-    if (score == 3) return '#1f1f1f';
-    if (score == 4) return '#a2ff00';
+    if (score == 3) return '#7a7a7a';
+    if (score == 4) return '#7bff00';
     if (score == 5) return '#00FF00';
-    return '#0048ff';
+    return '#205eff';
   }
 }

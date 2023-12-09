@@ -1,15 +1,16 @@
 mat-card {
   border-radius: 10px;
   box-shadow: none;
-  margin: 5px;
   min-height: 150px;
-  background-color: rgba(0, 0, 0, 0.4);
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  background-color: rgba(0, 0, 0, 0);
   /*border: 3px grey dashed;*/
   animation: appear 1.5s forwards;
 }
 
 .text-content {
-  color: antiquewhite;
+  /*color: antiquewhite;*/
+  color: #fff8ee;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -30,6 +31,7 @@ mat-card {
 
 mat-card-content {
   cursor: pointer;
+  /*transform: translateY(-25px);*/
 }
 
 mat-card-title {
@@ -41,16 +43,24 @@ mat-card-title {
 
 
 mat-card-actions {
-  display: flex;
-  justify-content: flex-end;
+  margin: -18px -8px -10px 62px;
   gap: 10px;
-  padding: 6px 13px
+  /*transform: translateY(-15px);*/
+}
+
+.desktopStyleClass {
+  transition-duration: 0.2s;
+}
+
+.desktopStyleClass:hover {
+  background-color: rgba(253, 253, 253, 0.07);
+  transition-duration: 0.05s;
 }
 
 
-@media only screen and (min-width: 850px) {
-  mat-card-content {
-    /*height: 300px;*/
-    /*overflow: hidden;*/
-  }
-}
+/*@media only screen and (min-width: 850px) {*/
+/*  mat-card-content {*/
+/*    !*height: 300px;*!*/
+/*    !*overflow: hidden;*!*/
+/*  }*/
+/*}*/

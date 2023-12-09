@@ -4,7 +4,7 @@
 <div style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);
 width: 100%;display: flex; justify-content: center; ">
   <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
-    {{selectedRankingMode}} | {{genreSelected}}
+    {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
 </div>
 <div style="height: 55px"></div>
@@ -12,14 +12,20 @@ width: 100%;display: flex; justify-content: center; ">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
     <ng-container *ngIf="!wideMode; else wide">
       <div id="single-row-posts-container" class="posts-container">
-        <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
+        <ng-container *ngFor="let postID of postIDs">
+          <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
+                    <mat-divider class="divider"></mat-divider>
+        </ng-container>
       </div>
     </ng-container>
 
     <ng-template #wide>
       <div id="wide-mode-posts-container" class="posts-container">
         <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
-          <app-post class="post-wide-mode" [postID]="postID" *ngFor="let postID of postRow"></app-post>
+          <ng-container *ngFor="let postID of postRow">
+            <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice></app-post>
+            <mat-divider class="divider"></mat-divider>
+          </ng-container>
         </div>
       </div>
     </ng-template>
@@ -34,7 +40,7 @@ width: 100%;display: flex; justify-content: center; ">
     genres</p>
 </div>
 <div id="refresh-btn">
-  <button mat-mini-fab color="warn" (click)="refresh()" *ngIf="showReloadButton">
+  <button mat-mini-fab color="primary" (click)="refresh()" *ngIf="showReloadButton">
     <mat-icon>refresh</mat-icon>
   </button>
 </div>

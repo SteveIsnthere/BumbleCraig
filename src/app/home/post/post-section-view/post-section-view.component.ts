@@ -7,6 +7,7 @@ import {apiEndPoint} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
 import {debounceTime, fromEvent, Subscription} from "rxjs";
+import {StatesService} from "../../../services/states.service";
 
 @Component({
   selector: 'app-post-section-view',
@@ -27,16 +28,17 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
   firstLoad = true;
   showPostSection = true;
   cacheKey: string = 'post-ids-cache';
+  touchDevice = false;
   private resizeSubscription: Subscription = new Subscription();
 
-  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {
+  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
     this.main.appReopenEvent.subscribe(() => {
       if (this.canShowReloadButton) {
         this.showReloadButton = true;
       }
     })
     this.main.postReloadEvent.subscribe(() => {
-      this.ngOnInit();
+      this.fetchPosts();
     })
   }
 
@@ -44,8 +46,29 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     this.showReloadButton = false;
     this.canShowReloadButton = false;
     this.loading = true;
+    this.touchDevice = ( 'ontouchstart' in window ) || ( navigator.maxTouchPoints > 0 )
     this.loadSettingsFromLocalStorage();
-    this.loadPostIDsFromLocalStorage();
+
+    // subscribe to the resize event
+    this.resizeSubscription = fromEvent(window, 'resize').pipe(
+      debounceTime(200),
+    ).subscribe(() => {
+      this.resizeIfNecessary()
+    })
+
+    if (this.states.loadedUp) {
+      this.loadPostIDsFromLocalStorage();
+      this.showReloadButton = true;
+      this.resizeIfNecessary();
+      return;
+    }
+
+    this.fetchPosts();
+  }
+
+    fetchPosts() {
+    this.showReloadButton = false;
+    this.canShowReloadButton = false;
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
@@ -61,13 +84,6 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
       this.resizeIfNecessary();
       this.forceReloadIfNecessary();
     })
-
-    // subscribe to the resize event
-    this.resizeSubscription = fromEvent(window, 'resize').pipe(
-      debounceTime(200),
-    ).subscribe(() => {
-      this.resizeIfNecessary()
-    })
   }
 
   ngOnDestroy() {
@@ -76,9 +92,9 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
 
   resizeIfNecessary() {
     const width = window.innerWidth;
-    const postWidth = 370;
-    const gap = 5;
-    const margin = 5;
+    const postWidth = 470;
+    const gap = 0;
+    const margin = 0;
 
     const maxColumns = Math.floor((width - margin * 2) / (postWidth + gap * 2));
 
@@ -87,9 +103,10 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (!this.wideMode) {
-      this.wideMode = true;
-    }
+    if (!this.wideMode) this.wideMode = true;
+
+    if (this.postIDsWide.length == maxColumns) return;
+
     let _postIDsWide = [];
     const numberOfPosts = this.postIDs.length;
     for (let i = 0; i < maxColumns; i++) {
@@ -125,7 +142,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
 
       // update the postIDs
       this.saveSettingsToLocalStorage();
-      this.ngOnInit();
+      this.fetchPosts();
     });
   }
 
@@ -147,7 +164,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
 
   refresh() {
     // reload the site
-    this.ngOnInit();
+    this.fetchPosts()
   }
 
   private loadPostIDsFromLocalStorage(): void {

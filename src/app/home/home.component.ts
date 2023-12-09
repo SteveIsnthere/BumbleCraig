@@ -4,6 +4,7 @@ import {NotificationViewComponent} from "./notification-view/notification-view.c
 import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
 import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
+import {AboutComponent} from "../compoents/about/about.component";
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,10 @@ export class HomeComponent {
 
   openNewPostView() {
     this.dialog.open(NewPostViewComponent);
+  }
+
+  openAboutView() {
+    this.dialog.open(AboutComponent);
   }
 
   notificationCount() {

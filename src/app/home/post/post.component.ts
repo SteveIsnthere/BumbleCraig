@@ -19,6 +19,7 @@ import {PostCachingService} from "../../services/post-caching.service";
 })
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
+  @Input() touchMode: boolean = false;
   post: Post | null = null;
   commentUploadRoute: string = '/post/create_comment/';
   textAttachments: Message[] = [];
@@ -56,8 +57,12 @@ export class PostComponent implements OnInit {
       }
     }
 
-    if (this.textAttachments.length > 2) {
-      this.textAttachments = this.textAttachments.slice(0, 2);
+    let textAttachmentsMaxLength = 2;
+    if (this.fileAttachments.length > 0) {
+      textAttachmentsMaxLength = 1;
+    }
+    if (this.textAttachments.length > textAttachmentsMaxLength) {
+      this.textAttachments = this.textAttachments.slice(0, textAttachmentsMaxLength);
     }
   }
 

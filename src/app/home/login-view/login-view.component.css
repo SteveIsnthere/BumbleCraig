@@ -8,29 +8,11 @@ main {
   gap: 20px;
 }
 
-.text-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 20px
-}
-
-.text-content {
-  color: #c72a68;
-  font-weight: 470;
-
-}
-
 #welcome {
-  color: white;
-  padding: 20px;
   /*margin-top: 0px;*/
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
-  border-radius: 25px;
-  background-color: rgba(0, 0, 0, 0.22);
   width: 300px;
 }
 
