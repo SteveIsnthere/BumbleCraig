@@ -44,7 +44,7 @@ mat-card-title {
 
 mat-card-actions {
   margin: -18px -8px -10px 62px;
-  gap: 10px;
+  gap: 20px;
   /*transform: translateY(-15px);*/
 }
 

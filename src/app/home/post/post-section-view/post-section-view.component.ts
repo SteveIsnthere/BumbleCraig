@@ -94,7 +94,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     const width = window.innerWidth;
     const postWidth = 470;
     const gap = 0;
-    const margin = 0;
+    const margin = 3;
 
     const maxColumns = Math.floor((width - margin * 2) / (postWidth + gap * 2));
 
@@ -105,7 +105,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
 
     if (!this.wideMode) this.wideMode = true;
 
-    if (this.postIDsWide.length == maxColumns) return;
+    // if (this.postIDsWide.length == maxColumns) return;
 
     let _postIDsWide = [];
     const numberOfPosts = this.postIDs.length;

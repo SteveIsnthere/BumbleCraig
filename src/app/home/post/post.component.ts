@@ -19,7 +19,7 @@ import {PostCachingService} from "../../services/post-caching.service";
 })
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
-  @Input() touchMode: boolean = false;
+  @Input() touchMode: boolean = true;
   post: Post | null = null;
   commentUploadRoute: string = '/post/create_comment/';
   textAttachments: Message[] = [];

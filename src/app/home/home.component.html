@@ -1,6 +1,6 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
   <img src="assets/logo.png" alt="" class="top-floating-buttons"
-       style="left: 0; background-color: rgba(0,0,0,0.7); border-radius: 100px;cursor: pointer;
+       style="left: 0; background-color: rgb(0,0,0); border-radius: 100px;cursor: pointer;
         width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="reloadPage()">
@@ -23,7 +23,7 @@
 
   <button mat-mini-fab class="top-floating-buttons"
           color="primary"
-          style="border: 4px solid #f55246;"
+          style="font-size: large"
           *ngIf="notificationCount()>0; else makePost"
           (click)="openNotificationView()">
     {{notificationCount()}}

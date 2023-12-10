@@ -7,7 +7,7 @@ width: 100%;display: flex; justify-content: center; ">
     {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
 </div>
-<div style="height: 55px"></div>
+<div style="height: 50px"></div>
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
     <ng-container *ngIf="!wideMode; else wide">
@@ -44,5 +44,3 @@ width: 100%;display: flex; justify-content: center; ">
     <mat-icon>refresh</mat-icon>
   </button>
 </div>
-
-<!--  <app-rainbow-strip></app-rainbow-strip>-->

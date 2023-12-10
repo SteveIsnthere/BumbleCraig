@@ -1,7 +1,7 @@
 main{
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 5px 20px 20px;
   gap: 15px;
   max-height: 70dvh;
   overflow: auto;

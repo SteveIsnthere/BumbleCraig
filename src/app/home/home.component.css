@@ -1,10 +1,8 @@
 main {
   height: 100dvh;
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100vw;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -29,10 +27,6 @@ main {
   /*animation: slideIn 1.2s ease forwards;*/
 }
 
-#logo {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);
-  background-color: black;
-}
 
 /*@keyframes slideIn {*/
 /*  0% {*/
