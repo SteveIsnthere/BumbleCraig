@@ -1,7 +1,7 @@
 html, body {
   /*height: 100%;*/
   /*overflow: hidden;*/
-  /*position: fixed;*/
+  position: fixed;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 
   background-color: #212121;
-  /*background-color: #151515;*/
+  /*background-color: #0b1416;*/
 }
 
 @keyframes appear {

@@ -23,14 +23,14 @@ main {
   font-weight: bold;
   border-radius: 25px;
   padding: 12px 15px;
-  margin-top: 22px;
+  margin-top: 12px;
 }
 
 #stats {
   font-size: smaller;
   font-weight: normal;
   color: white;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 #description {

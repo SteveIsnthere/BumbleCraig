@@ -1,5 +1,6 @@
 main{
   display: flex;
+  width: 330px;
   flex-direction: column;
   padding: 5px 20px 20px;
   gap: 15px;
