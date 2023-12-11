@@ -49,7 +49,8 @@ main {
   backdrop-filter: blur(8px);
   border-radius: 20px;
   display: flex;
-  background-color: rgba(138, 138, 138, 0.15);
+  /*background-color: rgba(138, 138, 138, 0.15);*/
+  background-color: rgba(107, 107, 107, 0.5);
   animation: appear 1s ease;
   /*animation: bNavSlideIn 1s ease;*/
 }
