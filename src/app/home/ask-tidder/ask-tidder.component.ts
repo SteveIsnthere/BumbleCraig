@@ -29,7 +29,7 @@ export class AskTidderComponent {
     ["What is Tidder?", "question_mark"],
     ["Who made this?", "mood"],
     ["Tell me a lame joke", "celebration"],
-    ["Are you a real person?", "person"]
+    // ["Are you a real person?", "person"]
   ]
 
   exampleVisionPrompts: string[][] = [
