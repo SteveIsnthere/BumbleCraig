@@ -1,6 +1,5 @@
 main {
-  height: 100dvh;
-  overflow-y: auto; /* Enable vertical scrolling */
+  min-height: 100dvh;
 }
 
 #main-frame {

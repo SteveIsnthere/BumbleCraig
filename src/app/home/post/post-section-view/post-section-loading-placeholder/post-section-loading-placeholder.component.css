@@ -1,6 +1,9 @@
 main {
-  height: calc(85% - 55px);
-  width: 100%;
+  position: absolute;
+  top: 50dvh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

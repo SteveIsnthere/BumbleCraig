@@ -1,6 +1,5 @@
 main {
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

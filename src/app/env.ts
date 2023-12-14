@@ -32,3 +32,41 @@ export const genres = [
   'Confession',
   'Chinese',
 ];
+
+export const assistantPrompts: string[][] = [
+  ["What is Tidder?", "question_mark"],
+  ["Who made this?", "mood"],
+  ["Tell me a lame joke", "celebration"],
+]
+
+export const visionPrompts: string[][] = [
+  ["What is in the picture?", "question_mark"],
+  ["Why is this funny?", "mood"],
+  ["Make a joke about it", "celebration"],
+  ["Solve it", "task"],
+  ["Explain it", "task"],
+  ["Solve and explain it", "task"]
+]
+
+export const credits = [
+  {
+    "title": "Lead Developer",
+    "userid": 5,
+  },
+  {
+    "title": "Graphic Designer",
+    "userid": 5,
+  },
+  {
+    "title": "Tech Lead",
+    "userid": 5,
+  },
+  {
+    "title": "System Engineer",
+    "userid": 5,
+  },
+  {
+    "title": "Lead Moderator",
+    "userid": 5,
+  }
+]

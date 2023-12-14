@@ -1,47 +1,10 @@
 <main>
-  <app-logo style="align-self: center"></app-logo>
-  <div class="classicTextBox">
+  <div class="classicTextBox" *ngFor="let credit of credits">
     <div class="classicTitle">
-      Lead Developer
+      {{ credit.title }}
     </div>
     <div style="display: flex; justify-content: center">
-      <app-user [userID]="5"></app-user>
-    </div>
-  </div>
-
-  <div class="classicTextBox">
-    <div class="classicTitle">
-      Graphic Designer
-    </div>
-    <div style="display: flex; justify-content: center">
-      <app-user [userID]="5"></app-user>
-    </div>
-  </div>
-
-  <div class="classicTextBox">
-    <div class="classicTitle">
-      Tech Lead
-    </div>
-    <div style="display: flex; justify-content: center">
-      <app-user [userID]="5"></app-user>
-    </div>
-  </div>
-
-  <div class="classicTextBox">
-    <div class="classicTitle">
-      System Engineer
-    </div>
-    <div style="display: flex; justify-content: center">
-      <app-user [userID]="5"></app-user>
-    </div>
-  </div>
-
-  <div class="classicTextBox">
-    <div class="classicTitle">
-      Lead Moderator
-    </div>
-    <div style="display: flex; justify-content: center">
-      <app-user [userID]="5"></app-user>
+      <app-user [userID]=credit.userid></app-user>
     </div>
   </div>
 </main>

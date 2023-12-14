@@ -1,11 +1,9 @@
 main {
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100dvh;
   width: 100dvw;
-  overflow-x: hidden;
-  overflow-y: auto;
   animation: appear 2s forwards;
 }
 
@@ -62,13 +60,12 @@ main {
 
 
 #posts-section {
-  width: calc(100% - 20px);
+  width: calc(100% - 0px);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
   margin: 5px 0 85px;
 }
 
@@ -82,8 +79,8 @@ main {
 @media only screen and (min-width: 850px) {
   .post {
     overflow: hidden;
-    max-width: 400px;
-    min-width: 280px;
+    max-width: 450px;
+    min-width: 400px;
   }
 }
 

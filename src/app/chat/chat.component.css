@@ -1,8 +1,7 @@
 main {
   width: 100dvw;
   /*animation: slideIn 0.6s ease forwards;*/
-  overflow: auto;
-  height: 100dvh;
+  min-height: 100dvh;
 }
 
 

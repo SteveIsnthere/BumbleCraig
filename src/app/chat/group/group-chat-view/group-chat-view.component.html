@@ -13,7 +13,6 @@
     <mat-icon>person_add</mat-icon>
   </button>
   <div id="messages-section" #messagesSection>
-
     <ng-container *ngIf="noMessages">
       <div style="height: 80px"></div>
       <div style="text-align: center; color: #9e9e9e; font-weight: 400; margin-top: 20px">
@@ -37,23 +36,21 @@
         </ng-template>
         <div style="flex: 1"></div>
       </div>
-      <div style="height: 65px"></div>
+      <div style="height: 80px"></div>
     </div>
   </div>
 
 
   <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
-    <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"
-            style="margin-left: 20px;border-radius: 100px; width: 92px;backdrop-filter: blur(9px) brightness(0.9);">
+    <button id="upload-button" mat-fab color="primary" (click)="fileInput.click()"
+            style="margin-left: 15px; margin-bottom: 20px">
       <mat-icon>upload</mat-icon>
-      File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
-    <button mat-stroked-button (click)="openTextEditor()" color="warn"
-            style="margin-right: 20px; margin-left: 5px; border-radius: 100px; width: 92px;backdrop-filter: blur(9px) brightness(0.9);;">
+    <button mat-fab (click)="openTextEditor()" color="warn"
+            style="margin-right: 15px; margin-bottom: 20px">
       <mat-icon>edit_note</mat-icon>
-      Text
     </button>
   </div>
 

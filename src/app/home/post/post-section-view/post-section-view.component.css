@@ -1,8 +1,6 @@
-/*main {*/
-/*  max-width: 100vw;*/
-/*  height: 100dvh;*/
-/*  overflow: auto;*/
-/*}*/
+main {
+
+}
 .posts-container {
   padding: 5px 2px 83px;
   scroll-behavior: smooth;

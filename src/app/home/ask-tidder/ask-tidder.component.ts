@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {apiEndPoint} from "../../env";
+import {apiEndPoint, assistantPrompts, visionPrompts} from "../../env";
 import {AuthService} from "../../services/auth.service";
 
 import {animate, style, transition, trigger} from "@angular/animations";
@@ -25,21 +25,9 @@ export class AskTidderComponent {
   response: string = "";
   loading: boolean = false;
 
-  examplePrompts: string[][] = [
-    ["What is Tidder?", "question_mark"],
-    ["Who made this?", "mood"],
-    ["Tell me a lame joke", "celebration"],
-    // ["Are you a real person?", "person"]
-  ]
+  examplePrompts: string[][] = assistantPrompts;
 
-  exampleVisionPrompts: string[][] = [
-    ["What is in the picture?", "question_mark"],
-    ["Why is this funny?", "mood"],
-    ["Make a joke about it", "celebration"],
-    ["Solve it", "task"],
-    ["Explain it", "task"],
-    ["Solve and explain it", "task"]
-  ]
+  exampleVisionPrompts: string[][] = visionPrompts;
 
   constructor(private http: HttpClient, private auth: AuthService) {
   }
