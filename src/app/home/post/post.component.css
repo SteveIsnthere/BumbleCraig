@@ -37,15 +37,17 @@ mat-card-content {
 mat-card-title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-line-clamp: 1; /* Limit to 2 lines */
   overflow: hidden;
 }
 
 
-mat-card-actions {
-  margin: -18px -8px -10px 62px;
-  gap: 20px;
-  /*transform: translateY(-15px);*/
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: -32px;
+  min-width: 250px;
 }
 
 .desktopStyleClass {

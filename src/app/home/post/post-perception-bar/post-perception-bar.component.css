@@ -5,4 +5,5 @@ main {
   gap: 10px;
   color: antiquewhite;
   max-width: 100px;
+  min-width: 50px;
 }

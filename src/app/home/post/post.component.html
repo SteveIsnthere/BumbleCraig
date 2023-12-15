@@ -1,19 +1,21 @@
 <mat-card *ngIf="post?.popularity != null; else loadingBar" [ngClass]="touchMode ? '' : 'desktopStyleClass'">
-  <mat-card-header (click)="openPostFullView()" style="cursor: pointer;">
+  <mat-card-header style="cursor: pointer;">
     <app-user-mini mat-card-avatar [userID]="post?.author_id!"></app-user-mini>
-    <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large">{{ post?.title }}</mat-card-title>
+    <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large;"
+                    (click)="openPostFullView()">{{ post?.title }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span>{{ post!.time_since_posted }}</span>
+      <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"
+                               style="flex: 1;"></app-post-perception-bar>
+      <button mat-stroked-button color="accent" (click)="openCommentSection()"
+              style="border-radius: 11px; border: none">
+        <mat-icon>comment</mat-icon>
+        <span>{{ post?.number_of_comments }}</span>
+      </button>
+    </mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-actions>
-    <mat-card-subtitle style="color: antiquewhite;">{{ post!.time_since_posted }}</mat-card-subtitle>
-    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" (click)="openPostFullView()"
-                             style="flex: 1"></app-post-perception-bar>
-
-    <button mat-stroked-button color="accent" (click)="openCommentSection()" style="border-radius: 11px; border: none">
-      <mat-icon>comment</mat-icon>
-      <span>{{ post?.number_of_comments }}</span>
-    </button>
-  </mat-card-actions>
 
   <mat-card-content (click)="openPostFullView()">
     <!--    <mat-card-subtitle id="post-details-row">-->

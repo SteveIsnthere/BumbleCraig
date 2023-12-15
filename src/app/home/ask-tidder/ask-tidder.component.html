@@ -1,12 +1,5 @@
 <main>
   <div *ngIf="!loading && response == ''" id="input">
-    <div class="example-questions" *ngIf="imageToUpload == null">
-      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p[0])" class="example-question">
-        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
-        <span>{{p[0]}}</span>
-      </div>
-    </div>
-
     <div id="prompts">
       <ng-container *ngIf="imageToUpload != null; else noImg">
         <img [src]="url" alt="image" class="imagePreview">
@@ -21,10 +14,17 @@
 
       <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
 
-      <mat-form-field appearance="outline" style="min-width: 70vw">
+      <mat-form-field appearance="outline" style="min-width: 70vw; align-self: center">
         <mat-label>Question</mat-label>
         <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
       </mat-form-field>
+    </div>
+
+    <div class="example-questions" *ngIf="imageToUpload == null">
+      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p[0])" class="example-question">
+        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
+        <span>{{p[0]}}</span>
+      </div>
     </div>
 
     <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
