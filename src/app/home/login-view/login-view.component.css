@@ -13,23 +13,13 @@ main {
   margin-right: 20px;
   margin-bottom: 10px;
   width: 300px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
 #start-btn{
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
   animation: gradient 5s ease infinite;
-}
-
-#back-ground-image{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
-  width: 100vw;
-  opacity: 0.5;
 }
 
 @keyframes gradient {
