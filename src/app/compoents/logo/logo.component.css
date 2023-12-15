@@ -4,7 +4,7 @@
   width: 150px;
   height: 150px;
   margin-top: 20px;
-  border: 3px #e15241 solid;
+  /*border: 3px #e15241 solid;*/
   /*animation: logoAppear 1.3s ease forwards;*/
   animation: appear 2s ease forwards;
 }
