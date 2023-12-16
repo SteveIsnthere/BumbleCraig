@@ -1,13 +1,13 @@
 <main>
   <app-back-btn></app-back-btn>
   <button mat-mini-fab (click)="editMode = !editMode" color="warn"
-          style="display: flex;position: fixed;top: 3px; right:0;margin: 20px;z-index: 10;">
+          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
     <mat-icon *ngIf="!editMode">delete</mat-icon>
     <mat-icon *ngIf="editMode">check</mat-icon>
   </button>
 
   <button mat-flat-button (click)="createGroup()" color="primary"
-          style="position: fixed; border-radius: 300px; left: 50vw; top: 25px; transform: translateX(-50%)">
+          style="position: fixed; border-radius: 300px; left: 50vw; top: 20px; transform: translateX(-50%)">
     <mat-icon>add_circle</mat-icon>
     Create New
   </button>
