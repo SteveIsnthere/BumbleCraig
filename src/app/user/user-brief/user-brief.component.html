@@ -11,6 +11,11 @@
     <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close><mat-icon>logout</mat-icon>Logout</button>
   </div>
 
+  <ng-container *ngIf="this.main.getTotalMessageCount()>0">
+    <mat-divider></mat-divider>
+    <app-notification-view></app-notification-view>
+  </ng-container>
+
   <mat-divider></mat-divider>
   <app-ask-tidder></app-ask-tidder>
 

@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
+import {MainService} from "../../services/main.service";
 
 @Component({
   selector: 'app-user-brief',
@@ -9,7 +10,7 @@ import {AuthService} from "../../services/auth.service";
 })
 export class UserBriefComponent {
   selfUserID = this.data;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public auth: AuthService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public auth: AuthService,public main: MainService) { }
 
   quitBottomSheet() {
 

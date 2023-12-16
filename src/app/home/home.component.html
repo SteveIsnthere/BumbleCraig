@@ -37,7 +37,9 @@
     <!--      </mat-icon>-->
     <!--    </button>-->
 
-    <button mat-mini-fab class="btn" color="primary" (click)="openUserBriefView()">
+    <button mat-mini-fab class="btn" color="primary" (click)="openUserBriefView()"
+            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
+            [matBadgeHidden]="notificationCount() == 0">
       <mat-icon class="nav-icon">
         menu_open
       </mat-icon>
@@ -45,22 +47,22 @@
   </div>
 
 
-  <button mat-mini-fab
-          color="primary"
-          class="bottom-left-btn"
-          style="font-size: x-large; font-weight: lighter;"
-          matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
-          *ngIf="notificationCount()>0; else makePost"
-          (click)="openNotificationView()">
-    <!--    {{notificationCount()}}-->
-    <mat-icon>notifications_unread</mat-icon>
-  </button>
+  <!--  <button mat-mini-fab-->
+  <!--          color="primary"-->
+  <!--          class="bottom-left-btn"-->
+  <!--          style="font-size: x-large; font-weight: lighter;"-->
+  <!--          -->
+  <!--          *ngIf="notificationCount()>0; else makePost"-->
+  <!--          (click)="openNotificationView()">-->
+  <!--    &lt;!&ndash;    {{notificationCount()}}&ndash;&gt;-->
+  <!--    <mat-icon>notifications_unread</mat-icon>-->
+  <!--  </button>-->
 
-  <ng-template #makePost>
-    <button mat-mini-fab (click)="openNewPostView()" color="primary" class="bottom-left-btn">
-      <mat-icon>post_add</mat-icon>
-    </button>
-  </ng-template>
+  <!--  <ng-template #makePost>-->
+  <button mat-mini-fab (click)="openNewPostView()" color="primary" class="bottom-left-btn">
+    <mat-icon>post_add</mat-icon>
+  </button>
+  <!--  </ng-template>-->
 
   <app-post-section-view></app-post-section-view>
 </main>

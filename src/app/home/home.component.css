@@ -47,19 +47,6 @@ main {
   z-index: 2;
 }
 
-
-.nav-icon {
-  vertical-align: middle;
-}
-
-.active-nav-icon {
-  color: white;
-}
-
-.inactive-nav-icon {
-  color: black;
-}
-
 .unreadMsg {
   color: #f55246;
 }
