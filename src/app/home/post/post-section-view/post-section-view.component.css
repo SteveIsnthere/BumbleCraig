@@ -57,9 +57,12 @@ main {
   font-weight: normal;
   border-radius: 100px;
   justify-self: center;
-  margin-top: 15px;
+  margin-top: 13px;
   margin-bottom: 7px;
   border: 2px #e15241 solid;
   background-color: transparent;
   backdrop-filter: blur(9px) brightness(0.9);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }

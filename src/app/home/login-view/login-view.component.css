@@ -4,13 +4,12 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  gap: 20px;
 }
 
 #welcome {
   /*margin-top: 0px;*/
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-left: 25px;
+  margin-right: 25px;
   margin-bottom: 10px;
   width: 300px;
   backdrop-filter: blur(15px);

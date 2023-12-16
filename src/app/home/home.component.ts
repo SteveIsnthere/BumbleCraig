@@ -4,7 +4,9 @@ import {NotificationViewComponent} from "./notification-view/notification-view.c
 import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
 import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
-import {AboutComponent} from "../compoents/about/about.component";
+import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,11 @@ import {AboutComponent} from "../compoents/about/about.component";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(public main: MainService, private dialog: MatDialog, public states: StatesService) {
+  constructor(public router: Router, public auth: AuthService, public main: MainService, private dialog: MatDialog,
+              public states: StatesService, private bottomSheet: MatBottomSheet) {
     setTimeout(() => {
       this.states.loadedUp = true;
-    },2000);
+    }, 2000);
   }
 
   openNotificationView() {
@@ -23,13 +26,12 @@ export class HomeComponent {
   }
 
 
-
   openNewPostView() {
     this.dialog.open(NewPostViewComponent);
   }
 
-  openAboutView() {
-    this.dialog.open(AboutComponent);
+  openUserBriefView() {
+    // this.bottomSheet.open(NewPostViewComponent);
   }
 
   notificationCount() {

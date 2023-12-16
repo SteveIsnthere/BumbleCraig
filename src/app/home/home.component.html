@@ -1,38 +1,63 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
-  <img src="assets/logo.png" alt="" class="top-floating-buttons"
-       style="left: 0; background-color: rgba(0,0,0,0.1); border-radius: 100px;cursor: pointer;
-        width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="reloadPage()">
-      <mat-icon>refresh</mat-icon>
-      <span>Refresh</span>
-    </button>
-    <button mat-menu-item (click)="openAboutView()">
-      <mat-icon>info</mat-icon>
-      <span>about</span>
-    </button>
-  </mat-menu>
-  <!--  <button mat-mini-fab class="top-floating-buttons"-->
-  <!--          color="accent"-->
-  <!--          style="right: 0;width: 40px; height: 40px;"-->
-  <!--          (click)="openNotificationView()"-->
-  <!--          matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="warn"-->
-  <!--          [matBadgeHidden]="notificationCount() == 0">-->
-  <!--    <mat-icon>notifications</mat-icon>-->
-  <!--  </button>-->
+  <div id="nav-bar">
+    <!--    <img src="assets/logo.png" alt="" class="top-floating-buttons"-->
+    <!--         style="left: 0; background-color: rgba(0,0,0,0.1); border-radius: 100px;cursor: pointer;-->
+    <!--        width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">-->
+    <!--    <mat-menu #menu="matMenu">-->
+    <!--      <button mat-menu-item (click)="reloadPage()">-->
+    <!--        <mat-icon>refresh</mat-icon>-->
+    <!--        <span>Refresh</span>-->
+    <!--      </button>-->
+    <!--      <button mat-menu-item (click)="openAboutView()">-->
+    <!--        <mat-icon>info</mat-icon>-->
+    <!--        <span>about</span>-->
+    <!--      </button>-->
+    <!--    </mat-menu>-->
 
-  <button mat-mini-fab class="top-floating-buttons"
+    <button mat-mini-fab class="btn" routerLink="/chat">
+      <mat-icon class="nav-icon" *ngIf="!states.hasUnreadMsg; else unread"
+                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon']">
+        chat
+      </mat-icon>
+
+      <ng-template #unread>
+        <mat-icon class="nav-icon"
+                  [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">
+          mark_chat_unread
+        </mat-icon>
+      </ng-template>
+    </button>
+
+    <div style="flex: 1"></div>
+
+    <!--    <button mat-mini-fab class="btn" [routerLink]="['/user/' + this.auth.selfUserID]">-->
+    <!--      <mat-icon class="nav-icon"-->
+    <!--                [ngClass]="router.url == '/user/' + this.auth.selfUserID? 'active-nav-icon':'inactive-nav-icon'">-->
+    <!--        account_circle-->
+    <!--      </mat-icon>-->
+    <!--    </button>-->
+
+    <button mat-mini-fab class="btn" color="accent" (click)="openUserBriefView()">
+      <mat-icon class="nav-icon" color="primary">
+        menu_open
+      </mat-icon>
+    </button>
+  </div>
+
+
+  <button mat-mini-fab
           color="primary"
+          class="bottom-left-btn"
           style="font-size: x-large; font-weight: lighter;"
-          matBadge="{{notificationCount()}}" matBadgePosition="before" matBadgeColor="warn"
+          matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
           *ngIf="notificationCount()>0; else makePost"
           (click)="openNotificationView()">
-<!--    {{notificationCount()}}-->
+    <!--    {{notificationCount()}}-->
     <mat-icon>notifications_unread</mat-icon>
   </button>
 
   <ng-template #makePost>
-    <button mat-mini-fab (click)="openNewPostView()" color="primary" class="top-floating-buttons">
+    <button mat-mini-fab (click)="openNewPostView()" color="primary" class="bottom-left-btn">
       <mat-icon>post_add</mat-icon>
     </button>
   </ng-template>
