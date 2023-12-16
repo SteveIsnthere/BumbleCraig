@@ -14,15 +14,13 @@
     <!--      </button>-->
     <!--    </mat-menu>-->
 
-    <button mat-mini-fab class="btn" routerLink="/chat">
-      <mat-icon class="nav-icon" *ngIf="!states.hasUnreadMsg; else unread"
-                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon']">
-        chat
+    <button mat-mini-fab class="btn" routerLink="/chat" color="warn" matBadge>
+      <mat-icon class="nav-icon" *ngIf="!states.hasUnreadMsg; else unread">
+          chat_bubble
       </mat-icon>
 
       <ng-template #unread>
-        <mat-icon class="nav-icon"
-                  [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">
+        <mat-icon class="nav-icon" [ngClass]="[states.hasUnreadMsg ? 'unreadMsg':'']">
           mark_chat_unread
         </mat-icon>
       </ng-template>
@@ -41,7 +39,7 @@
             matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
             [matBadgeHidden]="notificationCount() == 0">
       <mat-icon class="nav-icon">
-        menu_open
+        person
       </mat-icon>
     </button>
   </div>
