@@ -1,0 +1,16 @@
+<main>
+  <div id="welcomeRow">
+    <!--    <mat-card-title style="font-size: xx-large">Hey</mat-card-title>-->
+    <app-user [userID]="selfUserID"></app-user>
+<!--    <mat-card-subtitle>How are you today?</mat-card-subtitle>-->
+  </div>
+
+  <div id="links">
+    <button mat-flat-button [routerLink]="['/user/' + selfUserID]" mat-dialog-close><mat-icon>account_circle</mat-icon>Profile</button>
+    <button mat-flat-button routerLink="/friends" mat-dialog-close><mat-icon>people</mat-icon>Friends</button>
+    <button mat-flat-button (click)="logout()" mat-dialog-close><mat-icon color="primary">logout</mat-icon>Logout</button>
+  </div>
+
+  <app-ask-tidder></app-ask-tidder>
+
+</main>

@@ -76,6 +76,7 @@ import {
   PostSectionLoadingPlaceholderComponent
 } from './home/post/post-section-view/post-section-loading-placeholder/post-section-loading-placeholder.component';
 import {AboutComponent} from './compoents/about/about.component';
+import {UserBriefComponent} from "./user/user-brief/user-brief.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -134,6 +135,7 @@ const appRoutes: Routes = [
     RainbowStripComponent,
     PostSectionLoadingPlaceholderComponent,
     AboutComponent,
+    UserBriefComponent
   ],
   imports: [
     BrowserModule,
@@ -171,7 +173,8 @@ const appRoutes: Routes = [
   ],
   providers: [httpInterceptorProviders],
   exports: [
-    UserComponent
+    UserComponent,
+    UserMiniComponent
   ],
   bootstrap: [AppComponent]
 })

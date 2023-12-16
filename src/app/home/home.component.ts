@@ -6,7 +6,7 @@ import {StatesService} from "../services/states.service";
 import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
-import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {UserBriefComponent} from "../user/user-brief/user-brief.component";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 })
 export class HomeComponent {
   constructor(public router: Router, public auth: AuthService, public main: MainService, private dialog: MatDialog,
-              public states: StatesService, private bottomSheet: MatBottomSheet) {
+              public states: StatesService) {
     setTimeout(() => {
       this.states.loadedUp = true;
     }, 2000);
@@ -31,7 +31,9 @@ export class HomeComponent {
   }
 
   openUserBriefView() {
-    // this.bottomSheet.open(NewPostViewComponent);
+    this.dialog.open(UserBriefComponent, {
+      data: this.auth.selfUserID,
+    });
   }
 
   notificationCount() {

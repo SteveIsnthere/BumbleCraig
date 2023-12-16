@@ -37,9 +37,8 @@ main {
 #refresh-btn {
   position: fixed;
   z-index: 3;
-  bottom: 73px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 15px;
+  right: 15px;
 }
 
 .post-wide-mode {

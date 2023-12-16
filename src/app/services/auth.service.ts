@@ -40,6 +40,7 @@ export class AuthService {
     this.cookieService.delete('sessionPassword');
     localStorage.clear();
     this.states.loadedUp = false;
+    this.switchToLoginView();
   }
 
   switchToLoginView() {

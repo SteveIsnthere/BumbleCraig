@@ -1,4 +1,5 @@
 <main *ngIf="loaded; else loadingBar">
+  <app-back-btn></app-back-btn>
   <div id="top-bar">
     <button mat-fab color="primary" (click)="searchUser()" style="margin: 20px 0;">
       <mat-icon>person_add</mat-icon>

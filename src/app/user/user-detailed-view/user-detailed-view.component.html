@@ -1,4 +1,5 @@
 <main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
+  <app-back-btn></app-back-btn>
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
   </div>
