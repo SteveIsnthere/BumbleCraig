@@ -6,7 +6,7 @@
     {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
 </div>
-<div style="height: 50px"></div>
+<div style="height: 55px"></div>
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
     <ng-container *ngIf="!wideMode; else wide">
@@ -38,7 +38,8 @@
     genres</p>
 </div>
 <div id="refresh-btn">
-  <button mat-mini-fab color="primary" (click)="refresh()" *ngIf="showReloadButton">
-    <mat-icon>refresh</mat-icon>
+  <button mat-flat-button color="primary" (click)="refresh()" *ngIf="showReloadButton"
+          style="background-color: rgba(225,82,65); border-radius: 100px">
+    <mat-icon>refresh</mat-icon>Refresh
   </button>
 </div>

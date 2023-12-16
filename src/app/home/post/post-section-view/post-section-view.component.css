@@ -37,8 +37,10 @@ main {
 #refresh-btn {
   position: fixed;
   z-index: 3;
-  bottom: 15px;
-  right: 15px;
+  bottom: 20px;
+  left: 20px;
+  /*right: 50%;*/
+  /*transform: translateX(50%);*/
 }
 
 .post-wide-mode {
@@ -56,7 +58,7 @@ main {
   font-weight: normal;
   border-radius: 100px;
   justify-self: center;
-  margin-top: 20px;
+  margin-top: 22px;
   margin-bottom: 7px;
   border: 2px #e15241 solid;
   background-color: transparent;

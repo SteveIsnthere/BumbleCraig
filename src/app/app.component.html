@@ -21,47 +21,6 @@
 <main>
   <router-outlet></router-outlet>
 
-<!--  <div id="bottom-nav" *ngIf="states.showNavBar && auth.loggedIn">-->
-<!--    <div class="btn" routerLink="/home">-->
-<!--      <mat-icon class="nav-icon"-->
-<!--                [ngClass]="router.url == '/home' ? 'active-nav-icon':'inactive-nav-icon'">-->
-<!--        article-->
-<!--      </mat-icon>-->
-<!--    </div>-->
-
-<!--    <div class="btn" routerLink="/chat">-->
-<!--      <mat-icon class="nav-icon" *ngIf="!states.hasUnreadMsg; else unread"-->
-<!--                [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon']">-->
-<!--        chat-->
-<!--      </mat-icon>-->
-
-<!--      <ng-template #unread>-->
-<!--        <mat-icon class="nav-icon"-->
-<!--                  [ngClass]="[router.url == '/chat'? 'active-nav-icon':'inactive-nav-icon',states.hasUnreadMsg ? 'unreadMsg':'']">-->
-<!--          mark_chat_unread-->
-<!--        </mat-icon>-->
-<!--      </ng-template>-->
-<!--    </div>-->
-
-<!--    <button mat-mini-fab style="margin: 0 10px; scale: 1;"-->
-<!--            color="warn"-->
-<!--            (click)="openAskTidder()">-->
-<!--      <mat-icon>blur_circular</mat-icon>-->
-<!--    </button>-->
-
-<!--    <div class="btn" routerLink="/friends">-->
-<!--      <mat-icon class="nav-icon" [ngClass]="router.url == '/friends'? 'active-nav-icon':'inactive-nav-icon'">people-->
-<!--      </mat-icon>-->
-<!--    </div>-->
-
-<!--    <div class="btn" [routerLink]="['/user/' + this.auth.selfUserID]">-->
-<!--      <mat-icon class="nav-icon"-->
-<!--                [ngClass]="router.url == '/user/' + this.auth.selfUserID? 'active-nav-icon':'inactive-nav-icon'">-->
-<!--        account_circle-->
-<!--      </mat-icon>-->
-<!--    </div>-->
-<!--  </div>-->
-
   <app-rainbow-strip></app-rainbow-strip>
   <app-rainbow-strip [bottom]="true"></app-rainbow-strip>
 

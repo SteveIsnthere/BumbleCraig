@@ -1,14 +1,21 @@
 <main>
-<!--  <div id="welcomeRow">-->
-<!--    &lt;!&ndash;    <mat-card-title style="font-size: xx-large">Hey</mat-card-title>&ndash;&gt;-->
-<!--    -->
-<!--&lt;!&ndash;    <mat-card-subtitle>Hi there</mat-card-subtitle>&ndash;&gt;-->
-<!--  </div>-->
+  <!--  <div id="welcomeRow">-->
+  <!--    &lt;!&ndash;    <mat-card-title style="font-size: xx-large">Hey</mat-card-title>&ndash;&gt;-->
+  <!--    -->
+  <!--&lt;!&ndash;    <mat-card-subtitle>Hi there</mat-card-subtitle>&ndash;&gt;-->
+  <!--  </div>-->
 
   <div id="links">
     <app-user-mini [userID]="selfUserID"></app-user-mini>
-    <button mat-flat-button routerLink="/friends" color="warn" mat-dialog-close><mat-icon>people</mat-icon>Friends</button>
-    <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close><mat-icon>logout</mat-icon>Logout</button>
+    <!--    <div style="flex: 1"></div>-->
+    <button mat-flat-button routerLink="/friends" color="warn" mat-dialog-close>
+      <mat-icon>people</mat-icon>
+      Friends
+    </button>
+    <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close>
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
   </div>
 
   <ng-container *ngIf="this.main.getTotalMessageCount()>0">

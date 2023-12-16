@@ -40,10 +40,10 @@ main {
 /*  }*/
 /*}*/
 
-.bottom-left-btn{
+.bottom-right-btn{
   position: fixed;
-  bottom: 15px;
-  left: 15px;
+  bottom: 20px;
+  right: 20px;
   z-index: 2;
 }
 
