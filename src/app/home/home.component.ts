@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MainService} from "../services/main.service";
 import {NotificationViewComponent} from "./notification-view/notification-view.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
 import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
 import {Router} from "@angular/router";
@@ -27,13 +27,19 @@ export class HomeComponent {
 
 
   openNewPostView() {
-    this.dialog.open(NewPostViewComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.auth.selfUserID;
+    dialogConfig.backdropClass = 'post-back-drop';
+
+    this.dialog.open(NewPostViewComponent, dialogConfig);
   }
 
   openUserBriefView() {
-    this.dialog.open(UserBriefComponent, {
-      data: this.auth.selfUserID,
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.auth.selfUserID;
+    dialogConfig.backdropClass = 'post-back-drop';
+
+    this.dialog.open(UserBriefComponent, dialogConfig);
   }
 
   notificationCount() {

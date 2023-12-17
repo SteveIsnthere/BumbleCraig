@@ -5,6 +5,7 @@
   /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);*/
   /*margin: 10px;*/
   background-color: rgba(0, 0, 0, 0.2);
+  background-color: #252525;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -16,6 +17,7 @@ main {
   gap: 20px;
   word-break: break-word;
   overflow-wrap: break-word;
+
 }
 
 #post-details-row{

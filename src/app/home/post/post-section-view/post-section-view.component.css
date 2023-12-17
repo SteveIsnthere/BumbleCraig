@@ -37,10 +37,10 @@ main {
 #refresh-btn {
   position: fixed;
   z-index: 3;
-  bottom: 23px;
-  left: 20px;
-  /*right: 50%;*/
-  /*transform: translateX(50%);*/
+  bottom: 24px;
+  /*left: 20px;*/
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .post-wide-mode {

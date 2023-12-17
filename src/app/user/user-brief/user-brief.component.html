@@ -18,12 +18,12 @@
     </button>
   </div>
 
+  <mat-divider></mat-divider>
+  <app-ask-tidder></app-ask-tidder>
+
   <ng-container *ngIf="this.main.getTotalMessageCount()>0">
     <mat-divider></mat-divider>
     <app-notification-view></app-notification-view>
   </ng-container>
-
-  <mat-divider></mat-divider>
-  <app-ask-tidder></app-ask-tidder>
 
 </main>

@@ -5,6 +5,7 @@ main {
   transform: translate(-50%, -50%);
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

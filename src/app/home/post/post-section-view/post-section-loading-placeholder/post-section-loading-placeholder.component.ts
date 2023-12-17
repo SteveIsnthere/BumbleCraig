@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {AboutComponent} from "../../../../compoents/about/about.component";
 
 @Component({
   selector: 'app-post-section-loading-placeholder',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-section-loading-placeholder.component.css']
 })
 export class PostSectionLoadingPlaceholderComponent {
+  constructor(private dialog: MatDialog) {
+  }
 
+  openAbout() {
+    this.dialog.open(AboutComponent);
+  }
 }
