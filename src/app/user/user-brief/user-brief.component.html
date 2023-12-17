@@ -7,23 +7,20 @@
 
   <div id="links">
     <app-user-mini [userID]="selfUserID"></app-user-mini>
-    <!--    <div style="flex: 1"></div>-->
-    <button mat-flat-button routerLink="/friends" color="warn" mat-dialog-close>
+    <div style="flex: 1"></div>
+    <button mat-flat-button routerLink="/friends" color="warn" mat-dialog-close style="margin-left: 10px">
       <mat-icon>people</mat-icon>
       Friends
     </button>
-    <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close>
+    <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close style="margin-left: 10px">
       <mat-icon>logout</mat-icon>
       Logout
     </button>
   </div>
-
-  <mat-divider></mat-divider>
-  <app-ask-tidder></app-ask-tidder>
-
   <ng-container *ngIf="this.main.getTotalMessageCount()>0">
     <mat-divider></mat-divider>
     <app-notification-view></app-notification-view>
   </ng-container>
-
+  <mat-divider></mat-divider>
+  <app-ask-tidder></app-ask-tidder>
 </main>

@@ -49,4 +49,9 @@ main {
 
 .unreadMsg {
   /*color: #f55246;*/
+  color: #ffd500;
+}
+
+.btn{
+  scale: 1.1;
 }

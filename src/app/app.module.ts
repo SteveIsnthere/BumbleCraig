@@ -77,6 +77,7 @@ import {
 } from './home/post/post-section-view/post-section-loading-placeholder/post-section-loading-placeholder.component';
 import {AboutComponent} from './compoents/about/about.component';
 import {UserBriefComponent} from "./user/user-brief/user-brief.component";
+import {BackgroundComponent} from "./compoents/background/background.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -137,40 +138,41 @@ const appRoutes: Routes = [
     AboutComponent,
     UserBriefComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatBottomSheetModule,
-    RouterModule.forRoot(appRoutes),
-    MatInputModule,
-    FormsModule,
-    MatSnackBarModule,
-    MatListModule,
-    MatMenuModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatBadgeModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatExpansionModule,
-    MatChipsModule,
-    MatProgressBarModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    CdkDrag,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: !isDevMode(),
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-    MatTabsModule,
-    MatSlideToggleModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatBottomSheetModule,
+        RouterModule.forRoot(appRoutes),
+        MatInputModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatListModule,
+        MatMenuModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatBadgeModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatExpansionModule,
+        MatChipsModule,
+        MatProgressBarModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        CdkDrag,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        MatTabsModule,
+        MatSlideToggleModule,
+        BackgroundComponent
+    ],
   providers: [httpInterceptorProviders],
   exports: [
     UserComponent,

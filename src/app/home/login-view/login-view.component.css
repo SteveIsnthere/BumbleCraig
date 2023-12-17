@@ -12,6 +12,7 @@ main {
   margin: -60px 25px 10px;
   width: 300px;
   backdrop-filter: blur(15px);
+  position: relative;
 }
 
 #start-btn{
