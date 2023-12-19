@@ -104,13 +104,18 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     }
 
     if (!this.wideMode) this.wideMode = true;
-
     // if (this.postIDsWide.length == maxColumns) return;
-
-    let _postIDsWide = [];
+    let _postIDsWide: number[][] = [];
     const numberOfPosts = this.postIDs.length;
+    // for (let i = 0; i < maxColumns; i++) {
+    //   _postIDsWide.push(this.postIDs.slice(i * Math.ceil(numberOfPosts / maxColumns), (i + 1) * Math.ceil(numberOfPosts / maxColumns)));
+    // }
     for (let i = 0; i < maxColumns; i++) {
-      _postIDsWide.push(this.postIDs.slice(i * Math.ceil(numberOfPosts / maxColumns), (i + 1) * Math.ceil(numberOfPosts / maxColumns)));
+      _postIDsWide.push([]);
+    }
+    for (let i = 0; i < numberOfPosts; i++) {
+      let column = i % maxColumns;
+      _postIDsWide[column].push(this.postIDs[i]);
     }
     if (this.postIDsWide != _postIDsWide) {
       this.postIDsWide = _postIDsWide;

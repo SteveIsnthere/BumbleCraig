@@ -30,6 +30,12 @@ export class AskTidderComponent {
   exampleVisionPrompts: string[][] = visionPrompts;
 
   constructor(private http: HttpClient, private auth: AuthService) {
+    let maxExamples = 2;
+    // randomize examples
+    if (this.examplePrompts.length > maxExamples) {
+      this.examplePrompts.sort(() => Math.random() - 0.5);
+      this.examplePrompts = this.examplePrompts.slice(0, maxExamples);
+    }
   }
 
   selectImage(event: any) {

@@ -1,11 +1,11 @@
 <mat-dialog-content id="wrapper" *ngIf="post != null">
   <main>
-    <span id="title">{{post.title}}</span>
+    <span id="title">{{ post.title }}</span>
     <div id="post-details-row">
       <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
                      style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
-      <span style="font-size: smaller;white-space: nowrap;">{{post.time_since_posted}}</span>
-      <mat-chip-option selectable="false">{{post.genre}}</mat-chip-option>
+      <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>
+      <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
       <div style="flex: 1"></div>
     </div>
     <mat-divider style="width: 100%"></mat-divider>
@@ -15,12 +15,17 @@
           <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
         </ng-container>
         <ng-template #textMsg>
-          <div class="text-wrapper">
-            <span class="text-content" *ngIf="!isLink(content.content); else link">{{content.content}}</span>
-            <ng-template #link>
-              <a [href]="content.content" target="_blank" style="color: #c2175b">Link to External website</a>
-            </ng-template>
+          <div class="text-wrapper" *ngIf="!isLink(content.content); else link">
+            <span class="text-content">{{ content.content }}</span>
           </div>
+          <ng-template #link>
+            <a [href]="content.content" target="_blank">
+              <button mat-stroked-button color="primary">
+                <mat-icon>link</mat-icon>
+                Link
+              </button>
+            </a>
+          </ng-template>
         </ng-template>
       </div>
     </div>

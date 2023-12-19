@@ -37,6 +37,10 @@ export const assistantPrompts: string[][] = [
   ["What is Tidder?", "question_mark"],
   ["Who made this?", "mood"],
   ["Tell me a lame joke", "celebration"],
+  ["What's the meaning of life?", "mood"],
+  ["How can I be happy?", "mood"],
+  ["What is the best way to lose money?", "mood"],
+  ["What's the most controversial tv show?", "mood"],
 ]
 
 export const visionPrompts: string[][] = [

@@ -22,8 +22,8 @@
 
     <div class="example-questions" *ngIf="imageToUpload == null">
       <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p[0])" class="example-question">
-        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
-        <span>{{p[0]}}</span>
+        <mat-icon style="vertical-align: middle; overflow: visible">{{p[1]}}</mat-icon>
+        <span style="text-align: right; justify-self: flex-end">{{p[0]}}</span>
       </div>
     </div>
 
@@ -34,8 +34,10 @@
       </div>
     </div>
 
-    <button mat-mini-fab (click)="submit(input)" color="primary" style="align-self: flex-end">
+    <button mat-raised-button (click)="submit(input)" color="warn"
+            style="align-self: flex-end; border-radius: 100px">
       <mat-icon>check</mat-icon>
+      Submit
     </button>
   </div>
 
