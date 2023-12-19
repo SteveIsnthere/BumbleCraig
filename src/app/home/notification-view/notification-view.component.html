@@ -12,7 +12,7 @@
                          *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
     </ng-container>
 
-    <button mat-flat-button color="primary" style="border-radius: 100px; margin-top: 10px" (click)="clear()"
+    <button mat-flat-button color="primary" style="border-radius: 100px; margin: 10px" (click)="clear()"
             *ngIf="showCleanAllButton()">
       <mat-icon>delete</mat-icon>
       Clear Messages

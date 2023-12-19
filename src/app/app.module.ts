@@ -78,6 +78,7 @@ import {
 import {AboutComponent} from './compoents/about/about.component';
 import {UserBriefComponent} from "./user/user-brief/user-brief.component";
 import {BackgroundComponent} from "./compoents/background/background.component";
+import {HomeButtonComponent} from "./compoents/home-button/home-button.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -171,7 +172,8 @@ const appRoutes: Routes = [
         }),
         MatTabsModule,
         MatSlideToggleModule,
-        BackgroundComponent
+        BackgroundComponent,
+        HomeButtonComponent
     ],
   providers: [httpInterceptorProviders],
   exports: [

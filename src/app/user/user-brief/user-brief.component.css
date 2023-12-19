@@ -1,13 +1,23 @@
+#wrapper {
+  max-height: calc(100dvh - 200px);
+  /*height: calc(100dvh - 140px);*/
+  cursor: auto;
+  /*box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);*/
+  /*margin: 10px;*/
+  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #2a2a2a;
+  -webkit-overflow-scrolling: touch;
+}
+
 main{
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
-  max-height: 80dvh;
-  overflow-y: auto;
-  /*background-color: #38322e;*/
-  background-color: #2a2a2a;
+  /*max-height: 80dvh;*/
+  /*overflow-y: auto;*/
 }
+
+
 
 #welcomeRow {
   display: flex;
@@ -20,4 +30,5 @@ main{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
