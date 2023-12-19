@@ -17,17 +17,26 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
-      if (data == this.essentialUserData) {
-        return;
-      }
-      this.cache.set(data);
-      this.essentialUserData = data;
-    })
-
     let cachedData = this.cache.get(this.userID);
     if (cachedData != null) {
       this.essentialUserData = cachedData;
+      if (Math.random() < 0.6) {
+        return
+      }
+      setTimeout(() => {
+        this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
+          if (data == this.essentialUserData) {
+            return;
+          }
+          this.cache.set(data);
+          this.essentialUserData = data;
+        })
+      }, 1000+Math.random()*6000);
+    }else {
+      this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
+        this.cache.set(data);
+        this.essentialUserData = data;
+      })
     }
   }
 }

@@ -34,14 +34,15 @@ export class PostComponent implements OnInit {
     if (cachedData) {
       this.post = cachedData;
       this.buildPostPreviewContent()
+    }else{
+      this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
+        if (data != this.post) {
+          this.post = data;
+          this.cache.set(data);
+          this.buildPostPreviewContent()
+        }
+      })
     }
-    this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
-      if (data != this.post) {
-        this.post = data;
-        this.cache.set(data);
-        this.buildPostPreviewContent()
-      }
-    })
     this.commentUploadRoute += this.postID;
     this.commentUploadRoute += '/' + this.auth.selfUserID;
   }

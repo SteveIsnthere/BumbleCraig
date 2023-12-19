@@ -23,13 +23,22 @@ export class GroupComponent implements OnInit {
     let cachedData = this.cache.get(this.groupID);
     if (cachedData) {
       this.groupEssentialData = cachedData;
-    }
-
-    this.http.get<GroupEssentialData>(apiEndPoint + '/group/get_essential_group_data/' + this.groupID).subscribe((data) => {
-      if (data != this.groupEssentialData) {
+      if (Math.random() < 0.5) {
+        return
+      }
+      setTimeout(() => {
+        this.http.get<GroupEssentialData>(apiEndPoint + '/group/get_essential_group_data/' + this.groupID).subscribe((data) => {
+          if (data != this.groupEssentialData) {
+            this.groupEssentialData = data;
+            this.cache.set(data);
+          }
+        })
+      }, 1000 + Math.random() * 3000)
+    } else {
+      this.http.get<GroupEssentialData>(apiEndPoint + '/group/get_essential_group_data/' + this.groupID).subscribe((data) => {
         this.groupEssentialData = data;
         this.cache.set(data);
-      }
-    })
+      })
+    }
   }
 }
