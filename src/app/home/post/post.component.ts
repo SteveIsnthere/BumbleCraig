@@ -34,13 +34,24 @@ export class PostComponent implements OnInit {
     if (cachedData) {
       this.post = cachedData;
       this.buildPostPreviewContent()
-    }else{
+
+      if (Math.random() < 0.5) {
+        return
+      }
+      setTimeout(() => {
+        this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
+          if (data != this.post) {
+            this.post = data;
+            this.cache.set(data);
+            this.buildPostPreviewContent()
+          }
+        })
+      }, 1000 + Math.random() * 5000)
+    } else {
       this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
-        if (data != this.post) {
-          this.post = data;
-          this.cache.set(data);
-          this.buildPostPreviewContent()
-        }
+        this.post = data;
+        this.cache.set(data);
+        this.buildPostPreviewContent()
       })
     }
     this.commentUploadRoute += this.postID;
