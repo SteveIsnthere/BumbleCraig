@@ -55,15 +55,23 @@ main {
 
 
 #top-option-bar {
-  font-weight: normal;
+  font-weight: 500;
   border-radius: 100px;
   justify-self: center;
-  margin-top: 17px;
+  margin-top: 20px;
   margin-bottom: 7px;
-  border: 2px #e15241 solid;
   background-color: transparent;
-  backdrop-filter: blur(9px) brightness(0.9);
+  /*border: 2px #e15241 solid;*/
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
+
+/*#top-logo-option-bar{*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  margin-top: 10px;*/
+/*  color: white;*/
+/*  font-size: 1.5rem;*/
+/*}*/

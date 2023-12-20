@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {genres} from "../../../env";
 import {apiEndPoint} from "../../../env";
 import {HttpClient} from "@angular/common/http";
@@ -18,7 +18,7 @@ import {MainService} from "../../../services/main.service";
   templateUrl: './new-post-view.component.html',
   styleUrls: ['./new-post-view.component.css'],
 })
-export class NewPostViewComponent implements OnInit {
+export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;
   post: Post | null = null;
   title: string = '';
@@ -29,14 +29,18 @@ export class NewPostViewComponent implements OnInit {
   uploadingFile: boolean = false;
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
+  observer: any;
+  currentStep: number = 1;
   articleMode: boolean = true;
+  contentsContainer: any;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
 
-  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private elementRef: ElementRef) {
   }
+
 
   ngOnInit(): void {
     this.http.get(apiEndPoint + '/post/create_post/' + this.auth.selfUserID + '/' + this.genreSelected).subscribe((res: any) => {
@@ -47,6 +51,10 @@ export class NewPostViewComponent implements OnInit {
       this.textUploadRoute += '/' + this.auth.selfUserID;
       this.reloadPost();
     })
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) this.observer.unobserve(this.contentsContainer);
   }
 
   reloadPost() {
@@ -60,7 +68,7 @@ export class NewPostViewComponent implements OnInit {
         this.genreSelected = this.post?.genre!;
       }
       this.contents = this.post?.content!;
-      this.scrollToElement('action-section');
+      // if (this.inContentEditingView) this.scrollToElement('action-section');
     })
   }
 
@@ -93,6 +101,14 @@ export class NewPostViewComponent implements OnInit {
       });
       return;
     }
+
+    if (this.post?.title?.length == 0) {
+      this._snackBar.open("Post title can't be empty", 'Understood', {
+        duration: 2000,
+      });
+      return;
+    }
+
     this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((res: any) => {
       console.log(res);
       this.main.reloadPosts();
@@ -164,8 +180,16 @@ export class NewPostViewComponent implements OnInit {
   selectionChange($event: StepperSelectionEvent) {
     if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
       this.updateTitle();
+      this.currentStep = 3;
+      setTimeout(() => {
+        this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
+        this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
+        this.observer.observe(this.contentsContainer);
+      }, 100);
+
     } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
       this.updateGenre();
+      this.currentStep = 2;
     }
   }
 

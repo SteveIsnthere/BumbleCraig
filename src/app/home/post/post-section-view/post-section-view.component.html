@@ -2,11 +2,19 @@
 <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 <!--</p>-->
 <div style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);display: flex; justify-content: center; ">
-  <button mat-flat-button id="top-option-bar" (click)="openBottomSheet()">
+
+  <button mat-stroked-button id="top-option-bar" (click)="openBottomSheet()" class="trans-btn-bright">
     {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
+
+<!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
+<!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
+<!--&lt;!&ndash;    <button mat-button>Posts Filter</button>&ndash;&gt;-->
+<!--    <mat-card-title>Tidder</mat-card-title>-->
+<!--  </div>-->
 </div>
-<div style="height: 55px"></div>
+
+<div style="height: 58px"></div>
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
     <ng-container *ngIf="!wideMode; else wide">
@@ -29,7 +37,7 @@
     </ng-template>
   </ng-container>
   <ng-template #loadingPlaceHolder>
-    <app-post-section-loading-placeholder></app-post-section-loading-placeholder>
+    <app-loading-placeholder></app-loading-placeholder>
   </ng-template>
 </ng-container>
 
@@ -38,8 +46,8 @@
     genres</p>
 </div>
 <div id="refresh-btn">
-  <button mat-flat-button color="primary" (click)="refresh()" *ngIf="showReloadButton"
-          style="background-color: rgba(225,82,65); border-radius: 100px">
+  <button mat-button color="warn" (click)="refresh()" *ngIf="showReloadButton" class="trans-btn-bright"
+          style="border-radius: 100px">
     <mat-icon>refresh</mat-icon>Refresh
   </button>
 </div>

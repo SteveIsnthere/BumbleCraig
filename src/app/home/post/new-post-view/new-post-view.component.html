@@ -1,24 +1,23 @@
-<main>
+<mat-dialog-content id="wrapper">
+  <main id="main">
   <!--  <mat-slide-toggle [(ngModel)]="articleMode">Article Mode</mat-slide-toggle>-->
-
-  <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)"
-               style="overflow: auto; max-height: 95vh" *ngIf="articleMode">
+  <mat-stepper orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
+;">
     <mat-step> <!-- genre selection -->
       <form>
-        <ng-template matStepLabel>Select Genre</ng-template>
+        <ng-template matStepLabel>Style</ng-template>
         <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)" [selected]="genre == genreSelected"
+          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
+                           [selected]="genre == genreSelected"
                            color="warn">
-            {{genre}}
+            {{ genre }}
           </mat-chip-option>
         </mat-chip-listbox>
-        <div>
-          <button mat-button matStepperNext (click)="updateGenre()">Next</button>
-        </div>
+        <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>
       </form>
     </mat-step>
 
-    <mat-step label="Post title" [stepControl]="firstFormGroup"> <!-- Post name -->
+    <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
         <mat-form-field>
           <mat-label>Title</mat-label>
@@ -28,13 +27,13 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext (click)="updateTitle()">Next</button>
+          <button color="primary" mat-flat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
 
     <mat-step> <!-- contents -->
-      <ng-template matStepLabel>Content</ng-template>
+      <ng-template matStepLabel>Contents</ng-template>
       <div id="contents">
         <div class="content" *ngFor="let content of contents">
           <div>
@@ -42,7 +41,7 @@
               <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
             </ng-container>
             <ng-template #textMsg>
-              <span class="text-content">{{content.content}}</span>
+              <span class="text-content">{{ content.content }}</span>
             </ng-template>
           </div>
           <div style="flex: 1"></div>
@@ -68,15 +67,21 @@
           Text
         </button>
       </div>
-      <div style="display: flex; margin-top: 10px;justify-content: center;">
-        <button mat-flat-button
-                (click)="publishPost()" color="primary">
-          <mat-icon>check</mat-icon>
-          Publish
-        </button>
-      </div>
-
     </mat-step>
+
   </mat-stepper>
   <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
-</main>
+  </main>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-flat-button color="warn" matDialogClose>
+    <mat-icon>save</mat-icon>
+    Save as draft
+  </button>
+  <button mat-flat-button (click)="publishPost()" color="primary" *ngIf="currentStep == 3">
+    <mat-icon>publish</mat-icon>
+    Publish
+  </button>
+
+</mat-dialog-actions>

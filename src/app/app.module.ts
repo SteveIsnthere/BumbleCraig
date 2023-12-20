@@ -72,13 +72,11 @@ import {
 import {AskTidderComponent} from './home/ask-tidder/ask-tidder.component';
 import {LogoComponent} from './compoents/logo/logo.component';
 import {RainbowStripComponent} from './compoents/rainbow-strip/rainbow-strip.component';
-import {
-  PostSectionLoadingPlaceholderComponent
-} from './home/post/post-section-view/post-section-loading-placeholder/post-section-loading-placeholder.component';
 import {AboutComponent} from './compoents/about/about.component';
 import {UserBriefComponent} from "./user/user-brief/user-brief.component";
 import {BackgroundComponent} from "./compoents/background/background.component";
 import {HomeButtonComponent} from "./compoents/home-button/home-button.component";
+import {LoadingPlaceholderComponent} from "./compoents/loading-placeholder/loading-placeholder.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -135,9 +133,9 @@ const appRoutes: Routes = [
     AskTidderComponent,
     LogoComponent,
     RainbowStripComponent,
-    PostSectionLoadingPlaceholderComponent,
     AboutComponent,
-    UserBriefComponent
+    UserBriefComponent,
+    LoadingPlaceholderComponent
   ],
     imports: [
         BrowserModule,
@@ -173,7 +171,7 @@ const appRoutes: Routes = [
         MatTabsModule,
         MatSlideToggleModule,
         BackgroundComponent,
-        HomeButtonComponent
+        HomeButtonComponent,
     ],
   providers: [httpInterceptorProviders],
   exports: [

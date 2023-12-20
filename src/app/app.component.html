@@ -6,20 +6,22 @@
 
 <ng-container *ngIf="!auth.loggedIn && router.url != '/login'">
   <!--Init load-->
-  <p style="width: 100vw; position: fixed; top: 0; left: 0;">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </p>
+<!--  <p style="width: 100vw; position: fixed; top: 0; left: 0;">-->
+<!--    <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+<!--  </p>-->
 
-  <app-logo style="position: absolute;
-  top: 50dvh;
-  left: 50vw;
-  transform: translate(-50%, -50%);"></app-logo>
-  <!--Load Failed-->
-  <!--  <ng-template #LoadFailed>-->
-  <!--    <p style="color: white; text-align: center">-->
-  <!--      It's either my server fucking died, or you're not connected to internet. Please try again later.-->
-  <!--    </p>-->
-  <!--  </ng-template>-->
+<!--  <app-logo style="position: absolute;-->
+<!--  top: 50dvh;-->
+<!--  left: 50vw;-->
+<!--  transform: translate(-50%, -50%);"></app-logo>-->
+<!--  &lt;!&ndash;Load Failed&ndash;&gt;-->
+<!--  &lt;!&ndash;  <ng-template #LoadFailed>&ndash;&gt;-->
+<!--  &lt;!&ndash;    <p style="color: white; text-align: center">&ndash;&gt;-->
+<!--  &lt;!&ndash;      It's either my server fucking died, or you're not connected to internet. Please try again later.&ndash;&gt;-->
+<!--  &lt;!&ndash;    </p>&ndash;&gt;-->
+<!--  &lt;!&ndash;  </ng-template>&ndash;&gt;-->
+
+  <app-loading-placeholder></app-loading-placeholder>
 </ng-container>
 
 

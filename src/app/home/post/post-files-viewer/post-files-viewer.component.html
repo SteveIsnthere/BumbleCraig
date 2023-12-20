@@ -1,12 +1,12 @@
 <main>
   <app-file-share [fileShareID]="files[showingFileIndex].file_share_id" [interactive]="false"></app-file-share>
 
-  <button mat-mini-fab color="primary" class="control-btn" style="left: 3px" *ngIf="showBackButton()"
+  <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="left: 3px" *ngIf="showBackButton()"
           (click)="showingFileIndex = showingFileIndex - 1;$event.stopPropagation()">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
 
-  <button mat-mini-fab color="primary" class="control-btn" style="right: 3px" *ngIf="showNextButton()"
+  <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="right: 3px" *ngIf="showNextButton()"
           (click)="showingFileIndex = showingFileIndex + 1;$event.stopPropagation()">
     <mat-icon>arrow_forward_ios</mat-icon>
   </button>

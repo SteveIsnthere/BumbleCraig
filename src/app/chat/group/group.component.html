@@ -1,6 +1,6 @@
 <main *ngIf="groupEssentialData.group_id != 0; else loadingBar">
   <div class="group-container" [ngClass]="{'unread': unread}" [routerLink]="['/group/' + groupID]">
-    <div style="width: 40px;clip-path: circle(20px at center);">
+    <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
       <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
     </div>
     <div *ngIf="unread">

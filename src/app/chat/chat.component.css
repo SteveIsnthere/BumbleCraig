@@ -10,7 +10,7 @@ main {
   /*flex-direction: column;*/
   /*justify-content: flex-start;*/;
   width: 100%;
-  margin: 75px 0 90px;
+  margin: 85px 0 90px;
   gap: 20px;
   display: inline-flex;
   flex-direction: row;

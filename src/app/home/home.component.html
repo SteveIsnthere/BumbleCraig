@@ -14,14 +14,14 @@
     <!--      </button>-->
     <!--    </mat-menu>-->
 
-    <button mat-mini-fab class="btn" routerLink="/chat" color="warn" *ngIf="!states.hasUnreadMsg; else unread">
+    <button mat-icon-button class="btn trans-btn-bright" routerLink="/chat" color="warn" *ngIf="!states.hasUnreadMsg; else unread">
       <mat-icon class="nav-icon">
         chat_bubble
       </mat-icon>
     </button>
     <ng-template #unread>
-      <button mat-mini-fab class="btn" routerLink="/chat" style="background-color: #ffffff;">
-        <mat-icon class="nav-icon" [ngClass]="[states.hasUnreadMsg ? 'unreadMsg':'']">
+      <button mat-icon-button class="btn" routerLink="/chat" style="background-color: #ffffff;">
+        <mat-icon class="nav-icon" color="warn">
           mark_chat_unread
         </mat-icon>
       </button>
@@ -37,11 +37,11 @@
     <!--      </mat-icon>-->
     <!--    </button>-->
 
-    <button mat-mini-fab class="btn" color="primary" (click)="openUserBriefView()"
+    <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"
             matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
             [matBadgeHidden]="notificationCount() == 0">
       <mat-icon class="nav-icon">
-        person
+        menu
       </mat-icon>
     </button>
   </div>
@@ -59,7 +59,8 @@
   <!--  </button>-->
 
   <!--  <ng-template #makePost>-->
-  <button mat-mini-fab (click)="openNewPostView()" color="primary" class="bottom-right-btn">
+  <button mat-icon-button (click)="openNewPostView()" color="primary" class="bottom-right-btn trans-btn-bright"
+          style="">
     <mat-icon>add</mat-icon>
   </button>
   <!--  </ng-template>-->

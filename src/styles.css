@@ -43,3 +43,15 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(7px);
 }
+
+.trans-btn-dark {
+  -webkit-backdrop-filter: blur(10px) brightness(0.85);
+  backdrop-filter: blur(10px) brightness(0.85);
+/*background-color: rgba(225,82,65,0.13)*/
+/*background-color: rgba(245,82,70,0.13)*/
+}
+
+.trans-btn-bright {
+  -webkit-backdrop-filter: blur(10px) brightness(1.2);
+  backdrop-filter: blur(10px) brightness(1.2);
+}
