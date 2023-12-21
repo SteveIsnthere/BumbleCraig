@@ -1,7 +1,7 @@
 <mat-dialog-content id="wrapper">
   <main id="main">
   <!--  <mat-slide-toggle [(ngModel)]="articleMode">Article Mode</mat-slide-toggle>-->
-  <mat-stepper orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
+  <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
 ;">
     <mat-step> <!-- genre selection -->
       <form>

@@ -3,17 +3,15 @@
   <!--  <div style="width: 70px; height: 70px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;-->
   <!--  left: 50%;top: 10px;transform: translate(-50%, 0);"></div>-->
   <div id="group-info" *ngIf="groupEssentialData.figure_id != 0" (click)="editFigure()" class="trans-btn-bright">
-    <div style="width: 40px;clip-path: circle(20px at center); flex-shrink: 0;"
+    <div style="width: 20px;clip-path: circle(10px at center); flex-shrink: 0;"
          (click)="editFigure()">
       <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
     </div>
     <mat-card-title id="group-name">{{ groupEssentialData.name }}</mat-card-title>
   </div>
 
-  <mat-divider></mat-divider>
-
   <button mat-icon-button class="trans-btn-bright" color="primary" (click)="openInviteView()"
-          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
+          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;background-color: rgba(225,82,65,0.13)">
     <mat-icon>person_add</mat-icon>
   </button>
   <div id="messages-section" #messagesSection>
@@ -46,14 +44,15 @@
 
 
   <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
-    <button id="upload-button" mat-icon-button color="primary" (click)="fileInput.click()" class="bottom-btn trans-btn-bright"
-            style="margin-left: 30px;">
+    <button id="upload-button" mat-icon-button color="primary" (click)="fileInput.click()"
+            class="bottom-btn trans-btn-bright"
+            style="margin-left: 30px;background-color: rgba(245,82,70,0.13)">
       <mat-icon>upload</mat-icon>
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
 
     <button mat-icon-button (click)="openTextEditor()" color="warn" class="bottom-btn trans-btn-bright"
-            style="margin-right: 30px;">
+            style="margin-right: 30px;background-color: rgba(225,82,65,0.13)">
       <mat-icon>edit_note</mat-icon>
     </button>
   </div>
