@@ -11,7 +11,7 @@
 main{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   /*max-height: 80dvh;*/
   /*overflow-y: auto;*/
 }

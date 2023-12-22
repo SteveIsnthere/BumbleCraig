@@ -12,10 +12,6 @@ export class UserBriefComponent {
   selfUserID = this.data;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public auth: AuthService,public main: MainService) { }
 
-  quitBottomSheet() {
-
-  }
-
   logout() {
     this.auth.logout();
   }

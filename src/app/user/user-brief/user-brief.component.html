@@ -5,12 +5,35 @@
     <!--    -->
     <!--&lt;!&ndash;    <mat-card-subtitle>Hi there</mat-card-subtitle>&ndash;&gt;-->
     <!--  </div>-->
+    <!--    <mat-card-subtitle>Hi there</mat-card-subtitle>-->
+    <div>
+      <button mat-stroked-button routerLink="/friends" color="primary" mat-dialog-close style="border-radius: 100px">
+        <mat-icon>account_circle</mat-icon>
+        My Profile
+      </button>
+      <button mat-stroked-button routerLink="/friends" color="warn" mat-dialog-close
+              style="margin-left: 10px; border-radius: 100px">
+        <mat-icon>people</mat-icon>
+        Friends
+      </button>
+    </div>
+
     <ng-container *ngIf="this.main.getTotalMessageCount()>0">
       <app-notification-view></app-notification-view>
       <mat-divider></mat-divider>
     </ng-container>
 
-    <app-ask-tidder></app-ask-tidder>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Need Help?
+        </mat-panel-title>
+        <!--        <mat-panel-description>-->
+        <!--          Ask Tidder-->
+        <!--        </mat-panel-description>-->
+      </mat-expansion-panel-header>
+      <app-ask-tidder style="margin: 10px"></app-ask-tidder>
+    </mat-expansion-panel>
   </main>
 </mat-dialog-content>
 
@@ -18,10 +41,6 @@
   <div id="links">
     <app-user-mini [userID]="selfUserID"></app-user-mini>
 
-    <button mat-stroked-button routerLink="/friends" color="warn" mat-dialog-close style="margin-left: 10px; border-radius: 100px">
-      <mat-icon>people</mat-icon>
-      Friends
-    </button>
     <div style="flex: 1"></div>
     <button mat-flat-button (click)="logout()" color="primary" mat-dialog-close style="margin-left: 10px">
       <mat-icon>logout</mat-icon>

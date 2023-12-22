@@ -3,7 +3,7 @@
 <!--</p>-->
 <div style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);display: flex; justify-content: center; ">
 
-  <button mat-stroked-button id="top-option-bar" (click)="openBottomSheet()" class="trans-btn-bright">
+  <button mat-stroked-button id="top-option-bar" (click)="openBottomSheet()" class="trans-btn-dark">
     {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
 
@@ -46,7 +46,7 @@
     genres</p>
 </div>
 <div id="refresh-btn">
-  <button mat-stroked-button color="warn" (click)="refresh()" *ngIf="showReloadButton" class="trans-btn-bright"
+  <button mat-flat-button color="warn" (click)="refresh()" *ngIf="showReloadButton"
           style="border-radius: 100px">
     <mat-icon>refresh</mat-icon>Refresh
   </button>
