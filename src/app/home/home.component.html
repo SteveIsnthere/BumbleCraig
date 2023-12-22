@@ -30,16 +30,16 @@
 
     <div style="flex: 1"></div>
 
-    <!--    <button mat-mini-fab class="btn" [routerLink]="['/user/' + this.auth.selfUserID]">-->
-    <!--      <mat-icon class="nav-icon"-->
-    <!--                [ngClass]="router.url == '/user/' + this.auth.selfUserID? 'active-nav-icon':'inactive-nav-icon'">-->
-    <!--        account_circle-->
-    <!--      </mat-icon>-->
-    <!--    </button>-->
+<!--    <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"-->
+<!--            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"-->
+<!--            [matBadgeHidden]="notificationCount() == 0">-->
+<!--      <mat-icon class="nav-icon">-->
+<!--        menu-->
+<!--      </mat-icon>-->
+<!--    </button>-->
 
     <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"
-            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"
-            [matBadgeHidden]="notificationCount() == 0">
+            [ngStyle]="{'background-color': notificationCount()>0 ? 'white': ''}">
       <mat-icon class="nav-icon">
         menu
       </mat-icon>
@@ -59,7 +59,7 @@
   <!--  </button>-->
 
   <!--  <ng-template #makePost>-->
-  <button mat-mini-fab (click)="openNewPostView()" color="primary" class="bottom-right-btn"
+  <button mat-fab (click)="openNewPostView()" color="primary" class="bottom-right-btn"
           style="">
     <mat-icon>add</mat-icon>
   </button>

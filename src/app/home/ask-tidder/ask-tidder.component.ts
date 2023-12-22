@@ -25,9 +25,9 @@ export class AskTidderComponent {
   response: string = "";
   loading: boolean = false;
 
-  examplePrompts: string[][] = assistantPrompts;
+  examplePrompts: string[] = assistantPrompts;
 
-  exampleVisionPrompts: string[][] = visionPrompts;
+  exampleVisionPrompts: string[] = visionPrompts;
 
   constructor(private http: HttpClient, private auth: AuthService) {
     let maxExamples = 2;

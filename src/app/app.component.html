@@ -1,29 +1,6 @@
-<!--<ng-container *ngIf="router.url != '/home' && auth.loggedIn">-->
-<!--  <button color="warn" onclick="history.back()" mat-mini-fab class="top-floating-buttons" style="left: 0;">-->
-<!--    <mat-icon>arrow_back_ios_new</mat-icon>-->
-<!--  </button>-->
-<!--</ng-container>-->
-
 <ng-container *ngIf="!auth.loggedIn && router.url != '/login'">
-  <!--Init load-->
-<!--  <p style="width: 100vw; position: fixed; top: 0; left: 0;">-->
-<!--    <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
-<!--  </p>-->
-
-<!--  <app-logo style="position: absolute;-->
-<!--  top: 50dvh;-->
-<!--  left: 50vw;-->
-<!--  transform: translate(-50%, -50%);"></app-logo>-->
-<!--  &lt;!&ndash;Load Failed&ndash;&gt;-->
-<!--  &lt;!&ndash;  <ng-template #LoadFailed>&ndash;&gt;-->
-<!--  &lt;!&ndash;    <p style="color: white; text-align: center">&ndash;&gt;-->
-<!--  &lt;!&ndash;      It's either my server fucking died, or you're not connected to internet. Please try again later.&ndash;&gt;-->
-<!--  &lt;!&ndash;    </p>&ndash;&gt;-->
-<!--  &lt;!&ndash;  </ng-template>&ndash;&gt;-->
-
   <app-loading-placeholder></app-loading-placeholder>
 </ng-container>
-
 
 <main>
   <router-outlet></router-outlet>
@@ -31,6 +8,4 @@
   <app-rainbow-strip></app-rainbow-strip>
   <app-rainbow-strip [bottom]="true"></app-rainbow-strip>
 
-  <!--  <img src="assets/bg.svg" alt="background" id="back-ground-image"-->
-  <!--       style="position:fixed;bottom: 0;left: 50%;transform: translateX(-50%);z-index: -1;width: 100vw;opacity: 0.3;">-->
 </main>

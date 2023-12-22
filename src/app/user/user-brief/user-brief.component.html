@@ -7,7 +7,8 @@
     <!--  </div>-->
     <!--    <mat-card-subtitle>Hi there</mat-card-subtitle>-->
     <div>
-      <button mat-stroked-button routerLink="/friends" color="primary" mat-dialog-close style="border-radius: 100px">
+      <button mat-stroked-button [routerLink]="['/user/' + this.auth.selfUserID]" color="primary" mat-dialog-close
+              style="border-radius: 100px">
         <mat-icon>account_circle</mat-icon>
         My Profile
       </button>
@@ -32,7 +33,7 @@
         <!--          Ask Tidder-->
         <!--        </mat-panel-description>-->
       </mat-expansion-panel-header>
-      <app-ask-tidder style="margin: 10px"></app-ask-tidder>
+      <app-ask-tidder></app-ask-tidder>
     </mat-expansion-panel>
   </main>
 </mat-dialog-content>

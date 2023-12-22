@@ -21,16 +21,14 @@
     </div>
 
     <div class="example-questions" *ngIf="imageToUpload == null">
-      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p[0])" class="example-question">
-        <mat-icon style="vertical-align: middle; overflow: visible">{{p[1]}}</mat-icon>
-        <span style="text-align: right; justify-self: flex-end">{{p[0]}}</span>
+      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p)" class="example-question">
+        <span>{{p}}</span>
       </div>
     </div>
 
     <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
-      <div *ngFor="let p of exampleVisionPrompts" (click)="applyPrompt(p[0])" class="example-question">
-        <mat-icon style="vertical-align: middle;">{{p[1]}}</mat-icon>
-        <span>{{p[0]}}</span>
+      <div *ngFor="let p of exampleVisionPrompts" (click)="applyPrompt(p)" class="example-question">
+        <span>{{p}}</span>
       </div>
     </div>
 
