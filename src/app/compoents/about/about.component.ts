@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {credits} from "../../env";
 
 @Component({
@@ -7,5 +7,5 @@ import {credits} from "../../env";
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-credits = credits;
+  credits = credits;
 }

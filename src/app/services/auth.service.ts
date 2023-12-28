@@ -58,11 +58,9 @@ export class AuthService {
       const expirationDate = new Date();
       expirationDate.setDate(expirationDate.getDate() + 5);
       this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
-
       this.loginEvent.emit("login");
-
       this.router.navigate(["home"]).then();
-      this.states.showNavBar = true;
+      // this.states.showNavBar = true;
     });
   }
 }
