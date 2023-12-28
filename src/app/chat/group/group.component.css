@@ -5,7 +5,7 @@
   cursor: pointer;
   gap: 10px;
   max-width: 310px;
-  min-width: 200px;
+  /*min-width: 200px;*/
   /*background-color: #4f4f4f;*/
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 20px;

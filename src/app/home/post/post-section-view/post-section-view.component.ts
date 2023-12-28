@@ -25,7 +25,6 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
   genreSelected = "All-Genres";
   canShowReloadButton = false;
   showReloadButton = false;
-  firstLoad = true;
   showPostSection = true;
   cacheKey: string = 'post-ids-cache';
   touchDevice = false;
@@ -68,6 +67,7 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
 
   fetchPosts() {
     this.showReloadButton = false;
+    this.loading = true;
     this.canShowReloadButton = false;
     this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
@@ -82,7 +82,6 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
       }, 15000);
 
       this.resizeIfNecessary();
-      this.forceReloadIfNecessary();
     })
   }
 
@@ -119,17 +118,6 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     }
     if (this.postIDsWide != _postIDsWide) {
       this.postIDsWide = _postIDsWide;
-    }
-  }
-
-  forceReloadIfNecessary() {
-    if (this.firstLoad) {
-      this.firstLoad = false;
-    } else {
-      this.showPostSection = false;
-      setTimeout(() => {
-        this.showPostSection = true;
-      }, 20);
     }
   }
 

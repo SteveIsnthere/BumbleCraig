@@ -1,20 +1,20 @@
-<main *ngIf="essentialUserData.figure_id != 0; else loadingBar">
+<main *ngIf="essentialUserData.figure_id != 0 && postsLoaded; else loadingBar">
   <app-back-btn></app-back-btn>
   <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
   </div>
 
   <div id="name">
-    <span>{{essentialUserData.name}}</span>
+    <span>{{ essentialUserData.name }}</span>
   </div>
 
   <div id="stats">
-    <span>#{{userID}}</span>
-    <span style="margin-left: 1em;">Wisdom: {{xp}}</span>
+    <span>#{{ userID }}</span>
+    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
   </div>
 
   <div id="description">
-    <span>{{userDescription}}</span>
+    <span>{{ userDescription }}</span>
   </div>
 
   <span id="divider"><mat-divider></mat-divider></span>
@@ -84,5 +84,6 @@
 
 <app-back-btn *ngIf="userID != auth.selfUserID"></app-back-btn>
 <ng-template #loadingBar>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+  <app-loading-placeholder></app-loading-placeholder>
 </ng-template>

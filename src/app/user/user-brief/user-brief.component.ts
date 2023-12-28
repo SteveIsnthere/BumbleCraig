@@ -1,7 +1,8 @@
-import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Component} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
 import {MainService} from "../../services/main.service";
+import {UserSetUpComponent} from "../user-set-up/user-set-up.component";
 
 @Component({
   selector: 'app-user-brief',
@@ -9,10 +10,16 @@ import {MainService} from "../../services/main.service";
   styleUrl: './user-brief.component.css'
 })
 export class UserBriefComponent {
-  selfUserID = this.data;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public auth: AuthService,public main: MainService) { }
+  selfUserID = this.auth.selfUserID;
+
+  constructor(public auth: AuthService, public main: MainService, private dialog: MatDialog) {
+  }
 
   logout() {
     this.auth.logout();
+  }
+
+  userSetUp() {
+    this.dialog.open(UserSetUpComponent);
   }
 }

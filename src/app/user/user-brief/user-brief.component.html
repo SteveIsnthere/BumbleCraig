@@ -6,12 +6,22 @@
     <!--&lt;!&ndash;    <mat-card-subtitle>Hi there</mat-card-subtitle>&ndash;&gt;-->
     <!--  </div>-->
     <!--    <mat-card-subtitle>Hi there</mat-card-subtitle>-->
-    <div>
+    <div style="display: flex; justify-content: space-around">
       <button mat-stroked-button [routerLink]="['/user/' + this.auth.selfUserID]" color="primary" mat-dialog-close
-              style="border-radius: 100px">
+              style="border-radius: 100px"
+              *ngIf="!auth.isVisitor; else signUpBtn">
         <mat-icon>account_circle</mat-icon>
         My Profile
       </button>
+
+      <ng-template #signUpBtn>
+        <button mat-stroked-button color="primary" mat-dialog-close (click)="userSetUp()"
+                style="border-radius: 100px">
+          <mat-icon>account_circle</mat-icon>
+          Sign Up
+        </button>
+      </ng-template>
+
       <button mat-stroked-button routerLink="/friends" color="warn" mat-dialog-close
               style="margin-left: 10px; border-radius: 100px">
         <mat-icon>people</mat-icon>

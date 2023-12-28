@@ -60,7 +60,7 @@ export class AskTidderComponent {
     const formData = new FormData();
     formData.append('image', this.imageToUpload);
     formData.append('question', prompt);
-    this.http.post<string>(apiEndPoint + '/ask_tidder/vision_question/' + this.auth.selfUserID, formData).subscribe(
+    this.http.post<string>(apiEndPoint + '/assistant/vision_question/' + this.auth.selfUserID, formData).subscribe(
       (res) => {
         this.setResponse(res)
       },
@@ -71,7 +71,7 @@ export class AskTidderComponent {
   }
 
   getTextResponse(prompt: string) {
-    this.http.post<string>(apiEndPoint + '/ask_tidder/text_question/' + this.auth.selfUserID, prompt).subscribe(
+    this.http.post<string>(apiEndPoint + '/assistant/text_question/' + this.auth.selfUserID, prompt).subscribe(
       (res) => {
         this.setResponse(res)
       },

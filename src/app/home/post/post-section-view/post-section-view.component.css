@@ -55,7 +55,7 @@ main {
 
 
 #top-option-bar {
-  font-weight: 500;
+  font-weight: 400;
   border-radius: 100px;
   justify-self: center;
   margin-top: 20px;
@@ -65,6 +65,7 @@ main {
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /*#top-logo-option-bar{*/

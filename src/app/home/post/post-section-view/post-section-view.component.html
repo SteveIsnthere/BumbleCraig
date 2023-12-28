@@ -1,17 +1,18 @@
 <!--<p style="width: 100vw;" *ngIf="loading">-->
 <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 <!--</p>-->
-<div style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);display: flex; justify-content: center; ">
+<div
+  style="position: fixed; top: 0;z-index: 9; left: 50vw; transform: translateX(-50%);display: flex; justify-content: center; ">
 
-  <button mat-stroked-button id="top-option-bar" (click)="openBottomSheet()" class="trans-btn-dark">
+  <button mat-stroked-button id="top-option-bar" (click)="openBottomSheet()" class="trans-btn-bright">
     {{ selectedRankingMode }} | {{ genreSelected }}
   </button>
 
-<!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
-<!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
-<!--&lt;!&ndash;    <button mat-button>Posts Filter</button>&ndash;&gt;-->
-<!--    <mat-card-title>Tidder</mat-card-title>-->
-<!--  </div>-->
+  <!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
+  <!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
+  <!--&lt;!&ndash;    <button mat-button>Posts Filter</button>&ndash;&gt;-->
+  <!--    <mat-card-title>Tidder</mat-card-title>-->
+  <!--  </div>-->
 </div>
 
 <div style="height: 58px"></div>
@@ -21,7 +22,7 @@
       <div id="single-row-posts-container" class="posts-container">
         <ng-container *ngFor="let postID of postIDs">
           <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
-                    <mat-divider class="divider"></mat-divider>
+          <mat-divider class="divider"></mat-divider>
         </ng-container>
       </div>
     </ng-container>
@@ -46,8 +47,9 @@
     genres</p>
 </div>
 <div id="refresh-btn">
-  <button mat-flat-button color="warn" (click)="refresh()" *ngIf="showReloadButton"
-          style="border-radius: 100px">
-    <mat-icon>refresh</mat-icon>Refresh
+  <button mat-stroked-button color="warn" (click)="refresh()" *ngIf="showReloadButton" class="trans-btn-bright"
+          style="border-radius: 100px;">
+    <mat-icon>refresh</mat-icon>
+    Refresh
   </button>
 </div>

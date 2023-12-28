@@ -36,7 +36,6 @@ export class HomeComponent {
 
   openUserBriefView() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.auth.selfUserID;
     dialogConfig.backdropClass = 'post-back-drop';
 
     this.dialog.open(UserBriefComponent, dialogConfig);
