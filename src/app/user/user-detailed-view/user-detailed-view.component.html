@@ -75,9 +75,10 @@
       <div style="flex: 1"></div>
     </ng-container>
 
-    <div id="posts-section">
-      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>
-    </div>
+<!--    <div id="posts-section">-->
+<!--      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>-->
+<!--    </div>-->
+    <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
   </ng-container>
 
 </main>

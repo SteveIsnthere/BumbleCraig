@@ -14,7 +14,8 @@
     <!--      </button>-->
     <!--    </mat-menu>-->
 
-    <button mat-icon-button class="btn trans-btn-bright" routerLink="/chat" color="warn" *ngIf="!states.hasUnreadMsg; else unread">
+    <button mat-icon-button class="btn trans-btn-bright" routerLink="/chat" color="warn"
+            *ngIf="!states.hasUnreadMsg; else unread">
       <mat-icon class="nav-icon">
         chat_bubble
       </mat-icon>
@@ -30,13 +31,13 @@
 
     <div style="flex: 1"></div>
 
-<!--    <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"-->
-<!--            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"-->
-<!--            [matBadgeHidden]="notificationCount() == 0">-->
-<!--      <mat-icon class="nav-icon">-->
-<!--        menu-->
-<!--      </mat-icon>-->
-<!--    </button>-->
+    <!--    <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"-->
+    <!--            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"-->
+    <!--            [matBadgeHidden]="notificationCount() == 0">-->
+    <!--      <mat-icon class="nav-icon">-->
+    <!--        menu-->
+    <!--      </mat-icon>-->
+    <!--    </button>-->
 
     <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"
             [ngStyle]="{'background-color': notificationCount()>0 ? 'white': ''}">
@@ -59,12 +60,16 @@
   <!--  </button>-->
 
   <!--  <ng-template #makePost>-->
-  <button mat-fab (click)="openNewPostView()" color="primary" class="bottom-right-btn"
-          style="">
-    <mat-icon>add</mat-icon>
-  </button>
-  <!--  </ng-template>-->
 
+  <!--  </ng-template>-->
+  <div style="height: 58px"></div>
+<!--  <app-cue-card></app-cue-card>-->
   <app-post-section-view></app-post-section-view>
+  <div style="height: 80px"></div>
   <app-background></app-background>
+
 </main>
+<button mat-fab (click)="openNewPostView()" color="primary" class="bottom-right-btn"
+        style="">
+  <mat-icon>add</mat-icon>
+</button>

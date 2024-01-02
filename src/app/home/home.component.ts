@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {MainService} from "../services/main.service";
-import {NotificationViewComponent} from "./notification-view/notification-view.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
 import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
@@ -19,10 +18,6 @@ export class HomeComponent {
     setTimeout(() => {
       this.states.loadedUp = true;
     }, 2000);
-  }
-
-  openNotificationView() {
-    this.dialog.open(NotificationViewComponent);
   }
 
 
@@ -45,7 +40,4 @@ export class HomeComponent {
     return this.main.getTotalMessageCount();
   }
 
-  reloadPage() {
-    window.location.reload();
-  }
 }

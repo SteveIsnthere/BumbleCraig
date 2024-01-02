@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
@@ -6,7 +6,6 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
 import {PostSectionOptionsComponent} from "./post-section-options/post-section-options.component";
 import {MatDialog} from "@angular/material/dialog";
-import {debounceTime, fromEvent, Subscription} from "rxjs";
 import {StatesService} from "../../../services/states.service";
 
 @Component({
@@ -14,10 +13,8 @@ import {StatesService} from "../../../services/states.service";
   templateUrl: './post-section-view.component.html',
   styleUrls: ['./post-section-view.component.css']
 })
-export class PostSectionViewComponent implements OnInit, OnDestroy {
-  wideMode = false;
+export class PostSectionViewComponent implements OnInit {
   postIDs: number[] = [];
-  postIDsWide: number[][] = [];
 
   loading = true;
   empty = false;
@@ -27,8 +24,6 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
   showReloadButton = false;
   showPostSection = true;
   cacheKey: string = 'post-ids-cache';
-  touchDevice = false;
-  private resizeSubscription: Subscription = new Subscription();
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
     this.main.appReopenEvent.subscribe(() => {
@@ -45,20 +40,13 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
     this.showReloadButton = false;
     this.canShowReloadButton = false;
     this.loading = true;
-    this.touchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     this.loadSettingsFromLocalStorage();
 
     // subscribe to the resize event
-    this.resizeSubscription = fromEvent(window, 'resize').pipe(
-      debounceTime(200),
-    ).subscribe(() => {
-      this.resizeIfNecessary()
-    })
 
     if (this.states.loadedUp) {
       this.loadPostIDsFromLocalStorage();
       this.showReloadButton = true;
-      this.resizeIfNecessary();
       return;
     }
 
@@ -80,46 +68,11 @@ export class PostSectionViewComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.canShowReloadButton = true;
       }, 15000);
-
-      this.resizeIfNecessary();
     })
   }
 
-  ngOnDestroy() {
-    this.resizeSubscription.unsubscribe();
-  }
 
-  resizeIfNecessary() {
-    const width = window.innerWidth;
-    const postWidth = 470;
-    const gap = 0;
-    const margin = 3;
 
-    const maxColumns = Math.floor((width - margin * 2) / (postWidth + gap * 2));
-
-    if (maxColumns < 2) {
-      this.wideMode = false;
-      return;
-    }
-
-    if (!this.wideMode) this.wideMode = true;
-    // if (this.postIDsWide.length == maxColumns) return;
-    let _postIDsWide: number[][] = [];
-    const numberOfPosts = this.postIDs.length;
-    // for (let i = 0; i < maxColumns; i++) {
-    //   _postIDsWide.push(this.postIDs.slice(i * Math.ceil(numberOfPosts / maxColumns), (i + 1) * Math.ceil(numberOfPosts / maxColumns)));
-    // }
-    for (let i = 0; i < maxColumns; i++) {
-      _postIDsWide.push([]);
-    }
-    for (let i = 0; i < numberOfPosts; i++) {
-      let column = i % maxColumns;
-      _postIDsWide[column].push(this.postIDs[i]);
-    }
-    if (this.postIDsWide != _postIDsWide) {
-      this.postIDsWide = _postIDsWide;
-    }
-  }
 
   openBottomSheet(): void {
     const bottomSheetRef = this._bottomSheet.open(PostSectionOptionsComponent, {

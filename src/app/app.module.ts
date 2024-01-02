@@ -77,6 +77,9 @@ import {UserBriefComponent} from "./user/user-brief/user-brief.component";
 import {BackgroundComponent} from "./compoents/background/background.component";
 import {HomeButtonComponent} from "./compoents/home-button/home-button.component";
 import {LoadingPlaceholderComponent} from "./compoents/loading-placeholder/loading-placeholder.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {CueCardComponent} from "./home/cue-card/cue-card.component";
+import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -136,7 +139,9 @@ const appRoutes: Routes = [
     RainbowStripComponent,
     AboutComponent,
     UserBriefComponent,
-    LoadingPlaceholderComponent
+    LoadingPlaceholderComponent,
+    CueCardComponent,
+    PostSectionViewBaseComponent,
   ],
     imports: [
         BrowserModule,
@@ -173,6 +178,7 @@ const appRoutes: Routes = [
         MatSlideToggleModule,
         BackgroundComponent,
         HomeButtonComponent,
+        MatSidenavModule,
     ],
   providers: [httpInterceptorProviders],
   exports: [

@@ -15,27 +15,10 @@
   <!--  </div>-->
 </div>
 
-<div style="height: 58px"></div>
+
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
-    <ng-container *ngIf="!wideMode; else wide">
-      <div id="single-row-posts-container" class="posts-container">
-        <ng-container *ngFor="let postID of postIDs">
-          <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
-          <mat-divider class="divider"></mat-divider>
-        </ng-container>
-      </div>
-    </ng-container>
-    <ng-template #wide>
-      <div id="wide-mode-posts-container" class="posts-container">
-        <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
-          <ng-container *ngFor="let postID of postRow">
-            <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice></app-post>
-            <mat-divider class="divider"></mat-divider>
-          </ng-container>
-        </div>
-      </div>
-    </ng-template>
+    <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
   </ng-container>
   <ng-template #loadingPlaceHolder>
     <app-loading-placeholder></app-loading-placeholder>
