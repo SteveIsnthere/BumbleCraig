@@ -81,6 +81,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {CueCardComponent} from "./home/cue-card/cue-card.component";
 import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
 import {NgOptimizedImage} from "@angular/common";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -144,44 +145,45 @@ const appRoutes: Routes = [
     CueCardComponent,
     PostSectionViewBaseComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatBottomSheetModule,
-        RouterModule.forRoot(appRoutes),
-        MatInputModule,
-        FormsModule,
-        MatSnackBarModule,
-        MatListModule,
-        MatMenuModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatBadgeModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatExpansionModule,
-        MatChipsModule,
-        MatProgressBarModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        CdkDrag,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            // Register the ServiceWorker as soon as the application is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }),
-        MatTabsModule,
-        MatSlideToggleModule,
-        BackgroundComponent,
-        HomeButtonComponent,
-        MatSidenavModule,
-        NgOptimizedImage,
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatBottomSheetModule,
+    RouterModule.forRoot(appRoutes),
+    MatInputModule,
+    FormsModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatChipsModule,
+    MatProgressBarModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    CdkDrag,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    MatTabsModule,
+    MatSlideToggleModule,
+    BackgroundComponent,
+    HomeButtonComponent,
+    MatSidenavModule,
+    NgOptimizedImage,
+    MatAutocompleteModule,
+  ],
   providers: [httpInterceptorProviders],
   exports: [
     UserComponent,

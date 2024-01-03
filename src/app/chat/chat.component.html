@@ -1,5 +1,5 @@
 <main>
-  <app-home-button></app-home-button>
+  <app-home-button (click)="this.main.fetchNotifications().subscribe()"></app-home-button>
 
   <button mat-icon-button class="trans-btn-bright" (click)="editMode = !editMode" color="warn"
           style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">

@@ -1,13 +1,43 @@
 <main>
-  <img ngSrc="assets/logo.png" style="height: 45px; width: 45px;" alt="" height="500" width="500">
-  <div style="flex: 1"></div>
 
-<!--  <div>-->
-<!--    <app-user-mini [userID]="auth.selfUserID" style="height: 100%"></app-user-mini>-->
-<!--  </div>-->
+
+  <div id="top-users">
+    <ng-container *ngFor="let n of topUserIDs; index as i">
+      <app-user-mini  [userID]="n" matBadge="{{i+1}}"
+                      [matBadgeHidden]="i+1 > 3" matBadgeColor="accent"></app-user-mini>
+    </ng-container>
+
+<!--    <ng-container *ngIf="!topUserIDs.includes(auth.selfUserID)">-->
+<!--      <span style="padding: 10px"><-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>-->
+<!--      <app-user-mini [userID]="auth.selfUserID"></app-user-mini>-->
+<!--&lt;!&ndash;      <span>You can do it too</span>&ndash;&gt;-->
+<!--    </ng-container>-->
+
+  </div>
+
+
+  <!--  <div>-->
+  <!--    <app-user-mini [userID]="auth.selfUserID" style="height: 100%"></app-user-mini>-->
+  <!--  </div>-->
+
 
   <div style="flex: 1"></div>
-  <button mat-mini-fab (click)="openNewPostView()" color="primary" class="new-post-btn">
+<!--  <ng-container>-->
+<!--    <button mat-stroked-button>-->
+<!--      <mat-icon>rocket_launch</mat-icon>-->
+<!--      <span>Home</span>-->
+<!--    </button>-->
+<!--    <div style="flex: 1"></div>-->
+<!--  </ng-container>-->
+
+
+  <button mat-icon-button (click)="openNewPostView()" color="primary" class="new-post-btn">
     <mat-icon>add</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="openUserBriefView()"
+          [ngStyle]="{'background-color': notificationCount()>0 ? 'white': ''}">
+    <mat-icon class="nav-icon">
+      menu
+    </mat-icon>
   </button>
 </main>

@@ -25,6 +25,7 @@ export class PostSectionViewComponent implements OnInit {
   canShowReloadButton = false;
   showReloadButton = false;
   showPostSection = true;
+  // isChecked = false;
   cacheKey: string = 'post-ids-cache';
 
 
@@ -97,10 +98,8 @@ export class PostSectionViewComponent implements OnInit {
     // first check if the local storage is empty
     let storedRankingMode = localStorage.getItem('rankingMode');
     let storedGenre = localStorage.getItem('genre');
-    if (storedRankingMode != null) this.selectedRankingMode = JSON.parse(storedRankingMode);
-    console.log(this.selectedRankingMode)
-    if (storedGenre != null) this.genreSelected = storedGenre;
-
+    if (storedRankingMode != null && rankingModes.includes(JSON.parse((storedRankingMode)))) this.selectedRankingMode = JSON.parse(storedRankingMode);
+    if (storedGenre != null && genres.includes(storedGenre)) this.genreSelected = storedGenre;
   }
 
   saveSettingsToLocalStorage() {
@@ -126,8 +125,6 @@ export class PostSectionViewComponent implements OnInit {
     localStorage.setItem(this.cacheKey, JSON.stringify(this.postIDs));
   }
 
-  protected readonly rankingModes = rankingModes;
-
   setRankingMode(mode: string[]) {
     this.selectedRankingMode = mode;
     this.saveSettingsToLocalStorage()
@@ -138,5 +135,6 @@ export class PostSectionViewComponent implements OnInit {
     this.saveSettingsToLocalStorage()
   }
 
+  protected readonly rankingModes = rankingModes;
   protected readonly genres = genres;
 }

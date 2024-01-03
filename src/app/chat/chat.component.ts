@@ -20,7 +20,7 @@ export class ChatComponent implements OnInit {
   loadingComplete: boolean = false;
   cacheKey: string = 'chat-groups-cache';
 
-  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit {
       }
       this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups_with_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
         this.groupWithUnreadIDs = data;
-        this.main.fetchNotifications()
+        this.main.fetchNotifications().subscribe()
       })
     })
     this.loadFromLocalStorage()

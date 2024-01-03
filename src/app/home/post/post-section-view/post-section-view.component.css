@@ -10,7 +10,9 @@
 #posts-modes-bar{
   display: flex;
   /*justify-content: center;*/
+  align-items: center;
   padding-left: 13px;
+  padding-right: 13px;
   gap: 6px;
 }
 
