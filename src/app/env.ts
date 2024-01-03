@@ -10,12 +10,11 @@ export const colors = [
 export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
 
 export const rankingModes = [
-  'Recommended',
-  'Trending',
-  'Newest',
-  'Best',
-  'Worst',
-  'Friends',
+  ['Recommended', 'star'],
+  ['Trending', 'trending_up'],
+  ['Newest', 'schedule'],
+  ['Best', 'thumb_up'],
+  ['Worst', 'thumb_down'],
 ];
 
 export const genres = [

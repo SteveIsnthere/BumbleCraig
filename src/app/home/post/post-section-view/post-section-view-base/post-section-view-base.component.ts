@@ -15,6 +15,8 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy {
   @Input() postIDs: number[] = [];
   wideMode = false;
   postIDsWide: number[][] = [];
+  padding = 15;
+  wideModePostWidth = 470;
 
   touchDevice = false;
   private resizeSubscription: Subscription = new Subscription();
@@ -41,12 +43,9 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy {
 
   resizeIfNecessary() {
     const width = window.innerWidth;
-    const postWidth = 470;
-    const gap = 0;
-    const margin = 3;
-    console.log(width)
+    const postWidthMin = 400;
 
-    const maxColumns = Math.floor((width - margin * 2) / (postWidth + gap * 2));
+    const maxColumns = Math.floor((width - this.padding * 2) / postWidthMin);
 
     if (maxColumns < 2) {
       this.wideMode = false;
@@ -70,6 +69,6 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy {
     if (this.postIDsWide != _postIDsWide) {
       this.postIDsWide = _postIDsWide;
     }
+    this.wideModePostWidth = Math.floor((width - this.padding * 2) / maxColumns);
   }
-
 }

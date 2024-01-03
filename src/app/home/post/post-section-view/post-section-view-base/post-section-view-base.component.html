@@ -7,10 +7,12 @@
   </div>
 </ng-container>
 <ng-template #wide>
-  <div id="wide-mode-posts-container" class="posts-container">
+  <div id="wide-mode-posts-container" class="posts-container" [style.padding-left]="padding+'px'"
+       [style.padding-right]="padding+'px'">
     <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
       <ng-container *ngFor="let postID of postRow">
-        <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice></app-post>
+        <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice
+                  [style.width]="wideModePostWidth+'px'"></app-post>
         <mat-divider class="divider"></mat-divider>
       </ng-container>
     </div>

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MainService} from "../services/main.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {StatesService} from "../services/states.service";
-import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
+// import {NewPostViewComponent} from "./post/new-post-view/new-post-view.component";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {UserBriefComponent} from "../user/user-brief/user-brief.component";
@@ -19,15 +19,15 @@ export class HomeComponent {
       this.states.loadedUp = true;
     }, 2000);
   }
-
-
-  openNewPostView() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = this.auth.selfUserID;
-    dialogConfig.backdropClass = 'post-back-drop';
-
-    this.dialog.open(NewPostViewComponent, dialogConfig);
-  }
+  //
+  //
+  // openNewPostView() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.data = this.auth.selfUserID;
+  //   dialogConfig.backdropClass = 'post-back-drop';
+  //
+  //   this.dialog.open(NewPostViewComponent, dialogConfig);
+  // }
 
   openUserBriefView() {
     const dialogConfig = new MatDialogConfig();
@@ -39,5 +39,4 @@ export class HomeComponent {
   notificationCount() {
     return this.main.getTotalMessageCount();
   }
-
 }

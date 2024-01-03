@@ -80,6 +80,7 @@ import {LoadingPlaceholderComponent} from "./compoents/loading-placeholder/loadi
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {CueCardComponent} from "./home/cue-card/cue-card.component";
 import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
+import {NgOptimizedImage} from "@angular/common";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -179,6 +180,7 @@ const appRoutes: Routes = [
         BackgroundComponent,
         HomeButtonComponent,
         MatSidenavModule,
+        NgOptimizedImage,
     ],
   providers: [httpInterceptorProviders],
   exports: [

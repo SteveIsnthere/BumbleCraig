@@ -7,7 +7,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
-import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
+// import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../services/auth.service";
 import {PostCachingService} from "../../services/post-caching.service";
@@ -94,24 +94,24 @@ export class PostComponent implements OnInit {
     this.dialog.open(PostFullViewComponent, dialogConfig);
   }
 
-  writeComment(): void {
-    const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
-    bottomSheetRef.afterDismissed().subscribe(textContent => {
-      if (typeof textContent != 'string') {
-        console.log('Text content is not a string')
-        return
-      }
-      if (textContent.length == 0) {
-        console.log('Text content is empty')
-        return
-      }
-      this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
-        .subscribe(() => {
-          this.post!.number_of_comments++;
-          this.snackBar.open('Your comment is live', 'OK', {
-            duration: 2000,
-          })
-        })
-    });
-  }
+  // writeComment(): void {
+  //   const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
+  //   bottomSheetRef.afterDismissed().subscribe(textContent => {
+  //     if (typeof textContent != 'string') {
+  //       console.log('Text content is not a string')
+  //       return
+  //     }
+  //     if (textContent.length == 0) {
+  //       console.log('Text content is empty')
+  //       return
+  //     }
+  //     this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
+  //       .subscribe(() => {
+  //         this.post!.number_of_comments++;
+  //         this.snackBar.open('Your comment is live', 'OK', {
+  //           duration: 2000,
+  //         })
+  //       })
+  //   });
+  // }
 }
