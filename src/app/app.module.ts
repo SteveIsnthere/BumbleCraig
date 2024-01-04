@@ -82,6 +82,7 @@ import {CueCardComponent} from "./home/cue-card/cue-card.component";
 import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
 import {NgOptimizedImage} from "@angular/common";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {GroupMembersViewComponent} from "./chat/group/group-members-view/group-members-view.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
@@ -93,6 +94,7 @@ const appRoutes: Routes = [
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
   {path: 'about', component: AboutComponent},
+  // {path: '', redirectTo: '/chat', pathMatch: 'full'},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -144,6 +146,7 @@ const appRoutes: Routes = [
     LoadingPlaceholderComponent,
     CueCardComponent,
     PostSectionViewBaseComponent,
+    GroupMembersViewComponent
   ],
   imports: [
     BrowserModule,

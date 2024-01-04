@@ -1,9 +1,9 @@
 .wrapper {
   display: flex;
   align-items: center;
-  background-color: #525252;
+  /*background-color: #525252;*/
   padding: 8px;
-  border-radius: 20px;
+  border-radius: 200px;
   cursor: pointer;
   max-width: 260px;
   overflow: hidden;
@@ -19,6 +19,6 @@
   font-size: 18px;
   margin-left: 7px;
   margin-right: 5px;
-  font-weight: normal;
+  font-weight: 500;
   max-width: 200px;
 }

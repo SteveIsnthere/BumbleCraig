@@ -3,30 +3,46 @@
     <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
       <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
     </div>
-    <div *ngIf="unread">
-      <mat-icon color="warn" style="vertical-align: middle;">mark_email_unread</mat-icon>
-    </div>
+
     <div style="flex: 1"></div>
-    <div id="group-name">
-      <span>{{groupEssentialData.name}}</span>
+    <div id="info-section">
+      <div id="group-name">
+        <span>{{groupEssentialData.name}}</span>
+      </div>
+      <div *ngIf="unread; else info">
+        <mat-icon color="warn" style="vertical-align: middle; margin-right: 3px">mark_email_unread</mat-icon>
+        <span>New Message</span>
+      </div>
+
+      <ng-template #info>
+        <div id="group-info">
+          {{groupMembersCount}}
+          <mat-icon style="scale: 0.7;margin-left: -3px;color: #e15241;">person</mat-icon>
+          <span style="margin-left: 5px">{{lastMessage}}</span>
+        </div>
+      </ng-template>
     </div>
 
-    <button mat-icon-button (click)="stopProp($event)" [matMenuTriggerFor]="menu" color="primary" style="margin: -8px">
+    <button mat-icon-button (click)="stopProp($event)" [matMenuTriggerFor]="menu" color="primary" style="margin: -12px">
       <mat-icon>
-        more_horiz
+        more_vert
       </mat-icon>
     </button>
   </div>
 </main>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="openInviteView()">
     <mat-icon>add</mat-icon>
     <span>Invite</span>
   </button>
-  <button mat-menu-item>
-    <mat-icon>delete</mat-icon>
-    <span>Leave</span>
+  <button mat-menu-item (click)="openMembersView()">
+    <mat-icon>groups</mat-icon>
+    <span>Members</span>
+  </button>
+  <button mat-menu-item (click)="openGroupInfo()">
+    <mat-icon>info</mat-icon>
+    <span>Info</span>
   </button>
 </mat-menu>
 <ng-template #loadingBar>

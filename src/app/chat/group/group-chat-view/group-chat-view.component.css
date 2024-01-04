@@ -15,7 +15,7 @@ main {
 #group-info {
   position: fixed;
   left: 50%;
-  top: 18px;
+  top: 21px;
 
   transform: translate(-50%, 0);
   display: flex;
@@ -26,8 +26,8 @@ main {
   max-width: calc(100% - 190px);
   border-radius: 100px;
   cursor: pointer;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.09);
+  padding: 7px;
+  background-color: rgba(225, 82, 65, 0.18);
 }
 
 #group-info::-webkit-scrollbar {
@@ -35,14 +35,15 @@ main {
 }
 
 #group-name {
-  /*limited to one line*/
-  display: inline;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  font-size: large;
-  font-weight: 500;
   color: white;
+  font-size: 1.05rem;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* Limit to 2 lines */
+  overflow: hidden;
+  line-height: 1.2; /* Adjust this value for spacing between lines */
+  padding-right: 6px;
 }
 
 #messages-section {

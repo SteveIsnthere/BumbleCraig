@@ -3,6 +3,10 @@ import {HttpClient} from "@angular/common/http";
 import {apiEndPoint} from "../../env";
 import {dummyGroupEssentialData, GroupEssentialData} from "./GroupEssentialData";
 import {GroupBasicInfoCachingService} from "../../services/group-basic-info-caching.service";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {InviteViewComponent} from "./invite-view/invite-view.component";
+import {GroupMembersViewComponent} from "./group-members-view/group-members-view.component";
+import {GroupInfoViewComponent} from "./group-info-view/group-info-view.component";
 
 @Component({
   selector: 'app-group',
@@ -15,12 +19,20 @@ export class GroupComponent implements OnInit {
   @Input() selfID: number = 0;
   @Input() unread = false;
   groupEssentialData: GroupEssentialData = dummyGroupEssentialData();
+  groupMembersCount: number = 0;
+  lastMessage: string = '';
 
-  constructor(public http: HttpClient, private cache: GroupBasicInfoCachingService) {
+  constructor(public http: HttpClient, private cache: GroupBasicInfoCachingService, private _bottomSheet: MatBottomSheet) {
   }
 
   ngOnInit(): void {
     let cachedData = this.cache.get(this.groupID);
+    this.http.get<number>(apiEndPoint + '/group/get_numbers_of_members/' + this.groupID).subscribe((data) => {
+      this.groupMembersCount = data;
+    })
+    this.http.get<string>(apiEndPoint + '/group/get_time_since_last_message/' + this.groupID).subscribe((data) => {
+      this.lastMessage = data;
+    })
     if (cachedData) {
       this.groupEssentialData = cachedData;
       if (Math.random() < 0.5) {
@@ -40,6 +52,20 @@ export class GroupComponent implements OnInit {
         this.cache.set(data);
       })
     }
+
+
+  }
+
+  openInviteView() {
+    this._bottomSheet.open(InviteViewComponent, {data: this.groupID});
+  }
+
+  openMembersView() {
+    this._bottomSheet.open(GroupMembersViewComponent, {data: this.groupID});
+  }
+
+  openGroupInfo() {
+    this._bottomSheet.open(GroupInfoViewComponent, {data: this.groupID});
   }
 
   stopProp(e: Event) {
