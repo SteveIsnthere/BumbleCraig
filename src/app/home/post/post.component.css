@@ -6,11 +6,16 @@ mat-card {
   background-color: rgba(0, 0, 0, 0);
   /*border: 3px grey dashed;*/
   animation: appear 1.5s forwards;
+  cursor: pointer;
 }
 
 .text-content {
+  margin-top: -5px;
   /*color: antiquewhite;*/
-  color: #fff8ee;
+  color: white;
+  font-size: 13px;
+  line-height: 16px;
+  font-style: oblique;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -32,6 +37,7 @@ mat-card {
 mat-card-content {
   cursor: pointer;
   /*transform: translateY(-25px);*/
+  /*margin-top: -5px;*/
 }
 
 mat-card-title {
@@ -48,6 +54,7 @@ mat-card-subtitle {
   gap: 10px;
   margin-right: -32px;
   min-width: 250px;
+  margin-top: -3px;
 }
 
 .desktopStyleClass {

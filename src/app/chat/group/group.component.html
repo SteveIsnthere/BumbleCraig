@@ -7,7 +7,7 @@
 
     <div id="info-section">
       <div id="group-name">
-        <span>{{groupEssentialData.name}}</span>
+        <span>{{ groupEssentialData.name }}</span>
       </div>
       <div *ngIf="unread; else info">
         <mat-icon color="warn" style="vertical-align: middle; margin-right: 3px">mark_email_unread</mat-icon>
@@ -16,16 +16,16 @@
 
       <ng-template #info>
         <div id="group-info">
-          {{groupMembersCount}}
+          {{ groupMembersCount }}
           <mat-icon style="scale: 0.7;margin-left: -3px;color: #e15241;">person</mat-icon>
-          <span style="margin-left: 5px">{{lastMessage}}</span>
+          <span style="margin-left: 5px">{{ lastMessage }}</span>
         </div>
       </ng-template>
     </div>
 
     <div style="flex: 1"></div>
-
-    <button mat-icon-button (click)="stopProp($event)" [matMenuTriggerFor]="menu" color="primary" style="margin: -12px">
+    <button mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" color="primary"
+            style="margin: -12px">
       <mat-icon>
         more_vert
       </mat-icon>

@@ -8,7 +8,7 @@
       <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
       <div style="flex: 1"></div>
     </div>
-    <mat-divider style="width: 100%"></mat-divider>
+    <mat-divider style="width: 100%; margin-top: -5px"></mat-divider>
     <div class="contents">
       <div *ngFor="let content of post.content" class="content">
         <ng-container *ngIf="content.file_share_id != 0; else textMsg">

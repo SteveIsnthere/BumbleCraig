@@ -78,7 +78,8 @@ export class PostComponent implements OnInit {
     }
   }
 
-  openCommentSection(): void {
+  openCommentSection(e:Event): void {
+    e.stopPropagation();
     this._bottomSheet.open(PostCommentsViewComponent, {
       data: this.postID,
     });

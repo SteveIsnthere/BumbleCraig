@@ -68,7 +68,4 @@ export class GroupComponent implements OnInit {
     this._bottomSheet.open(GroupInfoViewComponent, {data: this.groupID});
   }
 
-  stopProp(e: Event) {
-    e.stopPropagation()
-  }
 }

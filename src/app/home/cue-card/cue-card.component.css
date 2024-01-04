@@ -17,7 +17,7 @@ main{
 #top-users{
   /*transform: translateY(5px);*/
   display: flex;
-  gap: 6px;
+  /*gap: 0px;*/
   align-items: center;
   color: white;
   vertical-align: middle;

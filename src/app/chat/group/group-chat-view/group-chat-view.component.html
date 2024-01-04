@@ -1,19 +1,17 @@
 <main>
   <app-back-btn></app-back-btn>
-  <!--  <div style="width: 70px; height: 70px; border-radius: 100%; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.44);position: fixed;-->
-  <!--  left: 50%;top: 10px;transform: translate(-50%, 0);"></div>-->
-  <div id="group-info" *ngIf="groupEssentialData.figure_id != 0" (click)="editFigure()" class="trans-btn-bright">
-    <div style="width: 30px;clip-path: circle(15px at center); flex-shrink: 0;"
-         (click)="editFigure()">
-      <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>
-    </div>
-    <mat-card-title id="group-name">{{ groupEssentialData.name }}</mat-card-title>
-  </div>
+<!--  <div id="group-info" *ngIf="groupEssentialData.figure_id != 0" (click)="editFigure()" class="trans-btn-bright">-->
+<!--    <div style="width: 30px;clip-path: circle(15px at center); flex-shrink: 0;"-->
+<!--         (click)="editFigure()">-->
+<!--      <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>-->
+<!--    </div>-->
+<!--    <mat-card-title id="group-name">{{ groupEssentialData.name }}</mat-card-title>-->
+<!--  </div>-->
 
-  <button mat-icon-button class="trans-btn-bright" color="primary" (click)="openInviteView()"
-          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;background-color: rgba(225,82,65,0.13)">
-    <mat-icon>person_add</mat-icon>
-  </button>
+<!--  <button mat-icon-button class="trans-btn-bright" color="primary" (click)="openInviteView()"-->
+<!--          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;background-color: rgba(225,82,65,0.13)">-->
+<!--    <mat-icon>person_add</mat-icon>-->
+<!--  </button>-->
   <div id="messages-section" #messagesSection>
     <ng-container *ngIf="noMessages">
       <div style="height: 80px"></div>
