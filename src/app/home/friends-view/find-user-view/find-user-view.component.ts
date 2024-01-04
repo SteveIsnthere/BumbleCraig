@@ -14,12 +14,14 @@ export class FindUserViewComponent {
   nameInput: string = '';
   searchResults: number[] = [];
   sentFriendRequests: number[] = [];
+  loading: boolean = false
 
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar) {
   }
 
   changeContent(event: any) {
     this.nameInput = event.target.value;
+    this.loading = true;
     this.searchUser()
   }
 
@@ -28,6 +30,7 @@ export class FindUserViewComponent {
     this.http.post<number[]>(apiEndPoint + '/user/find_user/' + this.auth.selfUserID, this.nameInput).subscribe((data: any) => {
       this.sentFriendRequests = [];
       this.searchResults = data;
+      this.loading = false;
     })
   }
 

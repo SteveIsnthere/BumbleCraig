@@ -4,7 +4,8 @@
   align-items: center;
   cursor: pointer;
   gap: 5px;
-  max-width: 310px;
+  width: 290px;
+  /*max-width: 310px;*/
   /*max-width: 200px;*/
   /*background-color: #4f4f4f;*/
   background-color: rgba(0, 0, 0, 0.2);
@@ -40,6 +41,7 @@
 #group-name {
   /*margin-left: 10px;*/
   font-size: 1.05rem;
+  /*text-decoration: underline;*/
   font-weight: 500;
   /*color: white;*/
   /*max-width: 190px;*/

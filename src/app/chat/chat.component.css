@@ -9,12 +9,13 @@ main {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: flex-start;*/;
-  width: 100%;
-  margin: 85px 0 90px;
-  gap: 20px;
+  width: calc(100% - 20px);
+  margin: 85px 10px 90px;
+  gap: 10px;
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
+  /*background-color: #4488f5;*/
   align-items: flex-start;
   flex-wrap: wrap;
 }

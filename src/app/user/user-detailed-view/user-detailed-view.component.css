@@ -15,36 +15,36 @@ main {
 
 #name {
   color: rgb(255, 255, 255);
-
-  font-size: 23px;
+  text-decoration: underline;
+  font-size: 25px;
   font-weight: bold;
   border-radius: 25px;
   padding: 12px 15px;
-  margin-top: 12px;
+  margin-top: 5px;
 }
 
 #stats {
   font-size: smaller;
   font-weight: normal;
   color: white;
-  margin-top: 4px;
+  margin-top: -2px;
 }
 
 #description {
-  color: white;
-  font-size: 15px;
-  font-weight: normal;
+  color: #e15241;
+  font-size: 12px;
+  font-style: italic;
   max-width: 250px;
-  margin-top: 15px;
-  text-align: justify-all;
+  margin-top: 3px;
+  text-align: start;
 
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 7px 10px;
+  /*border-radius: 10px;*/
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  /*padding: 7px 10px;*/
 }
 
 #divider {
-  margin-top: 15px;
+  margin-top: 10px;
   width: 80%;
 }
 

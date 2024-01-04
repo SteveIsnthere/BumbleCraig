@@ -15,6 +15,7 @@ export class InviteViewComponent implements OnInit {
   friendIDs: number[] = [];
   invitedIDs: number[] = [];
   groupMemberIDs: number[] = [];
+  loading: boolean = true;
 
 
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public group_id: number, private http: HttpClient, public auth: AuthService, private _snackBar: MatSnackBar) {
@@ -24,6 +25,7 @@ export class InviteViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<[]>(apiEndPoint + '/user/get_friends/' + this.auth.selfUserID).subscribe((data) => {
       this.friendIDs = data;
+      this.loading = false;
       this.http.get<[]>(apiEndPoint + '/group/members/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
         this.groupMemberIDs = data;
       })

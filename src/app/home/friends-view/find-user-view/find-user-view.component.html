@@ -9,15 +9,22 @@
     </mat-form-field>
   </div>
 
-  <div id="search-results">
-    <div class="user-result-row" *ngFor="let userID of searchResults">
-      <app-user [userID]="userID"></app-user>
-      <button mat-mini-fab color="primary" (click)="sendFriendRequest(userID)"
-              [disabled]="!shouldShowAddFriendButton(userID)">
-        <mat-icon>add</mat-icon>
-      </button>
+  <ng-container *ngIf="!loading; else loadingBar">
+    <div id="search-results">
+      <div class="user-result-row" *ngFor="let userID of searchResults">
+        <app-user [userID]="userID"></app-user>
+        <button mat-mini-fab color="primary" (click)="sendFriendRequest(userID)"
+                [disabled]="!shouldShowAddFriendButton(userID)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <span *ngIf="searchResults.length == 0 && nameInput != ''" style="padding-bottom: 30px">No user was found with such name</span>
+    <span *ngIf="searchResults.length == 0 && nameInput != ''" style="padding-bottom: 30px">No user was found with such name</span>
+  </ng-container>
+
 </main>
+
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

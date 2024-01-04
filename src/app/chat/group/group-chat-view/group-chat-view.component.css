@@ -27,7 +27,7 @@ main {
   border-radius: 100px;
   cursor: pointer;
   padding: 7px;
-  background-color: rgba(225, 82, 65, 0.18);
+  /*background-color: rgba(225, 82, 65, 0.18);*/
 }
 
 #group-info::-webkit-scrollbar {
@@ -36,7 +36,7 @@ main {
 
 #group-name {
   color: white;
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 500;
   display: -webkit-box;
   -webkit-box-orient: vertical;

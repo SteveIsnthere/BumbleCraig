@@ -19,7 +19,7 @@ export class GroupComponent implements OnInit {
   @Input() selfID: number = 0;
   @Input() unread = false;
   groupEssentialData: GroupEssentialData = dummyGroupEssentialData();
-  groupMembersCount: number = 0;
+  groupMembersCount: number = 1;
   lastMessage: string = '';
 
   constructor(public http: HttpClient, private cache: GroupBasicInfoCachingService, private _bottomSheet: MatBottomSheet) {

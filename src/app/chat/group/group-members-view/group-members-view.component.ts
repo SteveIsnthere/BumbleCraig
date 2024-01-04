@@ -12,6 +12,7 @@ import {apiEndPoint} from "../../../env";
 })
 export class GroupMembersViewComponent implements OnInit {
   groupID: number = 0;
+  loading: boolean = true;
   memberIDs: number[] = [];
 
 
@@ -22,6 +23,7 @@ export class GroupMembersViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/group/get_group_members_ids/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
       this.memberIDs = data;
+      this.loading = false;
     })
   }
 }

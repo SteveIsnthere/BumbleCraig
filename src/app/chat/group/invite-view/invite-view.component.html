@@ -1,25 +1,31 @@
 <main>
   <mat-chip-option selectable="false" style="margin-bottom: 10px">Invite your friends</mat-chip-option>
-  <div *ngFor="let friendID of friendIDs" class="row">
-    <app-user [userID]="friendID"></app-user>
-    <div style="flex: 1"></div>
-    <div>
-      <button mat-mini-fab color="primary" *ngIf="!isInvited(friendID) && !isMember(friendID);"
-              (click)="invite(friendID)">
-        <mat-icon>add</mat-icon>
-      </button>
+  <ng-container *ngIf="!loading; else loadingBar">
+    <div *ngFor="let friendID of friendIDs" class="row">
+      <app-user [userID]="friendID"></app-user>
+      <div style="flex: 1"></div>
+      <div>
+        <button mat-mini-fab color="primary" *ngIf="!isInvited(friendID) && !isMember(friendID);"
+                (click)="invite(friendID)">
+          <mat-icon>add</mat-icon>
+        </button>
 
-      <button mat-mini-fab *ngIf="isInvited(friendID);" disabled>
-        <mat-icon>pending</mat-icon>
-      </button>
+        <button mat-mini-fab *ngIf="isInvited(friendID);" disabled>
+          <mat-icon>pending</mat-icon>
+        </button>
 
-      <button mat-mini-fab *ngIf="isMember(friendID);" disabled>
-        <mat-icon>done</mat-icon>
-      </button>
+        <button mat-mini-fab *ngIf="isMember(friendID);" disabled>
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
-  <div *ngIf="friendIDs.length == 0">
-    <mat-icon style="vertical-align: middle;">sentiment_dissatisfied</mat-icon>
-    <span>  Sorry you got no friend</span>
-  </div>
+    <div *ngIf="friendIDs.length == 0">
+      <mat-icon style="vertical-align: middle;">sentiment_dissatisfied</mat-icon>
+      <span>  Sorry you got no friend</span>
+    </div>
+  </ng-container>
 </main>
+
+<ng-template #loadingBar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
