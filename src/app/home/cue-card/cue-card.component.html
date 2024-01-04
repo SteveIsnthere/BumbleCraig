@@ -2,10 +2,12 @@
 
 
   <div id="top-users">
+    <mat-icon style="scale: 1.3; margin-right: 4px">emoji_events</mat-icon>
+
     <ng-container *ngFor="let n of topUserIDs; index as i">
-      <app-user-mini  [userID]="n" matBadge="{{i+1}}"
-                      [matBadgeHidden]="i+1 > 3" matBadgeColor="accent"></app-user-mini>
+      <app-user-mini  [userID]="n"></app-user-mini>
     </ng-container>
+<!--    <mat-icon>first_page</mat-icon>-->
 
 <!--    <ng-container *ngIf="!topUserIDs.includes(auth.selfUserID)">-->
 <!--      <span style="padding: 10px"><-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>-->

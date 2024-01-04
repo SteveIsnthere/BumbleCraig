@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
-  gap: 10px;
+  gap: 5px;
   max-width: 310px;
   /*min-width: 200px;*/
   /*background-color: #4f4f4f;*/
@@ -23,6 +23,7 @@
 }
 
 #group-name {
+  /*margin-left: 10px;*/
   font-size: 1.1rem;
   font-weight: 400;
   color: white;

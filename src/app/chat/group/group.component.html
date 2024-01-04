@@ -10,9 +10,25 @@
     <div id="group-name">
       <span>{{groupEssentialData.name}}</span>
     </div>
+
+    <button mat-icon-button (click)="stopProp($event)" [matMenuTriggerFor]="menu" color="primary" style="margin: -8px">
+      <mat-icon>
+        more_horiz
+      </mat-icon>
+    </button>
   </div>
 </main>
 
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>add</mat-icon>
+    <span>Invite</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Leave</span>
+  </button>
+</mat-menu>
 <ng-template #loadingBar>
   <div class="group-container" style="height: 40px; min-width: 150px">
     <div style="width: 40px;height: 40px;border-radius: 100%;background-color: #c2175b"></div>
