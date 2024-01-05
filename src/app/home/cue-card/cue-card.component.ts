@@ -6,14 +6,17 @@ import {MainService} from "../../services/main.service";
 import {UserBriefComponent} from "../../user/user-brief/user-brief.component";
 import {apiEndPoint} from "../../env";
 import {HttpClient} from "@angular/common/http";
+import {dummyEssentialUserData} from "../../user/UserModel";
+import {UserSetUpComponent} from "../../user/user-set-up/user-set-up.component";
 
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.css'
 })
-export class CueCardComponent implements OnInit{
+export class CueCardComponent implements OnInit {
   topUserIDs: number[] = [];
+
   constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient) {
   }
 
@@ -43,16 +46,13 @@ export class CueCardComponent implements OnInit{
     this.dialog.open(UserBriefComponent, dialogConfig);
   }
 
-  mbc(i: number) {
-    switch (i) {
-      case 0:
-        return 'primary'
-      case 1:
-        return 'accent'
-      case 2:
-        return 'warn'
-      default:
-        return 'primary'
-    }
+  userSetUp() {
+    this.dialog.open(UserSetUpComponent);
   }
+
+  logout() {
+    this.auth.logout();
+  }
+
+  protected readonly essentialUserData = dummyEssentialUserData;
 }

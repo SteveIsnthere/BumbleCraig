@@ -1,17 +1,10 @@
 main{
   width: calc(100% - 14px);
-  padding: 10px;
+  padding: 7px;
   margin-bottom: 1px;
   /*background-color: rgba(66, 66, 66, 0.74);*/
   display: flex;
   align-items: center;
-}
-
-.new-post-btn{
-  /*position: fixed;*/
-  /*top: 10px;*/
-  /*right: 10px;*/
-  /*z-index: 2;*/
 }
 
 #top-users{
@@ -22,3 +15,19 @@ main{
   color: white;
   vertical-align: middle;
 }
+
+#profile-btn{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  gap: 3px;
+}
+
+#profile-btn:hover{
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+/*.menuIcon{*/
+/*}*/

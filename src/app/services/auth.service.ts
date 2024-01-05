@@ -13,7 +13,6 @@ export class AuthService {
   loggedIn = false;
   selfUserID = 0;
   isVisitor = true;
-  // loadFailed = false;
 
   @Output() loginEvent = new EventEmitter<string>()
 
@@ -60,7 +59,6 @@ export class AuthService {
       this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
       this.loginEvent.emit("login");
       this.router.navigate(["home"]).then();
-      // this.states.showNavBar = true;
     });
   }
 }

@@ -31,10 +31,6 @@ export class UserSetUpComponent {
   constructor(public http: HttpClient, public auth: AuthService, public dialogRef: MatDialogRef<UserSetUpComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
   }
 
-  ngOnInit(): void {
-  }
-
-
   changeName(event: any) {
     this.inputName = event.target.value;
   }
