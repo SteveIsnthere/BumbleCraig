@@ -15,7 +15,8 @@ mat-card {
   color: white;
   font-size: 13px;
   line-height: 16px;
-  font-style: oblique;
+  /*font-style: oblique;*/
+  font-weight: lighter;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

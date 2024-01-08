@@ -1,19 +1,27 @@
 main{
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
+  width: calc(100% - 14px);
   z-index: 10;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(20px) saturate(80%) contrast(80%) brightness(90%);
+  /*border-bottom-left-radius: 20px;*/
+  /*border-bottom-right-radius: 20px;*/
   border-radius: 25px;
-}
-
-.top-bar{
   padding: 7px;
   margin-bottom: 1px;
   display: flex;
   align-items: center;
   height: 39px;
+  /*background-color: rgba(0, 0, 0, 0);*/
+  transition-duration: 0.3s;
 }
+
+.hidden{
+  top: -100%;
+  transition-duration: 1s;
+}
+
 
 /*#top-users{*/
 /*  !*transform: translateY(5px);*!*/

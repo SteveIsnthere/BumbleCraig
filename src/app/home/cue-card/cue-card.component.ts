@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NewPostViewComponent} from "../post/new-post-view/new-post-view.component";
@@ -14,16 +14,36 @@ import {NotificationViewComponent} from "../notification-view/notification-view.
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.css'
 })
-export class CueCardComponent implements OnInit {
+export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];
+  scrollingDown = false;
+  lastScrollTop: number = 0;
 
   constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient) {
+    this.lastScrollTop = 0;
   }
 
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/others/top-users/').subscribe((data) => {
       this.topUserIDs = data;
     })
+    window.addEventListener('scroll', this.onScroll);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onScroll = () => {
+    const scrollTop = window.scrollY;
+    const deltaScroll = window.scrollY - this.lastScrollTop;
+    this.lastScrollTop = scrollTop;
+
+    if (scrollTop < 50) {
+      this.scrollingDown = false;
+      return;
+    }
+    this.scrollingDown = deltaScroll > 0;
   }
 
 
@@ -46,7 +66,7 @@ export class CueCardComponent implements OnInit {
     this.dialog.open(NotificationViewComponent, dialogConfig);
   }
 
-  openAssistant(){
+  openAssistant() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.backdropClass = 'post-back-drop';
     this.dialog.open(AskTidderComponent, dialogConfig);

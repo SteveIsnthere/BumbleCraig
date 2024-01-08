@@ -9,11 +9,11 @@
 <!--</button>-->
 
 <div id="posts-modes-bar">
-  <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu">
+  <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn">
     <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
     {{ selectedRankingMode[0] }}
   </button>
-  <button mat-button [matMenuTriggerFor]="genreMenu">
+  <button mat-button [matMenuTriggerFor]="genreMenu" style="font-weight: lighter;">
     {{ genreSelected }}
   </button>
   <div style="flex: 1"></div>

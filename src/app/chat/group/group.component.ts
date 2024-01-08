@@ -52,8 +52,6 @@ export class GroupComponent implements OnInit {
         this.cache.set(data);
       })
     }
-
-
   }
 
   openInviteView() {
