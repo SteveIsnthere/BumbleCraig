@@ -4,19 +4,20 @@
       <div class="comment-wrapper">
         <app-user-mini [userID]="comment.author_id"></app-user-mini>
         <div class="comment-content">
-          <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;" style="box-shadow: none">
+          <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;"
+                               style="box-shadow: none">
             <mat-expansion-panel-header>
               <span
                 style="display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;
                 -webkit-box-orient: vertical;" *ngIf="!panelStates[i]">
-                {{comment.content}}
+                {{ comment.content }}
               </span>
               <span
                 *ngIf="panelStates[i]">
                 <mat-icon>comment</mat-icon>
               </span>
             </mat-expansion-panel-header>
-            <p>{{comment.content}}</p>
+            <p>{{ comment.content }}</p>
           </mat-expansion-panel>
           <!--          <span style="color: black; font-size: small">{{comment.time_since_posted}}</span>-->
 
@@ -47,9 +48,9 @@
 
   <ng-template #noComments>
     <div
-      style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 10px; gap: 10px">
-      <mat-icon>sentiment_dissatisfied</mat-icon>
-      <p>No comments yet</p>
+      style="display: flex; justify-content: center; align-items: center; padding: 10px; gap: 10px; vertical-align: middle">
+      <mat-icon color="warn">no_accounts</mat-icon>
+      <span>No comments yet</span>
     </div>
   </ng-template>
 </main>

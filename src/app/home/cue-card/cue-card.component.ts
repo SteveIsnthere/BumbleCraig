@@ -3,11 +3,11 @@ import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NewPostViewComponent} from "../post/new-post-view/new-post-view.component";
 import {MainService} from "../../services/main.service";
-import {UserBriefComponent} from "../../user/user-brief/user-brief.component";
 import {apiEndPoint} from "../../env";
 import {HttpClient} from "@angular/common/http";
-import {dummyEssentialUserData} from "../../user/UserModel";
 import {UserSetUpComponent} from "../../user/user-set-up/user-set-up.component";
+import {AskTidderComponent} from "../ask-tidder/ask-tidder.component";
+import {NotificationViewComponent} from "../notification-view/notification-view.component";
 
 @Component({
   selector: 'app-cue-card',
@@ -43,16 +43,22 @@ export class CueCardComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.backdropClass = 'post-back-drop';
 
-    this.dialog.open(UserBriefComponent, dialogConfig);
+    this.dialog.open(NotificationViewComponent, dialogConfig);
+  }
+
+  openAssistant(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.backdropClass = 'post-back-drop';
+    this.dialog.open(AskTidderComponent, dialogConfig);
   }
 
   userSetUp() {
-    this.dialog.open(UserSetUpComponent);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.backdropClass = 'post-back-drop';
+    this.dialog.open(UserSetUpComponent, dialogConfig);
   }
 
   logout() {
     this.auth.logout();
   }
-
-  protected readonly essentialUserData = dummyEssentialUserData;
 }

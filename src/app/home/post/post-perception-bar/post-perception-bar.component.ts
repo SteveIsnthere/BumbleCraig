@@ -21,11 +21,17 @@ export class PostPerceptionBarComponent {
   // }
 
   ratingText(): string {
+    // const score = this.ratingScore();
+    // if (score == 1) return 'sentiment_very_dissatisfied';
+    // if (score == 2) return 'sentiment_dissatisfied';
+    // if (score == 3) return 'sentiment_satisfied';
+    // return 'sentiment_very_satisfied';
+
     const score = this.ratingScore();
-    if (score == 1) return 'sentiment_very_dissatisfied';
-    if (score == 2) return 'sentiment_dissatisfied';
-    if (score == 3) return 'sentiment_satisfied';
-    return 'sentiment_very_satisfied';
+    if (score == 1) return 'thumb_down';
+    if (score == 2) return 'thumb_down';
+    if (score == 3) return 'recommend';
+    return 'recommend';
   }
 
   ratingColor(): string {

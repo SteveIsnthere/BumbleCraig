@@ -1,21 +1,8 @@
 <mat-dialog-content id="wrapper">
   <main id="main">
   <!--  <mat-slide-toggle [(ngModel)]="articleMode">Article Mode</mat-slide-toggle>-->
-  <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
+  <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
 ;">
-    <mat-step> <!-- genre selection -->
-      <form>
-        <ng-template matStepLabel>Style</ng-template>
-        <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
-                           [selected]="genre == genreSelected"
-                           color="warn">
-            {{ genre }}
-          </mat-chip-option>
-        </mat-chip-listbox>
-        <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>
-      </form>
-    </mat-step>
 
     <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
@@ -25,12 +12,27 @@
                     autocomplete="off"
                     [value]="title" (input)="changeTitle($event)"></textarea>
         </mat-form-field>
+
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button color="primary" mat-flat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
+
+        <mat-step> <!-- genre selection -->
+          <form>
+            <ng-template matStepLabel>Style</ng-template>
+            <mat-chip-listbox aria-label="Fish selection">
+              <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
+                               [selected]="genre == genreSelected"
+                               color="warn">
+                {{ genre }}
+              </mat-chip-option>
+            </mat-chip-listbox>
+            <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>
+          </form>
+        </mat-step>
 
     <mat-step> <!-- contents -->
       <ng-template matStepLabel>Contents</ng-template>

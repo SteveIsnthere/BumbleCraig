@@ -9,7 +9,7 @@
 <!--  <mat-icon>add</mat-icon>-->
 <!--</button>-->
 
-<div id="nav-bar">
+<!--<div id="nav-bar">-->
   <!--    <img src="assets/logo.png" alt="" class="top-floating-buttons"-->
   <!--         style="left: 0; background-color: rgba(0,0,0,0.1); border-radius: 100px;cursor: pointer;-->
   <!--        width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">-->
@@ -24,14 +24,14 @@
   <!--      </button>-->
   <!--    </mat-menu>-->
 
-  <button mat-icon-button class="btn trans-btn-bright" routerLink="/chat" color="warn"
+  <button mat-icon-button class="main-btn trans-btn-bright" routerLink="/chat" color="warn"
           *ngIf="!states.hasUnreadMsg; else unread">
     <mat-icon class="nav-icon">
-      chat_bubble
+      chat
     </mat-icon>
   </button>
   <ng-template #unread>
-    <button mat-icon-button class="btn" routerLink="/chat" style="background-color: #ffffff;">
+    <button mat-icon-button class="main-btn" routerLink="/chat" style="background-color: #ffffff;">
       <mat-icon class="nav-icon" color="warn">
         mark_chat_unread
       </mat-icon>
@@ -54,4 +54,4 @@
 <!--      menu-->
 <!--    </mat-icon>-->
 <!--  </button>-->
-</div>
+<!--</div>-->

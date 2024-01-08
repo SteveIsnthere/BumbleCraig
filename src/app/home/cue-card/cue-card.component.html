@@ -1,40 +1,30 @@
-<main>
-  <div id="top-users">
+<main class="top-bar">
+  <!--  <div id="top-users">-->
 
-    <img src="assets/logo.png" height="43" width="43" style="margin-left: 7px" alt="">
-    <!--    <mat-icon style="scale: 1.4; margin-right: 7px" color="accent">emoji_events</mat-icon>-->
 
-    <!--    <ng-container *ngFor="let n of topUserIDs; index as i">-->
-    <!--      <app-user-mini [userID]="n"></app-user-mini>-->
-    <!--    </ng-container>-->
-    <!--    <mat-icon>first_page</mat-icon>-->
+  <!--    &lt;!&ndash;    <mat-icon style="scale: 1.4; margin-right: 7px" color="accent">emoji_events</mat-icon>&ndash;&gt;-->
 
-    <!--    <ng-container *ngIf="!topUserIDs.includes(auth.selfUserID)">-->
-    <!--      <span style="padding: 10px"><-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>-->
-    <!--      <app-user-mini [userID]="auth.selfUserID"></app-user-mini>-->
-    <!--&lt;!&ndash;      <span>You can do it too</span>&ndash;&gt;-->
-    <!--    </ng-container>-->
+  <!--    &lt;!&ndash;    <ng-container *ngFor="let n of topUserIDs; index as i">&ndash;&gt;-->
+  <!--    &lt;!&ndash;      <app-user-mini [userID]="n"></app-user-mini>&ndash;&gt;-->
+  <!--    &lt;!&ndash;    </ng-container>&ndash;&gt;-->
+  <!--    &lt;!&ndash;    <mat-icon>first_page</mat-icon>&ndash;&gt;-->
 
-  </div>
+  <!--    &lt;!&ndash;    <ng-container *ngIf="!topUserIDs.includes(auth.selfUserID)">&ndash;&gt;-->
+  <!--    &lt;!&ndash;      <span style="padding: 10px"><-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>&ndash;&gt;-->
+  <!--    &lt;!&ndash;      <app-user-mini [userID]="auth.selfUserID"></app-user-mini>&ndash;&gt;-->
+  <!--    &lt;!&ndash;&lt;!&ndash;      <span>You can do it too</span>&ndash;&gt;&ndash;&gt;-->
+  <!--    &lt;!&ndash;    </ng-container>&ndash;&gt;-->
 
-  <ng-container *ngIf="auth.isVisitor; else topUsers">
-    <button mat-stroked-button color="primary" (click)="userSetUp()"
-            style="border-radius: 100px; margin-left: 8px">
-      <mat-icon>account_circle</mat-icon>
-      Sign Up
-    </button>
-  </ng-container>
+  <!--  </div>-->
 
-  <button mat-icon-button color="accent" style="margin-left: 2px">
-    <mat-icon>search</mat-icon>
-  </button>
+
+
 
   <!--  <div>-->
   <!--    <app-user-mini [userID]="auth.selfUserID" style="height: 100%"></app-user-mini>-->
   <!--  </div>-->
 
 
-  <div style="flex: 1"></div>
   <!--  <ng-container>-->
   <!--    <button mat-stroked-button>-->
   <!--      <mat-icon>rocket_launch</mat-icon>-->
@@ -44,10 +34,19 @@
   <!--  </ng-container>-->
 
 
-  <button mat-icon-button (click)="openNewPostView()" color="primary"
+  <button mat-icon-button (click)="openNewPostView()" color="warn"
           *ngIf="notificationCount() == 0; else notificationBtn">
     <mat-icon>add</mat-icon>
   </button>
+
+  <ng-template #notificationBtn>
+    <button mat-mini-fab (click)="openUserBriefView()" style="background-color: white; margin-right: 5px;scale: 0.9">
+      <mat-icon class="nav-icon" color="warn">
+        notifications
+      </mat-icon>
+    </button>
+  </ng-template>
+
 
   <!--  <button mat-icon-button color="warn" (click)="openUserBriefView()"-->
   <!--          [ngStyle]="{'background-color': notificationCount()>0 ? 'white': ''}">-->
@@ -56,39 +55,45 @@
   <!--    </mat-icon>-->
   <!--  </button>-->
 
-  <button id="profile-btn" [matMenuTriggerFor]="menu">
-    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">
-      <app-simple-figure [figureID]=1></app-simple-figure>
-    </div>
-    <mat-icon style="margin: 0px" color="warn">expand_more</mat-icon>
+  <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary" style="scale: 0.9">
+    <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
+    <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
+    <!--    </div>-->
+    <mat-icon>more_vert</mat-icon>
   </button>
 </main>
 
+<div class="top-bar">
+  <img src="assets/logo.png" height="43" width="43" style="margin-left: 7px; transform: translateY(2px)" alt="">
 
-<ng-template #topUsers>
-  <button mat-stroked-button color="warn"
-          style="border-radius: 100px; margin-left: 8px">
-    <mat-icon>emoji_events</mat-icon>
-    Top Users
+  <ng-container *ngIf="auth.isVisitor; else assistant">
+    <button mat-button color="primary" (click)="userSetUp()"
+            style="margin-left: 8px; vertical-align: middle">
+      <mat-icon>account_circle</mat-icon>
+      Sign Up
+    </button>
+  </ng-container>
+  <ng-template #assistant>
+    <button mat-button color="warn" (click)="openAssistant()"
+            style="margin-left: 8px">
+      <mat-icon>join_left</mat-icon>
+      Ask Tidder
+    </button>
+  </ng-template>
+
+  <button mat-icon-button color="accent" style="margin-left: 2px">
+    <mat-icon>search</mat-icon>
   </button>
-</ng-template>
+</div>
 
-
-<ng-template #notificationBtn>
-  <button (click)="openUserBriefView()" style="background-color: white; height: 38px; width: 38px; border-radius: 100px; border: none">
-    <mat-icon class="nav-icon"  color="warn">
-      notifications
-    </mat-icon>
-  </button>
-</ng-template>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['/user/' + this.auth.selfUserID]">
-    <mat-icon class="menuIcon">account_circle</mat-icon>
-    <span>My Profile</span>
+    <mat-icon class="menuIcon" color="warn">account_circle</mat-icon>
+    <span>Profile</span>
   </button>
   <button mat-menu-item routerLink="/friends">
-    <mat-icon class="menuIcon">people</mat-icon>
+    <mat-icon class="menuIcon" color="warn">people</mat-icon>
     <span>Friends</span>
   </button>
   <button mat-menu-item (click)="logout()">

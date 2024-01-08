@@ -179,17 +179,16 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
 
   selectionChange($event: StepperSelectionEvent) {
     if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
-      this.updateTitle();
-      this.currentStep = 3;
+      this.updateGenre();
+      this.currentStep = 2;
       setTimeout(() => {
         this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
         this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
         this.observer.observe(this.contentsContainer);
       }, 100);
-
     } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
-      this.updateGenre();
-      this.currentStep = 2;
+      this.updateTitle();
+      this.currentStep = 3;
     }
   }
 

@@ -2,8 +2,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  color: antiquewhite;
+  gap: 7px;
   max-width: 100px;
   min-width: 50px;
+  vertical-align: middle;
 }

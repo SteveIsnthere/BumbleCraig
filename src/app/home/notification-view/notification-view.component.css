@@ -2,8 +2,9 @@ main{
   color: antiquewhite;
   /*overflow-y: auto;*/
   /*overflow-x: hidden;*/
-  /*max-height: 80dvh;*/
+  max-height: 80dvh;
   max-width: 300px;
+  padding: 20px;
 }
 
 .title{

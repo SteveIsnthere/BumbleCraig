@@ -33,7 +33,7 @@
   </main>
 </mat-dialog-content>
 
-<mat-dialog-actions *ngIf="post != null" style="">
+<mat-dialog-actions *ngIf="post != null" style="height: 57px">
   <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id">
     <button mat-mini-fab color="primary" (click)="likePost()"
             *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
