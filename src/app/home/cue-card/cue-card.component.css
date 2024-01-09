@@ -14,7 +14,8 @@ main{
   align-items: center;
   height: 39px;
   /*background-color: rgba(0, 0, 0, 0);*/
-  transition-duration: 0.2s;
+  transition-duration: 0.15s;
+  /*transition-timing-function: ease;*/
 }
 
 

@@ -1,14 +1,14 @@
 <main  [ngStyle]="topBarStyle()">
   <ng-container *ngIf="auth.isVisitor; else assistant">
-    <button mat-button color="primary" (click)="userSetUp()"
-            style="margin-left: 8px; vertical-align: middle">
+    <button mat-flat-button color="primary" (click)="userSetUp()"
+            style="border-radius: 200px">
       <mat-icon>account_circle</mat-icon>
       Sign Up
     </button>
   </ng-container>
   <ng-template #assistant>
-    <button mat-button color="warn" (click)="openAssistant()"
-            style="margin-left: 8px">
+    <button mat-flat-button color="warn" (click)="openAssistant()"
+            style="border-radius: 200px">
       <mat-icon>join_left</mat-icon>
       Ask Tidder
     </button>

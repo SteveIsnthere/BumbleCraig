@@ -30,9 +30,9 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   messagesContainer: any;
   loadedScroller: boolean = false;
   noMessages: boolean = false;
-  // updateInterval: any = 0;
   uploadingFile: boolean = false;
   shouldLoadMessages: boolean = true;
+  resizing: boolean = false;
 
   constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
     this.selfID = this.auth.selfUserID;
@@ -46,25 +46,12 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       this.http.get<GroupEssentialData>(apiEndPoint + '/group/get_essential_group_data/' + this.groupID).subscribe((data) => {
         this.groupEssentialData = data;
       })
-      // this.initMessages()
-      // this.updateInterval = setInterval(() => {
-      //   this.initMessages();
-      // }, 10000)
       this.setMessageRefreshLoop()
       this.viewGroup();
     });
-
-    setTimeout(() => {
-      this.states.showNavBar = false;
-    }, 0);
   }
 
   ngOnDestroy(): void {
-    setTimeout(() => {
-      this.states.showNavBar = true;
-    }, 0);
-
-    // clearInterval(this.updateInterval);
     this.shouldLoadMessages = false;
     if (this.loadedScroller) {
       this.observer.unobserve(this.messagesContainer);
@@ -92,7 +79,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
           this.noMessages = false;
           this.loadedScroller = true;
           this.messagesContainer = this.elementRef.nativeElement.querySelector('#messages-container');
-          this.observer = new ResizeObserver(() => this.onHeightChange());
+          this.observer = new ResizeObserver(() => this.onScrollThrottled());
           this.observer.observe(this.messagesContainer);
         }
 
@@ -145,9 +132,17 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
     return msg1.file_share_id == msg2.file_share_id;
   }
 
+  onScrollThrottled(){
+    if (!this.resizing) {
+      this.resizing = true;
+      this.onHeightChange();
+    }
+  }
+
   onHeightChange() {
     setTimeout(() => {
       this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
+      this.resizing = false;
     }, 150);
   }
 

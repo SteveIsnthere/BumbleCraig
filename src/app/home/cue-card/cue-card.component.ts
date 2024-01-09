@@ -19,51 +19,107 @@ export class CueCardComponent implements OnInit, OnDestroy {
   topBarOffset = 0;
   topBarHeight = 64;
   lastScrollTop: number = 0;
+  isScrolling = false;
 
   constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient) {
     this.lastScrollTop = 0;
   }
 
+  // ngOnInit(): void {
+  //   this.http.get<number[]>(apiEndPoint + '/others/top-users/').subscribe((data) => {
+  //     this.topUserIDs = data;
+  //   })
+  //   window.addEventListener('scroll', this.onScroll);
+  // }
+  //
+  // ngOnDestroy(): void {
+  //   window.removeEventListener('scroll', this.onScroll);
+  // }
+
+
+  // onScroll = () => {
+  //   const scrollTop = window.scrollY;
+  //   const deltaScroll = window.scrollY - this.lastScrollTop;
+  //
+  //   // when open the new post view, the scroll event will be triggered
+  //   if(Math.abs(deltaScroll)>110){
+  //     return;
+  //   }
+  //
+  //   this.lastScrollTop = scrollTop;
+  //
+  //   if (scrollTop < this.topBarHeight) {
+  //     this.topBarOffset = 0;
+  //     return;
+  //   }
+  //
+  //   if (deltaScroll < 0) {
+  //     this.topBarOffset = 0;
+  //     return
+  //   }else if (deltaScroll > 7) {
+  //     this.topBarOffset += deltaScroll;
+  //   }else {
+  //     this.topBarOffset += Math.sqrt(deltaScroll)/1.5;
+  //   }
+  //
+  //   if (this.topBarOffset > this.topBarHeight) {
+  //     this.topBarOffset = this.topBarHeight;
+  //   }else if (this.topBarOffset < 0) {
+  //     this.topBarOffset = 0;
+  //   }
+  // }
+
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/others/top-users/').subscribe((data) => {
       this.topUserIDs = data;
-    })
-    window.addEventListener('scroll', this.onScroll);
+    });
+    window.addEventListener('scroll', this.onScrollThrottled);
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('scroll', this.onScrollThrottled);
   }
 
-
+  onScrollThrottled = () => {
+    if (!this.isScrolling) {
+      this.isScrolling = true;
+      requestAnimationFrame(this.onScroll);
+    }
+  }
 
   onScroll = () => {
     const scrollTop = window.scrollY;
-    const deltaScroll = window.scrollY - this.lastScrollTop;
+    const deltaScroll = scrollTop - this.lastScrollTop;
+
+    if (deltaScroll === 0 || Math.abs(deltaScroll) > 300) {
+      this.isScrolling = false;
+      return;
+    }
+
     this.lastScrollTop = scrollTop;
 
     if (scrollTop < this.topBarHeight) {
       this.topBarOffset = 0;
-      return;
-    }
-
-    if (deltaScroll < 0) {
-      this.topBarOffset = 0;
-      return
-    }else if (deltaScroll > 5) {
-      this.topBarOffset += deltaScroll;
-    }
-
-    if (this.topBarOffset > this.topBarHeight) {
-      this.topBarOffset = this.topBarHeight;
-    }else if (this.topBarOffset < 0) {
+    } else if (deltaScroll > 0) {
+      if (deltaScroll > 20) {
+        this.topBarOffset = this.topBarOffset + deltaScroll;
+      } else {
+        this.topBarOffset = this.topBarOffset + Math.sqrt(deltaScroll) / 1.5;
+      }
+      if (this.topBarOffset > this.topBarHeight) {
+        this.topBarOffset = this.topBarHeight;
+      }
+    } else {
       this.topBarOffset = 0;
     }
+
+    this.isScrolling = false;
   }
 
   topBarStyle() {
     return {
-      'top': -this.topBarOffset + 'px'
+      'top': -this.topBarOffset + 'px',
+      // 'opacity': 1 - this.topBarOffset / this.topBarHeight,
     }
   }
 
