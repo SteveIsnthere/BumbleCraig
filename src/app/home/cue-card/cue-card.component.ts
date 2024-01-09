@@ -16,7 +16,8 @@ import {NotificationViewComponent} from "../notification-view/notification-view.
 })
 export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];
-  scrollingDown = false;
+  topBarOffset = 0;
+  topBarHeight = 64;
   lastScrollTop: number = 0;
 
   constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient) {
@@ -34,18 +35,37 @@ export class CueCardComponent implements OnInit, OnDestroy {
     window.removeEventListener('scroll', this.onScroll);
   }
 
+
+
   onScroll = () => {
     const scrollTop = window.scrollY;
     const deltaScroll = window.scrollY - this.lastScrollTop;
     this.lastScrollTop = scrollTop;
 
-    if (scrollTop < 50) {
-      this.scrollingDown = false;
+    if (scrollTop < this.topBarHeight) {
+      this.topBarOffset = 0;
       return;
     }
-    this.scrollingDown = deltaScroll > 0;
+
+    if (deltaScroll < 0) {
+      this.topBarOffset = 0;
+      return
+    }else if (deltaScroll > 5) {
+      this.topBarOffset += deltaScroll;
+    }
+
+    if (this.topBarOffset > this.topBarHeight) {
+      this.topBarOffset = this.topBarHeight;
+    }else if (this.topBarOffset < 0) {
+      this.topBarOffset = 0;
+    }
   }
 
+  topBarStyle() {
+    return {
+      'top': -this.topBarOffset + 'px'
+    }
+  }
 
   openNewPostView() {
     const dialogConfig = new MatDialogConfig();

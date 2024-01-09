@@ -1,4 +1,4 @@
-<main  [ngClass]="{'hidden': scrollingDown}">
+<main  [ngStyle]="topBarStyle()">
   <ng-container *ngIf="auth.isVisitor; else assistant">
     <button mat-button color="primary" (click)="userSetUp()"
             style="margin-left: 8px; vertical-align: middle">
@@ -46,7 +46,7 @@
 <!--  -->
 <!--</div>-->
 
-<div style="height: 54px"></div>
+<div style="height: 74px"></div>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['/user/' + this.auth.selfUserID]">
