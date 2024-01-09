@@ -47,7 +47,7 @@ main {
 }
 
 #messages-section {
-  height: 100dvh;
+  height: calc(100dvh - 74px);
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;

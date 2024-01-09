@@ -1,16 +1,24 @@
 main {
   width: 100dvw;
   /*animation: slideIn 0.6s ease forwards;*/
-  min-height: 100dvh;
+  /*min-height: 100dvh;*/
 }
 
+#top-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
 
 #group-list {
   /*display: flex;*/
   /*flex-direction: column;*/
   /*justify-content: flex-start;*/;
+  margin: 0 10px;
   width: calc(100% - 20px);
-  margin: 85px 10px 90px;
   gap: 10px;
   display: inline-flex;
   flex-direction: row;

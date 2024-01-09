@@ -53,14 +53,14 @@ main {
 }
 
 
-.main-btn{
-  scale: 1.5;
-  background-color: rgba(255, 255, 255, 0.11);
-  position: fixed;
-  bottom: 0;
-  margin: 25px;
-  z-index: 2;
-}
+/*.main-btn{*/
+/*  !*scale: 1.5;*!*/
+/*  !*background-color: rgba(255, 255, 255, 0.11);*!*/
+/*  !*position: fixed;*!*/
+/*  !*bottom: 0;*!*/
+/*  !*margin: 25px;*!*/
+/*  !*z-index: 2;*!*/
+/*}*/
 
 .example-container {
   width: 500px;

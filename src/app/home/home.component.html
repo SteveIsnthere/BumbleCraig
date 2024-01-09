@@ -1,5 +1,5 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
-  <app-cue-card style=""></app-cue-card>
+<!--  <app-cue-card></app-cue-card>-->
   <app-post-section-view></app-post-section-view>
   <div style="height: 80px"></div>
 </main>
@@ -24,14 +24,14 @@
   <!--      </button>-->
   <!--    </mat-menu>-->
 
-  <button mat-icon-button class="main-btn trans-btn-bright" routerLink="/chat" color="warn"
+  <button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
           *ngIf="!states.hasUnreadMsg; else unread">
     <mat-icon class="nav-icon">
       chat
     </mat-icon>
   </button>
   <ng-template #unread>
-    <button mat-icon-button class="main-btn" routerLink="/chat" style="background-color: #ffffff;">
+    <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
       <mat-icon class="nav-icon" color="warn">
         mark_chat_unread
       </mat-icon>

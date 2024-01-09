@@ -35,9 +35,9 @@ export class PostComponent implements OnInit {
       this.post = cachedData;
       this.buildPostPreviewContent()
 
-      if (Math.random() < 0.5) {
-        return
-      }
+      // if (Math.random() < 0.5) {
+      //   return
+      // }
       setTimeout(() => {
         this.http.get<Post>(apiEndPoint + '/post/get_post/' + this.postID).subscribe((data) => {
           if (data != this.post) {

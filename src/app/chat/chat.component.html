@@ -1,17 +1,27 @@
 <main>
   <app-home-button (click)="this.main.fetchNotifications().subscribe()"></app-home-button>
 
-  <button mat-icon-button class="trans-btn-bright" (click)="editMode = !editMode" color="warn"
-          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;">
-    <mat-icon *ngIf="!editMode">delete</mat-icon>
-    <mat-icon *ngIf="editMode">check</mat-icon>
-  </button>
+  <div id="top-bar">
+    <button mat-stroked-button (click)="createGroup()" color="primary" style="border-radius: 200px">
+      <mat-icon>add_circle</mat-icon>
+      Create New
+    </button>
 
-  <button mat-stroked-button (click)="createGroup()" color="primary"
-          style="position: fixed; border-radius: 300px; left: 50vw; top: 25px; transform: translateX(-50%)">
-    <mat-icon>add_circle</mat-icon>
-    Create New
-  </button>
+    <ng-container *ngIf="!editMode; else checkBtn">
+      <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+              style="border-radius: 200px;">
+        <mat-icon>delete</mat-icon>
+        Quit Group
+      </button>
+    </ng-container>
+  </div>
+  <ng-template #checkBtn>
+    <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+            style="border-radius: 200px;">
+      <mat-icon>check</mat-icon>
+      Done
+    </button>
+  </ng-template>
 
   <div id="group-list" *ngIf="loadingComplete; else loadingBar">
     <div class="group-row" *ngFor="let groupID of groupIDs">
