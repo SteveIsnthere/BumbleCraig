@@ -91,10 +91,12 @@ export class CueCardComponent implements OnInit, OnDestroy {
     const scrollTop = window.scrollY;
     const deltaScroll = scrollTop - this.lastScrollTop;
 
-    if (deltaScroll === 0 || Math.abs(deltaScroll) > 300) {
-      this.isScrolling = false;
-      return;
-    }
+    // console.log(deltaScroll)
+    //
+    // if (deltaScroll === 0 || Math.abs(deltaScroll) > 300) {
+    //   this.isScrolling = false;
+    //   return;
+    // }
 
     this.lastScrollTop = scrollTop;
 
