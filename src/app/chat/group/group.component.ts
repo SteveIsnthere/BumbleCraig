@@ -7,6 +7,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {InviteViewComponent} from "./invite-view/invite-view.component";
 import {GroupMembersViewComponent} from "./group-members-view/group-members-view.component";
 import {GroupInfoViewComponent} from "./group-info-view/group-info-view.component";
+import {FigureEditViewComponent} from "../../simple-figure/figure-edit-view/figure-edit-view.component";
 
 @Component({
   selector: 'app-group',
@@ -66,4 +67,10 @@ export class GroupComponent implements OnInit {
     this._bottomSheet.open(GroupInfoViewComponent, {data: this.groupID});
   }
 
+  editFigure(): void {
+    const bottomSheetRef = this._bottomSheet.open(FigureEditViewComponent, {data: this.groupEssentialData.figure_id});
+    bottomSheetRef.afterDismissed().subscribe(() => {
+      this.ngOnInit();
+    });
+  }
 }

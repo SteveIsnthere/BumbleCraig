@@ -47,7 +47,7 @@ main {
 }
 
 #messages-section {
-  height: calc(100dvh - 74px);
+  /*height: calc(100dvh - 74px);*/
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -108,9 +108,8 @@ main {
 #action-section {
   position: fixed;
   scale: 1;
-  left: 0;
+  right: 20px;
   bottom: 10px;
-  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -119,8 +118,9 @@ main {
 }
 
 .bottom-btn {
-  margin-bottom: 20px;
-  scale: 1.2
+  /*margin-bottom: 20px;*/
+  /*scale: 1.2*/
+  border-radius: 200px;
 }
 
 #uploading-file-indicator {

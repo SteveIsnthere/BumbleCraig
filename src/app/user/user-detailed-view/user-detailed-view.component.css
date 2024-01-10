@@ -1,5 +1,5 @@
 main {
-  min-height: 100dvh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@ main {
 }
 
 #figure {
-  margin-top: 40px;
+  margin-top: 10px;
   width: 150px;
   height: 150px;
   cursor: pointer;

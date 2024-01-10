@@ -16,6 +16,37 @@ main{
   /*background-color: rgba(0, 0, 0, 0);*/
   transition-duration: 0.15s;
   /*transition-timing-function: ease;*/
+  background: linear-gradient(
+    15deg,
+    rgba(238, 119, 82, 0.18),
+    rgba(231, 60, 126, 0.15),
+    rgba(35, 166, 213, 0.15),
+    rgba(35, 213, 171, 0.18)
+  );
+  background-size: 170%;
+  animation: rainbow 10s alternate infinite, appear 0.5s forwards;
+}
+@keyframes rainbow {
+  0% {
+    background-position: 0 50%;
+    /*height: 150px;*/
+  }
+  50% {
+    background-position: 50% 50%;
+    /*height: 100px;*/
+  }
+  100% {
+    background-position: 100% 50%;
+    /*height: 150px;*/
+  }
+}
+
+#logo{
+  width: 39px;
+  height: 39px;
+  backdrop-filter: brightness(200%) saturate(250%);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 

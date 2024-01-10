@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Message} from "./Message";
@@ -33,8 +33,10 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   uploadingFile: boolean = false;
   shouldLoadMessages: boolean = true;
   resizing: boolean = false;
+  resizeCheckInterval: any;
+  lastWindowScrollHeight: number = 0;
 
-  constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet, private elementRef: ElementRef) {
+  constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
     this.selfID = this.auth.selfUserID;
   }
 
@@ -49,13 +51,21 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
       this.setMessageRefreshLoop()
       this.viewGroup();
     });
+
+    this.resizeCheckInterval = setInterval(() => {
+      if (document.body.scrollHeight > this.lastWindowScrollHeight) {
+        this.lastWindowScrollHeight = document.body.scrollHeight;
+        this.onHeightChange();
+      }
+    }, 200);
   }
 
   ngOnDestroy(): void {
     this.shouldLoadMessages = false;
-    if (this.loadedScroller) {
-      this.observer.unobserve(this.messagesContainer);
-    }
+    // if (this.loadedScroller) {
+    //   this.observer.unobserve(this.messagesContainer);
+    // }
+    clearInterval(this.resizeCheckInterval);
   }
 
   setMessageRefreshLoop() {
@@ -78,9 +88,9 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         } else if (!this.loadedScroller) {
           this.noMessages = false;
           this.loadedScroller = true;
-          this.messagesContainer = this.elementRef.nativeElement.querySelector('#messages-container');
-          this.observer = new ResizeObserver(() => this.onScrollThrottled());
-          this.observer.observe(this.messagesContainer);
+          // this.messagesContainer = this.elementRef.nativeElement.querySelector('#messages-container');
+          // this.observer = new ResizeObserver(() => this.onScrollThrottled());
+          // this.observer.observe(this.messagesContainer);
         }
 
         if (!this.messagesHasChanged(data)) {
@@ -132,7 +142,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
     return msg1.file_share_id == msg2.file_share_id;
   }
 
-  onScrollThrottled(){
+  onScrollThrottled() {
     if (!this.resizing) {
       this.resizing = true;
       this.onHeightChange();
@@ -140,10 +150,16 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   onHeightChange() {
-    setTimeout(() => {
-      this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
-      this.resizing = false;
-    }, 150);
+    // setTimeout(() => {
+    //   this.messagesSection.nativeElement.scrollTop = this.messagesSection.nativeElement.scrollHeight;
+    //   this.resizing = false;
+    // }, 150);
+
+    // window.scrollTo(0, document.body.scrollHeight);
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
   }
 
   viewGroup(): void {

@@ -4,13 +4,13 @@
     <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large;">{{ post?.title }}
     </mat-card-title>
     <mat-card-subtitle>
-      <span>{{ post!.time_since_posted }}</span>
+      <span style="font-weight: lighter">{{ post!.time_since_posted }}</span>
       <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
                                style="flex: 1;"></app-post-perception-bar>
-      <button mat-stroked-button color="accent" (click)="openCommentSection($event)"
-              style="border-radius: 11px; border: none">
-        <mat-icon>comment</mat-icon>
+      <button mat-button color="accent" (click)="openCommentSection($event)"
+              style="border-radius: 11px;">
         <span>{{ post?.number_of_comments }}</span>
+        <mat-icon>comment</mat-icon>
       </button>
     </mat-card-subtitle>
   </mat-card-header>

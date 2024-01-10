@@ -1,4 +1,6 @@
 <main  [ngStyle]="topBarStyle()">
+  <img src="assets/logo.png" id="logo" style="margin-right: 7px; transform: translateY(1px)" alt="" routerLink="/home">
+
   <ng-container *ngIf="auth.isVisitor; else assistant">
     <button mat-flat-button color="primary" (click)="userSetUp()"
             style="border-radius: 200px">
@@ -13,7 +15,7 @@
       Ask Tidder
     </button>
   </ng-template>
-  <img src="assets/logo.png" height="43" width="43" style="margin-left: 7px; transform: translateY(1px)" alt="" routerLink="/home">
+
 
   <!--  <button mat-icon-button color="accent" style="margin-left: 2px">-->
   <!--    <mat-icon>search</mat-icon>-->
@@ -38,7 +40,7 @@
     <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
     <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
     <!--    </div>-->
-    <mat-icon>more_vert</mat-icon>
+    <mat-icon>arrow_drop_down</mat-icon>
   </button>
 </main>
 

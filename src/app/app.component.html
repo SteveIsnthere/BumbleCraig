@@ -3,9 +3,9 @@
 </ng-container>
 
 <main>
-  <app-cue-card></app-cue-card>
+  <app-cue-card *ngIf="router.url != '/login'"></app-cue-card>
   <router-outlet></router-outlet>
 
-  <app-rainbow-strip></app-rainbow-strip>
+<!--  <app-rainbow-strip></app-rainbow-strip>-->
   <app-rainbow-strip [bottom]="true"></app-rainbow-strip>
 </main>
