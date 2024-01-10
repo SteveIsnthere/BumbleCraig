@@ -1,5 +1,5 @@
 <main  [ngStyle]="topBarStyle()">
-  <img src="assets/logo.png" id="logo" style="margin-right: 7px; transform: translateY(1px)" alt="" routerLink="/home">
+  <img src="assets/logo.png" id="logo" style="margin-right: 7px;" alt="" routerLink="/home">
 
   <ng-container *ngIf="auth.isVisitor; else assistant">
     <button mat-flat-button color="primary" (click)="userSetUp()"
