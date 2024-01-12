@@ -94,7 +94,7 @@ const appRoutes: Routes = [
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
   {path: 'about', component: AboutComponent},
-  // {path: '', redirectTo: '/chat', pathMatch: 'full'},
+  {path: 'new-post', component: NewPostViewComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];

@@ -16,14 +16,17 @@
     </button>
   </ng-template>
 
+  <div id="top-users-bar" *ngIf="topUserIDs.length>0">
+    <mat-icon style="scale: 1.4" color="primary">emoji_events</mat-icon>
+    <div id="top-users">
+      <app-user-mini *ngFor="let userID of topUserIDs" [userID]="userID"></app-user-mini>
+    </div>
+  </div>
 
-  <!--  <button mat-icon-button color="accent" style="margin-left: 2px">-->
-  <!--    <mat-icon>search</mat-icon>-->
-  <!--  </button>-->
 
   <div style="flex: 1"></div>
 
-  <button mat-icon-button (click)="openNewPostView()" color="warn"
+  <button mat-icon-button routerLink="/new-post" color="warn"
           *ngIf="notificationCount() == 0; else notificationBtn">
     <mat-icon>add</mat-icon>
   </button>
@@ -43,11 +46,6 @@
     <mat-icon>arrow_drop_down</mat-icon>
   </button>
 </main>
-
-<!--<div class="top-bar">-->
-<!--&lt;!&ndash;  <img src="assets/logo.png" height="43" width="43" style="margin-left: 7px; transform: translateY(2px)" alt="">&ndash;&gt;-->
-<!--  -->
-<!--</div>-->
 
 <div style="height: 74px"></div>
 

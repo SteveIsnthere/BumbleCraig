@@ -61,7 +61,8 @@ export class PostSectionViewComponent implements OnInit {
     this.showReloadButton = false;
     this.loading = true;
     this.canShowReloadButton = false;
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
+    console.log('fetching posts')
+    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
         this.postIDs = data;
@@ -118,6 +119,8 @@ export class PostSectionViewComponent implements OnInit {
     if (cachedData) {
       this.postIDs = JSON.parse(cachedData);
       this.loading = false;
+    }else {
+      this.fetchPosts();
     }
   }
 

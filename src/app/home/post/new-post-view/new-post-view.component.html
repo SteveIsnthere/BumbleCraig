@@ -1,8 +1,6 @@
-<mat-dialog-content id="wrapper">
-  <main id="main">
+<main id="main">
   <!--  <mat-slide-toggle [(ngModel)]="articleMode">Article Mode</mat-slide-toggle>-->
-  <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: #2a2a2a;
-;">
+  <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)" *ngIf="articleMode" style="background-color: transparent;">
 
     <mat-step label="Title" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
@@ -20,19 +18,19 @@
       </form>
     </mat-step>
 
-        <mat-step> <!-- genre selection -->
-          <form>
-            <ng-template matStepLabel>Style</ng-template>
-            <mat-chip-listbox aria-label="Fish selection">
-              <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
-                               [selected]="genre == genreSelected"
-                               color="warn">
-                {{ genre }}
-              </mat-chip-option>
-            </mat-chip-listbox>
-            <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>
-          </form>
-        </mat-step>
+    <mat-step> <!-- genre selection -->
+      <form>
+        <ng-template matStepLabel>Style</ng-template>
+        <mat-chip-listbox aria-label="Fish selection">
+          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
+                           [selected]="genre == genreSelected"
+                           color="warn">
+            {{ genre }}
+          </mat-chip-option>
+        </mat-chip-listbox>
+        <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>
+      </form>
+    </mat-step>
 
     <mat-step> <!-- contents -->
       <ng-template matStepLabel>Contents</ng-template>
@@ -73,17 +71,19 @@
 
   </mat-stepper>
   <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
-  </main>
-</mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-flat-button color="warn" matDialogClose>
-    <mat-icon>save</mat-icon>
-    Save as draft
-  </button>
-  <button mat-flat-button (click)="publishPost()" color="primary" *ngIf="currentStep == 3">
-    <mat-icon>publish</mat-icon>
-    Publish
-  </button>
 
-</mat-dialog-actions>
+  <div id="action-row" style="display: flex; gap: 10px">
+<!--    <button mat-flat-button color="warn" matDialogClose>-->
+<!--      <mat-icon>save</mat-icon>-->
+<!--      Save as draft-->
+<!--    </button>-->
+    <button mat-flat-button (click)="publishPost()" color="primary" *ngIf="currentStep == 3">
+      <mat-icon>publish</mat-icon>
+      Publish
+    </button>
+  </div>
+</main>
+
+
+<app-home-button></app-home-button>

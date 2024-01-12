@@ -20,9 +20,6 @@ export class UserComponent implements OnInit {
     let cachedData = this.cache.get(this.userID);
     if (cachedData != null) {
       this.essentialUserData = cachedData;
-      if (Math.random() < 0.6) {
-        return
-      }
       setTimeout(() => {
         this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
           if (data == this.essentialUserData) {
@@ -31,7 +28,7 @@ export class UserComponent implements OnInit {
           this.cache.set(data);
           this.essentialUserData = data;
         })
-      }, 1000+Math.random()*6000);
+      }, Math.random()*2000);
     }else {
       this.http.get<EssentialUserData>(apiEndPoint + '/user/' + this.userID).subscribe((data) => {
         this.cache.set(data);

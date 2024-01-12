@@ -7,11 +7,11 @@ import {Post} from "../Post";
 import {Message} from "../../../chat/group/group-chat-view/Message";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import {MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
 import {MainService} from "../../../services/main.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-post-view',
@@ -38,7 +38,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
     firstCtrl: ['', Validators.required],
   });
 
-  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, public dialogRef: MatDialogRef<NewPostViewComponent>, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private elementRef: ElementRef) {
+  constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private elementRef: ElementRef, private router: Router) {
   }
 
 
@@ -116,7 +116,9 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
         verticalPosition: 'top',
         duration: 2000,
       });
-      this.dialogRef.close();
+      // this.dialogRef.close();
+      this.router.navigate(["home"]).then();
+
     })
   }
 
@@ -180,7 +182,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   selectionChange($event: StepperSelectionEvent) {
     if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
       this.updateGenre();
-      this.currentStep = 2;
+      this.currentStep = 3;
       setTimeout(() => {
         this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
         this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
@@ -188,7 +190,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       }, 100);
     } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
       this.updateTitle();
-      this.currentStep = 3;
+      this.currentStep = 2;
     }
   }
 
