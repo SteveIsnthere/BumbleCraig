@@ -41,7 +41,6 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   constructor(public http: HttpClient, public auth: AuthService, private main: MainService, private _bottomSheet: MatBottomSheet, private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private elementRef: ElementRef, private router: Router) {
   }
 
-
   ngOnInit(): void {
     this.http.get(apiEndPoint + '/post/create_post/' + this.auth.selfUserID + '/' + this.genreSelected).subscribe((res: any) => {
       this.postID = res;

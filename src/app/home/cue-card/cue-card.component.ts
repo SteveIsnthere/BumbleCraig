@@ -74,19 +74,21 @@ export class CueCardComponent implements OnInit, OnDestroy {
       if (deltaScroll > 20) {
         this.topBarOffset = this.topBarOffset + deltaScroll;
       } else {
-        this.topBarOffset = this.topBarOffset + Math.sqrt(deltaScroll) / 2.5;
+        this.topBarOffset = this.topBarOffset + deltaScroll/5;
       }
       if (this.topBarOffset > this.topBarHeight) {
         this.topBarOffset = this.topBarHeight;
       }
     } else {
-      if (deltaScroll < -5) {
+      if (deltaScroll < -20) {
         this.topBarOffset = 0;
       } else {
-        this.topBarOffset = this.topBarOffset + deltaScroll / 2.5;
+        this.topBarOffset = this.topBarOffset + deltaScroll / 5;
+        if (this.topBarOffset < 0) {
+          this.topBarOffset = 0;
+        }
       }
     }
-
     this.isScrolling = false;
   }
 
