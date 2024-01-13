@@ -135,7 +135,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       });
       return;
     }
-    if (this.post?.title?.length == 0) {
+    if (this.title.length == 0) {
       this._snackBar.open("Post title can't be empty", 'Understood', {
         duration: 2000,
       });

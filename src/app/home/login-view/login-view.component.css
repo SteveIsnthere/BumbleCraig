@@ -13,12 +13,19 @@ main {
   width: 300px;
   backdrop-filter: blur(15px);
   position: relative;
+
 }
 
 #start-btn{
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
   animation: gradient 5s ease infinite;
+}
+
+.login-animation {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 200% 200%;
+  animation: gradient2 10s ease forwards;
 }
 
 @keyframes gradient {
@@ -33,32 +40,43 @@ main {
   }
 }
 
-.startUpSlideIn {
-  /*animation: slideIn 0.6s ease forwards;*/
-}
-
-@keyframes slideIn {
+@keyframes gradient2 {
   0% {
-    transform: translateY(100%); /* Start position */
-    /*scale: 2;*/
+    transform: translateX(-100%);
+    background-position: 0 50%;
   }
-  100% {
-    transform: translateY(0); /* End position */
+  50% {
+    background-position: 100% 50%;
+    backdrop-filter: brightness(1);
   }
 }
 
-.signUpSlideOut {
-  /*animation: slideOut 1s ease forwards;*/
-}
+/*.startUpSlideIn {*/
+/*  !*animation: slideIn 0.6s ease forwards;*!*/
+/*}*/
 
-@keyframes slideOut {
-  0% {
-  }
-  100% {
-    transform: translateY(-100%); /* End position */
-    /*scale: 2;*/
-  }
-}
+/*@keyframes slideIn {*/
+/*  0% {*/
+/*    transform: translateY(100%); !* Start position *!*/
+/*    !*scale: 2;*!*/
+/*  }*/
+/*  100% {*/
+/*    transform: translateY(0); !* End position *!*/
+/*  }*/
+/*}*/
+
+/*.signUpSlideOut {*/
+/*  !*animation: slideOut 1s ease forwards;*!*/
+/*}*/
+
+/*@keyframes slideOut {*/
+/*  0% {*/
+/*  }*/
+/*  100% {*/
+/*    transform: translateY(-100%); !* End position *!*/
+/*    !*scale: 2;*!*/
+/*  }*/
+/*}*/
 
 
 

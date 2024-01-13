@@ -1,5 +1,5 @@
 <main>
-  <mat-stepper linear orientation="vertical" (selectionChange)="selectionChange($event)"
+  <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)"
                style="overflow: auto; max-height: 95vh">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
@@ -11,7 +11,7 @@
                  [value]="inputName" (input)="changeName($event)">
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext (click)="updateName()">Next</button>
+          <button mat-flat-button color="primary" matStepperNext (click)="updateName()">Next</button>
         </div>
       </form>
     </mat-step>
@@ -26,7 +26,7 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext (click)="updatePassword()">Next</button>
+          <button mat-flat-button color="primary" matStepperNext (click)="updatePassword()">Next</button>
         </div>
       </form>
     </mat-step>

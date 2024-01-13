@@ -36,7 +36,6 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
       this.userID = params['id'];
     });
     super.ngOnInit();
-    this.postsLoaded = true;
     this.http.get<boolean>(apiEndPoint + '/user/friend_status/' + this.auth.selfUserID + '/' + this.userID).subscribe((data) => {
       this.isFriend = data;
     });
@@ -45,6 +44,7 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
     });
     this.http.get<number[]>(apiEndPoint + '/post/get_post_ids_of_user/' + this.userID).subscribe((data) => {
       this.postIDs = data;
+      this.postsLoaded = true;
     })
     this.http.get<number>(apiEndPoint + '/user/experience/' + this.userID).subscribe((data) => {
       this.xp = data;

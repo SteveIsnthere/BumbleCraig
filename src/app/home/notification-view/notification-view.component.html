@@ -12,7 +12,7 @@
                          *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
     </ng-container>
 
-    <button mat-flat-button color="primary" style="border-radius: 100px; margin: 10px" (click)="clear()"
+    <button mat-stroked-button color="primary" style="border-radius: 100px; margin: 10px" (click)="clear()"
             *ngIf="showCleanAllButton()">
       <mat-icon>delete</mat-icon>
       Clear Messages
@@ -32,5 +32,9 @@
   <div class="no-msg-view">
     <mat-icon style="vertical-align: middle">task_alt</mat-icon>
     <span>No Notifications</span>
+
+    <button mat-fab color="primary" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
 </ng-template>
