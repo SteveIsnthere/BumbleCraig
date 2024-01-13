@@ -12,9 +12,11 @@ main{
   overflow: hidden;
   margin: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 80px;
 }
 
 #contents {

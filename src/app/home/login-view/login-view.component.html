@@ -41,8 +41,10 @@
       <p>Click the button to get started!</p>
       <div style="display: flex; justify-content: center; margin-top: 20px" *ngIf="!newUserLoading; else loadingWheel">
         <div style="flex: 1"></div>
-        <button mat-fab (click)="continueAsVisitor()" color="primary" style="border-radius: 100px" id="start-btn">
-          <mat-icon>start</mat-icon>
+        <button mat-flat-button (click)="continueAsVisitor()" color="primary"
+                style="border-radius: 100px; margin-top: 20px" id="start-btn">
+          <mat-icon>rocket_launch</mat-icon>
+          Sign me up!
         </button>
       </div>
       <ng-template #loadingWheel>
@@ -56,8 +58,6 @@
     <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
             style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">Have an account?
     </button>
-
-
   </ng-template>
 
 

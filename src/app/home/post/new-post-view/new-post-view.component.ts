@@ -9,9 +9,9 @@ import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {StepperSelectionEvent} from "@angular/cdk/stepper";
 import {MainService} from "../../../services/main.service";
 import {Router} from "@angular/router";
+import {EMPTY, forkJoin, Observable, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-new-post-view',
@@ -31,7 +31,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   textUploadRoute: string = '/post/create_text_attachment/';
   observer: any;
   currentStep: number = 1;
-  articleMode: boolean = true;
+  changeTitleTimeout: any;
   contentsContainer: any;
 
   firstFormGroup = this._formBuilder.group({
@@ -49,6 +49,11 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       this.textUploadRoute += this.postID;
       this.textUploadRoute += '/' + this.auth.selfUserID;
       this.reloadPost();
+      setTimeout(() => {
+        this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
+        this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
+        this.observer.observe(this.contentsContainer);
+      }, 100);
     })
   }
 
@@ -67,31 +72,61 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
         this.genreSelected = this.post?.genre!;
       }
       this.contents = this.post?.content!;
-      // if (this.inContentEditingView) this.scrollToElement('action-section');
     })
   }
 
   selectGenre(genre: string) {
     this.genreSelected = genre;
+    this.updateGenre().subscribe()
   }
 
-  updateGenre() {
-    this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe(() => {
-    })
-  }
-
-  updateTitle() {
-    const maxTitleLength = 70;
-    if (!this.firstFormGroup.valid) return;
-    if (this.title.length > maxTitleLength) {
-      this.title = this.title.slice(0, maxTitleLength);
-      this._snackBar.open('Title too long, will be trimmed', 'Understood', {
-        duration: 2000,
-      });
-    }
-    this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.auth.selfUserID, this.title).subscribe(() => {
-    })
-  }
+  // updateGenre() {
+  //   this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe(() => {
+  //   })
+  // }
+  //
+  // updateTitle() {
+  //   const maxTitleLength = 70;
+  //   if (!this.firstFormGroup.valid) return;
+  //   if (this.title.length > maxTitleLength) {
+  //     this.title = this.title.slice(0, maxTitleLength);
+  //     this._snackBar.open('Title too long, will be trimmed', 'Understood', {
+  //       duration: 2000,
+  //     });
+  //   }
+  //   this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.auth.selfUserID, this.title).subscribe(() => {
+  //   })
+  // }
+  //
+  // publishPost() {
+  //   if (this.post?.content?.length == 0) {
+  //     this._snackBar.open("Post can't be empty", 'Understood', {
+  //       duration: 2000,
+  //     });
+  //     return;
+  //   }
+  //
+  //   if (this.post?.title?.length == 0) {
+  //     this._snackBar.open("Post title can't be empty", 'Understood', {
+  //       duration: 2000,
+  //     });
+  //     return;
+  //   }
+  //
+  //   //updateGenre()
+  //   //updateTitle()
+  //
+  //   this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((res: any) => {
+  //     console.log(res);
+  //     this.main.reloadPosts();
+  //     this._snackBar.open('Your Post is live!!', 'yay', {
+  //       verticalPosition: 'top',
+  //       duration: 2000,
+  //     });
+  //     // this.dialogRef.close();
+  //     this.router.navigate(["home"]).then();
+  //   })
+  // }
 
   publishPost() {
     if (this.post?.content?.length == 0) {
@@ -100,15 +135,20 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       });
       return;
     }
-
     if (this.post?.title?.length == 0) {
       this._snackBar.open("Post title can't be empty", 'Understood', {
         duration: 2000,
       });
       return;
     }
-
-    this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID).subscribe((res: any) => {
+    // Use forkJoin to run updateGenre() and updateTitle() in parallel
+    forkJoin([
+      this.updateGenre(),
+      this.updateTitle()
+    ]).pipe(
+      // Use switchMap to switch to the final HTTP request after both updateGenre() and updateTitle() complete
+      switchMap(() => this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID))
+    ).subscribe((res: any) => {
       console.log(res);
       this.main.reloadPosts();
       this._snackBar.open('Your Post is live!!', 'yay', {
@@ -117,8 +157,26 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       });
       // this.dialogRef.close();
       this.router.navigate(["home"]).then();
+    });
+  }
 
-    })
+  updateGenre(): Observable<any> {
+    return this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected + '/' + this.auth.selfUserID);
+  }
+
+  updateTitle(): Observable<any> {
+    const maxTitleLength = 70;
+    if (!this.firstFormGroup.valid) return EMPTY; // Use EMPTY observable if the form is not valid
+
+    if (this.title.length > maxTitleLength) {
+      this.title = this.title.slice(0, maxTitleLength);
+      this._snackBar.open('Title too long, will be trimmed', 'Understood', {
+        duration: 2000,
+      });
+    }
+
+    // Use post to update title
+    return this.http.post(apiEndPoint + '/post/update_post_title/' + this.postID + '/' + this.auth.selfUserID, this.title);
   }
 
   uploadFile(event: any) {
@@ -176,22 +234,28 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
 
   changeTitle(event: any) {
     this.title = event.target.value;
+    // Clear existing timeout to restart the debounce
+    clearTimeout(this.changeTitleTimeout);
+
+    // Set a new timeout to wait for 200ms before calling updateTitle
+    this.changeTitleTimeout = setTimeout(() => {
+      this.updateTitle().subscribe()
+    }, 300);
   }
 
-  selectionChange($event: StepperSelectionEvent) {
-    if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
-      this.updateGenre();
-      this.currentStep = 3;
-      setTimeout(() => {
-        this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
-        this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
-        this.observer.observe(this.contentsContainer);
-      }, 100);
-    } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
-      this.updateTitle();
-      this.currentStep = 2;
-    }
-  }
+  //
+  // selectionChange($event: StepperSelectionEvent) {
+  //   if ($event.selectedIndex === 2 && $event.previouslySelectedIndex === 1) {
+  //     this.updateGenre();
+  //     this.currentStep = 3;
+  //     setTimeout(() => {
+  //
+  //     }, 100);
+  //   } else if ($event.selectedIndex === 1 && $event.previouslySelectedIndex === 0) {
+  //     this.updateTitle();
+  //     this.currentStep = 2;
+  //   }
+  // }
 
   scrollToElement(id: string): void {
     setTimeout(() => {
