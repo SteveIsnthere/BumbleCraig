@@ -18,6 +18,15 @@ body {
   }
 }
 
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .classicTextBox{
   color: white;
   padding: 20px;

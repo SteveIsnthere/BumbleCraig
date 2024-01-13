@@ -15,6 +15,7 @@
   height: 40px;
   backdrop-filter: blur(10px);
   /*border: 2px solid grey;*/
+  transition-duration: 0.5s;
 }
 
 #info-section{

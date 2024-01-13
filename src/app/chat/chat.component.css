@@ -11,6 +11,7 @@ main {
   align-items: center;
   margin-bottom: 10px;
   gap: 10px;
+  /*height: 36px;*/
 }
 
 #group-list {

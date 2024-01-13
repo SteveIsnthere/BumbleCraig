@@ -33,7 +33,7 @@
   </ng-container>
 
   <ng-template #welcomeView>
-    <div id="welcome" class="classicTextBox">
+    <div id="welcome" class="classicTextBox" [ngClass]="{'transparent-background': newUserLoading}">
       <div class="classicTitle" style="font-size: xx-large; font-weight: bolder">
         Tidder
       </div>
@@ -56,12 +56,14 @@
            style="position:absolute;bottom: 0;left: 10px;width: 150px;opacity: 0.3;">
     </div>
     <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
-            style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">Have an account?
+            [ngClass]="{'fade': newUserLoading}"
+            style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
+      <mat-icon>login</mat-icon>I have an account
     </button>
   </ng-template>
-
-
 </main>
+
+<div id="sign-up-background" *ngIf="newUserLoading"></div>
 
 <ng-template #loadingBar>
   <div id="loading">
