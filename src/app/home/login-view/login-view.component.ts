@@ -31,7 +31,8 @@ export class LoginViewComponent implements OnInit, OnDestroy {
     clearInterval(this.figUpdateInterval);
   }
 
-  login() {
+  login(e:Event) {
+    e.preventDefault();
     if (this.username === "" || this.password === "") return;
     this.loginLoading = true;
     this.http.post<number>(apiEndPoint + '/auth/login', {

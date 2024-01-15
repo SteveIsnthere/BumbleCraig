@@ -1,13 +1,14 @@
 <ng-container *ngIf="!wideMode; else wide">
-  <div id="single-row-posts-container" class="posts-container">
+  <div id="single-row-posts-container" class="posts-container" #postsContainer>
     <ng-container *ngFor="let postID of postIDs">
       <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
       <mat-divider class="divider"></mat-divider>
     </ng-container>
   </div>
 </ng-container>
+
 <ng-template #wide>
-  <div id="wide-mode-posts-container" class="posts-container" [style.padding-left]="padding+'px'"
+  <div id="wide-mode-posts-container" class="posts-container" #postsContainer [style.padding-left]="padding+'px'"
        [style.padding-right]="padding+'px'">
     <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
       <ng-container *ngFor="let postID of postRow">
@@ -18,3 +19,10 @@
     </div>
   </div>
 </ng-template>
+
+<!--<div style="display: flex;justify-content: center;margin-top: 30px">-->
+<!--  <button mat-flat-button style="border-radius: 100px" color="primary" (click)="loadMorePosts()">-->
+<!--    load more-->
+<!--  </button>-->
+<!--</div>-->
+

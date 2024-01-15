@@ -30,15 +30,16 @@ main {
   height: 100dvh;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
-  animation: gradient 7s ease infinite, appear 3s forwards;
+  animation: gradient 7s ease infinite, appear 1s forwards;
 }
 
 .fade {
   animation: disappear 1s ease forwards;
 }
 
-.transparent-background {
-  animation: trans-bg 1s ease forwards;
+.black-background {
+  backdrop-filter: blur(10px);
+  animation: change-bg 0.3s ease forwards;
 }
 
 @keyframes gradient {
@@ -53,11 +54,11 @@ main {
   }
 }
 
-@keyframes trans-bg {
+@keyframes change-bg {
   0% {
   }
   100% {
-    background-color: white;
+    background-color: transparent;
   }
 }
 

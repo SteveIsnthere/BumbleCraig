@@ -1,4 +1,12 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  Component, ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output, ViewChild,
+} from '@angular/core';
 import {debounceTime, fromEvent, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../services/auth.service";
@@ -11,34 +19,79 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './post-section-view-base.component.html',
   styleUrl: './post-section-view-base.component.css'
 })
-export class PostSectionViewBaseComponent implements OnInit, OnDestroy {
+export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterViewInit {
   @Input() postIDs: number[] = [];
+  @Output() postsRanOutEvent = new EventEmitter<string>();
+  initLoadingSize = 3;
+  postReloadSize = 2;
+  restOfPostIDs: number[] = [];
   wideMode = false;
   postIDsWide: number[][] = [];
   padding = 15;
   wideModePostWidth = 470;
-
+  scrollingTask: any;
   touchDevice = false;
   private resizeSubscription: Subscription = new Subscription();
-
+  @ViewChild('postsContainer', { static: false }) postsContainer!: ElementRef;
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.touchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
+    this.restOfPostIDs = this.postIDs.slice(this.initLoadingSize);
+    this.postIDs = this.postIDs.slice(0, this.initLoadingSize);
 
+    this.touchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0)
     // subscribe to the resize event
     this.resizeSubscription = fromEvent(window, 'resize').pipe(
       debounceTime(200),
     ).subscribe(() => {
       this.resizeIfNecessary()
     })
-
     this.resizeIfNecessary()
+    // this.onScroll();
+  }
+
+  ngAfterViewInit() {
+    window.addEventListener('scroll', this.onScrollThrottled);
   }
 
   ngOnDestroy() {
+    window.removeEventListener('scroll', this.onScrollThrottled);
     this.resizeSubscription.unsubscribe();
+  }
+
+
+  loadMorePosts() {
+    this.postIDs = this.postIDs.concat(this.restOfPostIDs.slice(0, this.postReloadSize));
+    this.restOfPostIDs = this.restOfPostIDs.slice(this.postReloadSize);
+    this.resizeIfNecessary()
+  }
+  requestMorePosts() {
+    this.postsRanOutEvent.emit();
+  }
+
+  onScrollThrottled = () => {
+    if (this.scrollingTask) {
+      clearTimeout(this.scrollingTask);
+    }
+    this.scrollingTask = setTimeout(() => {
+      this.onScroll();
+    }, 50);
+  }
+
+  onScroll = () => {
+    const scrollTop = window.scrollY;
+    const divHeight = this.postsContainer.nativeElement.offsetHeight + 74;
+
+    const remainingScroll = divHeight - scrollTop - window.innerHeight;
+
+    if (remainingScroll < 1000) {
+      if (this.restOfPostIDs.length > 0){
+        this.loadMorePosts();
+      }else {
+        this.requestMorePosts();
+      }
+    }
   }
 
   resizeIfNecessary() {

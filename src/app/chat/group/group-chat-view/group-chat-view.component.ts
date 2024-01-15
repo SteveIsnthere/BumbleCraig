@@ -26,8 +26,6 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   groupEssentialData: GroupEssentialData = dummyGroupEssentialData();
   uploadRoute: string = '/group/create_file_share/';
   fileToUpload: File | null = null;
-  observer: any;
-  messagesContainer: any;
   loadedScroller: boolean = false;
   noMessages: boolean = false;
   uploadingFile: boolean = false;

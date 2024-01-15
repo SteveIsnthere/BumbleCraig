@@ -44,7 +44,7 @@
 
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
-    <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
+    <app-post-section-view-base [postIDs]="postIDs" (postsRanOutEvent)="postIDs.push(1)"></app-post-section-view-base>
   </ng-container>
   <ng-template #loadingPlaceHolder>
     <app-loading-placeholder></app-loading-placeholder>

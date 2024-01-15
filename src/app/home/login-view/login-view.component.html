@@ -2,7 +2,7 @@
   <app-logo style="margin: -35px"></app-logo>
 
   <ng-container *ngIf="loginView; else welcomeView">
-    <form>
+    <form *ngIf="!loginLoading; else loginLoadingBar">
       <mat-chip style="margin-bottom: 20px;" *ngIf="wrongCredentials">Wrong password or username</mat-chip>
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
@@ -13,27 +13,27 @@
         <mat-label>Password</mat-label>
         <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
-
-      <button mat-flat-button (click)="login()" *ngIf="!loginLoading; else loadingWheel2" class="round-btn"
+      <button mat-flat-button (click)="login($event)" class="round-btn"
               color="warn">Log In
         <mat-icon>login</mat-icon>
       </button>
     </form>
-
-    <button mat-stroked-button (click)="loginView = false" class="round-btn" color="primary">New user?</button>
-    <!--    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"-->
-    <!--            color="primary">Continue as a-->
-    <!--      Guest-->
-    <!--    </button>-->
-    <ng-template #loadingWheel2>
+    <ng-template #loginLoadingBar>
       <div style="display: flex; justify-content: center;">
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
       </div>
     </ng-template>
+    <button mat-stroked-button (click)="loginView = false" class="round-btn" color="primary"
+            [ngClass]="{'fade': loginLoading}">New user?
+    </button>
+    <!--    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"-->
+    <!--            color="primary">Continue as a-->
+    <!--      Guest-->
+    <!--    </button>-->
   </ng-container>
 
   <ng-template #welcomeView>
-    <div id="welcome" class="classicTextBox" [ngClass]="{'transparent-background': newUserLoading}">
+    <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
       <div class="classicTitle" style="font-size: xx-large; font-weight: bolder">
         Tidder
       </div>
@@ -48,7 +48,10 @@
         </button>
       </div>
       <ng-template #loadingWheel>
-        <div style="display: flex; justify-content: center; margin-top: 72px">
+        <!--        <div style="display: flex; justify-content: center; margin-top: 72px">-->
+        <!--          <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+        <!--        </div>-->
+        <div style="display: flex; justify-content: center;">
           <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
       </ng-template>
@@ -58,12 +61,14 @@
     <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
             [ngClass]="{'fade': newUserLoading}"
             style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
-      <mat-icon>login</mat-icon>I have an account
+      <mat-icon>login</mat-icon>
+      I have an account
     </button>
   </ng-template>
 </main>
 
-<div id="sign-up-background" *ngIf="newUserLoading"></div>
+<div id="sign-up-background" *ngIf="newUserLoading || loginLoading"><app-background></app-background></div>
+
 
 <ng-template #loadingBar>
   <div id="loading">
