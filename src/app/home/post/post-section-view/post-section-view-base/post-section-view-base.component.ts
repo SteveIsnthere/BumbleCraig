@@ -31,7 +31,7 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
   wideModePostWidth = 470;
   scrollingTask: any;
   loadingMorePosts = false;
-  showRequestMorePostsButton = false;
+  requestedMorePosts = false;
   touchDevice = false;
   private resizeSubscription: Subscription = new Subscription();
   @ViewChild('postsContainer', {static: false}) postsContainer!: ElementRef;
@@ -93,8 +93,12 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
   }
 
   requestMorePosts() {
+    if (this.requestedMorePosts) return;
+    this.requestedMorePosts = true;
     this.postsRanOutEvent.emit();
-    this.showRequestMorePostsButton = false;
+    setTimeout(() => {
+      this.requestedMorePosts = false;
+    }, 2000);
   }
 
   onScrollThrottled = () => {
@@ -121,7 +125,7 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
       if (this.restOfPostIDs.length > 0) {
         this.loadMorePosts();
       } else {
-        this.showRequestMorePostsButton = true;
+        this.requestMorePosts()
       }
     }
   }
