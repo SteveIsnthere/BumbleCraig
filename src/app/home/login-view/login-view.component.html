@@ -34,7 +34,7 @@
 
   <ng-template #welcomeView>
     <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
-      <div class="classicTitle" style="font-size: xx-large; font-weight: bolder">
+      <div class="classicTitle" style="font-size: xx-large; font-weight: bolder"  [ngClass]="{'title-loading': newUserLoading}">
         Tidder
       </div>
       <p>Finally, a <b style="text-decoration: underline">sensible</b> platform for the rest of us</p>

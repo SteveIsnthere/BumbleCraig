@@ -37,6 +37,10 @@ main {
   animation: disappear 1s ease forwards;
 }
 
+.title-loading{
+  animation: title 1s ease forwards;
+}
+
 .black-background {
   backdrop-filter: blur(10px);
   animation: change-bg 0.3s ease forwards;
@@ -60,9 +64,17 @@ main {
   100% {
     background-color: rgba(255, 255, 255, 0.05);
     color: #2a2a2a;
+    font-weight: bold;
   }
 }
 
+@keyframes title {
+  0% {
+  }
+  100% {
+    color: #2a2a2a;
+  }
+}
 
 
 
