@@ -44,7 +44,7 @@
 
 <ng-container *ngIf="showPostSection">
   <ng-container *ngIf="!loading; else loadingPlaceHolder">
-    <app-post-section-view-base [postIDs]="postIDs" (postsRanOutEvent)="postIDs.push(1)"></app-post-section-view-base>
+    <app-post-section-view-base [postIDs]="postIDs" (postsRanOutEvent)="fetchMorePosts()"></app-post-section-view-base>
   </ng-container>
   <ng-template #loadingPlaceHolder>
     <app-loading-placeholder></app-loading-placeholder>
@@ -57,8 +57,9 @@
   <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
     genres</p>
 </div>
-<div id="refresh-btn">
-  <button mat-stroked-button color="warn" (click)="refresh()" *ngIf="showReloadButton" class="trans-btn-dark"
+
+<div id="refresh-btn" *ngIf="showReloadButton">
+  <button mat-stroked-button color="warn" (click)="refresh()" class="trans-btn-dark"
           style="border-radius: 100px;">
     <mat-icon>refresh</mat-icon>
     Refresh

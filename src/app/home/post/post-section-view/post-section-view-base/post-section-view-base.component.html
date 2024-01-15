@@ -20,9 +20,10 @@
   </div>
 </ng-template>
 
-<!--<div style="display: flex;justify-content: center;margin-top: 30px">-->
-<!--  <button mat-flat-button style="border-radius: 100px" color="primary" (click)="loadMorePosts()">-->
-<!--    load more-->
-<!--  </button>-->
-<!--</div>-->
+<div style="display: flex;justify-content: center;margin-top: 20px" *ngIf="showRequestMorePostsButton">
+  <button mat-flat-button style="border-radius: 100px" color="primary" (click)="requestMorePosts()">
+    <mat-icon>sentiment_satisfied</mat-icon>
+    Feel lucky
+  </button>
+</div>
 

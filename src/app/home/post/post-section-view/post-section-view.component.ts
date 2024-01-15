@@ -75,6 +75,24 @@ export class PostSectionViewComponent implements OnInit {
     })
   }
 
+  fetchMorePosts() {
+    this.showReloadButton = false;
+    this.loading = true;
+    this.canShowReloadButton = false;
+    this.http.get<number[]>(apiEndPoint + '/post/get_extra_post_ids/' + this.auth.selfUserID).subscribe((data) => {
+      if (data != this.postIDs) {
+        this.loading = false;
+        this.postIDs = data;
+        this.savePostIDsToLocalStorage();
+      }
+
+      this.empty = this.postIDs.length == 0;
+      setTimeout(() => {
+        this.canShowReloadButton = true;
+      }, 15000);
+    })
+  }
+
 
   // openBottomSheet(): void {
   //   const bottomSheetRef = this._bottomSheet.open(PostSectionOptionsComponent, {
@@ -118,7 +136,7 @@ export class PostSectionViewComponent implements OnInit {
     if (cachedData) {
       this.postIDs = JSON.parse(cachedData);
       this.loading = false;
-    }else {
+    } else {
       this.fetchPosts();
     }
   }

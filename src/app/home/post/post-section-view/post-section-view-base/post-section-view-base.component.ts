@@ -19,10 +19,10 @@ import {MatDialog} from "@angular/material/dialog";
   templateUrl: './post-section-view-base.component.html',
   styleUrl: './post-section-view-base.component.css'
 })
-export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterViewInit {
+export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() postIDs: number[] = [];
   @Output() postsRanOutEvent = new EventEmitter<string>();
-  initLoadingSize = 3;
+  initLoadingSize = 4;
   postReloadSize = 2;
   restOfPostIDs: number[] = [];
   wideMode = false;
@@ -30,9 +30,12 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterView
   padding = 15;
   wideModePostWidth = 470;
   scrollingTask: any;
+  loadingMorePosts = false;
+  showRequestMorePostsButton = false;
   touchDevice = false;
   private resizeSubscription: Subscription = new Subscription();
-  @ViewChild('postsContainer', { static: false }) postsContainer!: ElementRef;
+  @ViewChild('postsContainer', {static: false}) postsContainer!: ElementRef;
+
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, public dialog: MatDialog) {
   }
 
@@ -48,7 +51,9 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterView
       this.resizeIfNecessary()
     })
     this.resizeIfNecessary()
-    // this.onScroll();
+    setTimeout(() => {
+      this.checkIfNeedToLoadMore()
+    }, 1000)
   }
 
   ngAfterViewInit() {
@@ -62,12 +67,34 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterView
 
 
   loadMorePosts() {
-    this.postIDs = this.postIDs.concat(this.restOfPostIDs.slice(0, this.postReloadSize));
-    this.restOfPostIDs = this.restOfPostIDs.slice(this.postReloadSize);
-    this.resizeIfNecessary()
+    if (this.loadingMorePosts) return;
+    this.loadingMorePosts = true;
+    if (!this.wideMode) {
+      this.postIDs = this.postIDs.concat(this.restOfPostIDs.slice(0, this.postReloadSize));
+      this.restOfPostIDs = this.restOfPostIDs.slice(this.postReloadSize);
+    } else {
+      const newPostIDs = this.restOfPostIDs.slice(0, this.postReloadSize * this.postIDsWide.length)
+      this.postIDs = this.postIDs.concat(newPostIDs);
+      this.restOfPostIDs = this.restOfPostIDs.slice(this.postReloadSize * this.postIDsWide.length);
+
+      for (let i = 0; i < newPostIDs.length; i++) {
+        let column = i % this.postIDsWide.length;
+        this.postIDsWide[column].push(newPostIDs[i]);
+      }
+    }
+    setTimeout(() => {
+      this.loadingMorePosts = false;
+    }, 300);
+
+    if (this.restOfPostIDs.length == 0) return;
+    setTimeout(() => {
+      this.checkIfNeedToLoadMore();
+    }, 1000);
   }
+
   requestMorePosts() {
     this.postsRanOutEvent.emit();
+    this.showRequestMorePostsButton = false;
   }
 
   onScrollThrottled = () => {
@@ -75,21 +102,26 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy,AfterView
       clearTimeout(this.scrollingTask);
     }
     this.scrollingTask = setTimeout(() => {
-      this.onScroll();
+      this.checkIfNeedToLoadMore();
     }, 50);
   }
 
-  onScroll = () => {
+  checkIfNeedToLoadMore = () => {
     const scrollTop = window.scrollY;
     const divHeight = this.postsContainer.nativeElement.offsetHeight + 74;
 
     const remainingScroll = divHeight - scrollTop - window.innerHeight;
 
-    if (remainingScroll < 1000) {
-      if (this.restOfPostIDs.length > 0){
+    let heightThreshold = 1500;
+    if (this.wideMode) {
+      // heightThreshold = heightThreshold/this.postIDsWide.length;
+      heightThreshold = heightThreshold / 2;
+    }
+    if (remainingScroll < heightThreshold) {
+      if (this.restOfPostIDs.length > 0) {
         this.loadMorePosts();
-      }else {
-        this.requestMorePosts();
+      } else {
+        this.showRequestMorePostsButton = true;
       }
     }
   }
