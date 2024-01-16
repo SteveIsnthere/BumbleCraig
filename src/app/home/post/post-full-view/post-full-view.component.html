@@ -1,5 +1,9 @@
 <mat-dialog-content id="wrapper" *ngIf="post != null">
   <main>
+    <button mat-flat-button color="accent" style="border-radius: 100px" mat-dialog-close>
+      <mat-icon>close_fullscreen</mat-icon>
+      close
+    </button>
     <span id="title">{{ post.title }}</span>
     <div id="post-details-row">
       <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
@@ -34,9 +38,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions *ngIf="post != null" style="height: 57px">
-  <button mat-mini-fab color="accent" style="margin-right: 6px; scale: 0.9" mat-dialog-close>
-    <mat-icon>close_fullscreen</mat-icon>
-  </button>
   <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id">
     <button mat-mini-fab color="primary" (click)="likePost()"
             *ngIf="perceptionStatus == 0 || perceptionStatus == 1">

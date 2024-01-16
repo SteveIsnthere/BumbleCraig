@@ -1,4 +1,8 @@
 <main>
+  <button mat-flat-button color="accent" style="border-radius: 100px; margin: 20px" mat-dialog-close>
+    <mat-icon>close_fullscreen</mat-icon>
+    close
+  </button>
   <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)"
                style="overflow: auto; max-height: 95vh">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
