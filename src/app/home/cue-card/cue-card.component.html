@@ -1,20 +1,11 @@
-<main  [ngStyle]="topBarStyle()">
+<main [ngStyle]="topBarStyle()">
   <img src="assets/logo.png" id="logo" style="margin-right: 7px;" alt="" routerLink="/home">
 
-  <ng-container *ngIf="auth.isVisitor; else assistant">
-    <button mat-flat-button color="primary" (click)="userSetUp()"
-            style="border-radius: 200px">
-      <mat-icon>account_circle</mat-icon>
-      Sign Up
-    </button>
-  </ng-container>
-  <ng-template #assistant>
-    <button mat-flat-button color="warn" (click)="openAssistant()"
-            style="border-radius: 200px">
-      <mat-icon>join_left</mat-icon>
-      Ask Tidder
-    </button>
-  </ng-template>
+  <button mat-flat-button color="warn" (click)="openAssistant()"
+          style="border-radius: 200px">
+    <mat-icon>join_left</mat-icon>
+    Ask Tidder
+  </button>
 
   <div id="top-users-bar" *ngIf="topUserIDs.length>0">
     <mat-icon style="scale: 1.4" color="primary">emoji_events</mat-icon>
@@ -57,6 +48,14 @@
   <button mat-menu-item routerLink="/friends">
     <mat-icon class="menuIcon" color="warn">people</mat-icon>
     <span>Friends</span>
+  </button>
+  <button mat-menu-item routerLink="/viewed-posts">
+    <mat-icon class="menuIcon" color="warn">history</mat-icon>
+    <span>History</span>
+  </button>
+  <button mat-menu-item routerLink="/liked-posts">
+    <mat-icon class="menuIcon" color="warn">star</mat-icon>
+    <span>Liked</span>
   </button>
   <button mat-menu-item (click)="logout()">
     <mat-icon color="primary" class="menuIcon">logout</mat-icon>

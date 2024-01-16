@@ -1,56 +1,29 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
-<!--  <app-cue-card></app-cue-card>-->
+  <div class="classicTextBox" style="margin: 5px 10px 15px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
+    <span class="classicTitle">Welcome!</span>
+    <div style="display: flex; justify-content: space-between">
+      <span>Signup to make your account permanent</span>
+      <button mat-flat-button color="primary" (click)="userSetUp()"
+              style="border-radius: 200px;flex-shrink: 0">
+        <mat-icon>account_circle</mat-icon>
+        Sign Up
+      </button>
+    </div>
+  </div>
   <app-post-section-view></app-post-section-view>
   <div style="height: 80px"></div>
 </main>
 
-<!--<button mat-fab (click)="openNewPostView()" color="primary" class="new-post-btn"-->
-<!--        style="">-->
-<!--  <mat-icon>add</mat-icon>-->
-<!--</button>-->
-
-<!--<div id="nav-bar">-->
-  <!--    <img src="assets/logo.png" alt="" class="top-floating-buttons"-->
-  <!--         style="left: 0; background-color: rgba(0,0,0,0.1); border-radius: 100px;cursor: pointer;-->
-  <!--        width: 41px; height: 41px" id="logo" [matMenuTriggerFor]="menu">-->
-  <!--    <mat-menu #menu="matMenu">-->
-  <!--      <button mat-menu-item (click)="reloadPage()">-->
-  <!--        <mat-icon>refresh</mat-icon>-->
-  <!--        <span>Refresh</span>-->
-  <!--      </button>-->
-  <!--      <button mat-menu-item (click)="openAboutView()">-->
-  <!--        <mat-icon>info</mat-icon>-->
-  <!--        <span>about</span>-->
-  <!--      </button>-->
-  <!--    </mat-menu>-->
-
-  <button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
-          *ngIf="!states.hasUnreadMsg; else unread">
-    <mat-icon class="nav-icon">
-      chat
+<button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
+        *ngIf="!states.hasUnreadMsg; else unread">
+  <mat-icon class="nav-icon">
+    chat
+  </mat-icon>
+</button>
+<ng-template #unread>
+  <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
+    <mat-icon class="nav-icon" color="warn">
+      mark_chat_unread
     </mat-icon>
   </button>
-  <ng-template #unread>
-    <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
-      <mat-icon class="nav-icon" color="warn">
-        mark_chat_unread
-      </mat-icon>
-    </button>
-  </ng-template>
-
-<!--  <div style="flex: 1"></div>-->
-  <!--    <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"-->
-  <!--            matBadge="{{notificationCount()}}" matBadgePosition="after" matBadgeColor="warn"-->
-  <!--            [matBadgeHidden]="notificationCount() == 0">-->
-  <!--      <mat-icon class="nav-icon">-->
-  <!--        menu-->
-  <!--      </mat-icon>-->
-  <!--    </button>-->
-
-<!--  <button mat-icon-button class="btn trans-btn-bright" color="primary" (click)="openUserBriefView()"-->
-<!--          [ngStyle]="{'background-color': notificationCount()>0 ? 'white': ''}">-->
-<!--    <mat-icon class="nav-icon">-->
-<!--      menu-->
-<!--    </mat-icon>-->
-<!--  </button>-->
-<!--</div>-->
+</ng-template>

@@ -33,9 +33,19 @@
     </div>
   </div>
 
+  <div style="display: flex;justify-content: center;margin-top: 20px" *ngIf="showLoadMore">
+    <button mat-flat-button style="border-radius: 100px" color="primary"
+            (click)="loadMore();">
+      Load more
+    </button>
+  </div>
+
+  <div style="height: 80px"></div>
+
   <app-background></app-background>
 
   <ng-template #loadingBar>
-    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>
+<!--    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>-->
+    <app-loading-placeholder></app-loading-placeholder>
   </ng-template>
 </main>

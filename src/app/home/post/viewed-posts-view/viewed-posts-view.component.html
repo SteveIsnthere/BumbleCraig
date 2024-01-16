@@ -1,0 +1,15 @@
+<div class="classicTextBox" style="margin: 20px">
+  <span class="classicTitle">History</span>
+  <span>The posts you have previously watched</span>
+</div>
+<ng-container *ngIf="!loading; else loadingPlaceHolder">
+  <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
+</ng-container>
+<ng-template #loadingPlaceHolder>
+  <app-loading-placeholder></app-loading-placeholder>
+</ng-template>
+
+<div *ngIf="empty">
+  <p style="text-align: center; margin-top: 20px; color: white">You haven't seen a single post yet, do better</p>
+</div>
+<app-home-button></app-home-button>

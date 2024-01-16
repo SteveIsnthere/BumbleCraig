@@ -55,11 +55,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
     localStorage.clear()
     this.http.get<number>(apiEndPoint + '/auth/login_as_new_user').subscribe((data) => {
       this.authDataService.sessionPassword = data.toString();
-      this.auth.loginUsingSessionPassword()
+      this.auth.loginUsingSessionPassword(true)
     })
-
-    // setTimeout(() => {
-    //   this.router.navigate(["signup-loading"]).then();
-    // }, 1100);
   }
 }

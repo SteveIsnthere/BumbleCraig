@@ -63,7 +63,6 @@ import {SysMsgRowComponent} from './home/notification-view/sys-msg-row/sys-msg-r
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatTabsModule} from "@angular/material/tabs";
 import {BackBtnComponent} from './compoents/back-btn/back-btn.component';
-import {SignupLoadingViewComponent} from './home/login-view/signup-loading-view/signup-loading-view.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {PostFilesViewerComponent} from './home/post/post-files-viewer/post-files-viewer.component';
 import {
@@ -83,18 +82,21 @@ import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-s
 import {NgOptimizedImage} from "@angular/common";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {GroupMembersViewComponent} from "./chat/group/group-members-view/group-members-view.component";
+import {LikedPostsViewComponent} from "./home/post/liked-posts-view/liked-posts-view.component";
+import {ViewedPostsViewComponent} from "./home/post/viewed-posts-view/viewed-posts-view.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [authGuard]},
   {path: 'login', component: LoginViewComponent},
-  {path: 'signup-loading', component: SignupLoadingViewComponent},
   {path: 'chat', component: ChatComponent, canActivate: [authGuard]},
   {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
   {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
   {path: 'about', component: AboutComponent},
-  {path: 'new-post', component: NewPostViewComponent},
+  {path: 'new-post', component: NewPostViewComponent, canActivate: [authGuard]},
+  {path: 'viewed-posts', component: ViewedPostsViewComponent, canActivate: [authGuard]},
+  {path: 'liked-posts', component: LikedPostsViewComponent, canActivate: [authGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -135,7 +137,6 @@ const appRoutes: Routes = [
     GroupInvRowComponent,
     SysMsgRowComponent,
     BackBtnComponent,
-    SignupLoadingViewComponent,
     PostFilesViewerComponent,
     ReusableCommentsViewComponent,
     AskTidderComponent,
@@ -146,7 +147,9 @@ const appRoutes: Routes = [
     LoadingPlaceholderComponent,
     CueCardComponent,
     PostSectionViewBaseComponent,
-    GroupMembersViewComponent
+    GroupMembersViewComponent,
+    LikedPostsViewComponent,
+    ViewedPostsViewComponent,
   ],
   imports: [
     BrowserModule,

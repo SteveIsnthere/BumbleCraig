@@ -13,11 +13,13 @@ import {MainService} from "../services/main.service";
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-
   groupIDs: number[] = [];
+  groupIDsRemaining: number[] = [];
+  loadIncrement: number = 20;
   groupWithUnreadIDs: number[] = [];
   editMode: boolean = false;
   loadingComplete: boolean = false;
+  showLoadMore: boolean = false;
   cacheKey: string = 'chat-groups-cache';
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet) {
@@ -27,7 +29,12 @@ export class ChatComponent implements OnInit {
     this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.groupIDs) {
         this.groupIDs = data;
+        this.groupIDsRemaining = this.groupIDs.slice(this.loadIncrement, this.groupIDs.length);
+        this.groupIDs = this.groupIDs.slice(0, this.loadIncrement);
         this.loadingComplete = true;
+        if (this.groupIDsRemaining.length > 0) {
+          this.showLoadMore = true;
+        }
         this.saveToLocalStorage()
       }
       this.http.get<number[]>(apiEndPoint + '/group/get_joined_groups_with_unread_msg/' + this.auth.selfUserID).subscribe((data) => {
@@ -60,6 +67,14 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  loadMore(): void {
+    this.groupIDs = this.groupIDs.concat(this.groupIDsRemaining.slice(0, this.loadIncrement));
+    this.groupIDsRemaining = this.groupIDsRemaining.slice(this.loadIncrement, this.groupIDsRemaining.length);
+    if (this.groupIDsRemaining.length == 0) {
+      this.showLoadMore = false;
+    }
+  }
+
   isGroupUnread(groupID: number): boolean {
     return this.groupWithUnreadIDs.includes(groupID);
   }
@@ -76,7 +91,7 @@ export class ChatComponent implements OnInit {
       this.groupIDs = JSON.parse(cachedData);
       this.loadingComplete = true;
     }
-}
+  }
 
   private saveToLocalStorage(): void {
     localStorage.setItem(this.cacheKey, JSON.stringify(this.groupIDs));

@@ -14,7 +14,10 @@ import {FindUserViewComponent} from "./find-user-view/find-user-view.component";
 })
 export class FriendsViewComponent implements OnInit {
   friendIDs: number[] = [];
+  friendIDsRemaining: number[] = [];
+  loadIncrement: number = 20;
   loaded: boolean = false;
+  showLoadMore: boolean = false;
 
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet) {
   }
@@ -22,8 +25,21 @@ export class FriendsViewComponent implements OnInit {
   ngOnInit(): void {
     this.http.get<number[]>(apiEndPoint + '/user/get_friends/' + this.auth.selfUserID).subscribe((data: any) => {
       this.friendIDs = data;
+      this.friendIDsRemaining = this.friendIDs.slice(this.loadIncrement, this.friendIDs.length);
+      this.friendIDs = this.friendIDs.slice(0, this.loadIncrement);
       this.loaded = true;
+      if (this.friendIDsRemaining.length > 0) {
+        this.showLoadMore = true;
+      }
     })
+  }
+
+  loadMore(): void {
+    this.friendIDs = this.friendIDs.concat(this.friendIDsRemaining.slice(0, this.loadIncrement));
+    this.friendIDsRemaining = this.friendIDsRemaining.slice(this.loadIncrement, this.friendIDsRemaining.length);
+    if (this.friendIDsRemaining.length == 0) {
+      this.showLoadMore = false;
+    }
   }
 
   searchUser(): void {
