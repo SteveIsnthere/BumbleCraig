@@ -1,6 +1,6 @@
 <main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
   <div class="classicTextBox" style="margin: 5px 10px 15px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
-    <span class="classicTitle">Welcome!</span>
+    <span class="classicTitle">Join {{siteName}}</span>
     <div style="display: flex; justify-content: space-between">
       <span>Signup to make your account permanent</span>
       <button mat-flat-button color="primary" (click)="userSetUp()"

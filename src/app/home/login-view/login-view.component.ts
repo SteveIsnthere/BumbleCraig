@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {AuthDataService} from "../../services/auth-data.service";
 import {HttpClient} from "@angular/common/http";
-import {apiEndPoint} from "../../env";
+import {apiEndPoint, siteName} from "../../env";
 
 @Component({
   selector: 'app-login-view',
@@ -58,4 +58,6 @@ export class LoginViewComponent implements OnInit, OnDestroy {
       this.auth.loginUsingSessionPassword(true)
     })
   }
+
+    protected readonly siteName = siteName;
 }

@@ -13,13 +13,11 @@
     <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
     {{ selectedRankingMode[0] }}
   </button>
-  <button mat-button [matMenuTriggerFor]="genreMenu" style="font-weight: lighter;">
+  <button mat-button [matMenuTriggerFor]="genreMenu">
     {{ genreSelected }}
   </button>
   <div style="flex: 1"></div>
-  <!--  <mat-slide-toggle [(ngModel)]="isChecked">Friends only</mat-slide-toggle>-->
 </div>
-<!--<mat-divider style="transform: translateY(10px)"></mat-divider>-->
 
 
 <mat-menu #rankingModeMenu="matMenu">

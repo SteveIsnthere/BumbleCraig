@@ -8,7 +8,7 @@ export const colors = [
 
 // export const apiEndPoint: string = 'http://127.0.0.1:8000/tidder'
 export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
-
+export const siteName: string = 'Tidder'
 export const rankingModes = [
   ['Recommended', 'star'],
   ['Trending', 'trending_up'],
@@ -33,7 +33,7 @@ export const genres = [
 ];
 
 export const assistantPrompts: string[] = [
-  "What is Tidder?",
+  "What is " + siteName + "?",
   "Who made this?",
   "Tell me a lame joke",
   "What's the meaning of life?",

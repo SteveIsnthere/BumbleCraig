@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
 import {AuthService} from "../services/auth.service";
+import {siteName} from "../env";
 
 @Component({
   selector: 'app-home',
@@ -24,4 +25,5 @@ export class HomeComponent {
     this.dialog.open(UserSetUpComponent, dialogConfig);
   }
 
+    protected readonly siteName = siteName;
 }

@@ -1,10 +1,20 @@
 <main>
   <div *ngIf="!loading && response == ''" id="input">
+    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start" mat-dialog-close>
+      <mat-icon>close_fullscreen</mat-icon>
+      close
+    </button>
+    <div class="classicTextBox" style="margin: -5px -8px 10px">
+      <span class="classicTitle">Ask {{siteName}}</span>
+      <div style="display: flex; justify-content: space-between">
+        <span>Ask me anything, and I'll try my best to answer</span>
+      </div>
+    </div>
+
     <div id="prompts">
       <ng-container *ngIf="imageToUpload != null; else noImg">
         <img [src]="url" alt="image" class="imagePreview">
       </ng-container>
-
       <ng-template #noImg>
         <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
           <mat-icon>add_photo_alternate</mat-icon>

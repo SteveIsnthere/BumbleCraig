@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {siteName} from "../../env";
 
 @Component({
   selector: 'app-logo',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class LogoComponent {
 
+    protected readonly siteName = siteName;
 }

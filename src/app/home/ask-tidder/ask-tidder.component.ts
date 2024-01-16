@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {apiEndPoint, assistantPrompts, visionPrompts} from "../../env";
+import {apiEndPoint, assistantPrompts, siteName, visionPrompts} from "../../env";
 import {AuthService} from "../../services/auth.service";
 
 import {animate, style, transition, trigger} from "@angular/animations";
@@ -118,4 +118,6 @@ export class AskTidderComponent {
       });
     }, 100);
   }
+
+  protected readonly siteName = siteName;
 }

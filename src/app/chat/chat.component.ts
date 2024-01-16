@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {apiEndPoint} from "../env";
+import {apiEndPoint, siteName} from "../env";
 import {AuthService} from "../services/auth.service";
 import {TextEditViewComponent} from "./text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
@@ -96,4 +96,6 @@ export class ChatComponent implements OnInit {
   private saveToLocalStorage(): void {
     localStorage.setItem(this.cacheKey, JSON.stringify(this.groupIDs));
   }
+
+    protected readonly siteName = siteName;
 }

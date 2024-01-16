@@ -1,21 +1,27 @@
 <main>
   <app-home-button (click)="this.main.fetchNotifications().subscribe()"></app-home-button>
+  <div class="classicTextBox" style="margin: 5px 10px 15px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
+    <span class="classicTitle">Group Chat</span>
+    <div style="display: flex; justify-content: space-between; gap: 10px">
+      <span>Join or create chat groups to talk with others</span>
+      <div id="top-bar" style="flex-shrink: 0">
+        <button mat-stroked-button (click)="createGroup()" color="primary" style="border-radius: 200px">
+          <mat-icon>add_circle</mat-icon>
+          Create New
+        </button>
 
-  <div id="top-bar">
-    <button mat-stroked-button (click)="createGroup()" color="primary" style="border-radius: 200px">
-      <mat-icon>add_circle</mat-icon>
-      Create New
-    </button>
-
-    <ng-container *ngIf="!editMode; else checkBtn">
-      <button mat-stroked-button (click)="editMode = !editMode" color="warn"
-              style="border-radius: 200px;">
-        <mat-icon>delete</mat-icon>
-        Quit Group
-      </button>
-    </ng-container>
+        <ng-container *ngIf="!editMode; else checkBtn">
+          <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+                  style="border-radius: 200px;">
+            <mat-icon>delete</mat-icon>
+            Quit Group
+          </button>
+        </ng-container>
+      </div>
     </div>
-    <ng-template #checkBtn>
+  </div>
+
+  <ng-template #checkBtn>
     <button mat-stroked-button (click)="editMode = !editMode" color="warn"
             style="border-radius: 200px;">
       <mat-icon>check</mat-icon>
@@ -45,7 +51,7 @@
   <app-background></app-background>
 
   <ng-template #loadingBar>
-<!--    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>-->
+    <!--    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>-->
     <app-loading-placeholder></app-loading-placeholder>
   </ng-template>
 </main>

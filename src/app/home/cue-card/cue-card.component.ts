@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MainService} from "../../services/main.service";
-import {apiEndPoint} from "../../env";
+import {apiEndPoint, siteName} from "../../env";
 import {HttpClient} from "@angular/common/http";
 import {AskTidderComponent} from "../ask-tidder/ask-tidder.component";
 import {NotificationViewComponent} from "../notification-view/notification-view.component";
@@ -16,7 +16,7 @@ import {debounceTime, fromEvent, Subscription} from "rxjs";
 export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];
   topBarOffset = 0;
-  topBarHeight = 64;
+  topBarHeight = 74;
   lastScrollTop: number = 0;
   isScrolling = false;
   private resizeSubscription: Subscription = new Subscription();
@@ -43,7 +43,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
   }
 
   manageTopUsers() {
-    if (window.innerWidth < 555) {
+    if (window.innerWidth < 600) {
       this.topUserIDs = [];
       return;
     }
@@ -119,4 +119,6 @@ export class CueCardComponent implements OnInit, OnDestroy {
   logout() {
     this.auth.logout();
   }
+
+  protected readonly siteName = siteName;
 }

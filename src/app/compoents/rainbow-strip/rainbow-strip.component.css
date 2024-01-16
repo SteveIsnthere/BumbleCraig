@@ -17,7 +17,7 @@ main {
 .bottom {
   bottom: 0;
   mask: linear-gradient(transparent, white);
-  height: 50px;
+  height: 20px;
   animation: rainbow 5s alternate infinite, appear 5s forwards;
 }
 

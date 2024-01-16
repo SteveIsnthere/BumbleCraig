@@ -4,11 +4,11 @@
   <button mat-flat-button color="warn" (click)="openAssistant()"
           style="border-radius: 200px">
     <mat-icon>join_left</mat-icon>
-    Ask Tidder
+    Ask {{siteName}}
   </button>
 
-  <div id="top-users-bar" *ngIf="topUserIDs.length>0">
-    <mat-icon style="scale: 1.4" color="primary">emoji_events</mat-icon>
+  <div id="top-users-bar" *ngIf="topUserIDs.length>0" style="flex-shrink: 0">
+    <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>
     <div id="top-users">
       <app-user-mini *ngFor="let userID of topUserIDs" [userID]="userID"></app-user-mini>
     </div>

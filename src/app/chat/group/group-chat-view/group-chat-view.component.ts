@@ -56,6 +56,9 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
         this.onHeightChange();
       }
     }, 200);
+
+    //change body background color to black
+    document.body.style.backgroundColor = 'black';
   }
 
   ngOnDestroy(): void {
@@ -64,6 +67,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
     //   this.observer.unobserve(this.messagesContainer);
     // }
     clearInterval(this.resizeCheckInterval);
+    document.body.style.backgroundColor = '#212121';
   }
 
   setMessageRefreshLoop() {

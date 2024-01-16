@@ -5,6 +5,7 @@ main {
   justify-content: center;
   /*overflow: hidden;*/
   padding: 20px;
+  width: 214px;
   background-color: #363636;
 }
 
@@ -16,11 +17,10 @@ main {
 
 
 .example-questions {
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 70vw;
+  width: 100%;
   gap: 10px;
   margin-bottom: 20px;
 }
