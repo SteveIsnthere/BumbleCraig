@@ -15,10 +15,17 @@ main {
   position: relative;
 }
 
-#start-btn{
+#logo {
+  width: 220px;
+  aspect-ratio: 1;
+  margin: -45px
+}
+
+
+#start-btn {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
-  animation: gradient 5s ease infinite;
+  animation: rainbow 5s ease infinite;
 }
 
 #sign-up-background {
@@ -30,14 +37,14 @@ main {
   height: 100dvh;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
-  animation: gradient 7s ease infinite, appear 1s forwards;
+  animation: rainbow 7s ease infinite, appear 1s forwards;
 }
 
 .fade {
   animation: disappear 1s ease forwards;
 }
 
-.title-loading{
+.title-loading {
   animation: title 1s ease forwards;
 }
 
@@ -46,24 +53,17 @@ main {
   animation: change-bg 0.3s ease forwards;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
+.logoLoginEffect {
+  animation: logoEffect 1s ease forwards;
 }
+
 
 @keyframes change-bg {
   0% {
   }
   100% {
     background-color: rgba(255, 255, 255, 0.05);
-    color: #2a2a2a;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -71,10 +71,19 @@ main {
   0% {
   }
   100% {
-    color: #2a2a2a;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
+@keyframes logoEffect {
+  0% {
+
+  }
+  100% {
+    width: 0;
+    margin: 0;
+  }
+}
 
 
 /*.startUpSlideIn {*/
@@ -103,7 +112,6 @@ main {
 /*    !*scale: 2;*!*/
 /*  }*/
 /*}*/
-
 
 
 @keyframes logoAppear {

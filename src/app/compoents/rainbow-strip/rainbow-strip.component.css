@@ -27,18 +27,18 @@ main {
   animation: rainbow 10s alternate infinite, appear 4s forwards;
 }
 
-@keyframes rainbow {
-  0% {
-    background-position: 0 50%;
-    /*height: 150px;*/
-  }
-  50% {
-    background-position: 50% 50%;
-    /*height: 100px;*/
-  }
-  100% {
-    background-position: 100% 50%;
-    /*height: 150px;*/
-  }
-}
+/*@keyframes rainbow {*/
+/*  0% {*/
+/*    background-position: 0 50%;*/
+/*    !*height: 150px;*!*/
+/*  }*/
+/*  50% {*/
+/*    background-position: 50% 50%;*/
+/*    !*height: 100px;*!*/
+/*  }*/
+/*  100% {*/
+/*    background-position: 100% 50%;*/
+/*    !*height: 150px;*!*/
+/*  }*/
+/*}*/
 

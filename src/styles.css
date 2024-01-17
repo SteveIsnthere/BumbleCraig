@@ -28,6 +28,30 @@ body {
   }
 }
 
+/*@keyframes rainbow {*/
+/*  0% {*/
+/*    background-position: 0 50%;*/
+/*  }*/
+/*  50% {*/
+/*    background-position: 50% 50%;*/
+/*  }*/
+/*  100% {*/
+/*    background-position: 100% 50%;*/
+/*  }*/
+/*}*/
+
+@keyframes rainbow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
 .classicTextBox{
   color: white;
   padding: 20px;
@@ -42,9 +66,10 @@ body {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 20px;
-  font-size: x-large;
+  /*font-size: x-large;*/
   color: #e15241;
-  font-weight: 470;
+  /*font-weight: 470;*/
+  font-size: xx-large; font-weight: bolder
 }
 
 .post-back-drop{
@@ -55,8 +80,6 @@ body {
 .trans-btn-dark {
   -webkit-backdrop-filter: blur(10px) brightness(0.85);
   backdrop-filter: blur(10px) brightness(0.85);
-/*background-color: rgba(225,82,65,0.13)*/
-/*background-color: rgba(245,82,70,0.13)*/
 }
 
 .trans-btn-bright {

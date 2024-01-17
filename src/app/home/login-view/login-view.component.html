@@ -1,5 +1,6 @@
 <main *ngIf="loginView != null; else loadingBar">
-  <app-logo style="margin: -35px"></app-logo>
+  <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
+<!--  <app-logo style="margin: -35px"></app-logo>-->
 
   <ng-container *ngIf="loginView; else welcomeView">
     <form *ngIf="!loginLoading; else loginLoadingBar">
@@ -34,7 +35,7 @@
 
   <ng-template #welcomeView>
     <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
-      <div class="classicTitle" style="font-size: xx-large; font-weight: bolder"  [ngClass]="{'title-loading': newUserLoading}">
+      <div class="classicTitle"  [ngClass]="{'title-loading': newUserLoading}">
           {{siteName}}
       </div>
       <p>Finally, a <b style="text-decoration: underline">sensible</b> platform for the rest of us</p>

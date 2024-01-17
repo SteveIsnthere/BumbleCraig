@@ -32,20 +32,6 @@ main{
   background-size: 170%;
   animation: rainbow 10s alternate infinite, appear 0.3s forwards;
 }
-@keyframes rainbow {
-  0% {
-    background-position: 0 50%;
-    /*height: 150px;*/
-  }
-  50% {
-    background-position: 50% 50%;
-    /*height: 100px;*/
-  }
-  100% {
-    background-position: 100% 50%;
-    /*height: 150px;*/
-  }
-}
 
 #logo{
   width: 37px;
@@ -75,19 +61,3 @@ main{
   color: white;
   vertical-align: middle;
 }
-
-/*#profile-btn{*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  height: 100%;*/
-/*  background-color: transparent;*/
-/*  border: none;*/
-/*  gap: 3px;*/
-/*}*/
-
-/*#profile-btn:hover{*/
-/*  background-color: rgba(255, 255, 255, 0.09);*/
-/*}*/
-
-/*.menuIcon{*/
-/*}*/
