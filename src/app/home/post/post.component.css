@@ -5,7 +5,7 @@ mat-card {
   /*background-color: rgba(0, 0, 0, 0.4);*/
   background-color: rgba(0, 0, 0, 0);
   /*border: 3px grey dashed;*/
-  animation: appear 1.5s forwards;
+  animation: appear 1s forwards;
   cursor: pointer;
 }
 

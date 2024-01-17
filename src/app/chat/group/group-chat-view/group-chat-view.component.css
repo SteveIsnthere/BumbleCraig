@@ -72,7 +72,7 @@ main {
 
 .self-msg {
   /*animation: slideInSelf 0.6s ease-in-out forwards; !* Apply the animation *!*/
-  animation: appear 1s ease forwards;
+  animation: appear 0.3s ease forwards;
   flex-direction: row-reverse;
   margin-right: 10px;
 }
@@ -83,7 +83,7 @@ main {
 
 .other-msg {
   /*animation: slideIn 0.6s ease-in-out forwards; !* Apply the animation *!*/
-  animation: appear 1s ease forwards;
+  animation: appear 0.3s ease forwards;
 }
 
 .text-content {

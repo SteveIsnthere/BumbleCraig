@@ -1,64 +1,6 @@
 main {
-  /*height: 100dvh;*/
   width: 100%;
   overflow-x: hidden;
-}
-
-.top-floating-buttons {
-  display: flex;
-  position: fixed;
-  top: 0;
-  margin: 20px;
-  z-index: 10;
-}
-
-#bottom-nav > .btn {
-  padding: 0 17px;
-  cursor: pointer;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.nav-icon {
-  scale: 1.2;
-  vertical-align: middle;
-}
-
-.active-nav-icon {
-  color: white;
-}
-
-.inactive-nav-icon {
-  color: black;
-}
-
-.unreadMsg {
-  color: #f55246;
-}
-
-#bottom-nav {
-  position: fixed;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  padding: 6px 4px;
-  z-index: 10;
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  display: flex;
-  /*background-color: rgba(138, 138, 138, 0.15);*/
-  background-color: rgba(107, 107, 107, 0.5);
-  animation: appear 1s ease;
-  /*animation: bNavSlideIn 1s ease;*/
-}
-
-@keyframes bNavSlideIn {
-  0% {
-    transform: translate(-50%, 100%); /* Start position */
-  }
 }
 
 @keyframes slideIn {

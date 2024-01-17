@@ -33,7 +33,7 @@ body {
   padding: 20px;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.32);
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(20px);
 }
 
 .classicTitle{

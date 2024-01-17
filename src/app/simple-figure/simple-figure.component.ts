@@ -21,17 +21,16 @@ export class SimpleFigureComponent implements OnInit {
 
   ngOnInit(): void {
     this.width = this.elementRef.nativeElement.offsetWidth;
-
     let cachedData = this.cache.get(this.figureID);
 
     if (cachedData != '') {
       // cached data
       this.data = convertToColorArray(cachedData);
       this.loading = false;
-      if (Math.random() < 0.7) {
-        // f outta here
-        return
-      }
+      // if (Math.random() < 0.7) {
+      //   // f outta here
+      //   return
+      // }
       setTimeout(() => {
         // delayed fetch
         this.http.get<string>(apiEndPoint + '/simple_figure/' + this.figureID).subscribe((data) => {
@@ -41,7 +40,7 @@ export class SimpleFigureComponent implements OnInit {
             this.loading = false;
           }
         })
-      }, 2000 + Math.random() * 5000);
+      }, 1000 + Math.random() * 3000);
     } else {
       // no cached data
       this.http.get<string>(apiEndPoint + '/simple_figure/' + this.figureID).subscribe((data) => {

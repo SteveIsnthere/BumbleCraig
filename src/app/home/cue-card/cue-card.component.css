@@ -30,7 +30,7 @@ main{
     rgba(35, 213, 171, 0.42)
   );
   background-size: 170%;
-  animation: rainbow 10s alternate infinite, appear 0.5s forwards;
+  animation: rainbow 10s alternate infinite, appear 0.3s forwards;
 }
 @keyframes rainbow {
   0% {

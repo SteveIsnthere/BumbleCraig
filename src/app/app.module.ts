@@ -41,9 +41,6 @@ import {FindUserViewComponent} from './home/friends-view/find-user-view/find-use
 import {PostSectionViewComponent} from './home/post/post-section-view/post-section-view.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {
-  PostSectionOptionsComponent
-} from './home/post/post-section-view/post-section-options/post-section-options.component';
 import {MatChipsModule} from "@angular/material/chips";
 import {PostCommentsViewComponent} from './home/post/post-comments-view/post-comments-view.component';
 import {PostPerceptionBarComponent} from './home/post/post-perception-bar/post-perception-bar.component';
@@ -125,7 +122,6 @@ const appRoutes: Routes = [
     FriendsViewComponent,
     FindUserViewComponent,
     PostSectionViewComponent,
-    PostSectionOptionsComponent,
     PostCommentsViewComponent,
     PostPerceptionBarComponent,
     NewPostViewComponent,

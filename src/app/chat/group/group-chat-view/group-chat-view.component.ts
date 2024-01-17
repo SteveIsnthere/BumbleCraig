@@ -9,7 +9,6 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FigureEditViewComponent} from "../../../simple-figure/figure-edit-view/figure-edit-view.component";
 import {TextEditViewComponent} from "../../text-edit-view/text-edit-view.component";
 import {InviteViewComponent} from "../invite-view/invite-view.component";
-import {StatesService} from "../../../services/states.service";
 import {Observable} from "rxjs";
 
 @Component({
@@ -23,10 +22,10 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   groupID: number = 0;
   messages: Message[] = [];
   selfID: number = 0;
+  loading: boolean = true;
   groupEssentialData: GroupEssentialData = dummyGroupEssentialData();
   uploadRoute: string = '/group/create_file_share/';
   fileToUpload: File | null = null;
-  loadedScroller: boolean = false;
   noMessages: boolean = false;
   uploadingFile: boolean = false;
   shouldLoadMessages: boolean = true;
@@ -34,7 +33,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   resizeCheckInterval: any;
   lastWindowScrollHeight: number = 0;
 
-  constructor(public http: HttpClient, private states: StatesService, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
+  constructor(public http: HttpClient, public route: ActivatedRoute, public auth: AuthService, private _bottomSheet: MatBottomSheet) {
     this.selfID = this.auth.selfUserID;
   }
 
@@ -62,12 +61,12 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    document.body.style.backgroundColor = '#212121';
     this.shouldLoadMessages = false;
     // if (this.loadedScroller) {
     //   this.observer.unobserve(this.messagesContainer);
     // }
     clearInterval(this.resizeCheckInterval);
-    document.body.style.backgroundColor = '#212121';
   }
 
   setMessageRefreshLoop() {
@@ -82,17 +81,12 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   loadMessages(): Observable<boolean> {
     return new Observable<boolean>((observer) => {
       this.http.get<Message[]>(apiEndPoint + '/group/messages/' + this.groupID + '/' + this.auth.selfUserID).subscribe((data) => {
+        this.loading = false;
         if (data.length === 0) {
           this.noMessages = true;
           observer.next(true);
           observer.complete();
           return;
-        } else if (!this.loadedScroller) {
-          this.noMessages = false;
-          this.loadedScroller = true;
-          // this.messagesContainer = this.elementRef.nativeElement.querySelector('#messages-container');
-          // this.observer = new ResizeObserver(() => this.onScrollThrottled());
-          // this.observer.observe(this.messagesContainer);
         }
 
         if (!this.messagesHasChanged(data)) {

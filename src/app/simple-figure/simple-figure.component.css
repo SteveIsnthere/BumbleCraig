@@ -1,7 +1,7 @@
 main{
   display: flex;
   flex-direction: column;
-  animation: appear 2s forwards;
+  animation: appear 1s forwards;
 }
 
 .color-row{
