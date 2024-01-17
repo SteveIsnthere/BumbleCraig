@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MainService} from "../../services/main.service";
@@ -21,7 +21,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
   isScrolling = false;
   private resizeSubscription: Subscription = new Subscription();
 
-  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient) {
+  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private elementRef: ElementRef) {
     this.lastScrollTop = 0;
   }
 
@@ -88,15 +88,17 @@ export class CueCardComponent implements OnInit, OnDestroy {
         }
       }
     }
+
+    this.elementRef.nativeElement.querySelector('#top-bar').style.top = -this.topBarOffset + 'px';
     this.isScrolling = false;
   }
 
-  topBarStyle() {
-    return {
-      'top': -this.topBarOffset + 'px',
-      // 'opacity': 1 - this.topBarOffset / this.topBarHeight,
-    }
-  }
+  // topBarStyle() {
+  //   return {
+  //     'top': -this.topBarOffset + 'px',
+  //     // 'opacity': 1 - this.topBarOffset / this.topBarHeight,
+  //   }
+  // }
 
   notificationCount() {
     return this.main.getTotalMessageCount();
