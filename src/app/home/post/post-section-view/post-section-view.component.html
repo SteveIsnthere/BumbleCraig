@@ -66,10 +66,15 @@
   </button>
 </div>
 
+<!--<div id="refresh-btn" *ngIf="showReloadButton">-->
+<!--  <button mat-stroked-button color="warn" (click)="refresh()" class="trans-btn-dark"-->
+<!--          style="border-radius: 100px;">-->
+<!--    <mat-icon>refresh</mat-icon>-->
+<!--    Refresh-->
+<!--  </button>-->
+<!--</div>-->
 <div id="refresh-btn" *ngIf="showReloadButton">
-  <button mat-stroked-button color="warn" (click)="refresh()" class="trans-btn-dark"
-          style="border-radius: 100px;">
+  <button mat-mini-fab color="warn" (click)="refresh()">
     <mat-icon>refresh</mat-icon>
-    Refresh
   </button>
 </div>

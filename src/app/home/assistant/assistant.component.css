@@ -4,8 +4,8 @@ main {
   align-items: center;
   justify-content: center;
   /*overflow: hidden;*/
-  padding: 20px;
-  background-color: #363636;
+  /*max-height: 80dvh;*/
+  /*overflow-y: visible;*/
 }
 
 #input {

@@ -1,10 +1,12 @@
+<mat-dialog-content style="background-color:  #363636;">
 <main>
+  <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start" mat-dialog-close>
+    <mat-icon>close_fullscreen</mat-icon>
+    close
+  </button>
   <div *ngIf="!loading && response == ''" id="input">
-    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start" mat-dialog-close>
-      <mat-icon>close_fullscreen</mat-icon>
-      close
-    </button>
-    <div class="classicTextBox" style="margin: -5px -8px 10px;border-radius: 5px">
+
+    <div class="classicTextBox" style="margin: -5px -8px 10px;border-radius: 5px" *ngIf="imageToUpload == null">
       <span class="classicTitle">Ask {{siteName}}</span>
       <div style="display: flex; justify-content: space-between">
         <span>Ask me anything, and I'll try my best to answer</span>
@@ -68,3 +70,4 @@
   </ng-container>
   <!--  <app-rainbow-strip [bottom]=true></app-rainbow-strip>-->
 </main>
+</mat-dialog-content>
