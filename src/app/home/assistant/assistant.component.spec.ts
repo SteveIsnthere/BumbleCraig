@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AskTidderComponent } from './ask-tidder.component';
+import { AssistantComponent } from './assistant.component';
 
 describe('AskTidderComponent', () => {
-  let component: AskTidderComponent;
-  let fixture: ComponentFixture<AskTidderComponent>;
+  let component: AssistantComponent;
+  let fixture: ComponentFixture<AssistantComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AskTidderComponent]
+      declarations: [AssistantComponent]
     });
-    fixture = TestBed.createComponent(AskTidderComponent);
+    fixture = TestBed.createComponent(AssistantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

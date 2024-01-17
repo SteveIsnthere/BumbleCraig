@@ -65,11 +65,10 @@ import {PostFilesViewerComponent} from './home/post/post-files-viewer/post-files
 import {
   ReusableCommentsViewComponent
 } from './home/post/post-comments-view/reusable-comments-view/reusable-comments-view.component';
-import {AskTidderComponent} from './home/ask-tidder/ask-tidder.component';
+import {AssistantComponent} from './home/assistant/assistant.component';
 import {LogoComponent} from './compoents/logo/logo.component';
 import {RainbowStripComponent} from './compoents/rainbow-strip/rainbow-strip.component';
 import {AboutComponent} from './compoents/about/about.component';
-import {UserBriefComponent} from "./user/user-brief/user-brief.component";
 import {BackgroundComponent} from "./compoents/background/background.component";
 import {HomeButtonComponent} from "./compoents/home-button/home-button.component";
 import {LoadingPlaceholderComponent} from "./compoents/loading-placeholder/loading-placeholder.component";
@@ -135,11 +134,10 @@ const appRoutes: Routes = [
     BackBtnComponent,
     PostFilesViewerComponent,
     ReusableCommentsViewComponent,
-    AskTidderComponent,
+    AssistantComponent,
     LogoComponent,
     RainbowStripComponent,
     AboutComponent,
-    UserBriefComponent,
     LoadingPlaceholderComponent,
     CueCardComponent,
     PostSectionViewBaseComponent,

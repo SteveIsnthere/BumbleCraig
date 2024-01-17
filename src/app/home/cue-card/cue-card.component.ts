@@ -4,7 +4,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MainService} from "../../services/main.service";
 import {apiEndPoint, siteName} from "../../env";
 import {HttpClient} from "@angular/common/http";
-import {AskTidderComponent} from "../ask-tidder/ask-tidder.component";
+import {AssistantComponent} from "../assistant/assistant.component";
 import {NotificationViewComponent} from "../notification-view/notification-view.component";
 import {debounceTime, fromEvent, Subscription} from "rxjs";
 
@@ -112,7 +112,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
   openAssistant() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.backdropClass = 'post-back-drop';
-    this.dialog.open(AskTidderComponent, dialogConfig);
+    this.dialog.open(AssistantComponent, dialogConfig);
   }
 
 

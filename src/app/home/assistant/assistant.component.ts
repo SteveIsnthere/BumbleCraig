@@ -6,9 +6,9 @@ import {AuthService} from "../../services/auth.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
-  selector: 'app-ask-tidder',
-  templateUrl: './ask-tidder.component.html',
-  styleUrls: ['./ask-tidder.component.css'],
+  selector: 'app-assistant',
+  templateUrl: './assistant.component.html',
+  styleUrls: ['./assistant.component.css'],
   animations: [
     trigger('inOutAnimation', [
       transition(':enter', [
@@ -19,7 +19,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ]
 })
 
-export class AskTidderComponent {
+export class AssistantComponent {
   imageToUpload: File | null = null;
   url: string = "";
   response: string = "";
