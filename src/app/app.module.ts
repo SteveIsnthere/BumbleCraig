@@ -82,9 +82,9 @@ import {LikedPostsViewComponent} from "./home/post/liked-posts-view/liked-posts-
 import {ViewedPostsViewComponent} from "./home/post/viewed-posts-view/viewed-posts-view.component";
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent, canActivate: [authGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [authGuard], data: { state: 'home' }},
   {path: 'login', component: LoginViewComponent},
-  {path: 'chat', component: ChatComponent, canActivate: [authGuard]},
+  {path: 'chat', component: ChatComponent, canActivate: [authGuard], data: { state: 'chat' }},
   {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
   {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
   {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
