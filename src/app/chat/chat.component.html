@@ -1,6 +1,5 @@
 <main>
-  <app-home-button (click)="this.main.fetchNotifications().subscribe()"></app-home-button>
-  <div class="classicTextBox" style="margin: 5px 10px 15px; animation: appear 0.3s forwards">
+  <div class="classicTextBox" style="margin: 5px 20px 15px; animation: appear 0.3s forwards">
     <span class="classicTitle">Group Chat</span>
     <div style="display: flex; justify-content: space-between; gap: 10px">
       <span>Join or create chat groups to talk with others</span>
@@ -47,9 +46,6 @@
   </div>
 
   <div style="height: 80px"></div>
-
-  <app-background></app-background>
-
   <ng-template #loadingBar>
     <!--    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>-->
     <app-loading-placeholder></app-loading-placeholder>

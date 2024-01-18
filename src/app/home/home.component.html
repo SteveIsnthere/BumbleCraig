@@ -1,5 +1,5 @@
-<main [ngClass]="{'startUpSlideIn':!states.loadedUp}">
-  <div class="classicTextBox" style="margin: 5px 10px 12px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
+<main>
+  <div class="classicTextBox" style="margin: 5px 20px 12px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
     <span class="classicTitle">Join {{siteName}}</span>
     <div style="display: flex; justify-content: space-between">
       <span>Signup to make your account permanent</span>
@@ -14,16 +14,3 @@
   <div style="height: 80px"></div>
 </main>
 
-<button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
-        *ngIf="!states.hasUnreadMsg; else unread">
-  <mat-icon class="nav-icon">
-    chat
-  </mat-icon>
-</button>
-<ng-template #unread>
-  <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
-    <mat-icon class="nav-icon" color="warn">
-      mark_chat_unread
-    </mat-icon>
-  </button>
-</ng-template>

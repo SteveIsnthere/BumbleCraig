@@ -1,5 +1,4 @@
 <main *ngIf="essentialUserData.figure_id != 0">
-  <app-back-btn></app-back-btn>
   <div id="main-frame">
     <div id="figure" *ngIf="essentialUserData.figure_id != 0">
       <app-simple-figure [figureID]="essentialUserData.figure_id" #figure></app-simple-figure>

@@ -74,25 +74,33 @@ import {HomeButtonComponent} from "./compoents/home-button/home-button.component
 import {LoadingPlaceholderComponent} from "./compoents/loading-placeholder/loading-placeholder.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {CueCardComponent} from "./home/cue-card/cue-card.component";
-import {PostSectionViewBaseComponent} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
+import {
+  PostSectionViewBaseComponent
+} from "./home/post/post-section-view/post-section-view-base/post-section-view-base.component";
 import {NgOptimizedImage} from "@angular/common";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {GroupMembersViewComponent} from "./chat/group/group-members-view/group-members-view.component";
 import {LikedPostsViewComponent} from "./home/post/liked-posts-view/liked-posts-view.component";
 import {ViewedPostsViewComponent} from "./home/post/viewed-posts-view/viewed-posts-view.component";
+import {MainBtnComponent} from "./compoents/main-btn/main-btn.component";
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent, canActivate: [authGuard], data: { state: 'home' }},
-  {path: 'login', component: LoginViewComponent},
-  {path: 'chat', component: ChatComponent, canActivate: [authGuard], data: { state: 'chat' }},
-  {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard]},
-  {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard]},
-  {path: 'user-profile-edit', component: UserEditViewComponent, canActivate: [authGuard]},
-  {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard]},
-  {path: 'about', component: AboutComponent},
-  {path: 'new-post', component: NewPostViewComponent, canActivate: [authGuard]},
-  {path: 'viewed-posts', component: ViewedPostsViewComponent, canActivate: [authGuard]},
-  {path: 'liked-posts', component: LikedPostsViewComponent, canActivate: [authGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [authGuard], data: {state: 'home'}},
+  {path: 'login', component: LoginViewComponent, data: {state: 'login'}},
+  {path: 'chat', component: ChatComponent, canActivate: [authGuard], data: {state: 'chat'}},
+  {path: 'group/:id', component: GroupChatViewComponent, canActivate: [authGuard], data: {state: 'group'}},
+  {path: 'user/:id', component: UserDetailedViewComponent, canActivate: [authGuard], data: {state: 'user'}},
+  {
+    path: 'user-profile-edit',
+    component: UserEditViewComponent,
+    canActivate: [authGuard],
+    data: {state: 'user-profile-edit'}
+  },
+  {path: 'friends', component: FriendsViewComponent, canActivate: [authGuard], data: {state: 'friends'}},
+  {path: 'about', component: AboutComponent, data: {state: 'about'}},
+  {path: 'new-post', component: NewPostViewComponent, canActivate: [authGuard], data: {state: 'new-post'}},
+  {path: 'viewed-posts', component: ViewedPostsViewComponent, canActivate: [authGuard], data: {state: 'viewed-posts'}},
+  {path: 'liked-posts', component: LikedPostsViewComponent, canActivate: [authGuard], data: {state: 'liked-posts'}},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
@@ -144,6 +152,7 @@ const appRoutes: Routes = [
     GroupMembersViewComponent,
     LikedPostsViewComponent,
     ViewedPostsViewComponent,
+    MainBtnComponent,
   ],
   imports: [
     BrowserModule,

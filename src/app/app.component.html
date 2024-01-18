@@ -8,5 +8,7 @@
     <router-outlet #o="outlet"></router-outlet>
   </div>
   <app-rainbow-strip></app-rainbow-strip>
-  <!--  <app-rainbow-strip [bottom]="true"></app-rainbow-strip>-->
 </main>
+
+<app-main-btn></app-main-btn>
+<app-background *ngIf="router.url == '/chat' || router.url == '/friends'"></app-background>

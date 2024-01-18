@@ -1,0 +1,26 @@
+<div *ngIf="router.url == '/login'; else chatBtn"></div>
+<ng-template #chatBtn>
+  <ng-container *ngIf="router.url == '/home'; else homeBtn">
+    <button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
+            *ngIf="!states.hasUnreadMsg; else unread">
+      <mat-icon class="nav-icon">
+        chat
+      </mat-icon>
+    </button>
+  </ng-container>
+</ng-template>
+<ng-template #unread>
+  <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
+    <mat-icon class="nav-icon" color="warn">
+      mark_chat_unread
+    </mat-icon>
+  </button>
+</ng-template>
+
+<ng-template #homeBtn>
+  <app-home-button *ngIf="router.url == '/chat'; else backBtn"></app-home-button>
+</ng-template>
+
+<ng-template #backBtn>
+  <app-back-btn></app-back-btn>
+</ng-template>
