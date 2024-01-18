@@ -1,73 +1,74 @@
 <mat-dialog-content style="background-color:  #363636;">
-<main>
-  <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start" mat-dialog-close>
-    <mat-icon>close_fullscreen</mat-icon>
-    close
-  </button>
-  <div *ngIf="!loading && response == ''" id="input">
-
-    <div class="classicTextBox" style="margin: -5px -8px 10px;border-radius: 5px" *ngIf="imageToUpload == null">
-      <span class="classicTitle">Ask {{siteName}}</span>
-      <div style="display: flex; justify-content: space-between">
-        <span>Ask me anything, and I'll try my best to answer</span>
-      </div>
-    </div>
-
-    <div id="prompts">
-      <ng-container *ngIf="imageToUpload != null; else noImg">
-        <img [src]="url" alt="image" class="imagePreview">
-      </ng-container>
-      <ng-template #noImg>
-        <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
-          <mat-icon>add_photo_alternate</mat-icon>
-          Upload Image
-        </button>
-      </ng-template>
-
-      <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
-
-      <mat-form-field appearance="outline" style="align-self: center">
-        <mat-label>Question</mat-label>
-        <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
-      </mat-form-field>
-    </div>
-
-    <div class="example-questions" *ngIf="imageToUpload == null">
-      <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p)" class="example-question">
-        <span>{{p}}</span>
-      </div>
-    </div>
-
-    <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
-      <div *ngFor="let p of exampleVisionPrompts" (click)="applyPrompt(p)" class="example-question">
-        <span>{{p}}</span>
-      </div>
-    </div>
-
-    <button mat-raised-button (click)="submit(input)" color="warn"
-            style="align-self: flex-end; border-radius: 100px">
-      <mat-icon>check</mat-icon>
-      Submit
+  <main>
+    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start"
+            mat-dialog-close>
+      <mat-icon>close_fullscreen</mat-icon>
+      close
     </button>
-  </div>
+    <div *ngIf="!loading && response == ''" id="input">
 
+      <div class="classicTextBox" style="margin: -5px -8px 10px;border-radius: 5px" *ngIf="imageToUpload == null">
+        <span class="classicTitle">Ask {{ siteName }}</span>
+        <div style="display: flex; justify-content: space-between">
+          <span>Ask me anything, and I'll try my best to answer</span>
+        </div>
+      </div>
 
-  <div id="loading" *ngIf="loading">
-    <app-logo></app-logo>
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </div>
+      <div id="prompts">
+        <ng-container *ngIf="imageToUpload != null; else noImg">
+          <img [src]="url" alt="image" class="imagePreview">
+        </ng-container>
+        <ng-template #noImg>
+          <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
+            <mat-icon>add_photo_alternate</mat-icon>
+            Upload Image
+          </button>
+        </ng-template>
 
-  <ng-container *ngIf="response != ''">
-    <img [src]="url" alt="image" class="imagePreview" *ngIf="imageToUpload != null;">
+        <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
 
-    <div id="response" [@inOutAnimation]="">
-      <span>{{response}}</span>
+        <mat-form-field appearance="outline" style="align-self: center">
+          <mat-label>Question</mat-label>
+          <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="example-questions" *ngIf="imageToUpload == null">
+        <div *ngFor="let p of examplePrompts" (click)="applyPrompt(p)" class="example-question">
+          <span>{{ p }}</span>
+        </div>
+      </div>
+
+      <div class="example-questions" *ngIf="imageToUpload != null" style="margin: 0 0 15px">
+        <div *ngFor="let p of exampleVisionPrompts" (click)="applyPrompt(p)" class="example-question">
+          <span>{{ p }}</span>
+        </div>
+      </div>
+
+      <button mat-raised-button (click)="submit(input)" color="warn"
+              style="align-self: flex-end; border-radius: 100px">
+        <mat-icon>check</mat-icon>
+        Submit
+      </button>
     </div>
 
-    <button mat-fab (click)="reset()" color="primary" style="margin: 20px">
-      <mat-icon>restart_alt</mat-icon>
-    </button>
-  </ng-container>
-  <!--  <app-rainbow-strip [bottom]=true></app-rainbow-strip>-->
-</main>
+
+    <div id="loading" *ngIf="loading">
+      <app-logo></app-logo>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <ng-container *ngIf="response != ''">
+      <img [src]="url" alt="image" class="imagePreview" *ngIf="imageToUpload != null;">
+
+      <div id="response" [@inOutAnimation]="">
+        <span>{{ response }}</span>
+      </div>
+
+      <button mat-fab (click)="reset()" color="primary" style="margin: 20px">
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+    </ng-container>
+    <!--  <app-rainbow-strip [bottom]=true></app-rainbow-strip>-->
+  </main>
 </mat-dialog-content>

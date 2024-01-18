@@ -42,6 +42,9 @@ export class PostCachingService {
         this.posts.shift();
       }
       this.saveToLocalStorage();
+    } else {
+      this.posts[index] = post;
+      this.saveToLocalStorage();
     }
   }
 }
