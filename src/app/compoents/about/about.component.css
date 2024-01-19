@@ -1,10 +1,6 @@
-main{
+#contributors{
   display: flex;
   /*justify-content: center;*/
-  /*flex-wrap: wrap;*/
-  flex-direction: column;
-  padding: 20px;
-  gap: 5px;
-  max-height: 70dvh;
-  overflow: auto;
+  flex-wrap: wrap;
+  gap: 20px;
 }

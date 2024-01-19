@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {credits} from "../../env";
+import {credits, siteName} from "../../env";
 
 @Component({
   selector: 'app-about',
@@ -8,4 +8,5 @@ import {credits} from "../../env";
 })
 export class AboutComponent {
   credits = credits;
+    protected readonly siteName = siteName;
 }

@@ -7,6 +7,8 @@ import {HttpClient} from "@angular/common/http";
 import {AssistantComponent} from "../assistant/assistant.component";
 import {NotificationViewComponent} from "../notification-view/notification-view.component";
 import {debounceTime, fromEvent, Subscription} from "rxjs";
+import {Router} from "@angular/router";
+import {AboutComponent} from "../../compoents/about/about.component";
 
 @Component({
   selector: 'app-cue-card',
@@ -21,7 +23,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
   isScrolling = false;
   private resizeSubscription: Subscription = new Subscription();
 
-  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private elementRef: ElementRef) {
+  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private elementRef: ElementRef, private router: Router) {
     this.lastScrollTop = 0;
   }
 
@@ -33,13 +35,22 @@ export class CueCardComponent implements OnInit, OnDestroy {
     ).subscribe(() => {
       this.manageTopUsers()
     })
-
     this.manageTopUsers()
   }
 
   ngOnDestroy(): void {
     window.removeEventListener('scroll', this.onScrollThrottled);
     this.resizeSubscription.unsubscribe();
+  }
+
+  backHome() {
+    if (this.router.url == '/home') {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.backdropClass = 'post-back-drop';
+      this.dialog.open(AboutComponent, dialogConfig);
+    } else {
+      this.router.navigate(['/home']).then();
+    }
   }
 
   manageTopUsers() {
@@ -73,7 +84,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
       if (deltaScroll > 20) {
         this.topBarOffset = this.topBarOffset + deltaScroll;
       } else {
-        this.topBarOffset = this.topBarOffset + deltaScroll/5;
+        this.topBarOffset = this.topBarOffset + deltaScroll / 5;
       }
       if (this.topBarOffset > this.topBarHeight) {
         this.topBarOffset = this.topBarHeight;
