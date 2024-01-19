@@ -4,7 +4,7 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  animation: logoAppear 1s ease forwards;
+
 }
 
 #welcome {
@@ -19,8 +19,7 @@ main {
 #logo {
   width: 240px;
   aspect-ratio: 1;
-  margin: -45px;
-
+  margin: -15px 0 -45px;
 }
 
 
@@ -39,7 +38,7 @@ main {
   height: 100dvh;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 200% 200%;
-  animation: rainbow 7s ease infinite, appear 1s forwards;
+  animation: rainbow 7s ease infinite, appear 2s forwards;
 }
 
 .fade {
@@ -81,7 +80,7 @@ main {
   }
   100% {
     transform: rotate(360deg) scale(1.2);
-    margin: 20px;
+    margin: 40px 0 50px;
   }
 }
 

@@ -1,4 +1,4 @@
-<main *ngIf="loginView != null; else loadingBar">
+<main>
   <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
 <!--  <app-logo style="margin: -35px"></app-logo>-->
 
@@ -43,7 +43,7 @@
       <div style="display: flex; justify-content: center; margin-top: 20px" *ngIf="!newUserLoading; else loadingWheel">
         <div style="flex: 1"></div>
         <button mat-flat-button (click)="continueAsVisitor()" color="primary"
-                style="border-radius: 100px; margin-top: 20px" id="start-btn">
+                style="border-radius: 100px; margin-top: 20px; padding: 20px" id="start-btn">
           <mat-icon>rocket_launch</mat-icon>
           Let me in
         </button>
@@ -69,10 +69,3 @@
 </main>
 
 <div id="sign-up-background" *ngIf="newUserLoading || loginLoading"><app-background></app-background></div>
-
-
-<ng-template #loadingBar>
-  <div id="loading">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </div>
-</ng-template>
