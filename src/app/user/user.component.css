@@ -23,4 +23,5 @@
   margin-right: 5px;
   font-weight: 600;
   max-width: 200px;
+  overflow-wrap: anywhere;
 }

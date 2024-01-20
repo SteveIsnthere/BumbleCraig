@@ -4,7 +4,8 @@
   </div>
 
   <div class="classicTextBox" style="margin: 20px 0 10px">
-    <span class="classicTitle">{{ essentialUserData.name }}</span>
+    <span class="classicTitle"
+          style="max-width: 70vw; overflow-wrap: anywhere; line-height: 1.05">{{ essentialUserData.name }}</span>
     <div id="stats">
       <span>#{{ userID }}</span>
       <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
@@ -14,18 +15,18 @@
     </div>
   </div>
 
-<!--  <div id="name">-->
-<!--    <span>{{ essentialUserData.name }}</span>-->
-<!--  </div>-->
+  <!--  <div id="name">-->
+  <!--    <span>{{ essentialUserData.name }}</span>-->
+  <!--  </div>-->
 
-<!--  <div id="stats">-->
-<!--    <span>#{{ userID }}</span>-->
-<!--    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>-->
-<!--  </div>-->
+  <!--  <div id="stats">-->
+  <!--    <span>#{{ userID }}</span>-->
+  <!--    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>-->
+  <!--  </div>-->
 
-<!--  <div id="description">-->
-<!--    <span>{{ userDescription }}</span>-->
-<!--  </div>-->
+  <!--  <div id="description">-->
+  <!--    <span>{{ userDescription }}</span>-->
+  <!--  </div>-->
 
   <span id="divider"><mat-divider></mat-divider></span>
 
@@ -85,9 +86,9 @@
       <div style="flex: 1"></div>
     </ng-container>
 
-<!--    <div id="posts-section">-->
-<!--      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>-->
-<!--    </div>-->
+    <!--    <div id="posts-section">-->
+    <!--      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>-->
+    <!--    </div>-->
     <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
   </ng-container>
 
