@@ -1,10 +1,11 @@
-<mat-card *ngIf="post?.popularity != null; else loadingBar" [ngClass]="touchMode ? '' : 'desktopStyleClass'" (click)="openPostFullView()">
+<mat-card *ngIf="post?.popularity != null; else loadingBar" [ngClass]="touchMode ? '' : 'desktopStyleClass'"
+          (click)="openPostFullView()">
   <mat-card-header>
-    <app-user-mini mat-card-avatar [userID]="post?.author_id!" (click)="$event.stopPropagation()"></app-user-mini>
+    <app-user-mini mat-card-avatar [userID]="post?.author_id!" (click)="$event.stopPropagation()" style="margin-right: -6px"></app-user-mini>
     <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large;">{{ post?.title }}
     </mat-card-title>
     <mat-card-subtitle>
-      <span style="font-weight: lighter">{{ post!.time_since_posted }}</span>
+      <span style="font-weight: lighter;">{{ post!.time_since_posted }}</span>
       <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
                                style="flex: 1;"></app-post-perception-bar>
       <button mat-button color="accent" (click)="openCommentSection($event)"
@@ -28,21 +29,38 @@
       <app-post-files-viewer [files]="fileAttachments" *ngIf="fileAttachments.length > 0"></app-post-files-viewer>
     </div>
   </mat-card-content>
-
-  <!--  <mat-card-actions>-->
-  <!--    <button mat-stroked-button color="accent" (click)="openCommentSection()" style="border-radius: 100px">-->
-  <!--      &lt;!&ndash;        <mat-icon>comment</mat-icon>&ndash;&gt;-->
-  <!--      <span>{{ post?.number_of_comments }} {{ post?.number_of_comments! > 1 ? 'Comments' : 'Comment' }}</span>-->
-  <!--    </button>-->
-
-  <!--    <div style="flex: 1"></div>-->
-
-  <!--    <button mat-icon-button color="accent" (click)="writeComment()">-->
-  <!--      <mat-icon>rate_review</mat-icon>-->
-  <!--      &lt;!&ndash;        Comment&ndash;&gt;-->
-  <!--    </button>-->
-  <!--  </mat-card-actions>-->
 </mat-card>
 
 <ng-template #loadingBar>
 </ng-template>
+
+
+<!--<div id="wrapper"-->
+<!--     *ngIf="post?.popularity != null; else loadingBar"-->
+<!--     [ngClass]="touchMode ? '' : 'desktopStyleClass'" (click)="openPostFullView()">-->
+
+<!--  <span class="classicTitle" style="font-size: large;">{{ post?.title }}</span>-->
+
+<!--  <mat-card-content>-->
+<!--    <p *ngFor="let content of textAttachments">-->
+<!--      <span class="text-content">{{ content.content }}</span>-->
+<!--    </p>-->
+
+<!--    <div style="border-radius: 5px; overflow: hidden">-->
+<!--      <app-post-files-viewer [files]="fileAttachments" *ngIf="fileAttachments.length > 0"></app-post-files-viewer>-->
+<!--    </div>-->
+<!--  </mat-card-content>-->
+
+<!--  <div-->
+<!--    style="display: flex; justify-content: space-between; align-items: flex-end; color: white; gap: 10px;margin-top: 20px">-->
+<!--      <app-user-mini mat-card-avatar [userID]="post?.author_id!" (click)="$event.stopPropagation()"></app-user-mini>-->
+<!--    &lt;!&ndash;    <span style="font-weight: lighter">{{ post!.time_since_posted }}</span>&ndash;&gt;-->
+<!--    <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"-->
+<!--                             style="flex: 1"></app-post-perception-bar>-->
+
+<!--    <div id="commentBtn" (click)="openCommentSection($event)">-->
+<!--      <span>{{ post?.number_of_comments }}</span>-->
+<!--      <mat-icon>comment</mat-icon>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

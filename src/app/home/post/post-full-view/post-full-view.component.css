@@ -61,7 +61,7 @@ main {
 .text-wrapper {
   display: flex;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 10px 13px;
   background-color: #303030;
 }

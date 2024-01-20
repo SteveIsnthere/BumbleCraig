@@ -4,14 +4,25 @@
       <mat-icon>close_fullscreen</mat-icon>
       close
     </button>
-    <span id="title">{{ post.title }}</span>
-    <div id="post-details-row">
-      <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
-                     style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
-      <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>
-      <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
-      <div style="flex: 1"></div>
+
+    <div class="classicTextBox">
+      <span class="classicTitle" style="font-size: x-large; line-height: 1.1">{{ post.title }}</span>
+      <div id="post-details-row">
+        <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
+                       style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
+        <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>
+        <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
+        <div style="flex: 1"></div>
+      </div>
     </div>
+<!--    <span id="title">{{ post.title }}</span>-->
+<!--    <div id="post-details-row">-->
+<!--      <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"-->
+<!--                     style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>-->
+<!--      <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>-->
+<!--      <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>-->
+<!--      <div style="flex: 1"></div>-->
+<!--    </div>-->
     <mat-divider style="width: 100%; margin-top: -5px"></mat-divider>
     <div class="contents">
       <div *ngFor="let content of post.content" class="content">

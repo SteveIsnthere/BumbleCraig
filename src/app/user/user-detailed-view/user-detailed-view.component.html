@@ -3,18 +3,29 @@
     <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
   </div>
 
-  <div id="name">
-    <span>{{ essentialUserData.name }}</span>
+  <div class="classicTextBox" style="margin: 20px 0 10px">
+    <span class="classicTitle">{{ essentialUserData.name }}</span>
+    <div id="stats">
+      <span>#{{ userID }}</span>
+      <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
+    </div>
+    <div id="description">
+      <span>{{ userDescription }}</span>
+    </div>
   </div>
 
-  <div id="stats">
-    <span>#{{ userID }}</span>
-    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
-  </div>
+<!--  <div id="name">-->
+<!--    <span>{{ essentialUserData.name }}</span>-->
+<!--  </div>-->
 
-  <div id="description">
-    <span>{{ userDescription }}</span>
-  </div>
+<!--  <div id="stats">-->
+<!--    <span>#{{ userID }}</span>-->
+<!--    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>-->
+<!--  </div>-->
+
+<!--  <div id="description">-->
+<!--    <span>{{ userDescription }}</span>-->
+<!--  </div>-->
 
   <span id="divider"><mat-divider></mat-divider></span>
 

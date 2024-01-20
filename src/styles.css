@@ -52,7 +52,7 @@ body {
   }
 }
 
-.classicTextBox{
+.classicTextBox {
   color: white;
   padding: 20px;
   border-radius: 25px;
@@ -60,7 +60,7 @@ body {
   backdrop-filter: blur(20px);
 }
 
-.classicTitle{
+.classicTitle {
   display: flex;
   justify-content: flex-start;
   width: 100%;
@@ -69,10 +69,11 @@ body {
   /*font-size: x-large;*/
   color: #e15241;
   /*font-weight: 470;*/
-  font-size: xx-large; font-weight: bolder;
+  font-size: xx-large;
+  font-weight: bolder;
 }
 
-.post-back-drop{
+.post-back-drop {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(7px);
 }
@@ -87,7 +88,7 @@ body {
   backdrop-filter: blur(10px) brightness(1.1);
 }
 
-.main-btn{
+.main-btn {
   scale: 1.2;
   bottom: 0;
   margin: 25px;

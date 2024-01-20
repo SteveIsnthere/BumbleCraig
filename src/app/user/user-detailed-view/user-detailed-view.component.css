@@ -34,9 +34,9 @@ main {
   color: #e15241;
   font-size: 12px;
   font-style: italic;
-  max-width: 250px;
-  margin-top: 3px;
-  text-align: start;
+  width: 250px;
+  margin-top: 10px;
+  text-align: center;
 
   /*border-radius: 10px;*/
   /*background-color: rgba(0, 0, 0, 0.4);*/

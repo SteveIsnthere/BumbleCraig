@@ -16,7 +16,7 @@ mat-card {
   font-size: 13px;
   line-height: 16px;
   /*font-style: oblique;*/
-  font-weight: lighter;
+  font-weight: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -67,10 +67,17 @@ mat-card-subtitle {
   transition-duration: 0.05s;
 }
 
+/*#commentBtn {*/
+/*  display: flex;*/
+/*  gap: 3px;*/
+/*  align-items: center;*/
+/*}*/
 
-/*@media only screen and (min-width: 850px) {*/
-/*  mat-card-content {*/
-/*    !*height: 300px;*!*/
-/*    !*overflow: hidden;*!*/
-/*  }*/
+/*#wrapper{*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  margin: 5px;*/
+/*  border-radius: 20px;*/
+/*  padding: 10px 15px 15px;*/
+/*  !*backdrop-filter: brightness(0.8);*!*/
 /*}*/
