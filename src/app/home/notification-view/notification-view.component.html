@@ -4,7 +4,6 @@
     close
   </button>
   <div class="notification-section-container">
-
     <ng-container *ngIf="this.main.notifications!.friend_request_user_ids.length > 0">
       <app-friend-req-row [id]="id"
                           *ngFor="let id of this.main.notifications?.friend_request_user_ids"></app-friend-req-row>
@@ -16,19 +15,19 @@
                          *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
     </ng-container>
 
-    <button mat-stroked-button color="primary" style="border-radius: 100px; margin: 10px; align-self: center" (click)="clear()"
+    <button mat-stroked-button color="primary" style="border-radius: 100px; margin: 10px;" (click)="clear()"
             *ngIf="showCleanAllButton()">
       <mat-icon>delete</mat-icon>
       Clear Messages
     </button>
 
     <app-sys-msg-row [sysMsg]="sysMsg"
-                     *ngFor="let sysMsg of this.main.notifications?.system_messages"></app-sys-msg-row>
+                     *ngFor="let sysMsg of this.main.notifications?.system_messages" style="align-items: flex-start;"></app-sys-msg-row>
 
     <app-post-comment-row [postComment]="postComment"
-                          *ngFor="let postComment of this.main.notifications?.post_comments"></app-post-comment-row>
+                          *ngFor="let postComment of this.main.notifications?.post_comments" style="align-items: flex-start;"></app-post-comment-row>
     <app-post-like-row [postLike]="postLike"
-                       *ngFor="let postLike of this.main.notifications?.post_likes"></app-post-like-row>
+                       *ngFor="let postLike of this.main.notifications?.post_likes" style="align-items: flex-start;"></app-post-like-row>
   </div>
 </main>
 
