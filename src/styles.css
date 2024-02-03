@@ -6,7 +6,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   background-color: #212121;
-  /*background-color: #0b1416;*/
+  /*background-color: #060a0a;*/
   transition-duration: 0.6s;
 }
 
@@ -57,6 +57,7 @@ body {
   padding: 20px;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.32);
+  /*background-color: rgba(255, 255, 255, 0.12);*/
   backdrop-filter: blur(20px);
 }
 
@@ -64,8 +65,9 @@ body {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 3px;
+  margin-bottom: 12px;
+  line-height: 1.4;
   /*font-size: x-large;*/
   color: #e15241;
   /*font-weight: 470;*/

@@ -8,7 +8,7 @@
   <div id="contributors" style="margin-top: 20px">
     <div *ngFor="let credit of credits">
       <div class="classicTextBox">
-        <span class="classicTitle" style="line-height: 1.05">{{ credit.title }}</span>
+        <span class="classicTitle">{{ credit.title }}</span>
         <div style="display: flex; margin-top: 5px">
           <app-user [userID]=credit.userid></app-user>
           <div style="flex: 1"></div>

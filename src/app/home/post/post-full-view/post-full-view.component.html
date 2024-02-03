@@ -6,7 +6,7 @@
     </button>
 
     <div class="classicTextBox">
-      <span class="classicTitle" style="font-size: x-large; line-height: 1.1">{{ post.title }}</span>
+      <span class="classicTitle" style="font-size: x-large; margin-bottom: 10px">{{ post.title }}</span>
       <div id="post-details-row">
         <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
                        style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
