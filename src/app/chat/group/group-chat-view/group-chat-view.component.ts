@@ -61,7 +61,7 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    document.body.style.backgroundColor = '#212121';
+    document.body.style.backgroundColor = '#191919';
     this.shouldLoadMessages = false;
     // if (this.loadedScroller) {
     //   this.observer.unobserve(this.messagesContainer);
