@@ -14,10 +14,9 @@ import {NgIf, NgFor} from '@angular/common';
 })
 export class SimpleFigureComponent implements OnInit {
   @Input() figureID: number = 0;
-  @ViewChild('canvas', {static: true}) canvasRef: ElementRef<HTMLCanvasElement> | null = null;
+  @ViewChild('canvas', {static: true}) canvasRef!: ElementRef<HTMLCanvasElement>;
 
-  ctx: CanvasRenderingContext2D | null = null;
-  cellSize = 1;
+  cellSize:number = 1;
   loading: boolean = true;
   data: string[][] = [];
   width: number = 0;
@@ -28,8 +27,6 @@ export class SimpleFigureComponent implements OnInit {
 
   ngOnInit(): void {
     this.width = this.elementRef.nativeElement.offsetWidth;
-    this.ctx = this.canvasRef!.nativeElement.getContext('2d');
-    // this.ctx!.imageSmoothingEnabled = false;
     this.loadFigureData();
   }
 
@@ -53,7 +50,9 @@ export class SimpleFigureComponent implements OnInit {
   renderMap(): void {
     const numRows = this.data.length;
     const numCols = this.data[0].length;
-    const canvas = this.canvasRef!.nativeElement;
+    let canvas = this.canvasRef!.nativeElement;
+    let ctx = canvas.getContext('2d')!;
+    // ctx.imageSmoothingEnabled = false;
 
     this.cellSize = Math.ceil(this.width / numCols) * 2.5;
 
@@ -62,11 +61,11 @@ export class SimpleFigureComponent implements OnInit {
 
     for (let y = 0; y < numRows; y++) {
       for (let x = 0; x < numCols; x++) {
-        this.ctx!.fillStyle = this.data[y][x];
-        this.ctx!.fillRect(x * this.cellSize, y * this.cellSize, this.cellSize, this.cellSize);
+        ctx.fillStyle = this.data[y][x];
+        ctx.fillRect(x * this.cellSize, y * this.cellSize, this.cellSize, this.cellSize);
       }
     }
-    //
+
     // canvas.style.width = this.width + 'px';
     // canvas.style.height = this.width + 'px';
   }
