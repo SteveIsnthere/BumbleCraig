@@ -66,5 +66,8 @@ export class SimpleFigureComponent implements OnInit {
         this.ctx!.fillRect(x * this.cellSize, y * this.cellSize, this.cellSize, this.cellSize);
       }
     }
+    //
+    // canvas.style.width = this.width + 'px';
+    // canvas.style.height = this.width + 'px';
   }
 }
