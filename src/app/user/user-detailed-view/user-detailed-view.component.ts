@@ -3,7 +3,7 @@ import {UserComponent} from "../user.component";
 import {apiEndPoint} from "../../env";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
@@ -11,11 +11,20 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {UserSetUpComponent} from "../user-set-up/user-set-up.component";
 import {MainService} from "../../services/main.service";
 import {UserInfoCachingService} from "../../services/user-info-caching.service";
+import { LoadingPlaceholderComponent } from '../../compoents/loading-placeholder/loading-placeholder.component';
+import { PostSectionViewBaseComponent } from '../../home/post/post-section-view/post-section-view-base/post-section-view-base.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { SimpleFigureComponent } from '../../simple-figure/simple-figure.component';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-user-detailed-view',
-  templateUrl: './user-detailed-view.component.html',
-  styleUrls: ['./user-detailed-view.component.css']
+    selector: 'app-user-detailed-view',
+    templateUrl: './user-detailed-view.component.html',
+    styleUrls: ['./user-detailed-view.component.css'],
+    standalone: true,
+    imports: [NgIf, NgClass, SimpleFigureComponent, MatDivider, MatButton, MatIcon, RouterLink, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })
 export class UserDetailedViewComponent extends UserComponent implements OnInit {
   userDescription = 'loading...';

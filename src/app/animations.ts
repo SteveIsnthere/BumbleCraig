@@ -57,6 +57,5 @@ export const routerTransition = trigger('routerTransition', [
   transition('user => *', stdTransitionBack()),
   transition('* => friends', stdTransitionAway()),
   transition('friends => *', stdTransitionBack()),
-  transition('* => new-post', stdTransitionAway()),
-  transition('new-post => *', epicZoomTransition(1)),
+  transition('new-post => *', epicZoomTransition(0.6)),
 ]);

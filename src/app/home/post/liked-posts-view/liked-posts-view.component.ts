@@ -2,11 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {apiEndPoint} from "../../../env";
+import { LoadingPlaceholderComponent } from '../../../compoents/loading-placeholder/loading-placeholder.component';
+import { PostSectionViewBaseComponent } from '../post-section-view/post-section-view-base/post-section-view-base.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-liked-posts-view',
-  templateUrl: './liked-posts-view.component.html',
-  styleUrl: './liked-posts-view.component.css'
+    selector: 'app-liked-posts-view',
+    templateUrl: './liked-posts-view.component.html',
+    styleUrl: './liked-posts-view.component.css',
+    standalone: true,
+    imports: [NgIf, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })
 export class LikedPostsViewComponent implements OnInit {
   postIDs: number[] = [];

@@ -8,8 +8,8 @@ describe('SimpleFigureComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SimpleFigureComponent]
-    });
+    imports: [SimpleFigureComponent]
+});
     fixture = TestBed.createComponent(SimpleFigureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

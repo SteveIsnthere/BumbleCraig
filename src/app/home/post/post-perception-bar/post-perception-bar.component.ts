@@ -1,9 +1,13 @@
 import {Component, Input} from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
-  selector: 'app-post-perception-bar',
-  templateUrl: './post-perception-bar.component.html',
-  styleUrls: ['./post-perception-bar.component.css']
+    selector: 'app-post-perception-bar',
+    templateUrl: './post-perception-bar.component.html',
+    styleUrls: ['./post-perception-bar.component.css'],
+    standalone: true,
+    imports: [MatProgressBar, MatIcon]
 })
 export class PostPerceptionBarComponent {
   @Input() rating: number = 0.5;

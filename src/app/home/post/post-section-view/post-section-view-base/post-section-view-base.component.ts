@@ -12,12 +12,18 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../services/auth.service";
 import {MainService} from "../../../../services/main.service";
 import {MatDialog} from "@angular/material/dialog";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatDivider } from '@angular/material/divider';
+import { PostComponent } from '../../post.component';
+import { NgIf, NgFor } from '@angular/common';
 
 
 @Component({
-  selector: 'app-post-section-view-base',
-  templateUrl: './post-section-view-base.component.html',
-  styleUrl: './post-section-view-base.component.css'
+    selector: 'app-post-section-view-base',
+    templateUrl: './post-section-view-base.component.html',
+    styleUrl: './post-section-view-base.component.css',
+    standalone: true,
+    imports: [NgIf, NgFor, PostComponent, MatDivider, MatProgressBar]
 })
 export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() postIDs: number[] = [];

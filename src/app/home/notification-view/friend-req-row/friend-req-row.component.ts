@@ -4,11 +4,17 @@ import {MainService} from "../../../services/main.service";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { UserComponent } from '../../../user/user.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-friend-req-row',
-  templateUrl: './friend-req-row.component.html',
-  styleUrls: ['./friend-req-row.component.css']
+    selector: 'app-friend-req-row',
+    templateUrl: './friend-req-row.component.html',
+    styleUrls: ['./friend-req-row.component.css'],
+    standalone: true,
+    imports: [NgIf, MatMiniFabButton, MatIcon, UserComponent]
 })
 export class FriendReqRowComponent {
   @Input() id: number = 0;

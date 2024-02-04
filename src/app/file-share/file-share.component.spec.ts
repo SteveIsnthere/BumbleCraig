@@ -8,8 +8,8 @@ describe('FileShareComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FileShareComponent]
-    });
+    imports: [FileShareComponent]
+});
     fixture = TestBed.createComponent(FileShareComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

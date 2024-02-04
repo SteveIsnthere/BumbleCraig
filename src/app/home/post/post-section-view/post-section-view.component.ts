@@ -8,11 +8,19 @@ import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../../../services/states.service";
 import {rankingModes} from "../../../env";
 import {genres} from "../../../env";
+import { LoadingPlaceholderComponent } from '../../../compoents/loading-placeholder/loading-placeholder.component';
+import { PostSectionViewBaseComponent } from './post-section-view-base/post-section-view-base.component';
+import { NgFor, NgIf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-post-section-view',
-  templateUrl: './post-section-view.component.html',
-  styleUrls: ['./post-section-view.component.css']
+    selector: 'app-post-section-view',
+    templateUrl: './post-section-view.component.html',
+    styleUrls: ['./post-section-view.component.css'],
+    standalone: true,
+    imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, NgFor, MatMenuItem, NgIf, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton]
 })
 
 export class PostSectionViewComponent implements OnInit {

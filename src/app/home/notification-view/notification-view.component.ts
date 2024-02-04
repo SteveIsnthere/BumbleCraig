@@ -4,11 +4,22 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../env";
+import { PostLikeRowComponent } from './post-like-row/post-like-row.component';
+import { PostCommentRowComponent } from './post-comment-row/post-comment-row.component';
+import { SysMsgRowComponent } from './sys-msg-row/sys-msg-row.component';
+import { GroupInvRowComponent } from './group-inv-row/group-inv-row.component';
+import { FriendReqRowComponent } from './friend-req-row/friend-req-row.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatDialogClose } from '@angular/material/dialog';
+import { MatButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-notification-view',
-  templateUrl: './notification-view.component.html',
-  styleUrls: ['./notification-view.component.css']
+    selector: 'app-notification-view',
+    templateUrl: './notification-view.component.html',
+    styleUrls: ['./notification-view.component.css'],
+    standalone: true,
+    imports: [NgIf, MatButton, MatDialogClose, MatIcon, NgFor, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent]
 })
 export class NotificationViewComponent implements OnInit, OnDestroy {
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar) {

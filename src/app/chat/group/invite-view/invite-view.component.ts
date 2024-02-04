@@ -4,11 +4,19 @@ import {AuthService} from "../../../services/auth.service";
 import {MAT_BOTTOM_SHEET_DATA} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { UserComponent } from '../../../user/user.component';
+import { NgIf, NgFor } from '@angular/common';
+import { MatChipOption } from '@angular/material/chips';
 
 @Component({
-  selector: 'app-invite-view',
-  templateUrl: './invite-view.component.html',
-  styleUrls: ['./invite-view.component.css']
+    selector: 'app-invite-view',
+    templateUrl: './invite-view.component.html',
+    styleUrls: ['./invite-view.component.css'],
+    standalone: true,
+    imports: [MatChipOption, NgIf, NgFor, UserComponent, MatMiniFabButton, MatIcon, MatProgressBar]
 })
 export class InviteViewComponent implements OnInit {
   groupID: number = 0;

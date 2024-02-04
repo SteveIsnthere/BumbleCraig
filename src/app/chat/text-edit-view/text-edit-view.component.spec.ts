@@ -8,8 +8,8 @@ describe('TextEditViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TextEditViewComponent]
-    });
+    imports: [TextEditViewComponent]
+});
     fixture = TestBed.createComponent(TextEditViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

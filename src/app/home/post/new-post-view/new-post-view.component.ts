@@ -7,16 +7,45 @@ import {Post} from "../Post";
 import {Message} from "../../../chat/group/group-chat-view/Message";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import {FormBuilder, Validators} from "@angular/forms";
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MainService} from "../../../services/main.service";
 import {Router} from "@angular/router";
 import {EMPTY, forkJoin, Observable, switchMap} from "rxjs";
+import { MatDivider } from '@angular/material/divider';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton, MatButton } from '@angular/material/button';
+import { FileShareComponent } from '../../../file-share/file-share.component';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgFor, NgIf } from '@angular/common';
+import { MatChipListbox, MatChipOption } from '@angular/material/chips';
 
 @Component({
-  selector: 'app-new-post-view',
-  templateUrl: './new-post-view.component.html',
-  styleUrls: ['./new-post-view.component.css'],
+    selector: 'app-new-post-view',
+    templateUrl: './new-post-view.component.html',
+    styleUrls: ['./new-post-view.component.css'],
+    standalone: true,
+    imports: [
+        FormsModule,
+        MatChipListbox,
+        NgFor,
+        MatChipOption,
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        CdkTextareaAutosize,
+        NgIf,
+        FileShareComponent,
+        MatMiniFabButton,
+        MatIcon,
+        MatProgressBar,
+        MatDivider,
+        MatButton,
+    ],
 })
 export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;

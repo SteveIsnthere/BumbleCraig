@@ -1,11 +1,18 @@
 import {Component, Inject} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
+import { MatIcon } from '@angular/material/icon';
+import { MatFabButton } from '@angular/material/button';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-text-edit-view',
-  templateUrl: './text-edit-view.component.html',
-  styleUrls: ['./text-edit-view.component.css']
+    selector: 'app-text-edit-view',
+    templateUrl: './text-edit-view.component.html',
+    styleUrls: ['./text-edit-view.component.css'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, MatInput, CdkTextareaAutosize, MatFabButton, MatIcon]
 })
 export class TextEditViewComponent {
   prompt: string = '';

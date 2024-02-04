@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
-  selector: 'app-loading-placeholder',
-  templateUrl: './loading-placeholder.component.html',
-  styleUrl: './loading-placeholder.component.css'
+    selector: 'app-loading-placeholder',
+    templateUrl: './loading-placeholder.component.html',
+    styleUrl: './loading-placeholder.component.css',
+    standalone: true,
+    imports: [MatProgressBar]
 })
 export class LoadingPlaceholderComponent {
   constructor() {

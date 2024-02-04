@@ -8,8 +8,8 @@ describe('ReusableCommentsViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReusableCommentsViewComponent]
-    });
+    imports: [ReusableCommentsViewComponent]
+});
     fixture = TestBed.createComponent(ReusableCommentsViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

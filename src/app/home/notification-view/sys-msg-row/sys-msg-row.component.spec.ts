@@ -8,8 +8,8 @@ describe('SysMsgRowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SysMsgRowComponent]
-    });
+    imports: [SysMsgRowComponent]
+});
     fixture = TestBed.createComponent(SysMsgRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

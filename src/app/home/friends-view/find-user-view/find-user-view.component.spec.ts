@@ -8,8 +8,8 @@ describe('FindUserViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FindUserViewComponent]
-    });
+    imports: [FindUserViewComponent]
+});
     fixture = TestBed.createComponent(FindUserViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

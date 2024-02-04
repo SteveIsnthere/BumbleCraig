@@ -8,8 +8,8 @@ describe('PostFullViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostFullViewComponent]
-    });
+    imports: [PostFullViewComponent]
+});
     fixture = TestBed.createComponent(PostFullViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

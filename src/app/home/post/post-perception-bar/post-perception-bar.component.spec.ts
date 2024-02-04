@@ -8,8 +8,8 @@ describe('PostPerceptionBarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostPerceptionBarComponent]
-    });
+    imports: [PostPerceptionBarComponent]
+});
     fixture = TestBed.createComponent(PostPerceptionBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

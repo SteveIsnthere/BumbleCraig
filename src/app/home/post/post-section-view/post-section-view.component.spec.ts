@@ -8,8 +8,8 @@ describe('PostSectionViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostSectionViewComponent]
-    });
+    imports: [PostSectionViewComponent]
+});
     fixture = TestBed.createComponent(PostSectionViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

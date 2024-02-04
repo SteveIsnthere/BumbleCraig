@@ -7,13 +7,20 @@ import {HttpClient} from "@angular/common/http";
 import {AssistantComponent} from "../assistant/assistant.component";
 import {NotificationViewComponent} from "../notification-view/notification-view.component";
 import {debounceTime, fromEvent, Subscription} from "rxjs";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {AboutComponent} from "../../compoents/about/about.component";
+import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
+import {UserMiniComponent} from '../../user/user-mini/user-mini.component';
+import {NgIf, NgFor} from '@angular/common';
+import {MatIcon} from '@angular/material/icon';
+import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
-  styleUrl: './cue-card.component.css'
+  styleUrl: './cue-card.component.css',
+  standalone: true,
+  imports: [MatButton, MatIcon, NgIf, NgFor, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];
@@ -72,6 +79,38 @@ export class CueCardComponent implements OnInit, OnDestroy {
     }
   }
 
+  // onScroll = () => {
+  //   const scrollTop = window.scrollY;
+  //   const deltaScroll = scrollTop - this.lastScrollTop;
+  //
+  //   this.lastScrollTop = scrollTop;
+  //
+  //   if (scrollTop < this.topBarHeight) {
+  //     this.topBarOffset = 0;
+  //   } else if (deltaScroll > 0) {
+  //     if (deltaScroll > 20) {
+  //       this.topBarOffset = this.topBarOffset + deltaScroll;
+  //     } else {
+  //       this.topBarOffset = this.topBarOffset + deltaScroll / 5;
+  //     }
+  //     if (this.topBarOffset > this.topBarHeight) {
+  //       this.topBarOffset = this.topBarHeight;
+  //     }
+  //   } else {
+  //     if (deltaScroll < -20) {
+  //       this.topBarOffset = 0;
+  //     } else {
+  //       this.topBarOffset = this.topBarOffset + deltaScroll / 5;
+  //       if (this.topBarOffset < 0) {
+  //         this.topBarOffset = 0;
+  //       }
+  //     }
+  //   }
+  //
+  //   this.elementRef.nativeElement.querySelector('#top-bar').style.top = -this.topBarOffset + 'px';
+  //   this.isScrolling = false;
+  // }
+
   onScroll = () => {
     const scrollTop = window.scrollY;
     const deltaScroll = scrollTop - this.lastScrollTop;
@@ -82,21 +121,17 @@ export class CueCardComponent implements OnInit, OnDestroy {
       this.topBarOffset = 0;
     } else if (deltaScroll > 0) {
       if (deltaScroll > 20) {
-        this.topBarOffset = this.topBarOffset + deltaScroll;
-      } else {
-        this.topBarOffset = this.topBarOffset + deltaScroll / 5;
-      }
-      if (this.topBarOffset > this.topBarHeight) {
         this.topBarOffset = this.topBarHeight;
+      }else {
+        this.isScrolling = false;
+        return
       }
     } else {
       if (deltaScroll < -20) {
         this.topBarOffset = 0;
       } else {
-        this.topBarOffset = this.topBarOffset + deltaScroll / 5;
-        if (this.topBarOffset < 0) {
-          this.topBarOffset = 0;
-        }
+        this.isScrolling = false;
+        return;
       }
     }
 

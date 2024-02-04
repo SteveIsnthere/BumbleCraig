@@ -8,8 +8,8 @@ describe('ImageFullViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ImageFullViewComponent]
-    });
+    imports: [ImageFullViewComponent]
+});
     fixture = TestBed.createComponent(ImageFullViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

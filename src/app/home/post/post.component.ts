@@ -11,11 +11,35 @@ import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../services/auth.service";
 import {PostCachingService} from "../../services/post-caching.service";
+import { PostFilesViewerComponent } from './post-files-viewer/post-files-viewer.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { PostPerceptionBarComponent } from './post-perception-bar/post-perception-bar.component';
+import { UserMiniComponent } from '../../user/user-mini/user-mini.component';
+import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
+import { NgIf, NgClass, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+    selector: 'app-post',
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.css'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCard,
+        NgClass,
+        MatCardHeader,
+        UserMiniComponent,
+        MatCardAvatar,
+        MatCardTitle,
+        MatCardSubtitle,
+        PostPerceptionBarComponent,
+        MatButton,
+        MatIcon,
+        MatCardContent,
+        NgFor,
+        PostFilesViewerComponent,
+    ],
 })
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;

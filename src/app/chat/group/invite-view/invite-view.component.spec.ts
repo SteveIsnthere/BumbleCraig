@@ -8,8 +8,8 @@ describe('InviteViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InviteViewComponent]
-    });
+    imports: [InviteViewComponent]
+});
     fixture = TestBed.createComponent(InviteViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

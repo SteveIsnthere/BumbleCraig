@@ -8,8 +8,8 @@ describe('PostCommentRowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostCommentRowComponent]
-    });
+    imports: [PostCommentRowComponent]
+});
     fixture = TestBed.createComponent(PostCommentRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

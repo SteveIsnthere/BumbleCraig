@@ -6,11 +6,18 @@ import {TextEditViewComponent} from "./text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {InviteViewComponent} from "./group/invite-view/invite-view.component";
 import {MainService} from "../services/main.service";
+import { LoadingPlaceholderComponent } from '../compoents/loading-placeholder/loading-placeholder.component';
+import { GroupComponent } from './group/group.component';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+    selector: 'app-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.css'],
+    standalone: true,
+    imports: [MatButton, MatIcon, NgIf, NgFor, MatMiniFabButton, GroupComponent, LoadingPlaceholderComponent]
 })
 export class ChatComponent implements OnInit {
   groupIDs: number[] = [];

@@ -8,8 +8,8 @@ describe('GroupInvRowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GroupInvRowComponent]
-    });
+    imports: [GroupInvRowComponent]
+});
     fixture = TestBed.createComponent(GroupInvRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

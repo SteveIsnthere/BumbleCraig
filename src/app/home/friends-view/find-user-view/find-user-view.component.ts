@@ -4,11 +4,21 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../../env";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { UserComponent } from '../../../user/user.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatIconButton, MatMiniFabButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-find-user-view',
-  templateUrl: './find-user-view.component.html',
-  styleUrls: ['./find-user-view.component.css']
+    selector: 'app-find-user-view',
+    templateUrl: './find-user-view.component.html',
+    styleUrls: ['./find-user-view.component.css'],
+    standalone: true,
+    imports: [MatFormField, MatLabel, MatInput, FormsModule, NgIf, MatIconButton, MatSuffix, MatIcon, NgFor, UserComponent, MatMiniFabButton, MatProgressBar]
 })
 export class FindUserViewComponent {
   nameInput: string = '';

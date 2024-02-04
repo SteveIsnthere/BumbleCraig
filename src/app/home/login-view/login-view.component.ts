@@ -3,11 +3,23 @@ import {AuthService} from "../../services/auth.service";
 import {AuthDataService} from "../../services/auth-data.service";
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint, siteName} from "../../env";
+import { BackgroundComponent } from '../../compoents/background/background.component';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatChip } from '@angular/material/chips';
+import { FormsModule } from '@angular/forms';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-login-view',
-  templateUrl: './login-view.component.html',
-  styleUrls: ['./login-view.component.css']
+    selector: 'app-login-view',
+    templateUrl: './login-view.component.html',
+    styleUrls: ['./login-view.component.css'],
+    standalone: true,
+    imports: [NgClass, NgIf, FormsModule, MatChip, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatProgressSpinner, MatProgressBar, BackgroundComponent]
 })
 export class LoginViewComponent implements OnInit, OnDestroy {
 

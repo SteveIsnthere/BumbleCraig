@@ -3,11 +3,20 @@ import {Comment} from "../../Post";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../services/auth.service";
 import {apiEndPoint} from "../../../../env";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatMiniFabButton } from '@angular/material/button';
+import { PostPerceptionBarComponent } from '../../post-perception-bar/post-perception-bar.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatExpansionPanel, MatExpansionPanelHeader } from '@angular/material/expansion';
+import { UserMiniComponent } from '../../../../user/user-mini/user-mini.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-reusable-comments-view',
-  templateUrl: './reusable-comments-view.component.html',
-  styleUrls: ['./reusable-comments-view.component.css']
+    selector: 'app-reusable-comments-view',
+    templateUrl: './reusable-comments-view.component.html',
+    styleUrls: ['./reusable-comments-view.component.css'],
+    standalone: true,
+    imports: [NgIf, NgFor, UserMiniComponent, MatExpansionPanel, MatExpansionPanelHeader, MatIcon, PostPerceptionBarComponent, MatMiniFabButton, MatProgressBar]
 })
 export class ReusableCommentsViewComponent implements OnInit {
   @Input() postID: number = 0;

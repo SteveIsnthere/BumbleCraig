@@ -4,11 +4,16 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../../env";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { UserComponent } from '../../../user/user.component';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-group-members-view',
-  templateUrl: './group-members-view.component.html',
-  styleUrl: './group-members-view.component.css'
+    selector: 'app-group-members-view',
+    templateUrl: './group-members-view.component.html',
+    styleUrl: './group-members-view.component.css',
+    standalone: true,
+    imports: [NgIf, NgFor, UserComponent, MatProgressBar]
 })
 export class GroupMembersViewComponent implements OnInit {
   groupID: number = 0;

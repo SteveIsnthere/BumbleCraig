@@ -8,8 +8,8 @@ describe('RainbowStripComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RainbowStripComponent]
-    });
+    imports: [RainbowStripComponent]
+});
     fixture = TestBed.createComponent(RainbowStripComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

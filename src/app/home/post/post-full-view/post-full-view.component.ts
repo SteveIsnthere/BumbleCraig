@@ -6,13 +6,23 @@ import {apiEndPoint} from "../../../env";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogContent, MatDialogClose, MatDialogActions } from "@angular/material/dialog";
 import {MainService} from "../../../services/main.service";
+import { ReusableCommentsViewComponent } from '../post-comments-view/reusable-comments-view/reusable-comments-view.component';
+import { FileShareComponent } from '../../../file-share/file-share.component';
+import { MatDivider } from '@angular/material/divider';
+import { MatChipOption } from '@angular/material/chips';
+import { UserMiniComponent } from '../../../user/user-mini/user-mini.component';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-post-full-view',
-  templateUrl: './post-full-view.component.html',
-  styleUrls: ['./post-full-view.component.css']
+    selector: 'app-post-full-view',
+    templateUrl: './post-full-view.component.html',
+    styleUrls: ['./post-full-view.component.css'],
+    standalone: true,
+    imports: [NgIf, MatDialogContent, MatButton, MatDialogClose, MatIcon, UserMiniComponent, MatChipOption, MatDivider, NgFor, FileShareComponent, ReusableCommentsViewComponent, MatDialogActions, MatMiniFabButton]
 })
 export class PostFullViewComponent implements OnInit {
   post: Post | null = null;

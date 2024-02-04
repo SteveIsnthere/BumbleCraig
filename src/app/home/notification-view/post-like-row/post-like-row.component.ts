@@ -6,11 +6,17 @@ import {apiEndPoint} from "../../../env";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "../../post/post-full-view/post-full-view.component";
 import {AuthService} from "../../../services/auth.service";
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-post-like-row',
-  templateUrl: './post-like-row.component.html',
-  styleUrls: ['./post-like-row.component.css']
+    selector: 'app-post-like-row',
+    templateUrl: './post-like-row.component.html',
+    styleUrls: ['./post-like-row.component.css'],
+    standalone: true,
+    imports: [NgIf, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatMiniFabButton, MatIcon]
 })
 export class PostLikeRowComponent implements OnInit {
   @Input() postLike: PostLikes | null = null;

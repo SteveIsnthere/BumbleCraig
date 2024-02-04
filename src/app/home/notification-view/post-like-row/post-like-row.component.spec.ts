@@ -8,8 +8,8 @@ describe('PostLikeRowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostLikeRowComponent]
-    });
+    imports: [PostLikeRowComponent]
+});
     fixture = TestBed.createComponent(PostLikeRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

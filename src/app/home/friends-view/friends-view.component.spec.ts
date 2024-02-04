@@ -8,8 +8,8 @@ describe('FriendsViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FriendsViewComponent]
-    });
+    imports: [FriendsViewComponent]
+});
     fixture = TestBed.createComponent(FriendsViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

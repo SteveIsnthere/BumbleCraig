@@ -8,11 +8,19 @@ import {InviteViewComponent} from "./invite-view/invite-view.component";
 import {GroupMembersViewComponent} from "./group-members-view/group-members-view.component";
 import {GroupInfoViewComponent} from "./group-info-view/group-info-view.component";
 import {FigureEditViewComponent} from "../../simple-figure/figure-edit-view/figure-edit-view.component";
+import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { SimpleFigureComponent } from '../../simple-figure/simple-figure.component';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.css']
+    selector: 'app-group',
+    templateUrl: './group.component.html',
+    styleUrls: ['./group.component.css'],
+    standalone: true,
+    imports: [NgIf, NgClass, RouterLink, SimpleFigureComponent, MatIcon, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 
 export class GroupComponent implements OnInit {

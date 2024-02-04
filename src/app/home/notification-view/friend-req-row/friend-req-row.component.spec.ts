@@ -8,8 +8,8 @@ describe('FriendReqRowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FriendReqRowComponent]
-    });
+    imports: [FriendReqRowComponent]
+});
     fixture = TestBed.createComponent(FriendReqRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

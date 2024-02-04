@@ -8,8 +8,8 @@ describe('AskTidderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AssistantComponent]
-    });
+    imports: [AssistantComponent]
+});
     fixture = TestBed.createComponent(AssistantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

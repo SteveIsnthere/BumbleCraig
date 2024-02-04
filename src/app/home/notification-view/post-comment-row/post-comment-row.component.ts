@@ -7,11 +7,17 @@ import {MatDialog} from "@angular/material/dialog";
 import {apiEndPoint} from "../../../env";
 import {AuthService} from "../../../services/auth.service";
 import {Post} from "../../post/Post";
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/material/card';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-post-comment-row',
-  templateUrl: './post-comment-row.component.html',
-  styleUrls: ['./post-comment-row.component.css']
+    selector: 'app-post-comment-row',
+    templateUrl: './post-comment-row.component.html',
+    styleUrls: ['./post-comment-row.component.css'],
+    standalone: true,
+    imports: [NgIf, MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatMiniFabButton, MatIcon]
 })
 export class PostCommentRowComponent implements OnInit {
   @Input() postComment: PostComments | null = null;

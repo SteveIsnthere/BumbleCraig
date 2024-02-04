@@ -8,8 +8,8 @@ describe('GroupChatViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GroupChatViewComponent]
-    });
+    imports: [GroupChatViewComponent]
+});
     fixture = TestBed.createComponent(GroupChatViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

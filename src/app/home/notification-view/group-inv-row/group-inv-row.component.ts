@@ -5,11 +5,17 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../../env";
+import { MatIcon } from '@angular/material/icon';
+import { MatMiniFabButton } from '@angular/material/button';
+import { UserComponent } from '../../../user/user.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-group-inv-row',
-  templateUrl: './group-inv-row.component.html',
-  styleUrls: ['./group-inv-row.component.css']
+    selector: 'app-group-inv-row',
+    templateUrl: './group-inv-row.component.html',
+    styleUrls: ['./group-inv-row.component.css'],
+    standalone: true,
+    imports: [NgIf, UserComponent, MatMiniFabButton, MatIcon]
 })
 export class GroupInvRowComponent {
   @Input() invitation: GroupInvitation | null = null;

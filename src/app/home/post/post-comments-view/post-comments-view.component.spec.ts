@@ -8,8 +8,8 @@ describe('PostCommentsViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostCommentsViewComponent]
-    });
+    imports: [PostCommentsViewComponent]
+});
     fixture = TestBed.createComponent(PostCommentsViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

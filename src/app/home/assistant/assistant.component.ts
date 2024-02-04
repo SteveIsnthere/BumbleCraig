@@ -4,19 +4,30 @@ import {apiEndPoint, assistantPrompts, siteName, visionPrompts} from "../../env"
 import {AuthService} from "../../services/auth.service";
 
 import {animate, style, transition, trigger} from "@angular/animations";
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { LogoComponent } from '../../compoents/logo/logo.component';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatFabButton } from '@angular/material/button';
+import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-assistant',
-  templateUrl: './assistant.component.html',
-  styleUrls: ['./assistant.component.css'],
-  animations: [
-    trigger('inOutAnimation', [
-      transition(':enter', [
-        style({opacity: 0, transform: 'translateY(100%)'}), // Initial state
-        animate('0.5s ease-out', style({opacity: 1, transform: 'translateY(0)'})) // Final state
-      ]),
-    ])
-  ]
+    selector: 'app-assistant',
+    templateUrl: './assistant.component.html',
+    styleUrls: ['./assistant.component.css'],
+    animations: [
+        trigger('inOutAnimation', [
+            transition(':enter', [
+                style({ opacity: 0, transform: 'translateY(100%)' }),
+                animate('0.5s ease-out', style({ opacity: 1, transform: 'translateY(0)' })) // Final state
+            ]),
+        ])
+    ],
+    standalone: true,
+    imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, NgIf, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, NgFor, LogoComponent, MatProgressBar, MatFabButton]
 })
 
 export class AssistantComponent {

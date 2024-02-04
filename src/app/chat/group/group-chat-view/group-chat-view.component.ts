@@ -10,11 +10,21 @@ import {FigureEditViewComponent} from "../../../simple-figure/figure-edit-view/f
 import {TextEditViewComponent} from "../../text-edit-view/text-edit-view.component";
 import {InviteViewComponent} from "../invite-view/invite-view.component";
 import {Observable} from "rxjs";
+import { LoadingPlaceholderComponent } from '../../../compoents/loading-placeholder/loading-placeholder.component';
+import { MatProgressBar } from '@angular/material/progress-bar';
+import { MatChipOption } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { FileShareComponent } from '../../../file-share/file-share.component';
+import { UserMiniComponent } from '../../../user/user-mini/user-mini.component';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-group-chat-view',
-  templateUrl: './group-chat-view.component.html',
-  styleUrls: ['./group-chat-view.component.css']
+    selector: 'app-group-chat-view',
+    templateUrl: './group-chat-view.component.html',
+    styleUrls: ['./group-chat-view.component.css'],
+    standalone: true,
+    imports: [NgIf, NgFor, NgClass, UserMiniComponent, FileShareComponent, MatButton, MatIcon, MatChipOption, MatProgressBar, LoadingPlaceholderComponent]
 })
 export class GroupChatViewComponent implements OnInit, OnDestroy {
   @ViewChild('messagesSection', {static: true}) messagesSection: any;

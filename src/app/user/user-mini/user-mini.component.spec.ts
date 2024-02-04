@@ -8,8 +8,8 @@ describe('UserMiniComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserMiniComponent]
-    });
+    imports: [UserMiniComponent]
+});
     fixture = TestBed.createComponent(UserMiniComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

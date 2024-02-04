@@ -8,8 +8,8 @@ describe('BackBtnComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BackBtnComponent]
-    });
+    imports: [BackBtnComponent]
+});
     fixture = TestBed.createComponent(BackBtnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

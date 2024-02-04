@@ -1,16 +1,24 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
-import {MatDialogRef} from "@angular/material/dialog";
+import { MatDialogRef, MatDialogClose } from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../env";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
+import { MatChip } from '@angular/material/chips';
+import { MatInput } from '@angular/material/input';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious } from '@angular/material/stepper';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatFabButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-user-set-up',
-  templateUrl: './user-set-up.component.html',
-  styleUrls: ['./user-set-up.component.css']
+    selector: 'app-user-set-up',
+    templateUrl: './user-set-up.component.html',
+    styleUrls: ['./user-set-up.component.css'],
+    standalone: true,
+    imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton]
 })
 export class UserSetUpComponent {
   inputName: string = '';

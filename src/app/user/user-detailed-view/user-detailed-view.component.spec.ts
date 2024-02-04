@@ -8,8 +8,8 @@ describe('UserDetailedViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailedViewComponent]
-    });
+    imports: [UserDetailedViewComponent]
+});
     fixture = TestBed.createComponent(UserDetailedViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

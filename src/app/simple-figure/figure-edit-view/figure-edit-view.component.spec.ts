@@ -8,8 +8,8 @@ describe('FigureEditViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FigureEditViewComponent]
-    });
+    imports: [FigureEditViewComponent]
+});
     fixture = TestBed.createComponent(FigureEditViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

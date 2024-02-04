@@ -8,8 +8,8 @@ describe('PostFilesViewerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PostFilesViewerComponent]
-    });
+    imports: [PostFilesViewerComponent]
+});
     fixture = TestBed.createComponent(PostFilesViewerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
