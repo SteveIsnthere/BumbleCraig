@@ -29,7 +29,7 @@ export class SimpleFigureComponent implements OnInit {
   ngOnInit(): void {
     this.width = this.elementRef.nativeElement.offsetWidth;
     this.ctx = this.canvasRef!.nativeElement.getContext('2d');
-    this.ctx!.imageSmoothingEnabled = false;
+    // this.ctx!.imageSmoothingEnabled = false;
     this.loadFigureData();
   }
 
