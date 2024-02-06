@@ -1,15 +1,8 @@
-<!--<main>-->
-<!--  <ng-container *ngIf="loading; else realShit">-->
-<!--    <div [style.width]="width + 'px'" [style.height]="width + 'px'"-->
-<!--         style="background-color: #c2175b;border-radius: 100px;"></div>-->
-<!--  </ng-container>-->
-
-<!--  <ng-template #realShit>-->
-<!--    <div *ngFor="let row of data" class="color-row">-->
-<!--      <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>-->
-<!--    </div>-->
-<!--  </ng-template>-->
-<!--</main>-->
-<main>
-  <canvas #canvas style="display: block; aspect-ratio: 1; width: 100%;" width="40" height="40"></canvas>
+<main *ngIf="!loading">
+  <div *ngFor="let row of data" class="color-row">
+    <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>
+  </div>
 </main>
+<!--<main>-->
+<!--  <canvas #canvas style="display: block; aspect-ratio: 1; width: 100%;" width="40" height="40"></canvas>-->
+<!--</main>-->

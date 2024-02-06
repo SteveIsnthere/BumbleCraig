@@ -10,13 +10,14 @@ import { PostSectionViewComponent } from './post/post-section-view/post-section-
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { NgIf } from '@angular/common';
+import {SimpleFigureComponent} from "../simple-figure/simple-figure.component";
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     standalone: true,
-    imports: [NgIf, MatButton, MatIcon, PostSectionViewComponent]
+  imports: [NgIf, MatButton, MatIcon, PostSectionViewComponent, SimpleFigureComponent]
 })
 export class HomeComponent implements OnInit {
   constructor(public router: Router, public auth: AuthService, public main: MainService, public states: StatesService, private dialog: MatDialog) {

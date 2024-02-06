@@ -14,3 +14,18 @@
 /*  aspect-ratio: 1;*/
 /*}*/
 
+main{
+  display: flex;
+  flex-direction: column;
+  animation: appear 1s forwards;
+}
+
+.color-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.color-cell{
+  flex: 1;
+  aspect-ratio: 1;
+}
