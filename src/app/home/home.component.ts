@@ -6,18 +6,17 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
 import {AuthService} from "../services/auth.service";
 import {siteName} from "../env";
-import { PostSectionViewComponent } from './post/post-section-view/post-section-view.component';
-import { MatIcon } from '@angular/material/icon';
-import { MatButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
-import {SimpleFigureComponent} from "../simple-figure/simple-figure.component";
+import {PostSectionViewComponent} from './post/post-section-view/post-section-view.component';
+import {MatIcon} from '@angular/material/icon';
+import {MatButton} from '@angular/material/button';
+import {NgIf} from '@angular/common';
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css'],
-    standalone: true,
-  imports: [NgIf, MatButton, MatIcon, PostSectionViewComponent, SimpleFigureComponent]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+  standalone: true,
+  imports: [NgIf, MatButton, MatIcon, PostSectionViewComponent]
 })
 export class HomeComponent implements OnInit {
   constructor(public router: Router, public auth: AuthService, public main: MainService, public states: StatesService, private dialog: MatDialog) {
