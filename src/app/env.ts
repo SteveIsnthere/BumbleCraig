@@ -9,7 +9,7 @@ export const colors = [
 export const siteName: string = 'Tidder'
 
 // export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
-export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
+export const apiEndPoint: string = 'https://dogshit.ngrok.app/tidder'
 
 export const rankingModes = [
   ['Recommended', 'star'],

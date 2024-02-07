@@ -1,6 +1,17 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+$kids-typography: mat.define-typography-config(
+  // Specify "Comic Sans" as the default font family for all levels.
+  $font-family: 'Rubik',
+);
+
+// Now we have sweet buttons with Comic Sans.
+@include mat.all-component-typographies($kids-typography);
+
+
 html, body {
   /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
-  font-family: 'Pixelify Sans', sans-serif;
+  //font-family: 'Pixelify Sans', sans-serif;
 }
 
 body {

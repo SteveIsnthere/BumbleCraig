@@ -6,13 +6,13 @@
     </button>
     <div class="notification-section-container">
       @if (this.main.notifications!.friend_request_user_ids.length > 0) {
-        @for (id of this.main.notifications?.friend_request_user_ids; track id) {
+        @for (id of this.main.notifications!.friend_request_user_ids; track id) {
           <app-friend-req-row [id]="id"
           ></app-friend-req-row>
         }
       }
       @if (this.main.notifications!.group_invites.length > 0) {
-        @for (invitation of this.main.notifications?.group_invites; track invitation) {
+        @for (invitation of this.main.notifications!.group_invites; track invitation) {
           <app-group-inv-row [invitation]="invitation"
           ></app-group-inv-row>
         }
@@ -24,15 +24,15 @@
           Clear Messages
         </button>
       }
-      @for (sysMsg of this.main.notifications?.system_messages; track sysMsg) {
+      @for (sysMsg of this.main.notifications!.system_messages; track sysMsg) {
         <app-sys-msg-row [sysMsg]="sysMsg"
         style="align-items: flex-start;"></app-sys-msg-row>
       }
-      @for (postComment of this.main.notifications?.post_comments; track postComment) {
+      @for (postComment of this.main.notifications!.post_comments; track postComment) {
         <app-post-comment-row [postComment]="postComment"
         style="align-items: flex-start;"></app-post-comment-row>
       }
-      @for (postLike of this.main.notifications?.post_likes; track postLike) {
+      @for (postLike of this.main.notifications!.post_likes; track postLike) {
         <app-post-like-row [postLike]="postLike"
         style="align-items: flex-start;"></app-post-like-row>
       }
