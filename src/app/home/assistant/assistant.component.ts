@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {apiEndPoint, assistantPrompts, siteName, visionPrompts} from "../../env";
 import {AuthService} from "../../services/auth.service";
@@ -12,7 +12,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 import { MatIcon } from '@angular/material/icon';
 import { MatButton, MatFabButton } from '@angular/material/button';
-import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
+import {MatDialogContent, MatDialogClose, MatDialogActions} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-assistant',
@@ -27,7 +27,7 @@ import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
         ])
     ],
     standalone: true,
-    imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton]
+  imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton, MatDialogActions]
 })
 
 export class AssistantComponent {
@@ -35,6 +35,7 @@ export class AssistantComponent {
   url: string = "";
   response: string = "";
   loading: boolean = false;
+  @ViewChild('input') promptInputField!: ElementRef;
 
   examplePrompts: string[] = assistantPrompts;
 
@@ -99,8 +100,8 @@ export class AssistantComponent {
   }
 
 
-  submit(inputElement: any) {
-    const textContent = inputElement.value;
+  submit() {
+    const textContent = this.promptInputField.nativeElement.value;
     if (textContent == null || textContent === "") {
       return
     }

@@ -67,11 +67,11 @@ export class GroupChatViewComponent implements OnInit, OnDestroy {
     }, 200);
 
     //change body background color to black
-    document.body.style.backgroundColor = 'black';
+    // document.body.style.backgroundColor = 'black';
   }
 
   ngOnDestroy(): void {
-    document.body.style.backgroundColor = '#191919';
+    // document.body.style.backgroundColor = '#191919';
     this.shouldLoadMessages = false;
     // if (this.loadedScroller) {
     //   this.observer.unobserve(this.messagesContainer);

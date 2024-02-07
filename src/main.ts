@@ -1,36 +1,12 @@
 // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {AppComponent} from './app/app.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {NgOptimizedImage} from '@angular/common';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatTabsModule} from '@angular/material/tabs';
 import {isDevMode, importProvidersFrom} from '@angular/core';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {CdkDrag} from '@angular/cdk/drag-drop';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatCardModule} from '@angular/material/card';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
 import {authGuard} from './app/services/auth.guard';
 import {provideRouter, Routes} from '@angular/router';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {withInterceptorsFromDi, provideHttpClient} from '@angular/common/http';
-import {BrowserModule, bootstrapApplication} from '@angular/platform-browser';
+import {bootstrapApplication} from '@angular/platform-browser';
 import {httpInterceptorProviders} from './app/services/http.interceptor';
 
 const appRoutes: Routes = [
@@ -97,16 +73,14 @@ const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
-
-
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, MatButtonModule, MatIconModule, MatToolbarModule, MatBottomSheetModule, MatInputModule, FormsModule, MatSnackBarModule, MatListModule, MatMenuModule, MatCardModule, MatProgressSpinnerModule, MatBadgeModule, MatDialogModule, MatSelectModule, MatExpansionModule, MatChipsModule, MatProgressBarModule, MatStepperModule, ReactiveFormsModule, CdkDrag, ServiceWorkerModule.register('ngsw-worker.js', {
+    importProvidersFrom(ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }), MatTabsModule, MatSlideToggleModule, MatSidenavModule, NgOptimizedImage, MatAutocompleteModule),
+    })),
     httpInterceptorProviders,
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),

@@ -1,7 +1,7 @@
 @if (groupEssentialData.group_id != 0) {
   <main>
     <div class="group-container" [ngClass]="{'unread': unread}" [routerLink]="['/group/' + groupID]">
-      <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
+      <div style="width: 40px; height:40px;clip-path: circle(20px at center);flex-shrink: 0;">
         <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
       </div>
       <div id="info-section">
@@ -31,7 +31,7 @@
     </div>
   </main>
 } @else {
-  <div class="group-container" style="height: 40px; min-width: 150px">
+  <div class="group-container" style="min-width: 150px">
     <div style="width: 40px;height: 40px;border-radius: 100%;background-color: #c2175b"></div>
     <div style="flex: 1"></div>
   </div>

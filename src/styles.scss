@@ -23,6 +23,8 @@ body {
   transition-duration: 0.6s;
 }
 
+
+
 @keyframes appear {
   0% {
     opacity: 0;
@@ -93,19 +95,13 @@ body {
   backdrop-filter: blur(7px);
 }
 
-.trans-btn-dark {
-  -webkit-backdrop-filter: blur(10px) brightness(0.85);
-  backdrop-filter: blur(10px) brightness(0.85);
-}
-
-.trans-btn-bright {
-  -webkit-backdrop-filter: blur(10px) brightness(1.1);
-  backdrop-filter: blur(10px) brightness(1.1);
-}
-
 .main-btn {
   scale: 1.2;
   bottom: 0;
   margin: 25px;
   z-index: 2;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 35px;
 }

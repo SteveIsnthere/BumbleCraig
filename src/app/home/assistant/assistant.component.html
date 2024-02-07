@@ -1,21 +1,16 @@
-<mat-dialog-content style="background-color:  #363636;">
+<mat-dialog-content style="background-color:  #363636; padding: 15px">
   <main>
-    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px; align-self: flex-start"
-      mat-dialog-close>
-      <mat-icon>close_fullscreen</mat-icon>
-      close
-    </button>
     @if (!loading && response == '') {
       <div id="input">
         @if (imageToUpload == null) {
-          <div class="classicTextBox" style="margin: -5px -8px 10px;border-radius: 5px">
+          <div class="classicTextBox" style="margin-bottom: 15px">
             <span class="classicTitle">Ask {{ siteName }}</span>
             <div style="display: flex; justify-content: space-between">
               <span>Ask me anything, and I'll try my best to answer</span>
             </div>
           </div>
         }
-        <div id="prompts">
+        <div id="prompts" style="width: 100%;">
           @if (imageToUpload != null) {
             <img [src]="url" alt="image" class="imagePreview">
           } @else {
@@ -25,7 +20,7 @@
             </button>
           }
           <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
-          <mat-form-field appearance="outline" style="align-self: center">
+          <mat-form-field appearance="outline" style="align-self: center;width: 100%;">
             <mat-label>Question</mat-label>
             <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
           </mat-form-field>
@@ -48,11 +43,6 @@
             }
           </div>
         }
-        <button mat-raised-button (click)="submit(input)" color="warn"
-          style="align-self: flex-end; border-radius: 100px">
-          <mat-icon>check</mat-icon>
-          Submit
-        </button>
       </div>
     }
 
@@ -65,7 +55,7 @@
     }
 
     @if (response != '') {
-      @if (imageToUpload != null;) {
+      @if (imageToUpload != null; ) {
         <img [src]="url" alt="image" class="imagePreview">
       }
       <div id="response" [@inOutAnimation]="">
@@ -77,4 +67,15 @@
     }
     <!--  <app-rainbow-strip [bottom]=true></app-rainbow-strip>-->
   </main>
+
 </mat-dialog-content>
+
+@if (!loading && response == '') {
+  <mat-dialog-actions style="justify-content: center">
+    <button mat-raised-button (click)="submit()" color="warn"
+            style="border-radius: 10px">
+      <mat-icon>check</mat-icon>
+      Submit
+    </button>
+  </mat-dialog-actions>
+}
