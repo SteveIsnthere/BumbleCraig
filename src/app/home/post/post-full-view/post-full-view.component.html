@@ -1,38 +1,49 @@
-<mat-dialog-content id="wrapper" *ngIf="post != null">
-  <main>
-    <button mat-flat-button color="accent" style="border-radius: 100px" mat-dialog-close>
-      <mat-icon>close_fullscreen</mat-icon>
-      close
-    </button>
-
-    <div class="classicTextBox">
-      <span class="classicTitle" style="font-size: x-large; line-height: 1.3; margin-bottom: 10px; margin-top: 0">{{ post.title }}</span>
-      <div id="post-details-row">
-        <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"
-                       style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
-        <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>
-        <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
-        <div style="flex: 1"></div>
+@if (post != null) {
+  <mat-dialog-content id="wrapper">
+    <main>
+      <button mat-flat-button color="accent" style="border-radius: 100px" mat-dialog-close>
+        <mat-icon>close_fullscreen</mat-icon>
+        close
+      </button>
+      <div class="classicTextBox">
+        <span class="classicTitle" style="font-size: x-large; line-height: 1.3; margin-bottom: 10px; margin-top: 0">{{ post.title }}</span>
+        <div id="post-details-row">
+          @if (post.author_id != null) {
+            <app-user-mini [userID]=post.author_id
+            style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>
+          }
+          <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>
+          <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>
+          <div style="flex: 1"></div>
+        </div>
       </div>
-    </div>
-<!--    <span id="title">{{ post.title }}</span>-->
-<!--    <div id="post-details-row">-->
-<!--      <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"-->
-<!--                     style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>-->
-<!--      <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>-->
-<!--      <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>-->
-<!--      <div style="flex: 1"></div>-->
-<!--    </div>-->
-    <mat-divider style="width: 100%; margin-top: -5px"></mat-divider>
-    <div class="contents">
-      <div *ngFor="let content of post.content" class="content">
-        <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+      <!--    <span id="title">{{ post.title }}</span>-->
+      <!--    <div id="post-details-row">-->
+      <!--      <app-user-mini [userID]=post.author_id *ngIf="post.author_id != null"-->
+    <!--                     style="align-self: flex-start; width: 40px; height: 40px"></app-user-mini>-->
+    <!--      <span style="font-size: smaller;white-space: nowrap;">{{ post.time_since_posted }}</span>-->
+    <!--      <mat-chip-option selectable="false">{{ post.genre }}</mat-chip-option>-->
+    <!--      <div style="flex: 1"></div>-->
+  <!--    </div>-->
+  <mat-divider style="width: 100%; margin-top: -5px"></mat-divider>
+  <div class="contents">
+    @for (content of post.content; track content) {
+      <div class="content">
+        @if (content.file_share_id != 0) {
           <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
-        </ng-container>
-        <ng-template #textMsg>
-          <div class="text-wrapper" *ngIf="!isLink(content.content); else link">
-            <span class="text-content">{{ content.content }}</span>
-          </div>
+        } @else {
+          @if (!isLink(content.content)) {
+            <div class="text-wrapper">
+              <span class="text-content">{{ content.content }}</span>
+            </div>
+          } @else {
+            <a [href]="content.content" target="_blank">
+              <button mat-stroked-button color="primary">
+                <mat-icon>link</mat-icon>
+                Link
+              </button>
+            </a>
+          }
           <ng-template #link>
             <a [href]="content.content" target="_blank">
               <button mat-stroked-button color="primary">
@@ -41,36 +52,47 @@
               </button>
             </a>
           </ng-template>
-        </ng-template>
+        }
       </div>
-    </div>
-    <app-reusable-comments-view [postID]="postID" style="align-self: center"></app-reusable-comments-view>
-  </main>
-</mat-dialog-content>
-
-<mat-dialog-actions *ngIf="post != null" style="height: 57px">
-  <div class="action-bar" *ngIf="perceptionStatus != 3 && auth.selfUserID != post.author_id">
-    <button mat-mini-fab color="primary" (click)="likePost()"
-            *ngIf="perceptionStatus == 0 || perceptionStatus == 1">
-      <mat-icon>thumb_up</mat-icon>
-    </button>
-    <button mat-mini-fab color="warn" (click)="dislikePost()" *ngIf="perceptionStatus == 0 || perceptionStatus == 2">
-      <mat-icon>thumb_down</mat-icon>
-    </button>
-    <span *ngIf="perceptionStatus==1" style="color: green; margin-left: 7px">Shilled</span>
-    <span *ngIf="perceptionStatus==2" style="color: red; margin-left: 7px">Cancelled</span>
+    }
   </div>
+  <app-reusable-comments-view [postID]="postID" style="align-self: center"></app-reusable-comments-view>
+</main>
+</mat-dialog-content>
+}
 
-  <button mat-mini-fab *ngIf="auth.selfUserID == post.author_id" (click)="deletePost()">
-    <mat-icon>delete</mat-icon>
-  </button>
-
-  <div style="flex: 1"></div>
-
-  <button mat-flat-button color="warn" (click)="writeComment()" style="border-radius: 100px">
-    <mat-icon>rate_review</mat-icon>
-    Comment
-  </button>
-
-
-</mat-dialog-actions>
+@if (post != null) {
+  <mat-dialog-actions style="height: 57px">
+    @if (perceptionStatus != 3 && auth.selfUserID != post.author_id) {
+      <div class="action-bar">
+        @if (perceptionStatus == 0 || perceptionStatus == 1) {
+          <button mat-mini-fab color="primary" (click)="likePost()"
+            >
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+        }
+        @if (perceptionStatus == 0 || perceptionStatus == 2) {
+          <button mat-mini-fab color="warn" (click)="dislikePost()">
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+        }
+        @if (perceptionStatus==1) {
+          <span style="color: green; margin-left: 7px">Shilled</span>
+        }
+        @if (perceptionStatus==2) {
+          <span style="color: red; margin-left: 7px">Cancelled</span>
+        }
+      </div>
+    }
+    @if (auth.selfUserID == post.author_id) {
+      <button mat-mini-fab (click)="deletePost()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    }
+    <div style="flex: 1"></div>
+    <button mat-flat-button color="warn" (click)="writeComment()" style="border-radius: 100px">
+      <mat-icon>rate_review</mat-icon>
+      Comment
+    </button>
+  </mat-dialog-actions>
+}

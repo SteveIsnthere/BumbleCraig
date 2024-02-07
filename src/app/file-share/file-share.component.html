@@ -1,24 +1,29 @@
-<main *ngIf="fileShareInfo!=null; else loadingBar">
-  <div id="file" (click)="downloadFile()" *ngIf="!isImage()&&!isVideo()">
-    <b>{{fileName()}}</b>
-    <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px">
-      <mat-icon style="vertical-align: middle;">{{fileIcon()}}</mat-icon>
-      <span>{{fileSize()}}</span>
-      <mat-icon style="vertical-align: middle;">file_download</mat-icon>
-    </div>
-  </div>
+@if (fileShareInfo!=null) {
+  <main>
+    @if (!isImage()&&!isVideo()) {
+      <div id="file" (click)="downloadFile()">
+        <b>{{fileName()}}</b>
+        <div style="display: flex; justify-content: space-around; align-items: center; gap: 10px">
+          <mat-icon style="vertical-align: middle;">{{fileIcon()}}</mat-icon>
+          <span>{{fileSize()}}</span>
+          <mat-icon style="vertical-align: middle;">file_download</mat-icon>
+        </div>
+      </div>
+    }
+    @if (isImage();) {
+      <div (click)="openImageFullView()" [@inAnimation]="">
+        <img id="image-element" src="{{fileShareLink()}}" alt="file">
+      </div>
+    }
+    @if (isVideo();) {
+      <div [@inAnimation]="">
+        <video id="video-element" controls preload="none">
+          <source src="{{fileShareLink()}}" type="video/mp4">
+          Your browser does not support the video tag
+        </video>
+      </div>
+    }
+  </main>
+} @else {
+}
 
-  <div *ngIf="isImage();" (click)="openImageFullView()" [@inAnimation]="">
-    <img id="image-element" src="{{fileShareLink()}}" alt="file">
-  </div>
-
-  <div *ngIf="isVideo();" [@inAnimation]="">
-    <video id="video-element" controls preload="none">
-      <source src="{{fileShareLink()}}" type="video/mp4">
-      Your browser does not support the video tag
-    </video>
-  </div>
-</main>
-
-<ng-template #loadingBar>
-</ng-template>

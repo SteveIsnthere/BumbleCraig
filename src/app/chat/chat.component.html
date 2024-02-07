@@ -9,45 +9,51 @@
           Create New
         </button>
 
-        <ng-container *ngIf="!editMode; else checkBtn">
+        @if (!editMode) {
           <button mat-stroked-button (click)="editMode = !editMode" color="warn"
-                  style="border-radius: 200px;">
+            style="border-radius: 200px;">
             <mat-icon>delete</mat-icon>
             Quit Group
           </button>
-        </ng-container>
+        } @else {
+          <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+            style="border-radius: 200px;">
+            <mat-icon>check</mat-icon>
+            Done
+          </button>
+        }
       </div>
     </div>
   </div>
 
-  <ng-template #checkBtn>
-    <button mat-stroked-button (click)="editMode = !editMode" color="warn"
-            style="border-radius: 200px;">
-      <mat-icon>check</mat-icon>
-      Done
-    </button>
-  </ng-template>
 
-  <div id="group-list" *ngIf="loadingComplete; else loadingBar">
-    <div class="group-row" *ngFor="let groupID of groupIDs">
-      <button mat-mini-fab *ngIf="editMode" (click)="leaveGroup(groupID)" color="primary">
-        <mat-icon>delete</mat-icon>
-      </button>
-      <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
-                 style="flex: 1;max-width: 310px;"></app-group>
+  @if (loadingComplete) {
+    <div id="group-list">
+      @for (groupID of groupIDs; track groupID) {
+        <div class="group-row">
+          @if (editMode) {
+            <button mat-mini-fab (click)="leaveGroup(groupID)" color="primary">
+              <mat-icon>delete</mat-icon>
+            </button>
+          }
+          <app-group [groupID]="groupID" [selfID]="auth.selfUserID" [unread]=isGroupUnread(groupID)
+          style="flex: 1;max-width: 310px;"></app-group>
+        </div>
+      }
     </div>
-  </div>
-
-  <div style="display: flex;justify-content: center;margin-top: 20px" *ngIf="showLoadMore">
-    <button mat-flat-button style="border-radius: 100px" color="primary"
-            (click)="loadMore();">
-      Load more
-    </button>
-  </div>
-
-  <div style="height: 80px"></div>
-  <ng-template #loadingBar>
+  } @else {
     <!--    <mat-progress-bar mode="indeterminate" style="position: fixed; top: 0; left: 0"></mat-progress-bar>-->
     <app-loading-placeholder></app-loading-placeholder>
-  </ng-template>
+  }
+
+  @if (showLoadMore) {
+    <div style="display: flex;justify-content: center;margin-top: 20px">
+      <button mat-flat-button style="border-radius: 100px" color="primary"
+        (click)="loadMore();">
+        Load more
+      </button>
+    </div>
+  }
+
+  <div style="height: 80px"></div>
 </main>

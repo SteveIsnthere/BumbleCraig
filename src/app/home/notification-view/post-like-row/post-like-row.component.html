@@ -1,14 +1,15 @@
-<main *ngIf="postLike != null && postData != null">
-  <mat-card (click)="openPostFullView()" style="cursor: pointer;">
-    <mat-card-header>
-      <mat-card-title id="post-title">Your post "{{postData.title}}"</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <span> Got {{postLike.number_of_likes}} Likes</span>
-    </mat-card-content>
-  </mat-card>
-
-  <button mat-mini-fab (click)="removeNotification()">
-    <mat-icon>close</mat-icon>
-  </button>
-</main>
+@if (postLike != null && postData != null) {
+  <main>
+    <mat-card (click)="openPostFullView()" style="cursor: pointer;">
+      <mat-card-header>
+        <mat-card-title id="post-title">Your post "{{postData.title}}"</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <span> Got {{postLike.number_of_likes}} Likes</span>
+      </mat-card-content>
+    </mat-card>
+    <button mat-mini-fab (click)="removeNotification()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </main>
+}

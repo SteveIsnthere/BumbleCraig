@@ -17,14 +17,14 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { SimpleFigureComponent } from '../../simple-figure/simple-figure.component';
-import { NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-user-detailed-view',
     templateUrl: './user-detailed-view.component.html',
     styleUrls: ['./user-detailed-view.component.css'],
     standalone: true,
-    imports: [NgIf, NgClass, SimpleFigureComponent, MatDivider, MatButton, MatIcon, RouterLink, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
+    imports: [NgClass, SimpleFigureComponent, MatDivider, MatButton, MatIcon, RouterLink, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })
 export class UserDetailedViewComponent extends UserComponent implements OnInit {
   userDescription = 'loading...';

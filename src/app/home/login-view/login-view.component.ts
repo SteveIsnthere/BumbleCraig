@@ -12,14 +12,14 @@ import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatChip } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-login-view',
     templateUrl: './login-view.component.html',
     styleUrls: ['./login-view.component.css'],
     standalone: true,
-    imports: [NgClass, NgIf, FormsModule, MatChip, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatProgressSpinner, MatProgressBar, BackgroundComponent]
+    imports: [NgClass, FormsModule, MatChip, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatProgressSpinner, MatProgressBar, BackgroundComponent]
 })
 export class LoginViewComponent implements OnInit, OnDestroy {
 

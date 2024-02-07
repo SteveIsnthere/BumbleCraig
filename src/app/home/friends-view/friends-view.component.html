@@ -9,19 +9,24 @@
     </div>
   </div>
 
-  <div id="friends-list" *ngIf="loaded; else loadingBar">
-    <app-user [userID]="friendID" *ngFor="let friendID of friendIDs"></app-user>
-  </div>
+  @if (loaded) {
+    <div id="friends-list">
+      @for (friendID of friendIDs; track friendID) {
+        <app-user [userID]="friendID"></app-user>
+      }
+    </div>
+  } @else {
+    <app-loading-placeholder></app-loading-placeholder>
+  }
 
-  <div style="display: flex;justify-content: center;margin-top: 20px" *ngIf="showLoadMore">
-    <button mat-flat-button style="border-radius: 100px" color="primary"
-            (click)="loadMore();">
-      Load more
-    </button>
-  </div>
+  @if (showLoadMore) {
+    <div style="display: flex;justify-content: center;margin-top: 20px">
+      <button mat-flat-button style="border-radius: 100px" color="primary"
+        (click)="loadMore();">
+        Load more
+      </button>
+    </div>
+  }
 
   <div style="height: 65px"></div>
 </main>
-<ng-template #loadingBar>
-  <app-loading-placeholder></app-loading-placeholder>
-</ng-template>

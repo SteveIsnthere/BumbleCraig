@@ -5,7 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ImageFullViewComponent} from "./image-full-view/image-full-view.component";
 import {animate, style, transition, trigger} from "@angular/animations";
 import { MatIcon } from '@angular/material/icon';
-import { NgIf } from '@angular/common';
+
 
 export interface FileShareInfo {
   file_share_id: number,
@@ -26,7 +26,7 @@ export interface FileShareInfo {
         ])
     ],
     standalone: true,
-    imports: [NgIf, MatIcon]
+    imports: [MatIcon]
 })
 export class FileShareComponent implements OnInit {
   @Input() fileShareID: number = 0;

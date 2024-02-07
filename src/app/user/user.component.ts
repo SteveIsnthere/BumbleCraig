@@ -5,14 +5,14 @@ import {apiEndPoint} from "../env";
 import {UserInfoCachingService} from "../services/user-info-caching.service";
 import { SimpleFigureComponent } from '../simple-figure/simple-figure.component';
 import { RouterLink } from '@angular/router';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
     styleUrls: ['./user.component.css'],
     standalone: true,
-    imports: [NgIf, RouterLink, SimpleFigureComponent]
+    imports: [RouterLink, SimpleFigureComponent]
 })
 export class UserComponent implements OnInit {
   @Input() userID: number = 0;

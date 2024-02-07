@@ -1,10 +1,12 @@
-<main *ngIf="sysMsg != ''">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Message</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <span>{{sysMsg}}</span>
-    </mat-card-content>
-  </mat-card>
-</main>
+@if (sysMsg != '') {
+  <main>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Message</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <span>{{sysMsg}}</span>
+      </mat-card-content>
+    </mat-card>
+  </main>
+}

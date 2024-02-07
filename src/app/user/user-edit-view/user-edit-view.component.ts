@@ -15,14 +15,14 @@ import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field'
 import { MatIcon } from '@angular/material/icon';
 import { MatMiniFabButton, MatIconButton } from '@angular/material/button';
 import { SimpleFigureComponent } from '../../simple-figure/simple-figure.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-user-edit-view',
     templateUrl: './user-edit-view.component.html',
     styleUrls: ['./user-edit-view.component.css'],
     standalone: true,
-    imports: [NgIf, SimpleFigureComponent, MatMiniFabButton, MatIcon, MatFormField, MatLabel, MatInput, FormsModule, MatIconButton, MatSuffix, CdkTextareaAutosize]
+    imports: [SimpleFigureComponent, MatMiniFabButton, MatIcon, MatFormField, MatLabel, MatInput, FormsModule, MatIconButton, MatSuffix, CdkTextareaAutosize]
 })
 export class UserEditViewComponent extends UserComponent implements OnInit {
   @ViewChild('figure', {static: false}) figureComponent: any;

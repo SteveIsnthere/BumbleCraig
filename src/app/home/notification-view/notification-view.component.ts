@@ -12,14 +12,14 @@ import { FriendReqRowComponent } from './friend-req-row/friend-req-row.component
 import { MatIcon } from '@angular/material/icon';
 import { MatDialogClose } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-notification-view',
     templateUrl: './notification-view.component.html',
     styleUrls: ['./notification-view.component.css'],
     standalone: true,
-    imports: [NgIf, MatButton, MatDialogClose, MatIcon, NgFor, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent]
+    imports: [MatButton, MatDialogClose, MatIcon, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent]
 })
 export class NotificationViewComponent implements OnInit, OnDestroy {
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar) {

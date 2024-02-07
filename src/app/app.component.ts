@@ -7,7 +7,7 @@ import { MainBtnComponent } from './compoents/main-btn/main-btn.component';
 import { RainbowStripComponent } from './compoents/rainbow-strip/rainbow-strip.component';
 import { CueCardComponent } from './home/cue-card/cue-card.component';
 import { LoadingPlaceholderComponent } from './compoents/loading-placeholder/loading-placeholder.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-root',
@@ -15,7 +15,7 @@ import { NgIf } from '@angular/common';
     styleUrls: ['./app.component.css'],
     animations: [routerTransition],
     standalone: true,
-    imports: [NgIf, LoadingPlaceholderComponent, CueCardComponent, RouterOutlet, RainbowStripComponent, MainBtnComponent, BackgroundComponent]
+    imports: [LoadingPlaceholderComponent, CueCardComponent, RouterOutlet, RainbowStripComponent, MainBtnComponent, BackgroundComponent]
 })
 export class AppComponent {
   title = 'Tidder';

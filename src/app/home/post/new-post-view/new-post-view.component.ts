@@ -20,7 +20,7 @@ import { FileShareComponent } from '../../../file-share/file-share.component';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgFor, NgIf } from '@angular/common';
+
 import { MatChipListbox, MatChipOption } from '@angular/material/chips';
 
 @Component({
@@ -29,23 +29,21 @@ import { MatChipListbox, MatChipOption } from '@angular/material/chips';
     styleUrls: ['./new-post-view.component.css'],
     standalone: true,
     imports: [
-        FormsModule,
-        MatChipListbox,
-        NgFor,
-        MatChipOption,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        CdkTextareaAutosize,
-        NgIf,
-        FileShareComponent,
-        MatMiniFabButton,
-        MatIcon,
-        MatProgressBar,
-        MatDivider,
-        MatButton,
-    ],
+    FormsModule,
+    MatChipListbox,
+    MatChipOption,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    CdkTextareaAutosize,
+    FileShareComponent,
+    MatMiniFabButton,
+    MatIcon,
+    MatProgressBar,
+    MatDivider,
+    MatButton
+],
 })
 export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;

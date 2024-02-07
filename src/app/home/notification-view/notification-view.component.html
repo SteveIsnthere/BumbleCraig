@@ -1,37 +1,44 @@
-<main *ngIf="main.notifications != null && main.getTotalMessageCount() > 0 else noMsgView">
-  <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 10px" mat-dialog-close>
-    <mat-icon>close_fullscreen</mat-icon>
-    close
-  </button>
-  <div class="notification-section-container">
-    <ng-container *ngIf="this.main.notifications!.friend_request_user_ids.length > 0">
-      <app-friend-req-row [id]="id"
-                          *ngFor="let id of this.main.notifications?.friend_request_user_ids"></app-friend-req-row>
-    </ng-container>
-
-
-    <ng-container *ngIf="this.main.notifications!.group_invites.length > 0">
-      <app-group-inv-row [invitation]="invitation"
-                         *ngFor="let invitation of this.main.notifications?.group_invites"></app-group-inv-row>
-    </ng-container>
-
-    <button mat-stroked-button color="primary" style="border-radius: 100px; margin: 10px;" (click)="clear()"
-            *ngIf="showCleanAllButton()">
-      <mat-icon>delete</mat-icon>
-      Clear Messages
+@if (main.notifications != null && main.getTotalMessageCount() > 0) {
+  <main>
+    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 10px" mat-dialog-close>
+      <mat-icon>close_fullscreen</mat-icon>
+      close
     </button>
-
-    <app-sys-msg-row [sysMsg]="sysMsg"
-                     *ngFor="let sysMsg of this.main.notifications?.system_messages" style="align-items: flex-start;"></app-sys-msg-row>
-
-    <app-post-comment-row [postComment]="postComment"
-                          *ngFor="let postComment of this.main.notifications?.post_comments" style="align-items: flex-start;"></app-post-comment-row>
-    <app-post-like-row [postLike]="postLike"
-                       *ngFor="let postLike of this.main.notifications?.post_likes" style="align-items: flex-start;"></app-post-like-row>
-  </div>
-</main>
-
-<ng-template #noMsgView>
+    <div class="notification-section-container">
+      @if (this.main.notifications!.friend_request_user_ids.length > 0) {
+        @for (id of this.main.notifications?.friend_request_user_ids; track id) {
+          <app-friend-req-row [id]="id"
+          ></app-friend-req-row>
+        }
+      }
+      @if (this.main.notifications!.group_invites.length > 0) {
+        @for (invitation of this.main.notifications?.group_invites; track invitation) {
+          <app-group-inv-row [invitation]="invitation"
+          ></app-group-inv-row>
+        }
+      }
+      @if (showCleanAllButton()) {
+        <button mat-stroked-button color="primary" style="border-radius: 100px; margin: 10px;" (click)="clear()"
+          >
+          <mat-icon>delete</mat-icon>
+          Clear Messages
+        </button>
+      }
+      @for (sysMsg of this.main.notifications?.system_messages; track sysMsg) {
+        <app-sys-msg-row [sysMsg]="sysMsg"
+        style="align-items: flex-start;"></app-sys-msg-row>
+      }
+      @for (postComment of this.main.notifications?.post_comments; track postComment) {
+        <app-post-comment-row [postComment]="postComment"
+        style="align-items: flex-start;"></app-post-comment-row>
+      }
+      @for (postLike of this.main.notifications?.post_likes; track postLike) {
+        <app-post-like-row [postLike]="postLike"
+        style="align-items: flex-start;"></app-post-like-row>
+      }
+    </div>
+  </main>
+} @else {
   <div class="no-msg-view">
     <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px;" mat-dialog-close>
       <mat-icon>close_fullscreen</mat-icon>
@@ -40,4 +47,5 @@
     <mat-icon style="vertical-align: middle">task_alt</mat-icon>
     <span>No Notifications</span>
   </div>
-</ng-template>
+}
+

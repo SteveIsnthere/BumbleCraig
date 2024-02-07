@@ -1,71 +1,77 @@
 <main>
   <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
-<!--  <app-logo style="margin: -35px"></app-logo>-->
+  <!--  <app-logo style="margin: -35px"></app-logo>-->
 
-  <ng-container *ngIf="loginView; else welcomeView">
-    <form *ngIf="!loginLoading; else loginLoadingBar">
-      <mat-chip style="margin-bottom: 20px;" *ngIf="wrongCredentials">Wrong password or username</mat-chip>
-      <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <button mat-flat-button (click)="login($event)" class="round-btn"
-              color="warn">Log In
-        <mat-icon>login</mat-icon>
-      </button>
-    </form>
-    <ng-template #loginLoadingBar>
+  @if (loginView) {
+    @if (!loginLoading) {
+      <form>
+        @if (wrongCredentials) {
+          <mat-chip style="margin-bottom: 20px;">Wrong password or username</mat-chip>
+        }
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <button mat-flat-button (click)="login($event)" class="round-btn"
+          color="warn">Log In
+          <mat-icon>login</mat-icon>
+        </button>
+      </form>
+    } @else {
       <div style="display: flex; justify-content: center;">
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
       </div>
-    </ng-template>
+    }
     <button mat-stroked-button (click)="loginView = false" class="round-btn" color="primary"
-            [ngClass]="{'fade': loginLoading}">New user?
+      [ngClass]="{'fade': loginLoading}">New user?
     </button>
     <!--    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"-->
     <!--            color="primary">Continue as a-->
     <!--      Guest-->
-    <!--    </button>-->
-  </ng-container>
-
-  <ng-template #welcomeView>
-    <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
-      <div class="classicTitle"  [ngClass]="{'title-loading': newUserLoading}">
-          {{siteName}}
-      </div>
-      <p>Finally, a <b style="text-decoration: underline">sensible</b> platform for the rest of us</p>
-      <p>Click the button to get started!</p>
-      <div style="display: flex; justify-content: center; margin-top: 20px" *ngIf="!newUserLoading; else loadingWheel">
+  <!--    </button>-->
+} @else {
+  <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
+    <div class="classicTitle"  [ngClass]="{'title-loading': newUserLoading}">
+      {{siteName}}
+    </div>
+    <p>Finally, a <b style="text-decoration: underline">sensible</b> platform for the rest of us</p>
+    <p>Click the button to get started!</p>
+    @if (!newUserLoading) {
+      <div style="display: flex; justify-content: center; margin-top: 20px">
         <div style="flex: 1"></div>
         <button mat-flat-button (click)="continueAsVisitor()" color="primary"
-                style="border-radius: 100px; margin-top: 20px; padding: 20px" id="start-btn">
+          style="border-radius: 100px; margin-top: 20px; padding: 20px" id="start-btn">
           <mat-icon>rocket_launch</mat-icon>
           Let me in
         </button>
       </div>
-      <ng-template #loadingWheel>
-        <!--        <div style="display: flex; justify-content: center; margin-top: 72px">-->
-        <!--          <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
-        <!--        </div>-->
-        <div style="display: flex; justify-content: center;">
-          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        </div>
-      </ng-template>
-      <img src="assets/bg.svg" alt="background" id="back-ground-image" *ngIf="!newUserLoading"
-           style="position:absolute;bottom: 0;left: 10px;width: 150px;opacity: 0.3;">
+    } @else {
+      <!--        <div style="display: flex; justify-content: center; margin-top: 72px">-->
+      <!--          <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+    <!--        </div>-->
+    <div style="display: flex; justify-content: center;">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </div>
-    <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
-            [ngClass]="{'fade': newUserLoading}"
-            style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
-      <mat-icon>login</mat-icon>
-      I have an account
-    </button>
-  </ng-template>
+  }
+  @if (!newUserLoading) {
+    <img src="assets/bg.svg" alt="background" id="back-ground-image"
+      style="position:absolute;bottom: 0;left: 10px;width: 150px;opacity: 0.3;">
+  }
+</div>
+<button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
+  [ngClass]="{'fade': newUserLoading}"
+  style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
+  <mat-icon>login</mat-icon>
+  I have an account
+</button>
+}
+
 </main>
 
-<div id="sign-up-background" *ngIf="newUserLoading || loginLoading"><app-background></app-background></div>
+@if (newUserLoading || loginLoading) {
+  <div id="sign-up-background"><app-background></app-background></div>
+}

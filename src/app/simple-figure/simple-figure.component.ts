@@ -3,14 +3,14 @@ import {apiEndPoint} from "../env";
 import {HttpClient} from "@angular/common/http";
 import {convertToColorArray} from "./figure-dep";
 import {SimpleFigureCachingService} from "../services/simple-figure-caching.service";
-import {NgIf, NgFor} from '@angular/common';
+
 
 @Component({
   selector: 'app-simple-figure',
   templateUrl: './simple-figure.component.html',
   styleUrls: ['./simple-figure.component.css'],
   standalone: true,
-  imports: [NgIf, NgFor]
+  imports: []
 })
 export class SimpleFigureComponent implements OnInit {
   // @Input() figureID: number = 0;

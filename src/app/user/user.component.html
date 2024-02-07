@@ -1,12 +1,13 @@
-<main *ngIf="essentialUserData.figure_id != 0; else placeHolder" class="wrapper" [routerLink]="['/user/' + userID]">
-  <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
-    <app-simple-figure [figureID]=essentialUserData.figure_id></app-simple-figure>
-  </div>
-  <span id="name">{{essentialUserData.name}}</span>
-</main>
-
-<ng-template #placeHolder>
+@if (essentialUserData.figure_id != 0) {
+  <main class="wrapper" [routerLink]="['/user/' + userID]">
+    <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
+      <app-simple-figure [figureID]=essentialUserData.figure_id></app-simple-figure>
+    </div>
+    <span id="name">{{essentialUserData.name}}</span>
+  </main>
+} @else {
   <div class="wrapper" style="width: 200px;">
     <div style="width: 40px;height: 40px;border-radius: 100%;background-color: #c2175b"></div>
   </div>
-</ng-template>
+}
+

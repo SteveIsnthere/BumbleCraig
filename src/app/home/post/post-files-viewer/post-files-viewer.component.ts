@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Message} from "../../../chat/group/group-chat-view/Message";
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+
 import { FileShareComponent } from '../../../file-share/file-share.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { FileShareComponent } from '../../../file-share/file-share.component';
     templateUrl: './post-files-viewer.component.html',
     styleUrls: ['./post-files-viewer.component.css'],
     standalone: true,
-    imports: [FileShareComponent, NgIf, MatIconButton, MatIcon]
+    imports: [FileShareComponent, MatIconButton, MatIcon]
 })
 export class PostFilesViewerComponent {
   @Input() files: Message[] = [];

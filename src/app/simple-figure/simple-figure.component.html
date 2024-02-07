@@ -1,8 +1,14 @@
-<main *ngIf="!loading">
-  <div *ngFor="let row of data" class="color-row">
-    <div *ngFor="let color of row" class="color-cell" [style.background-color]="color"></div>
-  </div>
-</main>
+@if (!loading) {
+  <main>
+    @for (row of data; track row) {
+      <div class="color-row">
+        @for (color of row; track color) {
+          <div class="color-cell" [style.background-color]="color"></div>
+        }
+      </div>
+    }
+  </main>
+}
 <!--<main>-->
 <!--  <canvas #canvas style="display: block; aspect-ratio: 1; width: 100%;" width="40" height="40"></canvas>-->
 <!--</main>-->

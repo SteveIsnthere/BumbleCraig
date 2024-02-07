@@ -13,14 +13,14 @@ import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { SimpleFigureComponent } from '../../simple-figure/simple-figure.component';
 import { RouterLink } from '@angular/router';
-import { NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-group',
     templateUrl: './group.component.html',
     styleUrls: ['./group.component.css'],
     standalone: true,
-    imports: [NgIf, NgClass, RouterLink, SimpleFigureComponent, MatIcon, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
+    imports: [NgClass, RouterLink, SimpleFigureComponent, MatIcon, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 
 export class GroupComponent implements OnInit {

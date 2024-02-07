@@ -4,14 +4,14 @@ import {AuthService} from "../../../services/auth.service";
 import {apiEndPoint} from "../../../env";
 import { LoadingPlaceholderComponent } from '../../../compoents/loading-placeholder/loading-placeholder.component';
 import { PostSectionViewBaseComponent } from '../post-section-view/post-section-view-base/post-section-view-base.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-viewed-posts-view',
     templateUrl: './viewed-posts-view.component.html',
     styleUrl: './viewed-posts-view.component.css',
     standalone: true,
-    imports: [NgIf, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
+    imports: [PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })
 export class ViewedPostsViewComponent implements OnInit {
   postIDs: number[] = [];

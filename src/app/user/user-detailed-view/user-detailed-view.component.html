@@ -1,100 +1,97 @@
-<main *ngIf="essentialUserData.figure_id != 0 && postsLoaded; else loadingBar">
-  <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
-    <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
-  </div>
-
-  <div class="classicTextBox" style="margin: 20px 0 10px">
-    <span class="classicTitle"
-          style="max-width: 70vw; overflow-wrap: anywhere;">{{ essentialUserData.name }}</span>
-    <div id="stats">
-      <span>#{{ userID }}</span>
-      <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
+@if (essentialUserData.figure_id != 0 && postsLoaded) {
+  <main>
+    <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
+      <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
     </div>
-    <div id="description">
-      <span>{{ userDescription }}</span>
+    <div class="classicTextBox" style="margin: 20px 0 10px">
+      <span class="classicTitle"
+      style="max-width: 70vw; overflow-wrap: anywhere;">{{ essentialUserData.name }}</span>
+      <div id="stats">
+        <span>#{{ userID }}</span>
+        <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
+      </div>
+      <div id="description">
+        <span>{{ userDescription }}</span>
+      </div>
     </div>
-  </div>
-
-  <!--  <div id="name">-->
-  <!--    <span>{{ essentialUserData.name }}</span>-->
+    <!--  <div id="name">-->
+    <!--    <span>{{ essentialUserData.name }}</span>-->
   <!--  </div>-->
-
   <!--  <div id="stats">-->
   <!--    <span>#{{ userID }}</span>-->
   <!--    <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>-->
-  <!--  </div>-->
-
-  <!--  <div id="description">-->
-  <!--    <span>{{ userDescription }}</span>-->
-  <!--  </div>-->
-
-  <span id="divider"><mat-divider></mat-divider></span>
-
-  <div class="actions" *ngIf="userID == auth.selfUserID">
-    <button mat-stroked-button (click)="userSetUp()" *ngIf="auth.isVisitor"
-            style="border-radius: 100px" color="warn">
-      <mat-icon>manage_accounts</mat-icon>
-      <span>Signup</span>
-    </button>
-
-    <button mat-stroked-button [routerLink]="['/user-profile-edit']" *ngIf="!auth.isVisitor"
-            style="border-radius: 100px" color="warn">
-      <mat-icon>edit</mat-icon>
-      <span>Edit</span>
-    </button>
-
+<!--  </div>-->
+<!--  <div id="description">-->
+<!--    <span>{{ userDescription }}</span>-->
+<!--  </div>-->
+<span id="divider"><mat-divider></mat-divider></span>
+@if (userID == auth.selfUserID) {
+  <div class="actions">
+    @if (auth.isVisitor) {
+      <button mat-stroked-button (click)="userSetUp()"
+        style="border-radius: 100px" color="warn">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Signup</span>
+      </button>
+    }
+    @if (!auth.isVisitor) {
+      <button mat-stroked-button [routerLink]="['/user-profile-edit']"
+        style="border-radius: 100px" color="warn">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+    }
     <button mat-stroked-button [routerLink]="['/login']" (click)="logout()" color="primary"
-            style="border-radius: 100px">
+      style="border-radius: 100px">
       <mat-icon>logout</mat-icon>
       <span>Logout</span>
     </button>
   </div>
-
-  <div class="actions" *ngIf="auth.selfUserID != userID">
-    <button mat-stroked-button color="primary" style="border-radius: 100px"
-            *ngIf="!isFriend && !friendRequestSent"
-            (click)="sendFriendRequest()">
-      <mat-icon>person_add</mat-icon>
-      Add
-    </button>
-
-    <button mat-stroked-button color="warn" style="border-radius: 100px"
-            *ngIf="friendRequestSent"
-            disabled>
-      <mat-icon>hourglass_top</mat-icon>
-      Requested
-    </button>
-
-    <button mat-stroked-button color="warn" style="border-radius: 100px"
-            *ngIf="isFriend"
-            (click)="removeFriend()">
-      <mat-icon>person_remove</mat-icon>
-      Remove
-    </button>
-
+}
+@if (auth.selfUserID != userID) {
+  <div class="actions">
+    @if (!isFriend && !friendRequestSent) {
+      <button mat-stroked-button color="primary" style="border-radius: 100px"
+        (click)="sendFriendRequest()">
+        <mat-icon>person_add</mat-icon>
+        Add
+      </button>
+    }
+    @if (friendRequestSent) {
+      <button mat-stroked-button color="warn" style="border-radius: 100px"
+        disabled>
+        <mat-icon>hourglass_top</mat-icon>
+        Requested
+      </button>
+    }
+    @if (isFriend) {
+      <button mat-stroked-button color="warn" style="border-radius: 100px"
+        (click)="removeFriend()">
+        <mat-icon>person_remove</mat-icon>
+        Remove
+      </button>
+    }
     <button mat-stroked-button color="accent" style="border-radius: 100px"
-            (click)="sendDM()">
+      (click)="sendDM()">
       <mat-icon>mail</mat-icon>
       DM
     </button>
   </div>
-
-  <ng-container *ngIf="postsLoaded;">
-    <ng-container *ngIf="postIDs.length == 0">
-      <div style="flex: 1; margin-top: 40px"></div>
-      <mat-icon color="primary">close</mat-icon>
-      <div style="flex: 1"></div>
-    </ng-container>
-
-    <!--    <div id="posts-section">-->
-    <!--      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>-->
-    <!--    </div>-->
-    <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
-  </ng-container>
-
+}
+@if (postsLoaded;) {
+  @if (postIDs.length == 0) {
+    <div style="flex: 1; margin-top: 40px"></div>
+    <mat-icon color="primary">close</mat-icon>
+    <div style="flex: 1"></div>
+  }
+  <!--    <div id="posts-section">-->
+  <!--      <app-post class="post" [postID]="postID" *ngFor="let postID of postIDs"></app-post>-->
+<!--    </div>-->
+<app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
+}
 </main>
-
-<ng-template #loadingBar>
+} @else {
   <!--  <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
   <app-loading-placeholder></app-loading-placeholder>
-</ng-template>
+}
+

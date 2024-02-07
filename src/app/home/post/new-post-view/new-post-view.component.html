@@ -8,104 +8,109 @@
   <!--          <mat-label>Title</mat-label>-->
   <!--          <textarea matInput [cdkTextareaAutosize]=true formControlName="firstCtrl"-->
   <!--                    autocomplete="off"-->
-  <!--                    [value]="title" (input)="changeTitle($event)"></textarea>-->
-  <!--        </mat-form-field>-->
+<!--                    [value]="title" (input)="changeTitle($event)"></textarea>-->
+<!--        </mat-form-field>-->
 
-  <!--        <div>-->
-  <!--          <button mat-button matStepperPrevious>Back</button>-->
-  <!--          <button color="primary" mat-flat-button matStepperNext>Next</button>-->
-  <!--        </div>-->
-  <!--      </form>-->
-  <!--    </mat-step>-->
+<!--        <div>-->
+<!--          <button mat-button matStepperPrevious>Back</button>-->
+<!--          <button color="primary" mat-flat-button matStepperNext>Next</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </mat-step>-->
 
-  <!--    <mat-step> &lt;!&ndash; genre selection &ndash;&gt;-->
-  <!--      <form>-->
-  <!--        <ng-template matStepLabel>Style</ng-template>-->
-  <!--        <mat-chip-listbox aria-label="Fish selection">-->
-  <!--          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"-->
-  <!--                           [selected]="genre == genreSelected"-->
-  <!--                           color="warn">-->
-  <!--            {{ genre }}-->
-  <!--          </mat-chip-option>-->
-  <!--        </mat-chip-listbox>-->
-  <!--        <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>-->
-  <!--      </form>-->
-  <!--    </mat-step>-->
+<!--    <mat-step> &lt;!&ndash; genre selection &ndash;&gt;-->
+<!--      <form>-->
+<!--        <ng-template matStepLabel>Style</ng-template>-->
+<!--        <mat-chip-listbox aria-label="Fish selection">-->
+<!--          <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"-->
+<!--                           [selected]="genre == genreSelected"-->
+<!--                           color="warn">-->
+<!--            {{ genre }}-->
+<!--          </mat-chip-option>-->
+<!--        </mat-chip-listbox>-->
+<!--        <button color="primary" mat-raised-button matStepperNext style="margin-top: 10px">Next</button>-->
+<!--      </form>-->
+<!--    </mat-step>-->
 
-  <!--    <mat-step> &lt;!&ndash; contents &ndash;&gt;-->
-  <!--      <ng-template matStepLabel>Contents</ng-template>-->
-  <!--      <div id="contents">-->
-  <!--        <div class="content" *ngFor="let content of contents">-->
-  <!--          <div>-->
-  <!--            <ng-container *ngIf="content.file_share_id != 0; else textMsg">-->
-  <!--              <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>-->
-  <!--            </ng-container>-->
-  <!--            <ng-template #textMsg>-->
-  <!--              <span class="text-content">{{ content.content }}</span>-->
-  <!--            </ng-template>-->
-  <!--          </div>-->
-  <!--          <div style="flex: 1"></div>-->
-  <!--          <div>-->
-  <!--            <button mat-mini-fab color="primary" (click)="deleteAttachment(content)">-->
-  <!--              <mat-icon>remove</mat-icon>-->
-  <!--            </button>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--      <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile" style="padding: 20px 0"></mat-progress-bar>-->
+<!--    <mat-step> &lt;!&ndash; contents &ndash;&gt;-->
+<!--      <ng-template matStepLabel>Contents</ng-template>-->
+<!--      <div id="contents">-->
+<!--        <div class="content" *ngFor="let content of contents">-->
+<!--          <div>-->
+<!--            <ng-container *ngIf="content.file_share_id != 0; else textMsg">-->
+<!--              <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>-->
+<!--            </ng-container>-->
+<!--            <ng-template #textMsg>-->
+<!--              <span class="text-content">{{ content.content }}</span>-->
+<!--            </ng-template>-->
+<!--          </div>-->
+<!--          <div style="flex: 1"></div>-->
+<!--          <div>-->
+<!--            <button mat-mini-fab color="primary" (click)="deleteAttachment(content)">-->
+<!--              <mat-icon>remove</mat-icon>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile" style="padding: 20px 0"></mat-progress-bar>-->
 
-  <!--      <mat-divider style="margin: 20px 0" *ngIf="contents.length>0"></mat-divider>-->
+<!--      <mat-divider style="margin: 20px 0" *ngIf="contents.length>0"></mat-divider>-->
 
-  <!--      <div id="action-section" style="display: flex; gap: 10px; justify-content: center; align-items: center;">-->
-  <!--        <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"-->
-  <!--                style="border-radius: 100px">-->
-  <!--          <mat-icon>upload</mat-icon>-->
-  <!--          File-->
-  <!--        </button>-->
-  <!--        <button mat-stroked-button (click)="openTextEditor()" color="warn" style="border-radius: 100px">-->
-  <!--          <mat-icon>edit_note</mat-icon>-->
-  <!--          Text-->
-  <!--        </button>-->
-  <!--      </div>-->
-  <!--    </mat-step>-->
+<!--      <div id="action-section" style="display: flex; gap: 10px; justify-content: center; align-items: center;">-->
+<!--        <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"-->
+<!--                style="border-radius: 100px">-->
+<!--          <mat-icon>upload</mat-icon>-->
+<!--          File-->
+<!--        </button>-->
+<!--        <button mat-stroked-button (click)="openTextEditor()" color="warn" style="border-radius: 100px">-->
+<!--          <mat-icon>edit_note</mat-icon>-->
+<!--          Text-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </mat-step>-->
 
-  <!--  </mat-stepper>-->
+<!--  </mat-stepper>-->
 
-  <div class="classicTextBox" style="max-width: 300px">
-    <span class="classicTitle">Style</span>
-    <form>
-      <mat-chip-listbox aria-label="Fish selection">
-        <mat-chip-option *ngFor="let genre of genres" (click)="selectGenre(genre)"
-                         [selected]="genre == genreSelected"
-                         color="warn">
+<div class="classicTextBox" style="max-width: 300px">
+  <span class="classicTitle">Style</span>
+  <form>
+    <mat-chip-listbox aria-label="Fish selection">
+      @for (genre of genres; track genre) {
+        <mat-chip-option (click)="selectGenre(genre)"
+          [selected]="genre == genreSelected"
+          color="warn">
           {{ genre }}
         </mat-chip-option>
-      </mat-chip-listbox>
-    </form>
-  </div>
+      }
+    </mat-chip-listbox>
+  </form>
+</div>
 
-  <div class="classicTextBox">
-    <span class="classicTitle">Title</span>
-    <form [formGroup]="firstFormGroup">
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <textarea matInput [cdkTextareaAutosize]=true formControlName="firstCtrl"
-                  autocomplete="off"
-                  [value]="title" (input)="changeTitle($event)"></textarea>
-      </mat-form-field>
-    </form>
-  </div>
+<div class="classicTextBox">
+  <span class="classicTitle">Title</span>
+  <form [formGroup]="firstFormGroup">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <textarea matInput [cdkTextareaAutosize]=true formControlName="firstCtrl"
+        autocomplete="off"
+      [value]="title" (input)="changeTitle($event)"></textarea>
+    </mat-form-field>
+  </form>
+</div>
 
 
 
-  <div class="classicTextBox">
-    <span class="classicTitle">Content</span>
-    <div id="contents" style="width: 100%">
-      <div class="content" *ngFor="let content of contents">
+<div class="classicTextBox">
+  <span class="classicTitle">Content</span>
+  <div id="contents" style="width: 100%">
+    @for (content of contents; track content) {
+      <div class="content">
         <div>
-          <ng-container *ngIf="content.file_share_id != 0; else textMsg">
+          @if (content.file_share_id != 0) {
             <app-file-share [fileShareID]=content.file_share_id class="file-content"></app-file-share>
-          </ng-container>
+          } @else {
+            <span class="text-content">{{ content.content }}</span>
+          }
           <ng-template #textMsg>
             <span class="text-content">{{ content.content }}</span>
           </ng-template>
@@ -117,32 +122,37 @@
           </button>
         </div>
       </div>
-    </div>
-    <mat-progress-bar mode="indeterminate" *ngIf="uploadingFile" style="padding: 20px 0"></mat-progress-bar>
-    <mat-divider style="margin: 20px 0" *ngIf="contents.length>0"></mat-divider>
-
-    <div id="action-section" style="display: flex; gap: 10px; justify-content: center; align-items: center;">
-      <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"
-              style="border-radius: 100px">
-        <mat-icon>upload</mat-icon>
-        File
-      </button>
-      <button mat-stroked-button (click)="openTextEditor()" color="warn" style="border-radius: 100px">
-        <mat-icon>edit_note</mat-icon>
-        Text
-      </button>
-    </div>
+    }
   </div>
-  <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+  @if (uploadingFile) {
+    <mat-progress-bar mode="indeterminate" style="padding: 20px 0"></mat-progress-bar>
+  }
+  @if (contents.length>0) {
+    <mat-divider style="margin: 20px 0"></mat-divider>
+  }
 
-  <div id="action-row" style="display: flex; gap: 10px">
-    <!--    <button mat-flat-button color="warn" matDialogClose>-->
-    <!--      <mat-icon>save</mat-icon>-->
-    <!--      Save as draft-->
-    <!--    </button>-->
-    <button mat-flat-button (click)="publishPost()" color="warn">
-      <mat-icon>publish</mat-icon>
-      Publish
+  <div id="action-section" style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+    <button id="upload-button" mat-stroked-button color="primary" (click)="fileInput.click()"
+      style="border-radius: 100px">
+      <mat-icon>upload</mat-icon>
+      File
+    </button>
+    <button mat-stroked-button (click)="openTextEditor()" color="warn" style="border-radius: 100px">
+      <mat-icon>edit_note</mat-icon>
+      Text
     </button>
   </div>
+</div>
+<input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+
+<div id="action-row" style="display: flex; gap: 10px">
+  <!--    <button mat-flat-button color="warn" matDialogClose>-->
+  <!--      <mat-icon>save</mat-icon>-->
+  <!--      Save as draft-->
+<!--    </button>-->
+<button mat-flat-button (click)="publishPost()" color="warn">
+  <mat-icon>publish</mat-icon>
+  Publish
+</button>
+</div>
 </main>

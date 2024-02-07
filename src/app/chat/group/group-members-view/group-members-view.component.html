@@ -1,7 +1,10 @@
-<main *ngIf="!loading; else loadingBar">
-  <app-user *ngFor="let id of memberIDs" [userID]="id"></app-user>
-</main>
-
-<ng-template #loadingBar>
+@if (!loading) {
+  <main>
+    @for (id of memberIDs; track id) {
+      <app-user [userID]="id"></app-user>
+    }
+  </main>
+} @else {
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
+}
+

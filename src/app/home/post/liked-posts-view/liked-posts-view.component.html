@@ -2,13 +2,14 @@
   <span class="classicTitle">Liked Posts</span>
   <span>The posts you have previously liked</span>
 </div>
-<ng-container *ngIf="!loading; else loadingPlaceHolder">
+@if (!loading) {
   <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
-</ng-container>
-<ng-template #loadingPlaceHolder>
+} @else {
   <app-loading-placeholder></app-loading-placeholder>
-</ng-template>
+}
 
-<div *ngIf="empty">
-  <p style="text-align: center; margin-top: 20px; color: white">You haven't liked a single post yet, do better</p>
-</div>
+@if (empty) {
+  <div>
+    <p style="text-align: center; margin-top: 20px; color: white">You haven't liked a single post yet, do better</p>
+  </div>
+}

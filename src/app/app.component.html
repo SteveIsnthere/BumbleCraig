@@ -1,9 +1,11 @@
-<ng-container *ngIf="!auth.loggedIn && router.url != '/login'">
+@if (!auth.loggedIn && router.url != '/login') {
   <app-loading-placeholder></app-loading-placeholder>
-</ng-container>
+}
 
 <main>
-  <app-cue-card *ngIf="router.url != '/login'"></app-cue-card>
+  @if (router.url != '/login') {
+    <app-cue-card></app-cue-card>
+  }
   <div [@routerTransition]="getState(o)">
     <router-outlet #o="outlet"></router-outlet>
   </div>
@@ -11,4 +13,6 @@
 </main>
 
 <app-main-btn></app-main-btn>
-<app-background *ngIf="router.url == '/chat' || router.url == '/friends'"></app-background>
+@if (router.url == '/chat' || router.url == '/friends') {
+  <app-background></app-background>
+}

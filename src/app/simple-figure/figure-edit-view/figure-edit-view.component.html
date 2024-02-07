@@ -1,33 +1,37 @@
-<main *ngIf="!loading; else loadingView">
-  <div id="preview">
-    <div *ngFor="let row of data; let i = index" class="color-row">
-      <div *ngFor="let color of row; let j = index" class="color-cell"
-           [style.background-color]="color"
-           (click)="fillPixel(i,j)"></div>
+@if (!loading) {
+  <main>
+    <div id="preview">
+      @for (row of data; track row; let i = $index) {
+        <div class="color-row">
+          @for (color of row; track color; let j = $index) {
+            <div class="color-cell"
+              [style.background-color]="color"
+            (click)="fillPixel(i,j)"></div>
+          }
+        </div>
+      }
     </div>
-  </div>
-
-  <div id="actions">
-    <button mat-flat-button color="warn"  (click)="fileInput.click()" style="border-radius: 100px">
-      <mat-icon>add_photo_alternate</mat-icon>
-      Upload Image
-    </button>
-    <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
-
-    <button mat-flat-button color="primary" (click)="save()" style="border-radius: 100px">
-      <mat-icon>check_small</mat-icon>
-      Save
-    </button>
-  </div>
-
-  <div id="color-selection">
-    <button mat-fab *ngFor="let color of colors"
-            [style.background-color]="color"
-            [style.border]="color === selectedFillColor ? '3px dotted lightgrey' : 'none'"
-            (click)="selectedFillColor = color"></button>
-  </div>
-</main>
-
-<ng-template #loadingView>
+    <div id="actions">
+      <button mat-flat-button color="warn"  (click)="fileInput.click()" style="border-radius: 100px">
+        <mat-icon>add_photo_alternate</mat-icon>
+        Upload Image
+      </button>
+      <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
+      <button mat-flat-button color="primary" (click)="save()" style="border-radius: 100px">
+        <mat-icon>check_small</mat-icon>
+        Save
+      </button>
+    </div>
+    <div id="color-selection">
+      @for (color of colors; track color) {
+        <button mat-fab
+          [style.background-color]="color"
+          [style.border]="color === selectedFillColor ? '3px dotted lightgrey' : 'none'"
+        (click)="selectedFillColor = color"></button>
+      }
+    </div>
+  </main>
+} @else {
   <p style="height: 200px"><mat-progress-bar mode="indeterminate"></mat-progress-bar> </p>
-</ng-template>
+}
+

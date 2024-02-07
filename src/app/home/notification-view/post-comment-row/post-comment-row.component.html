@@ -1,14 +1,15 @@
-<main *ngIf="postComment != null && postData != null">
-  <mat-card (click)="openCommentSection()" style="cursor: pointer;">
-    <mat-card-header>
-      <mat-card-title id="post-title">Your post "{{postData.title}}"</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <span> Got {{postComment.number_of_comments}} Comments</span>
-    </mat-card-content>
-  </mat-card>
-
-  <button mat-mini-fab (click)="clearNotification()">
-    <mat-icon>close</mat-icon>
-  </button>
-</main>
+@if (postComment != null && postData != null) {
+  <main>
+    <mat-card (click)="openCommentSection()" style="cursor: pointer;">
+      <mat-card-header>
+        <mat-card-title id="post-title">Your post "{{postData.title}}"</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <span> Got {{postComment.number_of_comments}} Comments</span>
+      </mat-card-content>
+    </mat-card>
+    <button mat-mini-fab (click)="clearNotification()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </main>
+}

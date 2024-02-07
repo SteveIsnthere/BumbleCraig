@@ -9,7 +9,7 @@ import { LogoComponent } from '../../compoents/logo/logo.component';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatInput } from '@angular/material/input';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 import { MatButton, MatFabButton } from '@angular/material/button';
 import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
@@ -27,7 +27,7 @@ import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
         ])
     ],
     standalone: true,
-    imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, NgIf, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, NgFor, LogoComponent, MatProgressBar, MatFabButton]
+    imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton]
 })
 
 export class AssistantComponent {

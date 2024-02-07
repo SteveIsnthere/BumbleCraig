@@ -1,16 +1,18 @@
-<main *ngIf="invitation != null">
-  <div style="display: flex; align-items: flex-end;gap:5px">
-    <app-user [userID]=invitation.inviter_id></app-user>
-    <span>invited you to</span>
-  </div>
-  <div style="display: flex; gap: 10px; align-items: center">
-    <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
-      <mat-icon>close</mat-icon>
-    </button>
-    <span
+@if (invitation != null) {
+  <main>
+    <div style="display: flex; align-items: flex-end;gap:5px">
+      <app-user [userID]=invitation.inviter_id></app-user>
+      <span>invited you to</span>
+    </div>
+    <div style="display: flex; gap: 10px; align-items: center">
+      <button mat-mini-fab color="warn" (click)="rejectGroupInvitation(invitation)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <span
       style="font-size: medium;font-weight: normal;color: rgba(255,255,255,0.88); padding: 9px;border-radius: 15px; border: #9e9e9e 1px dashed">{{invitation.group_name}}</span>
-    <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
-      <mat-icon>check</mat-icon>
-    </button>
-  </div>
-</main>
+      <button mat-mini-fab color="primary" (click)="acceptGroupInvitation(invitation)">
+        <mat-icon>check</mat-icon>
+      </button>
+    </div>
+  </main>
+}

@@ -1,8 +1,8 @@
 <main>
-<!--  <div id="group-info" *ngIf="groupEssentialData.figure_id != 0" (click)="editFigure()" class="trans-btn-bright">-->
-<!--    <div style="width: 30px;clip-path: circle(15px at center); flex-shrink: 0;"-->
-<!--         (click)="editFigure()">-->
-<!--      <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>-->
+  <!--  <div id="group-info" *ngIf="groupEssentialData.figure_id != 0" (click)="editFigure()" class="trans-btn-bright">-->
+  <!--    <div style="width: 30px;clip-path: circle(15px at center); flex-shrink: 0;"-->
+  <!--         (click)="editFigure()">-->
+  <!--      <app-simple-figure [figureID]=groupEssentialData.figure_id #figure></app-simple-figure>-->
 <!--    </div>-->
 <!--    <mat-card-title id="group-name">{{ groupEssentialData.name }}</mat-card-title>-->
 <!--  </div>-->
@@ -11,59 +11,62 @@
 <!--          style="display: flex;position: fixed;top: 0; right:0;margin: 20px;z-index: 10;background-color: rgba(225,82,65,0.13)">-->
 <!--    <mat-icon>person_add</mat-icon>-->
 <!--  </button>-->
-  <div id="messages-section" #messagesSection>
-    <ng-container *ngIf="noMessages">
-<!--      <div style="height: 80px"></div>-->
-      <div style="text-align: center; color: #9e9e9e; font-weight: 400; margin-top: 20px">
-        <h3>Old messages were destroyed for your privacy</h3>
-        <h1>You're welcome</h1>
-      </div>
-    </ng-container>
+<div id="messages-section" #messagesSection>
+  @if (noMessages) {
+    <!--      <div style="height: 80px"></div>-->
+    <div style="text-align: center; color: #9e9e9e; font-weight: 400; margin-top: 20px">
+      <h3>Old messages were destroyed for your privacy</h3>
+      <h1>You're welcome</h1>
+    </div>
+  }
 
-    <div id="messages-container">
-<!--      <div style="height: 75px"></div>-->
-      <div *ngFor="let message of messages" class="message"
-           [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
+  <div id="messages-container">
+    <!--      <div style="height: 75px"></div>-->
+    @for (message of messages; track message) {
+      <div class="message"
+        [ngClass]="message.sender_id == selfID ? 'self-msg' : 'other-msg'">
         <div style="width: 40px;clip-path: circle(20px at center); align-self: flex-start">
           <app-user-mini [userID]=message.sender_id></app-user-mini>
         </div>
-        <ng-container *ngIf="message.file_share_id != 0; else textMsg">
+        @if (message.file_share_id != 0) {
           <app-file-share [fileShareID]=message.file_share_id class="file-content"></app-file-share>
-        </ng-container>
-        <ng-template #textMsg>
+        } @else {
           <span class="text-content">{{ message.content }}</span>
-        </ng-template>
+        }
         <div style="flex: 1"></div>
       </div>
-      <div style="height: 80px"></div>
-    </div>
+    }
+    <div style="height: 80px"></div>
   </div>
+</div>
 
 
-  <div id="action-section" *ngIf="!uploadingFile; else uploadingFileIndicator">
+@if (!uploadingFile) {
+  <div id="action-section">
     <button id="upload-button" mat-flat-button color="primary" (click)="fileInput.click()" class="bottom-btn">
       <mat-icon>upload</mat-icon>
       File
     </button>
     <input hidden type="file" #fileInput (change)="uploadFile($event)"/>
-
     <button mat-flat-button (click)="openTextEditor()" color="warn" class="bottom-btn">
       <mat-icon>edit_note</mat-icon>
       Text
     </button>
   </div>
+} @else {
+  <div id="uploading-file-indicator">
+    <mat-chip-option selectable="false" style="background-color: rgba(194,23,91,0.46)">Uploading</mat-chip-option>
+    <p style="width: 90dvw">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </p>
+  </div>
+}
 
-  <ng-template #uploadingFileIndicator>
-    <div id="uploading-file-indicator">
-      <mat-chip-option selectable="false" style="background-color: rgba(194,23,91,0.46)">Uploading</mat-chip-option>
-      <p style="width: 90dvw">
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </p>
-    </div>
-  </ng-template>
 
 <!--  <app-background></app-background>-->
 </main>
 
 
-<app-loading-placeholder *ngIf="loading"></app-loading-placeholder>
+@if (loading) {
+  <app-loading-placeholder></app-loading-placeholder>
+}

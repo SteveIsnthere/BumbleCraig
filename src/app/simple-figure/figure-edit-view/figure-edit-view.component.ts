@@ -7,14 +7,14 @@ import {SimpleFigureCachingService} from "../../services/simple-figure-caching.s
 import {MatProgressBar} from '@angular/material/progress-bar';
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatFabButton} from '@angular/material/button';
-import {NgIf, NgFor} from '@angular/common';
+
 
 @Component({
   selector: 'app-figure-edit-view',
   templateUrl: './figure-edit-view.component.html',
   styleUrls: ['./figure-edit-view.component.css'],
   standalone: true,
-  imports: [NgIf, NgFor, MatButton, MatIcon, MatFabButton, MatProgressBar]
+  imports: [MatButton, MatIcon, MatFabButton, MatProgressBar]
 })
 export class FigureEditViewComponent  {
   @Input() figureID: number = 0;

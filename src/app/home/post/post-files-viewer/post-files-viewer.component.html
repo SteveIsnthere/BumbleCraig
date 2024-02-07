@@ -1,13 +1,17 @@
 <main>
   <app-file-share [fileShareID]="files[showingFileIndex].file_share_id" [interactive]="false"></app-file-share>
 
-  <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="left: 3px" *ngIf="showBackButton()"
-          (click)="showingFileIndex = showingFileIndex - 1;$event.stopPropagation()">
-    <mat-icon>arrow_back_ios_new</mat-icon>
-  </button>
+  @if (showBackButton()) {
+    <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="left: 3px"
+      (click)="showingFileIndex = showingFileIndex - 1;$event.stopPropagation()">
+      <mat-icon>arrow_back_ios_new</mat-icon>
+    </button>
+  }
 
-  <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="right: 3px" *ngIf="showNextButton()"
-          (click)="showingFileIndex = showingFileIndex + 1;$event.stopPropagation()">
-    <mat-icon>arrow_forward_ios</mat-icon>
-  </button>
+  @if (showNextButton()) {
+    <button mat-icon-button color="primary" class="control-btn trans-btn-dark" style="right: 3px"
+      (click)="showingFileIndex = showingFileIndex + 1;$event.stopPropagation()">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  }
 </main>

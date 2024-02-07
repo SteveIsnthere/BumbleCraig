@@ -1,9 +1,11 @@
-<main *ngIf="id != 0">
-  <button mat-mini-fab color="warn" (click)="rejectFriendRequest(id)">
-    <mat-icon>close</mat-icon>
-  </button>
-  <app-user [userID]=id></app-user>
-  <button mat-mini-fab color="primary" (click)="acceptFriendRequest(id)">
-    <mat-icon>check</mat-icon>
-  </button>
-</main>
+@if (id != 0) {
+  <main>
+    <button mat-mini-fab color="warn" (click)="rejectFriendRequest(id)">
+      <mat-icon>close</mat-icon>
+    </button>
+    <app-user [userID]=id></app-user>
+    <button mat-mini-fab color="primary" (click)="acceptFriendRequest(id)">
+      <mat-icon>check</mat-icon>
+    </button>
+  </main>
+}

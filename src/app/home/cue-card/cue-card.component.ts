@@ -11,7 +11,7 @@ import {Router, RouterLink} from "@angular/router";
 import {AboutComponent} from "../../compoents/about/about.component";
 import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
 import {UserMiniComponent} from '../../user/user-mini/user-mini.component';
-import {NgIf, NgFor} from '@angular/common';
+
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
 
@@ -20,7 +20,7 @@ import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/butt
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.css',
   standalone: true,
-  imports: [MatButton, MatIcon, NgIf, NgFor, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem]
+  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })
 export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];

@@ -6,15 +6,17 @@
   </div>
 
   <div id="contributors" style="margin-top: 20px">
-    <div *ngFor="let credit of credits">
-      <div class="classicTextBox">
-        <span class="classicTitle">{{ credit.title }}</span>
-        <div style="display: flex; margin-top: 5px">
-          <app-user [userID]=credit.userid></app-user>
-          <div style="flex: 1"></div>
+    @for (credit of credits; track credit) {
+      <div>
+        <div class="classicTextBox">
+          <span class="classicTitle">{{ credit.title }}</span>
+          <div style="display: flex; margin-top: 5px">
+            <app-user [userID]=credit.userid></app-user>
+            <div style="flex: 1"></div>
+          </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 
   <div class="classicTextBox" style="margin-top: 20px">
@@ -97,8 +99,8 @@
     </ol>
 
     <p>By continuing to use This Site, you agree to abide by these terms and conditions. If you do not agree with any
-      part of this disclaimer, please refrain from using the platform.</p>
+    part of this disclaimer, please refrain from using the platform.</p>
 
     <p>Thank you for using This Site responsibly.</p></div>
 
-</mat-dialog-content>
+  </mat-dialog-content>

@@ -1,37 +1,41 @@
-<main *ngIf="groupEssentialData.group_id != 0; else loadingBar">
-  <div class="group-container" [ngClass]="{'unread': unread}" [routerLink]="['/group/' + groupID]">
-    <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
-      <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
-    </div>
-
-
-    <div id="info-section">
-      <div id="group-name">
-        <span>{{ groupEssentialData.name }}</span>
+@if (groupEssentialData.group_id != 0) {
+  <main>
+    <div class="group-container" [ngClass]="{'unread': unread}" [routerLink]="['/group/' + groupID]">
+      <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
+        <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
       </div>
-      <div *ngIf="unread; else info">
-        <mat-icon color="warn" style="vertical-align: middle; margin-right: 3px">mark_email_unread</mat-icon>
-        <span>New Message</span>
-      </div>
-
-      <ng-template #info>
-        <div id="group-info">
-          {{ groupMembersCount }}
-          <mat-icon style="scale: 0.7;margin-left: -3px;color: #e15241;">person</mat-icon>
-          <span style="margin-left: 5px">{{ lastMessage }}</span>
+      <div id="info-section">
+        <div id="group-name">
+          <span>{{ groupEssentialData.name }}</span>
         </div>
-      </ng-template>
+        @if (unread) {
+          <div>
+            <mat-icon color="warn" style="vertical-align: middle; margin-right: 3px">mark_email_unread</mat-icon>
+            <span>New Message</span>
+          </div>
+        } @else {
+          <div id="group-info">
+            {{ groupMembersCount }}
+            <mat-icon style="scale: 0.7;margin-left: -3px;color: #e15241;">person</mat-icon>
+            <span style="margin-left: 5px">{{ lastMessage }}</span>
+          </div>
+        }
+      </div>
+      <div style="flex: 1"></div>
+      <button mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" color="primary"
+        style="margin: -12px">
+        <mat-icon>
+          more_vert
+        </mat-icon>
+      </button>
     </div>
-
+  </main>
+} @else {
+  <div class="group-container" style="height: 40px; min-width: 150px">
+    <div style="width: 40px;height: 40px;border-radius: 100%;background-color: #c2175b"></div>
     <div style="flex: 1"></div>
-    <button mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" color="primary"
-            style="margin: -12px">
-      <mat-icon>
-        more_vert
-      </mat-icon>
-    </button>
   </div>
-</main>
+}
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="openInviteView()">
@@ -47,9 +51,3 @@
     <span>Edit Logo</span>
   </button>
 </mat-menu>
-<ng-template #loadingBar>
-  <div class="group-container" style="height: 40px; min-width: 150px">
-    <div style="width: 40px;height: 40px;border-radius: 100%;background-color: #c2175b"></div>
-    <div style="flex: 1"></div>
-  </div>
-</ng-template>

@@ -1,15 +1,17 @@
 <main>
-  <div class="classicTextBox" style="margin: 5px 20px 12px; animation: appear 1s forwards" *ngIf="auth.isVisitor">
-    <span class="classicTitle">Join {{siteName}}</span>
-    <div style="display: flex; justify-content: space-between">
-      <span>Signup to make your account permanent</span>
-      <button mat-flat-button color="primary" (click)="userSetUp()"
-              style="border-radius: 200px;flex-shrink: 0">
-        <mat-icon>account_circle</mat-icon>
-        Sign Up
-      </button>
+  @if (auth.isVisitor) {
+    <div class="classicTextBox" style="margin: 5px 20px 12px; animation: appear 1s forwards">
+      <span class="classicTitle">Join {{siteName}}</span>
+      <div style="display: flex; justify-content: space-between">
+        <span>Signup to make your account permanent</span>
+        <button mat-flat-button color="primary" (click)="userSetUp()"
+          style="border-radius: 200px;flex-shrink: 0">
+          <mat-icon>account_circle</mat-icon>
+          Sign Up
+        </button>
+      </div>
     </div>
-  </div>
+  }
   <app-post-section-view></app-post-section-view>
   <div style="height: 80px"></div>
 </main>

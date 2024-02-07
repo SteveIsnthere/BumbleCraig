@@ -2,40 +2,45 @@
   <img src="assets/logo.png" id="logo" style="margin-right: 7px;" alt="" (click)="backHome()">
 
   <button mat-flat-button color="warn" (click)="openAssistant()"
-          style="border-radius: 200px">
+    style="border-radius: 200px">
     <mat-icon>join_left</mat-icon>
     Ask {{siteName}}
   </button>
 
-  <div id="top-users-bar" *ngIf="topUserIDs.length>0" style="flex-shrink: 0">
-    <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>
-    <div id="top-users">
-      <app-user-mini *ngFor="let userID of topUserIDs" [userID]="userID"></app-user-mini>
+  @if (topUserIDs.length>0) {
+    <div id="top-users-bar" style="flex-shrink: 0">
+      <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>
+      <div id="top-users">
+        @for (userID of topUserIDs; track userID) {
+          <app-user-mini [userID]="userID"></app-user-mini>
+        }
+      </div>
     </div>
-  </div>
+  }
 
 
   <div style="flex: 1"></div>
 
-  <button mat-icon-button routerLink="/new-post" color="warn"
-          *ngIf="notificationCount() == 0; else notificationBtn">
-    <mat-icon>add</mat-icon>
-  </button>
-
-  <ng-template #notificationBtn>
+  @if (notificationCount() == 0) {
+    <button mat-icon-button routerLink="/new-post" color="warn"
+      >
+      <mat-icon>add</mat-icon>
+    </button>
+  } @else {
     <button mat-mini-fab (click)="openUserBriefView()" style="background-color: white; margin-right: 5px;scale: 0.9">
       <mat-icon class="nav-icon" color="warn">
         notifications
       </mat-icon>
     </button>
-  </ng-template>
+  }
+
 
   <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary" style="scale: 0.9">
     <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
     <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
-    <!--    </div>-->
-    <mat-icon>arrow_drop_down</mat-icon>
-  </button>
+  <!--    </div>-->
+  <mat-icon>arrow_drop_down</mat-icon>
+</button>
 </main>
 
 <div style="height: 74px"></div>

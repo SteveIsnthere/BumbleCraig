@@ -8,7 +8,7 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {FindUserViewComponent} from "./find-user-view/find-user-view.component";
 import { LoadingPlaceholderComponent } from '../../compoents/loading-placeholder/loading-placeholder.component';
 import { UserComponent } from '../../user/user.component';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 import { MatFabButton, MatButton } from '@angular/material/button';
 
@@ -17,7 +17,7 @@ import { MatFabButton, MatButton } from '@angular/material/button';
     templateUrl: './friends-view.component.html',
     styleUrls: ['./friends-view.component.css'],
     standalone: true,
-    imports: [MatFabButton, MatIcon, NgIf, NgFor, UserComponent, MatButton, LoadingPlaceholderComponent]
+    imports: [MatFabButton, MatIcon, UserComponent, MatButton, LoadingPlaceholderComponent]
 })
 export class FriendsViewComponent implements OnInit {
   friendIDs: number[] = [];

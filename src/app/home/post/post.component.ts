@@ -17,7 +17,7 @@ import { MatButton } from '@angular/material/button';
 import { PostPerceptionBarComponent } from './post-perception-bar/post-perception-bar.component';
 import { UserMiniComponent } from '../../user/user-mini/user-mini.component';
 import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent } from '@angular/material/card';
-import { NgIf, NgClass, NgFor } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-post',
@@ -25,21 +25,19 @@ import { NgIf, NgClass, NgFor } from '@angular/common';
     styleUrls: ['./post.component.css'],
     standalone: true,
     imports: [
-        NgIf,
-        MatCard,
-        NgClass,
-        MatCardHeader,
-        UserMiniComponent,
-        MatCardAvatar,
-        MatCardTitle,
-        MatCardSubtitle,
-        PostPerceptionBarComponent,
-        MatButton,
-        MatIcon,
-        MatCardContent,
-        NgFor,
-        PostFilesViewerComponent,
-    ],
+    MatCard,
+    NgClass,
+    MatCardHeader,
+    UserMiniComponent,
+    MatCardAvatar,
+    MatCardTitle,
+    MatCardSubtitle,
+    PostPerceptionBarComponent,
+    MatButton,
+    MatIcon,
+    MatCardContent,
+    PostFilesViewerComponent
+],
 })
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;

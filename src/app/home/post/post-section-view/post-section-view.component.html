@@ -22,16 +22,20 @@
 
 
 <mat-menu #rankingModeMenu="matMenu">
-  <button mat-menu-item *ngFor="let mode of rankingModes" (click)="setRankingMode(mode)">
-    <mat-icon>{{ mode[1] }}</mat-icon>
-    <span>{{ mode[0] }}</span>
-  </button>
+  @for (mode of rankingModes; track mode) {
+    <button mat-menu-item (click)="setRankingMode(mode)">
+      <mat-icon>{{ mode[1] }}</mat-icon>
+      <span>{{ mode[0] }}</span>
+    </button>
+  }
 </mat-menu>
 
 <mat-menu #genreMenu="matMenu">
-  <button mat-menu-item *ngFor="let genre of genres" (click)="setGenre(genre)">
-    <span>{{ genre }}</span>
-  </button>
+  @for (genre of genres; track genre) {
+    <button mat-menu-item (click)="setGenre(genre)">
+      <span>{{ genre }}</span>
+    </button>
+  }
 </mat-menu>
 <!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
 <!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
@@ -41,30 +45,33 @@
 <!--</div>-->
 
 
-<ng-container *ngIf="showPostSection">
-  <ng-container *ngIf="!loading; else loadingPlaceHolder">
+@if (showPostSection) {
+  @if (!loading) {
     <app-post-section-view-base [postIDs]="postIDs"
-                                (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
-  </ng-container>
-  <ng-template #loadingPlaceHolder>
+    (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
+  } @else {
     <app-loading-placeholder></app-loading-placeholder>
-  </ng-template>
-</ng-container>
+  }
+}
 
 <!--<div id="load-more">Load more</div>-->
 
-<div *ngIf="empty">
-  <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
+@if (empty) {
+  <div>
+    <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
     genres</p>
-</div>
+  </div>
+}
 
-<div style="display: flex;justify-content: center;margin-top: 20px" *ngIf="showRequestMorePostsButton">
-  <button mat-flat-button style="border-radius: 100px" color="primary"
-          (click)="fetchMorePosts(); showRequestMorePostsButton=false">
-    <mat-icon>sentiment_satisfied</mat-icon>
-    Feeling lucky
-  </button>
-</div>
+@if (showRequestMorePostsButton) {
+  <div style="display: flex;justify-content: center;margin-top: 20px">
+    <button mat-flat-button style="border-radius: 100px" color="primary"
+      (click)="fetchMorePosts(); showRequestMorePostsButton=false">
+      <mat-icon>sentiment_satisfied</mat-icon>
+      Feeling lucky
+    </button>
+  </div>
+}
 
 <!--<div id="refresh-btn" *ngIf="showReloadButton">-->
 <!--  <button mat-stroked-button color="warn" (click)="refresh()" class="trans-btn-dark"-->
@@ -73,8 +80,10 @@
 <!--    Refresh-->
 <!--  </button>-->
 <!--</div>-->
-<div id="refresh-btn" *ngIf="showReloadButton">
-  <button mat-mini-fab color="warn" (click)="refresh()">
-    <mat-icon>refresh</mat-icon>
-  </button>
-</div>
+@if (showReloadButton) {
+  <div id="refresh-btn">
+    <button mat-mini-fab color="warn" (click)="refresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+}

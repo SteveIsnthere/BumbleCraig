@@ -17,14 +17,14 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { FileShareComponent } from '../../../file-share/file-share.component';
 import { UserMiniComponent } from '../../../user/user-mini/user-mini.component';
-import { NgIf, NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-group-chat-view',
     templateUrl: './group-chat-view.component.html',
     styleUrls: ['./group-chat-view.component.css'],
     standalone: true,
-    imports: [NgIf, NgFor, NgClass, UserMiniComponent, FileShareComponent, MatButton, MatIcon, MatChipOption, MatProgressBar, LoadingPlaceholderComponent]
+    imports: [NgClass, UserMiniComponent, FileShareComponent, MatButton, MatIcon, MatChipOption, MatProgressBar, LoadingPlaceholderComponent]
 })
 export class GroupChatViewComponent implements OnInit, OnDestroy {
   @ViewChild('messagesSection', {static: true}) messagesSection: any;

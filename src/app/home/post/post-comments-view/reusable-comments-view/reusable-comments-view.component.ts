@@ -9,14 +9,14 @@ import { PostPerceptionBarComponent } from '../../post-perception-bar/post-perce
 import { MatIcon } from '@angular/material/icon';
 import { MatExpansionPanel, MatExpansionPanelHeader } from '@angular/material/expansion';
 import { UserMiniComponent } from '../../../../user/user-mini/user-mini.component';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'app-reusable-comments-view',
     templateUrl: './reusable-comments-view.component.html',
     styleUrls: ['./reusable-comments-view.component.css'],
     standalone: true,
-    imports: [NgIf, NgFor, UserMiniComponent, MatExpansionPanel, MatExpansionPanelHeader, MatIcon, PostPerceptionBarComponent, MatMiniFabButton, MatProgressBar]
+    imports: [UserMiniComponent, MatExpansionPanel, MatExpansionPanelHeader, MatIcon, PostPerceptionBarComponent, MatMiniFabButton, MatProgressBar]
 })
 export class ReusableCommentsViewComponent implements OnInit {
   @Input() postID: number = 0;

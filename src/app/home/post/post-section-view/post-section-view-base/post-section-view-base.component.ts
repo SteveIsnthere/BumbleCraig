@@ -15,7 +15,7 @@ import {MatDialog} from "@angular/material/dialog";
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { MatDivider } from '@angular/material/divider';
 import { PostComponent } from '../../post.component';
-import { NgIf, NgFor } from '@angular/common';
+
 
 
 @Component({
@@ -23,7 +23,7 @@ import { NgIf, NgFor } from '@angular/common';
     templateUrl: './post-section-view-base.component.html',
     styleUrl: './post-section-view-base.component.css',
     standalone: true,
-    imports: [NgIf, NgFor, PostComponent, MatDivider, MatProgressBar]
+    imports: [PostComponent, MatDivider, MatProgressBar]
 })
 export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() postIDs: number[] = [];

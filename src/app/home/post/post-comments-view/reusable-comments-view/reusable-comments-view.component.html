@@ -1,62 +1,72 @@
-<main *ngIf="completeLoading; else loadingBar">
-  <div id="comments" *ngIf="comments.length > 0; else noComments">
-    <div *ngFor="let comment of comments; let i = index">
-      <div class="comment-wrapper">
-        <app-user-mini [userID]="comment.author_id"></app-user-mini>
-        <div class="comment-content">
-          <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;"
-                               style="box-shadow: none">
-            <mat-expansion-panel-header>
-              <span
+@if (completeLoading) {
+  <main>
+    @if (comments.length > 0) {
+      <div id="comments">
+        @for (comment of comments; track comment; let i = $index) {
+          <div>
+            <div class="comment-wrapper">
+              <app-user-mini [userID]="comment.author_id"></app-user-mini>
+              <div class="comment-content">
+                <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;"
+                  style="box-shadow: none">
+                  <mat-expansion-panel-header>
+                    @if (!panelStates[i]) {
+                      <span
                 style="display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;
-                -webkit-box-orient: vertical;" *ngIf="!panelStates[i]">
-                {{ comment.content }}
-              </span>
-              <span
-                *ngIf="panelStates[i]">
-                <mat-icon>comment</mat-icon>
-              </span>
-            </mat-expansion-panel-header>
-            <p>{{ comment.content }}</p>
-          </mat-expansion-panel>
-          <!--          <span style="color: black; font-size: small">{{comment.time_since_posted}}</span>-->
-
-          <div style="display: flex; justify-content: center; align-items: center; gap: 5px;margin-top: 10px;">
-
-            <app-post-perception-bar [popularity]="comment.popularity"
-                                     [rating]="comment.rating" style="flex: 1"></app-post-perception-bar>
-
-            <div class="actions" style="padding: 5px">
-              <button mat-mini-fab color="primary" (click)="likeComment(comment)"
-                      *ngIf="comment.perception_status == 0 || comment.perception_status == 1">
-                <mat-icon>thumb_up</mat-icon>
-              </button>
-              <button mat-mini-fab color="warn" (click)="dislikeComment(comment)"
-                      *ngIf="comment.perception_status == 0 || comment.perception_status  == 2">
-                <mat-icon>thumb_down</mat-icon>
-              </button>
-              <span *ngIf="comment.perception_status==1" style="color: green; margin-right: 4px">Shilled</span>
-              <span *ngIf="comment.perception_status==2" style="color: red; margin-right: 4px">Cancelled</span>
+                -webkit-box-orient: vertical;">
+                        {{ comment.content }}
+                      </span>
+                    }
+                    @if (panelStates[i]) {
+                      <span
+                        >
+                        <mat-icon>comment</mat-icon>
+                      </span>
+                    }
+                  </mat-expansion-panel-header>
+                  <p>{{ comment.content }}</p>
+                </mat-expansion-panel>
+                <!--          <span style="color: black; font-size: small">{{comment.time_since_posted}}</span>-->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 5px;margin-top: 10px;">
+                  <app-post-perception-bar [popularity]="comment.popularity"
+                  [rating]="comment.rating" style="flex: 1"></app-post-perception-bar>
+                  <div class="actions" style="padding: 5px">
+                    @if (comment.perception_status == 0 || comment.perception_status == 1) {
+                      <button mat-mini-fab color="primary" (click)="likeComment(comment)"
+                        >
+                        <mat-icon>thumb_up</mat-icon>
+                      </button>
+                    }
+                    @if (comment.perception_status == 0 || comment.perception_status  == 2) {
+                      <button mat-mini-fab color="warn" (click)="dislikeComment(comment)"
+                        >
+                        <mat-icon>thumb_down</mat-icon>
+                      </button>
+                    }
+                    @if (comment.perception_status==1) {
+                      <span style="color: green; margin-right: 4px">Shilled</span>
+                    }
+                    @if (comment.perception_status==2) {
+                      <span style="color: red; margin-right: 4px">Cancelled</span>
+                    }
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-        </div>
+        }
       </div>
-
-    </div>
-  </div>
-
-  <ng-template #noComments>
-    <div
-      style="display: flex; justify-content: center; align-items: center; padding: 10px; gap: 10px; vertical-align: middle">
-      <mat-icon color="warn">no_accounts</mat-icon>
-      <span>No comments yet</span>
-    </div>
-  </ng-template>
-</main>
-
-<ng-template #loadingBar>
+    } @else {
+      <div
+        style="display: flex; justify-content: center; align-items: center; padding: 10px; gap: 10px; vertical-align: middle">
+        <mat-icon color="warn">no_accounts</mat-icon>
+        <span>No comments yet</span>
+      </div>
+    }
+  </main>
+} @else {
   <div class="loading-bar" style="height: 75px; width: 150px">
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
-</ng-template>
+}
+
