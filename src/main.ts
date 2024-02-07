@@ -86,5 +86,4 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     provideRouter(appRoutes)
   ]
-})
-  .catch(err => console.error(err));
+}).catch(err => console.error(err));
