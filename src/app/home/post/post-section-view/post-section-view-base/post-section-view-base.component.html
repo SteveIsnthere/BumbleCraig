@@ -1,25 +1,25 @@
-<ng-container *ngIf="!wideMode; else wide">
+@if (!wideMode) {
   <div id="single-row-posts-container" class="posts-container" #postsContainer>
-    <ng-container *ngFor="let postID of postIDs">
+    @for (postID of postIDs; track postID) {
       <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
       <mat-divider class="divider"></mat-divider>
-    </ng-container>
+    }
   </div>
-</ng-container>
-
-<ng-template #wide>
+} @else {
   <div id="wide-mode-posts-container" class="posts-container" #postsContainer [style.padding-left]="padding+'px'"
-       [style.padding-right]="padding+'px'">
-    <div class="wide-mode-posts-row" *ngFor="let postRow of postIDsWide">
-      <ng-container *ngFor="let postID of postRow">
-        <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice
-                  [style.width]="wideModePostWidth+'px'"></app-post>
-        <mat-divider class="divider"></mat-divider>
-      </ng-container>
-    </div>
+    [style.padding-right]="padding+'px'">
+    @for (postRow of postIDsWide; track postRow) {
+      <div class="wide-mode-posts-row">
+        @for (postID of postRow; track postID) {
+          <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice
+          [style.width]="wideModePostWidth+'px'"></app-post>
+          <mat-divider class="divider"></mat-divider>
+        }
+      </div>
+    }
   </div>
-</ng-template>
+}
 
-<div *ngIf="restOfPostIDs.length>0" style="display: flex;justify-content: center">
-  <mat-progress-bar mode="indeterminate" color="accent" style="width: calc(100% - 50px); animation: appear 10s forwards"></mat-progress-bar>
-</div>
+<!--<div *ngIf="restOfPostIDs.length>0" style="display: flex;justify-content: center">-->
+<!--  <mat-progress-bar mode="indeterminate" color="accent" style="width: calc(100% - 50px); animation: appear 10s forwards"></mat-progress-bar>-->
+<!--</div>-->
