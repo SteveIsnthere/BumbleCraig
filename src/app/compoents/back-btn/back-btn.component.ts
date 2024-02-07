@@ -5,7 +5,7 @@ import { MatFabButton } from '@angular/material/button';
 @Component({
     selector: 'app-back-btn',
     templateUrl: './back-btn.component.html',
-    styleUrls: ['./back-btn.component.css'],
+    styleUrls: ['./back-btn.component.scss'],
     standalone: true,
     imports: [MatFabButton, MatIcon]
 })

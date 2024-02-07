@@ -14,7 +14,7 @@ import {MatButton} from '@angular/material/button';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [MatButton, MatIcon, PostSectionViewComponent]
 })

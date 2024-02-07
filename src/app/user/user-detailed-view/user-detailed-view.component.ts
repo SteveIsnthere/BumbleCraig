@@ -22,7 +22,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-user-detailed-view',
     templateUrl: './user-detailed-view.component.html',
-    styleUrls: ['./user-detailed-view.component.css'],
+    styleUrls: ['./user-detailed-view.component.scss'],
     standalone: true,
     imports: [NgClass, SimpleFigureComponent, MatDivider, MatButton, MatIcon, RouterLink, PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })

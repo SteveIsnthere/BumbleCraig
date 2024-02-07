@@ -8,7 +8,7 @@ import {SimpleFigureCachingService} from "../services/simple-figure-caching.serv
 @Component({
   selector: 'app-simple-figure',
   templateUrl: './simple-figure.component.html',
-  styleUrls: ['./simple-figure.component.css'],
+  styleUrls: ['./simple-figure.component.scss'],
   standalone: true,
   imports: []
 })

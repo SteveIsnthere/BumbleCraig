@@ -17,7 +17,7 @@ import { MatButton } from '@angular/material/button';
 @Component({
     selector: 'app-notification-view',
     templateUrl: './notification-view.component.html',
-    styleUrls: ['./notification-view.component.css'],
+    styleUrls: ['./notification-view.component.scss'],
     standalone: true,
     imports: [MatButton, MatDialogClose, MatIcon, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent]
 })

@@ -12,7 +12,7 @@ import {MatButton, MatFabButton} from '@angular/material/button';
 @Component({
   selector: 'app-figure-edit-view',
   templateUrl: './figure-edit-view.component.html',
-  styleUrls: ['./figure-edit-view.component.css'],
+  styleUrls: ['./figure-edit-view.component.scss'],
   standalone: true,
   imports: [MatButton, MatIcon, MatFabButton, MatProgressBar]
 })

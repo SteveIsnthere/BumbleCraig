@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-user-mini',
     templateUrl: './user-mini.component.html',
-    styleUrls: ['./user-mini.component.css'],
+    styleUrls: ['./user-mini.component.scss'],
     standalone: true,
     imports: [RouterLink, SimpleFigureComponent]
 })

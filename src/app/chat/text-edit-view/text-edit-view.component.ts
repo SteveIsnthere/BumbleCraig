@@ -10,7 +10,7 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 @Component({
     selector: 'app-text-edit-view',
     templateUrl: './text-edit-view.component.html',
-    styleUrls: ['./text-edit-view.component.css'],
+    styleUrls: ['./text-edit-view.component.scss'],
     standalone: true,
     imports: [MatFormField, MatLabel, MatInput, CdkTextareaAutosize, MatFabButton, MatIcon]
 })

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './background.component.html',
-  styleUrl: './background.component.css'
+  styleUrl: './background.component.scss'
 })
 export class BackgroundComponent {
 

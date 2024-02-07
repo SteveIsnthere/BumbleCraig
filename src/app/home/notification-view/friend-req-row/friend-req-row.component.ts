@@ -12,7 +12,7 @@ import { MatMiniFabButton } from '@angular/material/button';
 @Component({
     selector: 'app-friend-req-row',
     templateUrl: './friend-req-row.component.html',
-    styleUrls: ['./friend-req-row.component.css'],
+    styleUrls: ['./friend-req-row.component.scss'],
     standalone: true,
     imports: [MatMiniFabButton, MatIcon, UserComponent]
 })

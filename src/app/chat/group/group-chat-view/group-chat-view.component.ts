@@ -22,7 +22,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-group-chat-view',
     templateUrl: './group-chat-view.component.html',
-    styleUrls: ['./group-chat-view.component.css'],
+    styleUrls: ['./group-chat-view.component.scss'],
     standalone: true,
     imports: [NgClass, UserMiniComponent, FileShareComponent, MatButton, MatIcon, MatChipOption, MatProgressBar, LoadingPlaceholderComponent]
 })

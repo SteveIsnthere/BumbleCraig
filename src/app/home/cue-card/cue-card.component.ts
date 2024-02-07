@@ -18,7 +18,7 @@ import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/butt
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
-  styleUrl: './cue-card.component.css',
+  styleUrl: './cue-card.component.scss',
   standalone: true,
   imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })

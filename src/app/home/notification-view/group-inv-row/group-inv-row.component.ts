@@ -13,7 +13,7 @@ import { UserComponent } from '../../../user/user.component';
 @Component({
     selector: 'app-group-inv-row',
     templateUrl: './group-inv-row.component.html',
-    styleUrls: ['./group-inv-row.component.css'],
+    styleUrls: ['./group-inv-row.component.scss'],
     standalone: true,
     imports: [UserComponent, MatMiniFabButton, MatIcon]
 })

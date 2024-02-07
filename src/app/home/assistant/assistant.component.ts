@@ -17,7 +17,7 @@ import { MatDialogContent, MatDialogClose } from '@angular/material/dialog';
 @Component({
     selector: 'app-assistant',
     templateUrl: './assistant.component.html',
-    styleUrls: ['./assistant.component.css'],
+    styleUrls: ['./assistant.component.scss'],
     animations: [
         trigger('inOutAnimation', [
             transition(':enter', [

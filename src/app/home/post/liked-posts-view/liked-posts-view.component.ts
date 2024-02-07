@@ -9,7 +9,7 @@ import { PostSectionViewBaseComponent } from '../post-section-view/post-section-
 @Component({
     selector: 'app-liked-posts-view',
     templateUrl: './liked-posts-view.component.html',
-    styleUrl: './liked-posts-view.component.css',
+    styleUrl: './liked-posts-view.component.scss',
     standalone: true,
     imports: [PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })

@@ -20,7 +20,7 @@ import { SimpleFigureComponent } from '../../simple-figure/simple-figure.compone
 @Component({
     selector: 'app-user-edit-view',
     templateUrl: './user-edit-view.component.html',
-    styleUrls: ['./user-edit-view.component.css'],
+    styleUrls: ['./user-edit-view.component.scss'],
     standalone: true,
     imports: [SimpleFigureComponent, MatMiniFabButton, MatIcon, MatFormField, MatLabel, MatInput, FormsModule, MatIconButton, MatSuffix, CdkTextareaAutosize]
 })

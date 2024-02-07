@@ -14,7 +14,7 @@ import { UserMiniComponent } from '../../../../user/user-mini/user-mini.componen
 @Component({
     selector: 'app-reusable-comments-view',
     templateUrl: './reusable-comments-view.component.html',
-    styleUrls: ['./reusable-comments-view.component.css'],
+    styleUrls: ['./reusable-comments-view.component.scss'],
     standalone: true,
     imports: [UserMiniComponent, MatExpansionPanel, MatExpansionPanelHeader, MatIcon, PostPerceptionBarComponent, MatMiniFabButton, MatProgressBar]
 })

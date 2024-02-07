@@ -8,7 +8,7 @@ import { FileShareComponent } from '../../../file-share/file-share.component';
 @Component({
     selector: 'app-post-files-viewer',
     templateUrl: './post-files-viewer.component.html',
-    styleUrls: ['./post-files-viewer.component.css'],
+    styleUrls: ['./post-files-viewer.component.scss'],
     standalone: true,
     imports: [FileShareComponent, MatIconButton, MatIcon]
 })

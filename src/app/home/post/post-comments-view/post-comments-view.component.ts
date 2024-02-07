@@ -5,7 +5,7 @@ import { ReusableCommentsViewComponent } from './reusable-comments-view/reusable
 @Component({
     selector: 'app-post-comments-view',
     templateUrl: './post-comments-view.component.html',
-    styleUrls: ['./post-comments-view.component.css'],
+    styleUrls: ['./post-comments-view.component.scss'],
     standalone: true,
     imports: [ReusableCommentsViewComponent]
 })

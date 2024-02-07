@@ -9,7 +9,7 @@ import { PostSectionViewBaseComponent } from '../post-section-view/post-section-
 @Component({
     selector: 'app-viewed-posts-view',
     templateUrl: './viewed-posts-view.component.html',
-    styleUrl: './viewed-posts-view.component.css',
+    styleUrl: './viewed-posts-view.component.scss',
     standalone: true,
     imports: [PostSectionViewBaseComponent, LoadingPlaceholderComponent]
 })

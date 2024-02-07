@@ -11,7 +11,7 @@ import { UserComponent } from '../../../user/user.component';
 @Component({
     selector: 'app-group-members-view',
     templateUrl: './group-members-view.component.html',
-    styleUrl: './group-members-view.component.css',
+    styleUrl: './group-members-view.component.scss',
     standalone: true,
     imports: [UserComponent, MatProgressBar]
 })

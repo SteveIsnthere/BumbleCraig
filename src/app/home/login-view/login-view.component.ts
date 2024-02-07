@@ -17,7 +17,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-login-view',
     templateUrl: './login-view.component.html',
-    styleUrls: ['./login-view.component.css'],
+    styleUrls: ['./login-view.component.scss'],
     standalone: true,
     imports: [NgClass, FormsModule, MatChip, MatFormField, MatLabel, MatInput, MatButton, MatIcon, MatProgressSpinner, MatProgressBar, BackgroundComponent]
 })

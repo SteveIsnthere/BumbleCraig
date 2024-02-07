@@ -21,7 +21,7 @@ import { PostComponent } from '../../post.component';
 @Component({
     selector: 'app-post-section-view-base',
     templateUrl: './post-section-view-base.component.html',
-    styleUrl: './post-section-view-base.component.css',
+    styleUrl: './post-section-view-base.component.scss',
     standalone: true,
     imports: [PostComponent, MatDivider, MatProgressBar]
 })

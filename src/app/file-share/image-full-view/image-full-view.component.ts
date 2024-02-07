@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 @Component({
     selector: 'app-image-full-view',
     templateUrl: './image-full-view.component.html',
-    styleUrls: ['./image-full-view.component.css'],
+    styleUrls: ['./image-full-view.component.scss'],
     standalone: true
 })
 export class ImageFullViewComponent {

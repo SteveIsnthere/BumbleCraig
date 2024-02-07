@@ -20,7 +20,7 @@ import { MatButton, MatMiniFabButton } from '@angular/material/button';
 @Component({
     selector: 'app-post-full-view',
     templateUrl: './post-full-view.component.html',
-    styleUrls: ['./post-full-view.component.css'],
+    styleUrls: ['./post-full-view.component.scss'],
     standalone: true,
     imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, UserMiniComponent, MatChipOption, MatDivider, FileShareComponent, ReusableCommentsViewComponent, MatDialogActions, MatMiniFabButton]
 })

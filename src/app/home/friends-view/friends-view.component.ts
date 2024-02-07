@@ -15,7 +15,7 @@ import { MatFabButton, MatButton } from '@angular/material/button';
 @Component({
     selector: 'app-friends-view',
     templateUrl: './friends-view.component.html',
-    styleUrls: ['./friends-view.component.css'],
+    styleUrls: ['./friends-view.component.scss'],
     standalone: true,
     imports: [MatFabButton, MatIcon, UserComponent, MatButton, LoadingPlaceholderComponent]
 })

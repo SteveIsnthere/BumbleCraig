@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './group-info-view.component.html',
-  styleUrl: './group-info-view.component.css'
+  styleUrl: './group-info-view.component.scss'
 })
 export class GroupInfoViewComponent {
 

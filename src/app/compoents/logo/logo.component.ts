@@ -4,7 +4,7 @@ import {siteName} from "../../env";
 @Component({
     selector: 'app-logo',
     templateUrl: './logo.component.html',
-    styleUrls: ['./logo.component.css'],
+    styleUrls: ['./logo.component.scss'],
     standalone: true
 })
 export class LogoComponent {

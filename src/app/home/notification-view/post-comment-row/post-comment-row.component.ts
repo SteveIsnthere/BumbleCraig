@@ -15,7 +15,7 @@ import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/m
 @Component({
     selector: 'app-post-comment-row',
     templateUrl: './post-comment-row.component.html',
-    styleUrls: ['./post-comment-row.component.css'],
+    styleUrls: ['./post-comment-row.component.scss'],
     standalone: true,
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatMiniFabButton, MatIcon]
 })

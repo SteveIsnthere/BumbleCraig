@@ -14,7 +14,7 @@ import { MatCard, MatCardHeader, MatCardTitle, MatCardContent } from '@angular/m
 @Component({
     selector: 'app-post-like-row',
     templateUrl: './post-like-row.component.html',
-    styleUrls: ['./post-like-row.component.css'],
+    styleUrls: ['./post-like-row.component.scss'],
     standalone: true,
     imports: [MatCard, MatCardHeader, MatCardTitle, MatCardContent, MatMiniFabButton, MatIcon]
 })

@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.css'],
+    styleUrls: ['./user.component.scss'],
     standalone: true,
     imports: [RouterLink, SimpleFigureComponent]
 })

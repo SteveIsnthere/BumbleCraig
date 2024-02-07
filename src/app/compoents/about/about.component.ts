@@ -7,7 +7,7 @@ import { MatDialogContent } from '@angular/material/dialog';
 @Component({
     selector: 'app-about',
     templateUrl: './about.component.html',
-    styleUrls: ['./about.component.css'],
+    styleUrls: ['./about.component.scss'],
     standalone: true,
     imports: [MatDialogContent, UserComponent]
 })

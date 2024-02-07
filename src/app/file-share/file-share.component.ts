@@ -16,7 +16,7 @@ export interface FileShareInfo {
 @Component({
     selector: 'app-file-share',
     templateUrl: './file-share.component.html',
-    styleUrls: ['./file-share.component.css'],
+    styleUrls: ['./file-share.component.scss'],
     animations: [
         trigger('inAnimation', [
             transition(':enter', [

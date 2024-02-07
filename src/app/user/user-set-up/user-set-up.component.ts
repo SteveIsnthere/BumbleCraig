@@ -16,7 +16,7 @@ import { MatButton, MatFabButton } from '@angular/material/button';
 @Component({
     selector: 'app-user-set-up',
     templateUrl: './user-set-up.component.html',
-    styleUrls: ['./user-set-up.component.css'],
+    styleUrls: ['./user-set-up.component.scss'],
     standalone: true,
     imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton]
 })

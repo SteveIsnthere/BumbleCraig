@@ -14,7 +14,7 @@ import { MatChipOption } from '@angular/material/chips';
 @Component({
     selector: 'app-invite-view',
     templateUrl: './invite-view.component.html',
-    styleUrls: ['./invite-view.component.css'],
+    styleUrls: ['./invite-view.component.scss'],
     standalone: true,
     imports: [MatChipOption, UserComponent, MatMiniFabButton, MatIcon, MatProgressBar]
 })

@@ -26,7 +26,7 @@ import { MatChipListbox, MatChipOption } from '@angular/material/chips';
 @Component({
     selector: 'app-new-post-view',
     templateUrl: './new-post-view.component.html',
-    styleUrls: ['./new-post-view.component.css'],
+    styleUrls: ['./new-post-view.component.scss'],
     standalone: true,
     imports: [
     FormsModule,

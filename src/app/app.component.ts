@@ -12,7 +12,7 @@ import { LoadingPlaceholderComponent } from './compoents/loading-placeholder/loa
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+    styleUrls: ['./app.component.scss'],
     animations: [routerTransition],
     standalone: true,
     imports: [LoadingPlaceholderComponent, CueCardComponent, RouterOutlet, RainbowStripComponent, MainBtnComponent, BackgroundComponent]

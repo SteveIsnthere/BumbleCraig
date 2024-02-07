@@ -18,7 +18,7 @@ import { MatButton, MatMiniFabButton } from '@angular/material/button';
 @Component({
     selector: 'app-post-section-view',
     templateUrl: './post-section-view.component.html',
-    styleUrls: ['./post-section-view.component.css'],
+    styleUrls: ['./post-section-view.component.scss'],
     standalone: true,
     imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton]
 })

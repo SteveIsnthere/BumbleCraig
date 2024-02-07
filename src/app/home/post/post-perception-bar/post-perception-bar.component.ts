@@ -5,7 +5,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 @Component({
     selector: 'app-post-perception-bar',
     templateUrl: './post-perception-bar.component.html',
-    styleUrls: ['./post-perception-bar.component.css'],
+    styleUrls: ['./post-perception-bar.component.scss'],
     standalone: true,
     imports: [MatProgressBar, MatIcon]
 })

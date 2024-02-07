@@ -12,7 +12,7 @@ import {RouterLink} from "@angular/router";
         RouterLink
     ],
   templateUrl: './home-button.component.html',
-  styleUrl: './home-button.component.css'
+  styleUrl: './home-button.component.scss'
 })
 export class HomeButtonComponent {
 

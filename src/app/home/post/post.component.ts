@@ -22,7 +22,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-post',
     templateUrl: './post.component.html',
-    styleUrls: ['./post.component.css'],
+    styleUrls: ['./post.component.scss'],
     standalone: true,
     imports: [
     MatCard,

@@ -18,7 +18,7 @@ import { NgClass } from '@angular/common';
 @Component({
     selector: 'app-group',
     templateUrl: './group.component.html',
-    styleUrls: ['./group.component.css'],
+    styleUrls: ['./group.component.scss'],
     standalone: true,
     imports: [NgClass, RouterLink, SimpleFigureComponent, MatIcon, MatIconButton, MatMenuTrigger, MatMenu, MatMenuItem]
 })

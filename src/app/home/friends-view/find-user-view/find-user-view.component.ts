@@ -16,7 +16,7 @@ import { MatFormField, MatLabel, MatSuffix } from '@angular/material/form-field'
 @Component({
     selector: 'app-find-user-view',
     templateUrl: './find-user-view.component.html',
-    styleUrls: ['./find-user-view.component.css'],
+    styleUrls: ['./find-user-view.component.scss'],
     standalone: true,
     imports: [MatFormField, MatLabel, MatInput, FormsModule, MatIconButton, MatSuffix, MatIcon, UserComponent, MatMiniFabButton, MatProgressBar]
 })
