@@ -50,7 +50,7 @@
     @if (loading) {
       <div id="loading">
         <app-logo></app-logo>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        on it...
       </div>
     }
 
@@ -61,7 +61,7 @@
       <div id="response" [@inOutAnimation]="">
         <span>{{ response }}</span>
       </div>
-      <button mat-fab (click)="reset()" color="primary" style="margin: 20px">
+      <button mat-fab (click)="reset()" color="primary" style="margin-top: 30px;">
         <mat-icon>restart_alt</mat-icon>
       </button>
     }

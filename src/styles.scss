@@ -1,21 +1,23 @@
 @use '@angular/material' as mat;
 //@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+
+$font-normal: "Carter One"; //"Exo"
+$font-bold: "Carter One"; //"Protest Guerrilla"
 
 $base-typography: mat.define-typography-config(
-  $font-family: "Protest Guerrilla"
-  //$font-family: "Exo"
-  //$font-family: "Rubik"
+  $font-family: $font-normal
+);
+
+$bold-typography: mat.define-typography-config(
+  $font-family: $font-bold,
 );
 
 @include mat.all-component-typographies($base-typography);
-
-
-button {
-  font-family: "Protest Guerrilla", sans-serif;
-  font-weight: 600;
-}
+@include mat.card-typography($bold-typography);
 
 html {
   background-color: #191919;
@@ -83,6 +85,7 @@ body {
 .classicTitle {
   display: flex;
   justify-content: flex-start;
+  //font-family: $font-bold, Arial;
   width: 100%;
   margin-top: 3px;
   margin-bottom: 12px;

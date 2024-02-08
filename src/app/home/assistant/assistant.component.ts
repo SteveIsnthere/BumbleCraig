@@ -13,6 +13,8 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton, MatFabButton } from '@angular/material/button';
 import {MatDialogContent, MatDialogClose, MatDialogActions} from '@angular/material/dialog';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {BackgroundComponent} from "../../compoents/background/background.component";
 
 @Component({
     selector: 'app-assistant',
@@ -27,7 +29,7 @@ import {MatDialogContent, MatDialogClose, MatDialogActions} from '@angular/mater
         ])
     ],
     standalone: true,
-  imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton, MatDialogActions]
+  imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton, MatDialogActions, MatProgressSpinner, BackgroundComponent]
 })
 
 export class AssistantComponent {
