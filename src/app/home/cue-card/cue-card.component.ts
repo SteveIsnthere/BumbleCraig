@@ -36,7 +36,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    window.addEventListener('scroll', this.onScrollThrottled);
+    // window.addEventListener('scroll', this.onScrollThrottled);
     this.resizeSubscription = fromEvent(window, 'resize').pipe(
       debounceTime(200),
     ).subscribe(() => {
@@ -46,7 +46,7 @@ export class CueCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.onScrollThrottled);
+    // window.removeEventListener('scroll', this.onScrollThrottled);
     this.resizeSubscription.unsubscribe();
   }
 

@@ -69,6 +69,7 @@ export class SimpleFigureComponent implements OnInit {
   //   // canvas.style.width = this.width + 'px';
   //   // canvas.style.height = this.width + 'px';
   // }
+
   @Input() figureID: number = 0;
   data: string[][] = [];
   width: number = 0;
