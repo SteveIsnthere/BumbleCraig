@@ -1,5 +1,5 @@
 main {
-  max-width: 500px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,6 @@ main {
   flex-direction: column;
   justify-content: center;
   margin-left: 10px;
-  width: 100%;
   color: antiquewhite;
   font-size: medium;
   overflow: hidden;

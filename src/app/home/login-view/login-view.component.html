@@ -1,5 +1,5 @@
 <main>
-  <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
+    <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
   <!--  <app-logo style="margin: -35px"></app-logo>-->
 
   @if (loginView) {
@@ -17,7 +17,7 @@
           <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <button mat-flat-button (click)="login($event)" class="round-btn"
-          color="warn">Log In
+                color="warn">Log In
           <mat-icon>login</mat-icon>
         </button>
       </form>
@@ -28,48 +28,50 @@
     }
     <button mat-stroked-button (click)="loginView = false" class="round-btn" color="primary">New user?</button>
     <!--    <button mat-flat-button (click)="continueAsVisitor()" *ngIf="!newUserLoading; else loadingWheel2" class="round-btn"-->
-    <!--            color="primary">Continue as a-->
-    <!--      Guest-->
-  <!--    </button>-->
-} @else {
-  <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
-    <div class="classicTitle"  [ngClass]="{'title-loading': newUserLoading}">
-      {{siteName}}
-    </div>
-    <p>Finally, a <b style="text-decoration: underline">sensible</b> platform</p>
-    <p>Click the button to get started!</p>
-    @if (!newUserLoading) {
-      <div style="display: flex; justify-content: center; margin-top: 20px">
-        <div style="flex: 1"></div>
-        <button mat-flat-button (click)="continueAsVisitor()" color="primary"
-          style="border-radius: 100px; margin-top: 20px; padding: 20px" id="start-btn">
-          <mat-icon>rocket_launch</mat-icon>
-          Let me in
-        </button>
+      <!--            color="primary">Continue as a-->
+      <!--      Guest-->
+      <!--    </button>-->
+  } @else {
+    <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
+      <div class="classicTitle" [ngClass]="{'title-loading': newUserLoading}">
+        {{ siteName }}
       </div>
-    } @else {
-      <!--        <div style="display: flex; justify-content: center; margin-top: 72px">-->
-      <!--          <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
-    <!--        </div>-->
-    <div style="display: flex; justify-content: center;">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <p>Finally, a <b style="text-decoration: underline">sensible</b> platform</p>
+      <p>Click the button to get started!</p>
+      @if (!newUserLoading) {
+        <div style="display: flex; justify-content: center; margin-top: 20px">
+          <div style="flex: 1"></div>
+          <button mat-flat-button (click)="continueAsVisitor()" color="primary"
+                  style="border-radius: 100px; margin-top: 20px; padding: 20px" id="start-btn">
+            <mat-icon>rocket_launch</mat-icon>
+            Let me in
+          </button>
+        </div>
+      } @else {
+        <!--        <div style="display: flex; justify-content: center; margin-top: 72px">-->
+          <!--          <mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
+          <!--        </div>-->
+        <div style="display: flex; justify-content: center;">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      }
+      @if (!newUserLoading) {
+        <img src="assets/bg.svg" alt="background" id="back-ground-image"
+             style="position:absolute;bottom: 0;left: 10px;width: 150px;opacity: 0.3;">
+      }
     </div>
+    <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
+            [ngClass]="{'fade': newUserLoading}"
+            style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
+      <mat-icon>login</mat-icon>
+      I have an account
+    </button>
   }
-  @if (!newUserLoading) {
-    <img src="assets/bg.svg" alt="background" id="back-ground-image"
-      style="position:absolute;bottom: 0;left: 10px;width: 150px;opacity: 0.3;">
-  }
-</div>
-<button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
-  [ngClass]="{'fade': newUserLoading}"
-  style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
-  <mat-icon>login</mat-icon>
-  I have an account
-</button>
-}
 
 </main>
 
 @if (newUserLoading || loginLoading) {
-  <div id="sign-up-background"><app-background></app-background></div>
+  <div id="sign-up-background">
+    <app-background></app-background>
+  </div>
 }

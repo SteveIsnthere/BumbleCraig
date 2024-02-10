@@ -6,20 +6,20 @@
           <div>
             <div class="comment-wrapper">
               <app-user-mini [userID]="comment.author_id"></app-user-mini>
-              <div class="comment-content">
+              <div class="comment-content no-text-overflow">
                 <mat-expansion-panel (opened)="this.panelStates[i] = true;" (closed)="this.panelStates[i] = false;"
-                  style="box-shadow: none">
+                                     style="box-shadow: none;">
                   <mat-expansion-panel-header>
                     @if (!panelStates[i]) {
                       <span
-                style="display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;
+                        style="display: -webkit-box;-webkit-line-clamp: 2;line-clamp: 2;
                 -webkit-box-orient: vertical;">
                         {{ comment.content }}
                       </span>
                     }
                     @if (panelStates[i]) {
                       <span
-                        >
+                      >
                         <mat-icon>comment</mat-icon>
                       </span>
                     }
@@ -29,24 +29,24 @@
                 <!--          <span style="color: black; font-size: small">{{comment.time_since_posted}}</span>-->
                 <div style="display: flex; justify-content: center; align-items: center; gap: 5px;margin-top: 10px;">
                   <app-post-perception-bar [popularity]="comment.popularity"
-                  [rating]="comment.rating" style="flex: 1"></app-post-perception-bar>
+                                           [rating]="comment.rating" style="flex: 1"></app-post-perception-bar>
                   <div class="actions" style="padding: 5px">
                     @if (comment.perception_status == 0 || comment.perception_status == 1) {
                       <button mat-mini-fab color="primary" (click)="likeComment(comment)"
-                        >
+                      >
                         <mat-icon>thumb_up</mat-icon>
                       </button>
                     }
-                    @if (comment.perception_status == 0 || comment.perception_status  == 2) {
+                    @if (comment.perception_status == 0 || comment.perception_status == 2) {
                       <button mat-mini-fab color="warn" (click)="dislikeComment(comment)"
-                        >
+                      >
                         <mat-icon>thumb_down</mat-icon>
                       </button>
                     }
-                    @if (comment.perception_status==1) {
+                    @if (comment.perception_status == 1) {
                       <span style="color: green; margin-right: 4px">Shilled</span>
                     }
-                    @if (comment.perception_status==2) {
+                    @if (comment.perception_status == 2) {
                       <span style="color: red; margin-right: 4px">Cancelled</span>
                     }
                   </div>
