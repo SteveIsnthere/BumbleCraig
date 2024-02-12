@@ -126,6 +126,10 @@ body {
   --mdc-dialog-container-shape: 35px;
 }
 
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 20px !important; /* Change 28px to your desired radius */
+}
+
 .no-text-overflow {
   @include no-text-overflow;
 }

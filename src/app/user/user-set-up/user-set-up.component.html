@@ -7,7 +7,7 @@
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Username</ng-template>
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input matInput formControlName="nameCtrl"
                  autocomplete="off" required
@@ -21,7 +21,7 @@
 
     <mat-step label="Password" [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <mat-form-field>
+        <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput formControlName="passwordCtrl"
                  autocomplete="off" required
