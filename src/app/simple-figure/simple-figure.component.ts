@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, signal} from '@angular/core';
 import {apiEndPoint} from "../env";
 import {HttpClient} from "@angular/common/http";
 import {convertToColorArray} from "./figure-dep";
@@ -71,21 +71,18 @@ export class SimpleFigureComponent implements OnInit {
   // }
 
   @Input() figureID: number = 0;
-  data: string[][] = [];
-  width: number = 0;
-  loading: boolean = true;
+  data = signal<string[][]>([]);
+  loading = signal(true);
 
-  constructor(public http: HttpClient, private elementRef: ElementRef, private cache: SimpleFigureCachingService) {
+  constructor(public http: HttpClient, private cache: SimpleFigureCachingService) {
   }
 
   ngOnInit(): void {
-    this.width = this.elementRef.nativeElement.offsetWidth;
     let cachedData = this.cache.get(this.figureID);
-
     if (cachedData != '') {
       // cached data
-      this.data = convertToColorArray(cachedData);
-      this.loading = false;
+      this.data.set(convertToColorArray(cachedData));
+      this.loading.set(false);
       // if (Math.random() < 0.7) {
       //   // f outta here
       //   return
@@ -94,18 +91,18 @@ export class SimpleFigureComponent implements OnInit {
         // delayed fetch
         this.http.get<string>(apiEndPoint + '/simple_figure/' + this.figureID).subscribe((data) => {
           if (data != cachedData) {
-            this.data = convertToColorArray(data);
+            this.data.set(convertToColorArray(data));
             this.cache.set(this.figureID, data);
-            this.loading = false;
+            this.loading.set(false);
           }
         })
       }, 1000 + Math.random() * 3000);
     } else {
       // no cached data
       this.http.get<string>(apiEndPoint + '/simple_figure/' + this.figureID).subscribe((data) => {
-        this.data = convertToColorArray(data);
+        this.data.set(convertToColorArray(data));
         this.cache.set(this.figureID, data);
-        this.loading = false;
+        this.loading.set(false);
       })
     }
   }

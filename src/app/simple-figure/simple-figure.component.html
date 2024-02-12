@@ -1,6 +1,6 @@
-@if (!loading) {
+@if (!loading()) {
   <main>
-    @for (row of data; track row) {
+    @for (row of data(); track row) {
       <div class="color-row">
         @for (color of row; track color) {
           <div class="color-cell" [style.background-color]="color"></div>

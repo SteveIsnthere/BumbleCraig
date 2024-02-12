@@ -5,25 +5,24 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output, ViewChild,
+  Output, signal, ViewChild,
 } from '@angular/core';
 import {debounceTime, fromEvent, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../../services/auth.service";
 import {MainService} from "../../../../services/main.service";
 import {MatDialog} from "@angular/material/dialog";
-import { MatProgressBar } from '@angular/material/progress-bar';
-import { MatDivider } from '@angular/material/divider';
-import { PostComponent } from '../../post.component';
-
+import {MatProgressBar} from '@angular/material/progress-bar';
+import {MatDivider} from '@angular/material/divider';
+import {PostComponent} from '../../post.component';
 
 
 @Component({
-    selector: 'app-post-section-view-base',
-    templateUrl: './post-section-view-base.component.html',
-    styleUrl: './post-section-view-base.component.scss',
-    standalone: true,
-    imports: [PostComponent, MatDivider, MatProgressBar]
+  selector: 'app-post-section-view-base',
+  templateUrl: './post-section-view-base.component.html',
+  styleUrl: './post-section-view-base.component.scss',
+  standalone: true,
+  imports: [PostComponent, MatDivider, MatProgressBar]
 })
 export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() postIDs: number[] = [];
@@ -34,7 +33,7 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
   wideMode = false;
   postIDsWide: number[][] = [];
   padding = 15;
-  wideModePostWidth = 470;
+  wideModePostWidth = signal(470);
   scrollingTask: any;
   loadingMorePosts = false;
   requestedMorePosts = false;
@@ -164,6 +163,7 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
     if (this.postIDsWide != _postIDsWide) {
       this.postIDsWide = _postIDsWide;
     }
-    this.wideModePostWidth = Math.floor((width - this.padding * 2) / maxColumns);
+    // this.wideModePostWidth = Math.floor((width - this.padding * 2) / maxColumns);
+    this.wideModePostWidth.set(Math.floor((width - this.padding * 2) / maxColumns));
   }
 }
