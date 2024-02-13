@@ -5,11 +5,11 @@
 <main>
   @if (router.url != '/login') {
     <app-cue-card></app-cue-card>
+    <app-rainbow-strip></app-rainbow-strip>
   }
   <div [@routerTransition]="getState(o)">
     <router-outlet #o="outlet"></router-outlet>
   </div>
-  <app-rainbow-strip></app-rainbow-strip>
 </main>
 
 <app-main-btn></app-main-btn>

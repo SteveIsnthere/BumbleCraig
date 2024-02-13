@@ -7,28 +7,28 @@ import {Post} from "../Post";
 import {Message} from "../../../chat/group/group-chat-view/Message";
 import {TextEditViewComponent} from "../../../chat/text-edit-view/text-edit-view.component";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MainService} from "../../../services/main.service";
 import {Router} from "@angular/router";
 import {EMPTY, forkJoin, Observable, switchMap} from "rxjs";
-import { MatDivider } from '@angular/material/divider';
-import { MatProgressBar } from '@angular/material/progress-bar';
-import { MatIcon } from '@angular/material/icon';
-import { MatMiniFabButton, MatButton } from '@angular/material/button';
-import { FileShareComponent } from '../../../file-share/file-share.component';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { MatInput } from '@angular/material/input';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import {MatDivider} from '@angular/material/divider';
+import {MatProgressBar} from '@angular/material/progress-bar';
+import {MatIcon} from '@angular/material/icon';
+import {MatMiniFabButton, MatButton} from '@angular/material/button';
+import {FileShareComponent} from '../../../file-share/file-share.component';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {MatInput} from '@angular/material/input';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
 
-import { MatChipListbox, MatChipOption } from '@angular/material/chips';
+import {MatChipListbox, MatChipOption} from '@angular/material/chips';
 
 @Component({
-    selector: 'app-new-post-view',
-    templateUrl: './new-post-view.component.html',
-    styleUrls: ['./new-post-view.component.scss'],
-    standalone: true,
-    imports: [
+  selector: 'app-new-post-view',
+  templateUrl: './new-post-view.component.html',
+  styleUrls: ['./new-post-view.component.scss'],
+  standalone: true,
+  imports: [
     FormsModule,
     MatChipListbox,
     MatChipOption,
@@ -43,7 +43,7 @@ import { MatChipListbox, MatChipOption } from '@angular/material/chips';
     MatProgressBar,
     MatDivider,
     MatButton
-],
+  ],
 })
 export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;
@@ -57,9 +57,9 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   fileUploadRoute: string = '/post/create_file_attachment/';
   textUploadRoute: string = '/post/create_text_attachment/';
   observer: any;
-  currentStep: number = 1;
   changeTitleTimeout: any;
   contentsContainer: any;
+  firstLoad: boolean = true;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -80,7 +80,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
         this.observer = new ResizeObserver(() => this.scrollToElement('action-section'));
         this.contentsContainer = this.elementRef.nativeElement.querySelector('#main');
         this.observer.observe(this.contentsContainer);
-      }, 100);
+      }, 3000);
     })
   }
 
@@ -286,6 +286,10 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
 
   scrollToElement(id: string): void {
     setTimeout(() => {
+      if (this.firstLoad) {
+        this.firstLoad = false;
+        return;
+      }
       document.getElementById(id)!.scrollIntoView({
         behavior: "smooth",
         block: "start",
