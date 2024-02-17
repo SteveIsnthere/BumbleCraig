@@ -1,9 +1,6 @@
 @use '@angular/material' as mat;
-//@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 
 $font-normal: "Exo"; //"Exo"
 $font-bold: "Carter One"; //"Protest Guerrilla"
@@ -34,6 +31,7 @@ $bold-typography: mat.define-typography-config(
 
 html {
   background-color: #191919;
+  //background-color: black;
 }
 
 body {
@@ -95,7 +93,6 @@ body {
   /*background-color: rgba(255, 255, 255, 0.05);*/
   backdrop-filter: blur(20px);
 }
-
 .classicTitle {
   display: flex;
   justify-content: flex-start;
