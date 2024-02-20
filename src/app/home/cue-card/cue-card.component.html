@@ -1,29 +1,26 @@
 <main>
-  <mat-toolbar>
+  <mat-toolbar style="background-color: rgba(25,25,25,0.86); backdrop-filter: blur(10px)">
     <div id="content">
-      <img src="assets/logo.png" id="logo"  alt="" (click)="backHome()">
+      <img src="assets/logo.png" id="logo" alt="" (click)="backHome()">
 
-<!--      <button mat-flat-button color="warn" (click)="openAssistant()"-->
-<!--              style="border-radius: 200px">-->
-<!--        &lt;!&ndash;    <mat-icon>join_left</mat-icon>&ndash;&gt;-->
-<!--        Ask {{ siteName }}-->
-<!--      </button>-->
+      <!--      <button mat-flat-button color="warn" (click)="openAssistant()"-->
+      <!--              style="border-radius: 200px">-->
+      <!--        &lt;!&ndash;    <mat-icon>join_left</mat-icon>&ndash;&gt;-->
+      <!--        Ask {{ siteName }}-->
+      <!--      </button>-->
       <!--      @if (topUserIDs.length > 0) {-->
-<!--        <div id="top-users-bar" style="flex-shrink: 0">-->
-<!--          <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>-->
-<!--          <div id="top-users">-->
-<!--            @for (userID of topUserIDs; track userID) {-->
-<!--              <app-user-mini [userID]="userID"></app-user-mini>-->
-<!--            }-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      }-->
+      <!--        <div id="top-users-bar" style="flex-shrink: 0">-->
+      <!--          <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>-->
+      <!--          <div id="top-users">-->
+      <!--            @for (userID of topUserIDs; track userID) {-->
+      <!--              <app-user-mini [userID]="userID"></app-user-mini>-->
+      <!--            }-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      }-->
 
       <div style="flex: 1"></div>
-      <button mat-mini-fab color="warn" (click)="openAssistant()"
-              style="scale: 0.9">
-        <mat-icon>search</mat-icon>
-      </button>
+
       @if (notificationCount() == 0) {
         <button mat-icon-button routerLink="/new-post" color="warn"
         >
@@ -31,15 +28,18 @@
         </button>
       } @else {
         <button mat-mini-fab (click)="openUserBriefView()"
-                style="background-color: white;scale: 0.9">
-          <mat-icon class="nav-icon" color="warn">
+                style="background-color: white;">
+          <mat-icon color="warn">
             notifications
           </mat-icon>
         </button>
       }
 
+      <button mat-mini-fab color="warn" (click)="openAssistant()">
+        <mat-icon>search</mat-icon>
+      </button>
 
-      <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary" style="scale: 0.9">
+      <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
         <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
         <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
         <!--    </div>-->
@@ -53,7 +53,8 @@
   </mat-toolbar>
 </main>
 
-<div style="height: 74px"></div>
+<mat-toolbar style="margin-bottom: 10px">
+</mat-toolbar>
 
 
 <mat-menu #menu="matMenu">
