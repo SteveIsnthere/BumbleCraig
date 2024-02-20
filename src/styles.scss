@@ -17,6 +17,7 @@ $bold-typography: mat.define-typography-config(
 @include mat.card-typography($bold-typography);
 @include mat.button-typography($bold-typography);
 
+
 @mixin no-text-overflow {
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
@@ -39,6 +40,11 @@ body {
   overflow-x: hidden;
   /*background-color: #212121;*/
   /*background-color: #060a0a;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-bold, Arial;
+  color: white;
 }
 
 

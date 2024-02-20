@@ -1,61 +1,57 @@
-<main>
-  <mat-toolbar style="background-color: rgba(25,25,25,0.86); backdrop-filter: blur(10px)">
-    <div id="content">
-      <img src="assets/logo.png" id="logo" alt="" (click)="backHome()">
+<mat-toolbar id="main-bar">
+  <div id="content">
+    <button mat-button (click)="backHome()">
+      <div style="display: flex; align-items: center;">
+<!--        <img ngSrc="assets/logo.png" id="logo" alt=""  height="500" width="500">-->
+        <span style="font-size: x-large">Tidder</span>
+      </div>
+    </button>
+    <!--      <button mat-flat-button color="warn" (click)="openAssistant()"-->
+    <!--              style="border-radius: 200px">-->
+    <!--        &lt;!&ndash;    <mat-icon>join_left</mat-icon>&ndash;&gt;-->
+    <!--        Ask {{ siteName }}-->
+    <!--      </button>-->
+    <!--      @if (topUserIDs.length > 0) {-->
+    <!--        <div id="top-users-bar" style="flex-shrink: 0">-->
+    <!--          <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>-->
+    <!--          <div id="top-users">-->
+    <!--            @for (userID of topUserIDs; track userID) {-->
+    <!--              <app-user-mini [userID]="userID"></app-user-mini>-->
+    <!--            }-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      }-->
 
-      <!--      <button mat-flat-button color="warn" (click)="openAssistant()"-->
-      <!--              style="border-radius: 200px">-->
-      <!--        &lt;!&ndash;    <mat-icon>join_left</mat-icon>&ndash;&gt;-->
-      <!--        Ask {{ siteName }}-->
-      <!--      </button>-->
-      <!--      @if (topUserIDs.length > 0) {-->
-      <!--        <div id="top-users-bar" style="flex-shrink: 0">-->
-      <!--          <mat-icon style="scale: 1.4" color="accent">emoji_events</mat-icon>-->
-      <!--          <div id="top-users">-->
-      <!--            @for (userID of topUserIDs; track userID) {-->
-      <!--              <app-user-mini [userID]="userID"></app-user-mini>-->
-      <!--            }-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      }-->
+    <div style="flex: 1"></div>
 
-      <div style="flex: 1"></div>
-
-      @if (notificationCount() == 0) {
-        <button mat-icon-button routerLink="/new-post" color="warn"
-        >
-          <mat-icon>add</mat-icon>
-        </button>
-      } @else {
-        <button mat-mini-fab (click)="openUserBriefView()"
-                style="background-color: white;">
-          <mat-icon color="warn">
-            notifications
-          </mat-icon>
-        </button>
-      }
-
-      <button mat-mini-fab color="warn" (click)="openAssistant()">
-        <mat-icon>search</mat-icon>
+    @if (notificationCount() == 0) {
+      <button mat-mini-fab routerLink="/new-post" color="warn">
+        <mat-icon>add</mat-icon>
       </button>
-
-      <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
-        <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
-        <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
-        <!--    </div>-->
-        <mat-icon>arrow_drop_down</mat-icon>
+    } @else {
+      <button mat-mini-fab (click)="openUserBriefView()"
+              style="background-color: white;">
+        <mat-icon color="warn">
+          notifications
+        </mat-icon>
       </button>
-    </div>
+    }
 
-    <!--  @if (showDivider()) {-->
-    <!--    <mat-divider style="margin-top: 7px"></mat-divider>-->
-    <!--  }-->
-  </mat-toolbar>
-</main>
+    <button mat-mini-fab color="primary" (click)="openAssistant()">
+      <mat-icon>search</mat-icon>
+    </button>
 
-<mat-toolbar style="margin-bottom: 10px">
+    <button mat-mini-fab [matMenuTriggerFor]="menu" color="accent">
+      <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
+      <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
+      <!--    </div>-->
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 
+<mat-toolbar style="background-color: transparent">
+</mat-toolbar>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['/user/' + this.auth.selfUserID]">

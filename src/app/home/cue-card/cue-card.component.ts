@@ -14,15 +14,16 @@ import {UserMiniComponent} from '../../user/user-mini/user-mini.component';
 
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
-import {MatDivider} from "@angular/material/divider";
 import {MatToolbar} from "@angular/material/toolbar";
+import {MatCardTitle} from "@angular/material/card";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.scss',
   standalone: true,
-  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem, MatDivider, MatToolbar]
+  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem, MatToolbar, MatCardTitle, NgOptimizedImage]
 })
 export class CueCardComponent implements OnInit, OnDestroy  {
   // topUserIDs: number[] = [];
