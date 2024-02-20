@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, signal} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MainService} from "../../services/main.service";
@@ -14,19 +14,22 @@ import {UserMiniComponent} from '../../user/user-mini/user-mini.component';
 
 import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
+import {MatDivider} from "@angular/material/divider";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.scss',
   standalone: true,
-  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem]
+  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem, MatDivider, MatToolbar]
 })
 export class CueCardComponent implements OnInit, OnDestroy {
   topUserIDs: number[] = [];
   topBarOffset = 0;
   topBarHeight = 74;
   lastScrollTop: number = 0;
+  showDivider = signal(true)
   isScrolling = false;
   private resizeSubscription: Subscription = new Subscription();
 
@@ -78,38 +81,6 @@ export class CueCardComponent implements OnInit, OnDestroy {
       requestAnimationFrame(this.onScroll);
     }
   }
-
-  // onScroll = () => {
-  //   const scrollTop = window.scrollY;
-  //   const deltaScroll = scrollTop - this.lastScrollTop;
-  //
-  //   this.lastScrollTop = scrollTop;
-  //
-  //   if (scrollTop < this.topBarHeight) {
-  //     this.topBarOffset = 0;
-  //   } else if (deltaScroll > 0) {
-  //     if (deltaScroll > 20) {
-  //       this.topBarOffset = this.topBarOffset + deltaScroll;
-  //     } else {
-  //       this.topBarOffset = this.topBarOffset + deltaScroll / 5;
-  //     }
-  //     if (this.topBarOffset > this.topBarHeight) {
-  //       this.topBarOffset = this.topBarHeight;
-  //     }
-  //   } else {
-  //     if (deltaScroll < -20) {
-  //       this.topBarOffset = 0;
-  //     } else {
-  //       this.topBarOffset = this.topBarOffset + deltaScroll / 5;
-  //       if (this.topBarOffset < 0) {
-  //         this.topBarOffset = 0;
-  //       }
-  //     }
-  //   }
-  //
-  //   this.elementRef.nativeElement.querySelector('#top-bar').style.top = -this.topBarOffset + 'px';
-  //   this.isScrolling = false;
-  // }
 
   onScroll = () => {
     const scrollTop = window.scrollY;
