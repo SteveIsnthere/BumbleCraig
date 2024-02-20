@@ -2,33 +2,33 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
 
 const transitionQuery = query(':enter, :leave', style({position: 'fixed', width: '100%'}), {optional: true})
 
-function stdTransitionAway(duration: number = 0.3) {
+function stdTransitionAway(duration: number = 0.7) {
   return [
     transitionQuery,
     group([
       query(':enter', [
         style({transform: 'translateX(100%)'}),
-        animate(duration + 's ease-out', style({transform: 'translateX(0%)'})),
+        animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
       ], {optional: true}),
       query(':leave', [
         style({transform: 'translateX(0%)'}),
-        animate(duration + 's ease-out', style({transform: 'translateX(-100%)'})),
+        animate(duration + 's ease-in-out', style({transform: 'translateX(-100%)'})),
       ], {optional: true}),
     ]),
   ];
 }
 
-function stdTransitionBack(duration: number = 0.3) {
+function stdTransitionBack(duration: number = 0.7) {
   return [
     transitionQuery,
     group([
       query(':enter', [
         style({transform: 'translateX(-100%)'}),
-        animate(duration + 's ease-out', style({transform: 'translateX(0%)'})),
+        animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
       ], {optional: true}),
       query(':leave', [
         style({transform: 'translateX(0%)'}),
-        animate(duration + 's ease-out', style({transform: 'translateX(100%)'})),
+        animate(duration + 's ease-in-out', style({transform: 'translateX(100%)'})),
       ], {optional: true}),
     ]),
   ];
