@@ -92,6 +92,7 @@ export class AuthService {
     localStorage.clear();
     this.states.loadedUp = false;
     this.continueAsVisitor();
+    alert("You have been logged out and are now browsing as a visitor")
   }
 
   continueAsVisitor() {
