@@ -17,11 +17,6 @@
     {{ genreSelected }}
     <mat-icon>expand_more</mat-icon>
   </button>
-  <div style="flex: 1"></div>
-  <button mat-stroked-button routerLink="/new-post" color="primary" style="border-radius: 200px; justify-self: flex-end">
-    <mat-icon>add</mat-icon>
-    Create Post
-  </button>
 </div>
 
 
@@ -91,3 +86,9 @@
     </button>
   </div>
 }
+
+<div id="new-post-btn">
+  <button mat-mini-fab routerLink="/new-post" color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
