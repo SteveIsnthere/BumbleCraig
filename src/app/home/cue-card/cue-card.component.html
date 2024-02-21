@@ -25,37 +25,42 @@
     <div style="flex: 1"></div>
 
     @if (notificationCount() == 0) {
-      <button mat-mini-fab color="primary" (click)="openAssistant()">
+      <button mat-stroked-button color="primary" (click)="openAssistant()" style="border-radius: 100px">
         <mat-icon>search</mat-icon>
+        Assistant
       </button>
     } @else {
-      <button mat-mini-fab (click)="openUserBriefView()"
-              style="background-color: white;">
+      <button mat-stroked-button (click)="openUserBriefView()"
+              style="background-color: white;border-radius: 100px; color: black">
         <mat-icon color="warn">
           notifications
         </mat-icon>
+        Notifications
       </button>
     }
+    <div style="flex: 1"></div>
 
-    @if (!states.hasUnreadMsg) {
-      <button mat-mini-fab routerLink="/chat" color="warn">
-        <mat-icon>
-          chat
-        </mat-icon>
-      </button>
-    } @else {
-      <button mat-mini-fab routerLink="/chat" style="background-color: #ffffff;">
-        <mat-icon color="warn">
-          mark_chat_unread
-        </mat-icon>
-      </button>
+    @if (router.url !== '/chat') {
+      @if (!states.hasUnreadMsg) {
+        <button mat-mini-fab routerLink="/chat" color="warn">
+          <mat-icon>
+            chat
+          </mat-icon>
+        </button>
+      } @else {
+        <button mat-mini-fab routerLink="/chat" style="background-color: #ffffff;">
+          <mat-icon color="warn">
+            mark_chat_unread
+          </mat-icon>
+        </button>
+      }
     }
 
-    <button mat-mini-fab [matMenuTriggerFor]="menu" color="accent">
+    <button mat-mini-fab [matMenuTriggerFor]="menu" color="primary">
       <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
       <!--      <app-simple-figure [figureID]=1></app-simple-figure>-->
       <!--    </div>-->
-      <mat-icon>menu</mat-icon>
+      <mat-icon>menu_open</mat-icon>
     </button>
   </div>
 </mat-toolbar>

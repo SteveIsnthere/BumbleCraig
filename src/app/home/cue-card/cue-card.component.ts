@@ -34,7 +34,7 @@ export class CueCardComponent implements OnInit, OnDestroy  {
   // private resizeSubscription: Subscription = new Subscription();
 
 
-  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private router: Router, public states: StatesService) {
+  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, public router: Router, public states: StatesService) {
     // this.lastScrollTop = 0;
   }
 

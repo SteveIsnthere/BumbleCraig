@@ -36,7 +36,7 @@ export class LoginViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loginView = false;
+    this.loginView = true;
   }
 
   ngOnDestroy(): void {

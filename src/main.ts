@@ -71,7 +71,8 @@ const appRoutes: Routes = [
     data: {state: 'liked-posts'}
   },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', redirectTo: '/home', pathMatch: 'full'}
+  {path: '**', redirectTo: '/home', pathMatch: 'full'},
+
 ];
 bootstrapApplication(AppComponent, {
   providers: [
