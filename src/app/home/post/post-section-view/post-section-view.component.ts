@@ -14,13 +14,14 @@ import { PostSectionViewBaseComponent } from './post-section-view-base/post-sect
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import {RouterLink} from "@angular/router";
 
 @Component({
     selector: 'app-post-section-view',
     templateUrl: './post-section-view.component.html',
     styleUrls: ['./post-section-view.component.scss'],
     standalone: true,
-    imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton]
+    imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink]
 })
 
 export class PostSectionViewComponent implements OnInit {

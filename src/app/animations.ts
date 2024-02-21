@@ -2,7 +2,7 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
 
 const transitionQuery = query(':enter, :leave', style({position: 'fixed', width: '100%'}), {optional: true})
 
-function stdTransitionAway(duration: number = 0.7) {
+function stdTransitionAway(duration: number = 0.5) {
   return [
     transitionQuery,
     group([
@@ -18,7 +18,7 @@ function stdTransitionAway(duration: number = 0.7) {
   ];
 }
 
-function stdTransitionBack(duration: number = 0.7) {
+function stdTransitionBack(duration: number = 0.5) {
   return [
     transitionQuery,
     group([

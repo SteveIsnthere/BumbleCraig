@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {MainService} from "../services/main.service";
 import {StatesService} from "../services/states.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {UserSetUpComponent} from "../user/user-set-up/user-set-up.component";
 import {AuthService} from "../services/auth.service";
 import {siteName} from "../env";
 import {PostSectionViewComponent} from './post/post-section-view/post-section-view.component';
 import {MatIcon} from '@angular/material/icon';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
 
 
 @Component({
@@ -16,7 +16,7 @@ import {MatButton} from '@angular/material/button';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [MatButton, MatIcon, PostSectionViewComponent]
+    imports: [MatButton, MatIcon, PostSectionViewComponent, MatMiniFabButton, RouterLink]
 })
 export class HomeComponent implements OnInit {
   constructor(public router: Router, public auth: AuthService, public main: MainService, public states: StatesService, private dialog: MatDialog) {

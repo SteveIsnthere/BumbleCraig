@@ -1,22 +1,29 @@
 @if (router.url == '/login') {
   <div></div>
 } @else {
-  @if (router.url == '/home') {
-    @if (!states.hasUnreadMsg) {
-      <button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"
-        >
-        <mat-icon class="nav-icon">
-          chat
-        </mat-icon>
-      </button>
-    } @else {
-      <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">
-        <mat-icon class="nav-icon" color="warn">
-          mark_chat_unread
-        </mat-icon>
-      </button>
-    }
-  } @else {
+<!--  @if (router.url == '/home') {-->
+<!--    @if (!states.hasUnreadMsg) {-->
+<!--      <button mat-fab class="main-btn" routerLink="/chat" color="warn" style="position: fixed;"-->
+<!--        >-->
+<!--        <mat-icon class="nav-icon">-->
+<!--          chat-->
+<!--        </mat-icon>-->
+<!--      </button>-->
+<!--    } @else {-->
+<!--      <button mat-fab class="main-btn" routerLink="/chat" style="background-color: #ffffff;position: fixed;">-->
+<!--        <mat-icon class="nav-icon" color="warn">-->
+<!--          mark_chat_unread-->
+<!--        </mat-icon>-->
+<!--      </button>-->
+<!--    }-->
+<!--  } @else {-->
+<!--    @if (router.url == '/chat') {-->
+<!--      <app-home-button></app-home-button>-->
+<!--    } @else {-->
+<!--      <app-back-btn></app-back-btn>-->
+<!--    }-->
+<!--  }-->
+  @if (router.url != '/home') {
     @if (router.url == '/chat') {
       <app-home-button></app-home-button>
     } @else {

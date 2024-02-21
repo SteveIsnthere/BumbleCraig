@@ -1,13 +1,19 @@
 <main>
   @if (auth.isVisitor) {
     <div class="classicTextBox" style="margin: 5px 20px 12px; animation: appear 1s forwards">
-      <span class="classicTitle">Join {{siteName}}</span>
-      <div style="display: flex; justify-content: space-between">
-        <span>Signup to make your account permanent</span>
+      <span class="classicTitle">Hey there!</span>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px">
+        <p>One last step, login or signup to make your account permanent</p>
+        <div style="flex: 1"></div>
         <button mat-flat-button color="primary" (click)="userSetUp()"
-          style="border-radius: 200px;flex-shrink: 0">
+                style="border-radius: 200px;flex-shrink: 0">
           <mat-icon>account_circle</mat-icon>
           Sign Up
+        </button>
+        <button mat-flat-button color="warn" (click)="userSetUp()"
+                style="border-radius: 200px;flex-shrink: 0">
+          <mat-icon>login</mat-icon>
+          Login
         </button>
       </div>
     </div>
@@ -15,4 +21,3 @@
   <app-post-section-view></app-post-section-view>
   <div style="height: 80px"></div>
 </main>
-

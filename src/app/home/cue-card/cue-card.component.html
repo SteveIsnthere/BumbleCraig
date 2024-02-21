@@ -1,11 +1,11 @@
 <mat-toolbar id="main-bar">
   <div id="content">
-<!--    <button mat-button (click)="backHome()">-->
-<!--      <div style="display: flex; align-items: center; gap: 5px">-->
-<!--        <span style="font-size: x-large">Tidder</span>-->
-<!--      </div>-->
-<!--    </button>-->
-    <img ngSrc="assets/logo.png" id="logo" alt=""  height="500" width="500" (click)="backHome()">
+    <!--    <button mat-button (click)="backHome()">-->
+    <!--      <div style="display: flex; align-items: center; gap: 5px">-->
+    <!--        <span style="font-size: x-large">Tidder</span>-->
+    <!--      </div>-->
+    <!--    </button>-->
+    <img ngSrc="assets/logo.png" id="logo" alt="" height="500" width="500" (click)="backHome()" priority>
     <!--      <button mat-flat-button color="warn" (click)="openAssistant()"-->
     <!--              style="border-radius: 200px">-->
     <!--        &lt;!&ndash;    <mat-icon>join_left</mat-icon>&ndash;&gt;-->
@@ -25,8 +25,8 @@
     <div style="flex: 1"></div>
 
     @if (notificationCount() == 0) {
-      <button mat-mini-fab routerLink="/new-post" color="warn">
-        <mat-icon>add</mat-icon>
+      <button mat-mini-fab color="primary" (click)="openAssistant()">
+        <mat-icon>search</mat-icon>
       </button>
     } @else {
       <button mat-mini-fab (click)="openUserBriefView()"
@@ -37,9 +37,19 @@
       </button>
     }
 
-    <button mat-mini-fab color="primary" (click)="openAssistant()">
-      <mat-icon>search</mat-icon>
-    </button>
+    @if (!states.hasUnreadMsg) {
+      <button mat-mini-fab routerLink="/chat" color="warn">
+        <mat-icon>
+          chat
+        </mat-icon>
+      </button>
+    } @else {
+      <button mat-mini-fab routerLink="/chat" style="background-color: #ffffff;">
+        <mat-icon color="warn">
+          mark_chat_unread
+        </mat-icon>
+      </button>
+    }
 
     <button mat-mini-fab [matMenuTriggerFor]="menu" color="accent">
       <!--    <div style="width: 34px;clip-path: circle(17px at center);flex-shrink: 0;">-->
@@ -52,7 +62,6 @@
 
 <mat-toolbar style="background-color: transparent">
 </mat-toolbar>
-
 <mat-menu #menu="matMenu">
   <button mat-menu-item [routerLink]="['/user/' + this.auth.selfUserID]">
     <mat-icon class="menuIcon" color="warn">account_circle</mat-icon>

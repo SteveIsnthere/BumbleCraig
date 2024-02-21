@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {MainService} from "../../services/main.service";
@@ -6,24 +6,24 @@ import {siteName} from "../../env";
 import {HttpClient} from "@angular/common/http";
 import {AssistantComponent} from "../assistant/assistant.component";
 import {NotificationViewComponent} from "../notification-view/notification-view.component";
-import {Subscription} from "rxjs";
 import {Router, RouterLink} from "@angular/router";
 import {AboutComponent} from "../../compoents/about/about.component";
 import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
 import {UserMiniComponent} from '../../user/user-mini/user-mini.component';
 
 import {MatIcon} from '@angular/material/icon';
-import {MatButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
+import {MatButton, MatFabButton, MatIconButton, MatMiniFabButton} from '@angular/material/button';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatCardTitle} from "@angular/material/card";
 import {NgOptimizedImage} from "@angular/common";
+import {StatesService} from "../../services/states.service";
 
 @Component({
   selector: 'app-cue-card',
   templateUrl: './cue-card.component.html',
   styleUrl: './cue-card.component.scss',
   standalone: true,
-  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem, MatToolbar, MatCardTitle, NgOptimizedImage]
+  imports: [MatButton, MatIcon, UserMiniComponent, MatIconButton, RouterLink, MatMiniFabButton, MatMenuTrigger, MatMenu, MatMenuItem, MatToolbar, MatCardTitle, NgOptimizedImage, MatFabButton]
 })
 export class CueCardComponent implements OnInit, OnDestroy  {
   // topUserIDs: number[] = [];
@@ -31,10 +31,10 @@ export class CueCardComponent implements OnInit, OnDestroy  {
   // topBarHeight = 74;
   // lastScrollTop: number = 0;
   // isScrolling = false;
-  private resizeSubscription: Subscription = new Subscription();
+  // private resizeSubscription: Subscription = new Subscription();
 
 
-  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private elementRef: ElementRef, private router: Router) {
+  constructor(public auth: AuthService, private dialog: MatDialog, public main: MainService, public http: HttpClient, private router: Router, public states: StatesService) {
     // this.lastScrollTop = 0;
   }
 
@@ -52,7 +52,7 @@ export class CueCardComponent implements OnInit, OnDestroy  {
 
   ngOnDestroy(): void {
     // window.removeEventListener('scroll', this.onScrollThrottled);
-    this.resizeSubscription.unsubscribe();
+    // this.resizeSubscription.unsubscribe();
   }
 
   backHome() {
