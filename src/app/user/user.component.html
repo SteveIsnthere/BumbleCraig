@@ -1,9 +1,9 @@
 @if (essentialUserData.figure_id != 0) {
-  <main class="wrapper" [routerLink]="['/user/' + userID]">
+  <main class="wrapper no-text-overflow" [routerLink]="['/user/' + userID]">
     <div style="width: 40px;clip-path: circle(20px at center);flex-shrink: 0;">
       <app-simple-figure [figureID]=essentialUserData.figure_id></app-simple-figure>
     </div>
-    <span id="name">{{essentialUserData.name}}</span>
+    <span id="name" class="bold-text">{{essentialUserData.name}}</span>
   </main>
 } @else {
   <div class="wrapper" style="width: 200px;">

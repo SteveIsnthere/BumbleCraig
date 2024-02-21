@@ -5,8 +5,8 @@
         <app-simple-figure [figureID]="groupEssentialData.figure_id"></app-simple-figure>
       </div>
       <div id="info-section">
-        <div id="group-name">
-          <span>{{ groupEssentialData.name }}</span>
+        <div id="group-name" class="no-text-overflow">
+          <span class="bold-text">{{ groupEssentialData.name }}</span>
         </div>
         @if (unread) {
           <div>
@@ -23,7 +23,7 @@
       </div>
       <div style="flex: 1"></div>
       <button mat-icon-button (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu" color="primary"
-        style="margin: -12px">
+              style="margin: -12px">
         <mat-icon>
           more_vert
         </mat-icon>

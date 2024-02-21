@@ -65,6 +65,10 @@ export class AuthService {
   // }
 
   constructor(private cookieService: CookieService, private http: HttpClient, private authData: AuthDataService, private router: Router, private states: StatesService) {
+    this.authData.shouldLoginAsVisitorEvent.subscribe(() => {
+      this.continueAsVisitor()
+    })
+
     if (!this.haveSessionPasswordSaved()) {
       this.continueAsVisitor()
     } else {
