@@ -1,7 +1,9 @@
 #wrapper {
-  max-height: calc(100dvh - 150px);
+  max-height: calc(100dvh - 170px);
+  height: calc(100dvh - 170px);
+  //height: 100%;
   cursor: auto;
-  background-color: #2a2a2a;
+  background-color: #191919;
   -webkit-overflow-scrolling: touch;
   padding: 20px;
 }
