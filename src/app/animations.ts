@@ -2,37 +2,94 @@ import {animate, group, query, style, transition, trigger} from "@angular/animat
 
 const transitionQuery = query(':enter, :leave', style({position: 'fixed', width: '100%'}), {optional: true})
 
-function stdTransitionAway(duration: number = 0.5) {
+// function stdTransitionAway(duration: number = 0.5) {
+//   return [
+//     transitionQuery,
+//     group([
+//       query(':enter', [
+//         style({transform: 'translateX(100%)'}),
+//         animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
+//       ], {optional: true}),
+//       query(':leave', [
+//         style({transform: 'translateX(0%)'}),
+//         animate(duration + 's ease-in-out', style({transform: 'translateX(-100%)'})),
+//       ], {optional: true}),
+//     ]),
+//   ];
+// }
+//
+// function stdTransitionBack(duration: number = 0.5) {
+//   return [
+//     transitionQuery,
+//     group([
+//       query(':enter', [
+//         style({transform: 'translateX(-100%)'}),
+//         animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
+//       ], {optional: true}),
+//       query(':leave', [
+//         style({transform: 'translateX(0%)'}),
+//         animate(duration + 's ease-in-out', style({transform: 'translateX(100%)'})),
+//       ], {optional: true}),
+//     ]),
+//   ];
+// }
+
+function stdTransitionAway(duration: number = 0.4) {
   return [
     transitionQuery,
     group([
       query(':enter', [
-        style({transform: 'translateX(100%)'}),
-        animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
+        style({
+          opacity: 1,
+          transform: 'scale(0.9) translateY(100%)',
+        }),
+        animate(duration + 's ease', style({
+          opacity: 1,
+          transform: 'scale(1) translateY(0%)',
+        })),
       ], {optional: true}),
       query(':leave', [
-        style({transform: 'translateX(0%)'}),
-        animate(duration + 's ease-in-out', style({transform: 'translateX(-100%)'})),
+        style({
+          opacity: 0.5,
+          transform: 'scale(1)',
+        }),
+        animate(duration + 's ease', style({
+          opacity: 0,
+          transform: 'scale(0.6)',
+        })),
       ], {optional: true}),
     ]),
   ];
 }
 
-function stdTransitionBack(duration: number = 0.5) {
+function stdTransitionBack(duration: number = 0.3) {
   return [
     transitionQuery,
     group([
       query(':enter', [
-        style({transform: 'translateX(-100%)'}),
-        animate(duration + 's ease-in-out', style({transform: 'translateX(0%)'})),
+        style({
+          opacity: 1,
+          transform: 'scale(0.6)',
+        }),
+        animate(duration + 's ease', style({
+          opacity: 1,
+          transform: 'scale(1)',
+        })),
       ], {optional: true}),
       query(':leave', [
-        style({transform: 'translateX(0%)'}),
-        animate(duration + 's ease-in-out', style({transform: 'translateX(100%)'})),
+        style({
+          opacity: 0.4,
+          transform: 'scale(1) translateY(0%)',
+        }),
+        animate(duration + 's ease', style({
+          opacity: 0,
+          transform: 'scale(0.9) translateY(100%)',
+        })),
       ], {optional: true}),
     ]),
   ];
 }
+
 
 function epicZoomTransition(duration: number = 1.5) {
   return [
