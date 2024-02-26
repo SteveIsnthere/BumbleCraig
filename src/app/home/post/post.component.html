@@ -6,12 +6,11 @@
       <mat-card-title style="color: white;overflow-wrap: break-word;font-size: large;">{{ post?.title }}
       </mat-card-title>
       <mat-card-subtitle>
-        <span style="font-weight: lighter;">{{ post!.time_since_posted }}</span>
-        <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!"
-        style="flex: 1;"></app-post-perception-bar>
+        <span style="font-weight: lighter; margin-right: 10px">{{ post!.time_since_posted }}</span>
+        <app-post-perception-bar [popularity]="post?.popularity!" [rating]="post?.rating!" style="width: 90px"></app-post-perception-bar>
         @if (post?.number_of_comments! > 0) {
           <div (click)="openCommentSection($event)"
-                  style="border-radius: 11px; scale: 0.8; vertical-align: middle; display: flex; align-items: center">
+                  style="border-radius: 11px; scale: 0.8; vertical-align: middle; display: flex; align-items: center; margin-top: 2px">
             <span style="margin-right: 6px">{{ post?.number_of_comments }}</span>
             <mat-icon color="warn">comment</mat-icon>
           </div>
