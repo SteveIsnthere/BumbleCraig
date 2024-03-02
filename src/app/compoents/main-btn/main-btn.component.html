@@ -24,6 +24,8 @@
   @if (router.url == '/chat') {
     <app-home-button></app-home-button>
   } @else {
-    <app-back-btn></app-back-btn>
+    @if (router.url != '/') {
+      <app-back-btn></app-back-btn>
+    }
   }
 }
