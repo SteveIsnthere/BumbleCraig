@@ -1,27 +1,29 @@
 <main>
-  <div class="classicTextBox" style="margin: 5px 20px 15px; animation: appear 0.3s forwards">
-    <span class="classicTitle">Group Chat</span>
-    <div style="display: flex; justify-content: space-between; gap: 10px">
-      <span>Join or create chat groups to talk with others</span>
-      <div id="top-bar" style="flex-shrink: 0">
-        <button mat-stroked-button (click)="createGroup()" color="primary" style="border-radius: 200px">
-          <mat-icon>add_circle</mat-icon>
-          Create New
-        </button>
+  <div style="display: flex; justify-content: center">
+    <div class="classicTextBox" style="margin: 5px 20px 15px; animation: appear 0.3s forwards; max-width: 550px; flex-grow: 1">
+      <span class="classicTitle">Group Chat</span>
+      <div style="display: flex; justify-content: space-between; gap: 10px">
+        <span>Join or create chat groups to talk with others</span>
+        <div id="top-bar" style="flex-shrink: 0">
+          <button mat-stroked-button (click)="createGroup()" color="primary" style="border-radius: 200px">
+            <mat-icon>add_circle</mat-icon>
+            Create New
+          </button>
 
-        @if (!editMode) {
-          <button mat-stroked-button (click)="editMode = !editMode" color="warn"
-            style="border-radius: 200px;">
-            <mat-icon>delete</mat-icon>
-            Quit Group
-          </button>
-        } @else {
-          <button mat-stroked-button (click)="editMode = !editMode" color="warn"
-            style="border-radius: 200px;">
-            <mat-icon>check</mat-icon>
-            Done
-          </button>
-        }
+          @if (!editMode) {
+            <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+              style="border-radius: 200px;">
+              <mat-icon>delete</mat-icon>
+              Quit Group
+            </button>
+          } @else {
+            <button mat-stroked-button (click)="editMode = !editMode" color="warn"
+              style="border-radius: 200px;">
+              <mat-icon>check</mat-icon>
+              Done
+            </button>
+          }
+        </div>
       </div>
     </div>
   </div>

@@ -24,15 +24,18 @@ $bold-typography: mat.define-typography-config(
   word-wrap: break-word;
   word-break: break-word;
   /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  //-ms-hyphens: auto;
+  //-moz-hyphens: auto;
+  //-webkit-hyphens: auto;
+  //hyphens: auto;
 }
 
 html {
   background-color: #191919;
   //background-color: black;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 body {
