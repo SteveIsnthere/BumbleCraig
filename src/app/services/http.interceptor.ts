@@ -8,7 +8,7 @@ import {
   HttpInterceptor,
   HttpRequest
 } from '@angular/common/http';
-import {catchError, Observable, throwError} from 'rxjs';
+import {catchError, Observable, tap, throwError} from 'rxjs';
 import {Router} from "@angular/router";
 import {AuthDataService} from "./auth-data.service";
 import {CookieService} from "ngx-cookie-service";
@@ -20,6 +20,7 @@ export class Auth implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let timeSent = Date.now();
     req = req.clone({
       headers: new HttpHeaders({
         'sessionPassword': this.authData.sessionPassword,
@@ -35,6 +36,14 @@ export class Auth implements HttpInterceptor {
           this.authData.fireShouldLoginAsVisitorEvent();
         }
         return throwError(error);
+      })
+      ,
+      tap(() => {
+        const endTime = Date.now(); // Record end time
+        const responseTime = endTime - timeSent;
+        if (responseTime > 1000) {
+          console.log(`Request to ${req.urlWithParams} took ${responseTime} milliseconds`);
+        }
       })
     );
   }
