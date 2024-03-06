@@ -104,20 +104,22 @@ export class AuthService {
   }
 
   loginUsingSessionPassword(newUser = false) {
-    this.http.get<number>(apiEndPoint + '/auth/verify_session').subscribe((data) => {
-      this.selfUserID = data;
-      this.loggedIn = true;
-      if (!newUser) {
-        this.isVisitor = false;
-      }
-      this.http.get<boolean>(apiEndPoint + '/user/is_visitor/' + this.selfUserID).subscribe((data) => {
-        if (data !== this.isVisitor) this.isVisitor = data;
+    this.http.get<number>(apiEndPoint + '/auth/verify_session')
+      .subscribe((data) => {
+        this.selfUserID = data;
+        this.loggedIn = true;
+        if (!newUser) {
+          this.isVisitor = false;
+        }
+        this.http.get<boolean>(apiEndPoint + '/user/is_visitor/' + this.selfUserID).subscribe((data) => {
+          if (data !== this.isVisitor) this.isVisitor = data;
+        });
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 5);
+        this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
+        this.loginEvent.emit("login");
+        console.log(data)
+        this.router.navigate(["home"]).then();
       });
-      const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() + 5);
-      this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
-      this.loginEvent.emit("login");
-      this.router.navigate(["home"]).then();
-    });
   }
 }

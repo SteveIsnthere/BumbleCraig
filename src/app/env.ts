@@ -34,6 +34,20 @@ export const genres = [
   'Chinese',
 ];
 
+
+// export const genres = [
+//   'All Locations',
+//   'Downtown',
+//   'UBC',
+//   'SFU',
+//   'Richmond',
+//   'Surrey',
+//   'Burnaby',
+//   'North Vancouver',
+//   'West Vancouver',
+// ];
+//
+
 export const assistantPrompts: string[] = [
   "What is " + siteName + "?",
   "Who made this?",

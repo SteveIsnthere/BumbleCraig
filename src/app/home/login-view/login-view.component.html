@@ -1,5 +1,5 @@
 <main>
-    <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo" [ngClass]="{'logoLoginEffect': newUserLoading||loginLoading}">
+    <img src="/assets/logo.png" alt="{{siteName}} Logo" id="logo">
   <!--  <app-logo style="margin: -35px"></app-logo>-->
 
   @if (loginView) {
@@ -32,8 +32,8 @@
       <!--      Guest-->
       <!--    </button>-->
   } @else {
-    <div id="welcome" class="classicTextBox" [ngClass]="{'black-background': newUserLoading}">
-      <div class="classicTitle" [ngClass]="{'title-loading': newUserLoading}">
+    <div id="welcome" class="classicTextBox">
+      <div class="classicTitle">
         {{ siteName }}
       </div>
       <p>Finally, a <b style="text-decoration: underline">sensible</b> platform</p>
@@ -61,17 +61,9 @@
       }
     </div>
     <button mat-stroked-button (click)="loginView = true" class="round-btn" color="warn"
-            [ngClass]="{'fade': newUserLoading}"
             style="backdrop-filter: blur(15px);-webkit-backdrop-filter: blur(15px);">
       <mat-icon>login</mat-icon>
       I have an account
     </button>
   }
-
 </main>
-
-@if (newUserLoading || loginLoading) {
-  <div id="sign-up-background">
-    <app-background></app-background>
-  </div>
-}

@@ -10,7 +10,7 @@ import { SysMsgRowComponent } from './sys-msg-row/sys-msg-row.component';
 import { GroupInvRowComponent } from './group-inv-row/group-inv-row.component';
 import { FriendReqRowComponent } from './friend-req-row/friend-req-row.component';
 import { MatIcon } from '@angular/material/icon';
-import { MatDialogClose } from '@angular/material/dialog';
+import {MatDialogClose, MatDialogContent} from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
 
 
@@ -19,7 +19,7 @@ import { MatButton } from '@angular/material/button';
     templateUrl: './notification-view.component.html',
     styleUrls: ['./notification-view.component.scss'],
     standalone: true,
-    imports: [MatButton, MatDialogClose, MatIcon, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent]
+    imports: [MatButton, MatDialogClose, MatIcon, FriendReqRowComponent, GroupInvRowComponent, SysMsgRowComponent, PostCommentRowComponent, PostLikeRowComponent, MatDialogContent]
 })
 export class NotificationViewComponent implements OnInit, OnDestroy {
   constructor(public main: MainService, public http: HttpClient, private auth: AuthService, private _snackBar: MatSnackBar) {

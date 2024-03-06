@@ -8,7 +8,7 @@
 <!--  {{ selectedRankingMode }} | {{ genreSelected }}-->
 <!--</button>-->
 
-<div id="posts-modes-bar">
+<div id="posts-modes-bar" style="align-items: center">
   <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">
     <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
     {{ selectedRankingMode[0] }}
@@ -17,6 +17,7 @@
     {{ genreSelected }}
     <mat-icon>expand_more</mat-icon>
   </button>
+<!--  <mat-icon color="primary">map</mat-icon>-->
 </div>
 
 

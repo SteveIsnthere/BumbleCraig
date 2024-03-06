@@ -1,5 +1,5 @@
 @if (main.notifications != null && main.getTotalMessageCount() > 0) {
-  <main>
+  <mat-dialog-content id="warpper">
 <!--    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 10px" mat-dialog-close>-->
 <!--      <mat-icon>close_fullscreen</mat-icon>-->
 <!--      close-->
@@ -37,14 +37,14 @@
         style="align-items: flex-start;"></app-post-like-row>
       }
     </div>
-  </main>
+  </mat-dialog-content>
 } @else {
   <div class="no-msg-view">
-    <button mat-flat-button color="accent" style="border-radius: 100px; margin-bottom: 20px;" mat-dialog-close>
+    <button mat-stroked-button color="primary" style="border-radius: 100px; margin-bottom: 20px;" mat-dialog-close>
       <mat-icon>close_fullscreen</mat-icon>
       close
     </button>
-    <mat-icon style="vertical-align: middle">task_alt</mat-icon>
-    <span>No Notifications</span>
+<!--    <span style="margin-bottom: 20px;">You are all caught up!</span>-->
+    <mat-icon style="vertical-align: middle; scale: 2; margin-bottom: 15px;">check_small</mat-icon>
   </div>
 }

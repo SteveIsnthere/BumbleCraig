@@ -29,59 +29,12 @@ main {
   animation: rainbow 5s ease infinite;
 }
 
-#sign-up-background {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100dvh;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 200% 200%;
-  animation: rainbow 7s ease infinite, appear 2s forwards;
-}
-
-.fade {
-  animation: disappear 1s ease forwards;
-}
-
-.title-loading {
-  animation: title 1s ease forwards;
-}
-
-.black-background {
-  animation: change-bg 0.3s ease forwards;
-}
-
-.logoLoginEffect {
-  animation: logoEffect 1s ease forwards;
-}
-
-
-@keyframes change-bg {
-  0% {
-  }
-  100% {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: bolder;
-  }
-}
 
 @keyframes title {
   0% {
   }
   100% {
     color: rgba(255, 255, 255, 0.9);
-  }
-}
-
-@keyframes logoEffect {
-  0% {
-  }
-  100% {
-    //transform: rotate(360deg);
-    //margin: 40px 0 50px;
   }
 }
 
