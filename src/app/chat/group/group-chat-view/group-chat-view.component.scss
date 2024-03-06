@@ -48,7 +48,8 @@ main {
 
 #messages-section {
   /*height: calc(100dvh - 74px);*/
-  width: 100%;
+  width: calc(100% - 10px);
+  margin: auto;
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
