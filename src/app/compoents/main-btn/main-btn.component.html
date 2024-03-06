@@ -24,7 +24,7 @@
   @if (router.url == '/chat') {
     <app-home-button></app-home-button>
   } @else {
-    @if (router.url != '/login') {
+    @if (auth.loggedIn) {
       <app-back-btn></app-back-btn>
     }
   }
