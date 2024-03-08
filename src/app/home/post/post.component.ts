@@ -25,6 +25,7 @@ import {
   MatCardContent, MatCardActions
 } from '@angular/material/card';
 import {NgClass} from '@angular/common';
+import {OptionBtnComponent} from "../../compoents/option-btn/option-btn.component";
 
 @Component({
   selector: 'app-post',
@@ -44,7 +45,8 @@ import {NgClass} from '@angular/common';
     MatIcon,
     MatCardContent,
     PostFilesViewerComponent,
-    MatCardActions
+    MatCardActions,
+    OptionBtnComponent
   ],
 })
 export class PostComponent implements OnInit {

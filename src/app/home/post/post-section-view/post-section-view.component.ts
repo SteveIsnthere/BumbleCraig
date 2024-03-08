@@ -8,20 +8,22 @@ import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../../../services/states.service";
 import {rankingModes} from "../../../env";
 import {genres} from "../../../env";
-import { LoadingPlaceholderComponent } from '../../../compoents/loading-placeholder/loading-placeholder.component';
-import { PostSectionViewBaseComponent } from './post-section-view-base/post-section-view-base.component';
+import {LoadingPlaceholderComponent} from '../../../compoents/loading-placeholder/loading-placeholder.component';
+import {PostSectionViewBaseComponent} from './post-section-view-base/post-section-view-base.component';
 
-import { MatIcon } from '@angular/material/icon';
-import { MatMenuTrigger, MatMenu, MatMenuItem } from '@angular/material/menu';
-import { MatButton, MatMiniFabButton } from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import {RouterLink} from "@angular/router";
+import {MatSlider, MatSliderThumb} from "@angular/material/slider";
+import {FormsModule} from "@angular/forms";
 
 @Component({
-    selector: 'app-post-section-view',
-    templateUrl: './post-section-view.component.html',
-    styleUrls: ['./post-section-view.component.scss'],
-    standalone: true,
-    imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink]
+  selector: 'app-post-section-view',
+  templateUrl: './post-section-view.component.html',
+  styleUrls: ['./post-section-view.component.scss'],
+  standalone: true,
+  imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink, MatSlider, FormsModule, MatSliderThumb]
 })
 
 export class PostSectionViewComponent implements OnInit {
@@ -29,6 +31,8 @@ export class PostSectionViewComponent implements OnInit {
 
   loading = true;
   empty = false;
+  maxPrice: number = 6000;
+  price: number = 0;
   selectedRankingMode: string[] = rankingModes[0];
   genreSelected = genres[0];
   canShowReloadButton = false;
@@ -39,6 +43,7 @@ export class PostSectionViewComponent implements OnInit {
   showRequestMorePostsButton = false;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
+    this.price = this.maxPrice;
     this.main.appReopenEvent.subscribe(() => {
       if (this.canShowReloadButton) {
         this.showReloadButton = true;
@@ -166,4 +171,5 @@ export class PostSectionViewComponent implements OnInit {
 
   protected readonly rankingModes = rankingModes;
   protected readonly genres = genres;
+
 }

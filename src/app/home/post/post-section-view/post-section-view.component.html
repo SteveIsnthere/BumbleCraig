@@ -9,15 +9,28 @@
 <!--</button>-->
 
 <div id="posts-modes-bar" style="align-items: center">
-  <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">
-    <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
-    {{ selectedRankingMode[0] }}
-  </button>
+  <!--  <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">-->
+  <!--    <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>-->
+  <!--    {{ selectedRankingMode[0] }}-->
+  <!--  </button>-->
+
+  <mat-slider
+    class="example-margin"
+    [max]=maxPrice
+    [min]="300"
+    [step]=true
+    [discrete]=true
+    [showTickMarks]=true>
+    <input matSliderThumb [(ngModel)]="price" #slider>
+  </mat-slider>
+
+  <span>{{ slider.value }}</span>
+
   <button mat-stroked-button color="accent" [matMenuTriggerFor]="genreMenu" style="border-radius: 200px">
     {{ genreSelected }}
     <mat-icon>expand_more</mat-icon>
   </button>
-<!--  <mat-icon color="primary">map</mat-icon>-->
+  <!--  <mat-icon color="primary">map</mat-icon>-->
 </div>
 
 
@@ -48,7 +61,7 @@
 @if (showPostSection) {
   @if (!loading) {
     <app-post-section-view-base [postIDs]="postIDs"
-    (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
+                                (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
   } @else {
     <app-loading-placeholder></app-loading-placeholder>
   }
@@ -59,14 +72,14 @@
 @if (empty) {
   <div>
     <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
-    genres</p>
+      genres</p>
   </div>
 }
 
 @if (showRequestMorePostsButton) {
   <div style="display: flex;justify-content: center;margin-top: 20px">
     <button mat-flat-button style="border-radius: 100px" color="primary"
-      (click)="fetchMorePosts(); showRequestMorePostsButton=false">
+            (click)="fetchMorePosts(); showRequestMorePostsButton=false">
       <mat-icon>sentiment_satisfied</mat-icon>
       Feeling lucky
     </button>
