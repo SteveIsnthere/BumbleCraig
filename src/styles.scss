@@ -1,9 +1,7 @@
 @use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
-
-$font-normal: "Roboto"; //"Exo"
-$font-bold: "Carter One"; //"Protest Guerrilla"
+@import "variables";
 
 $base-typography: mat.define-typography-config(
   $font-family: $font-normal

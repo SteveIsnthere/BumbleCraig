@@ -7,6 +7,8 @@ export const colors = [
 ];
 
 export const siteName: string = 'Tidder'
+// export const siteName: string = 'Crabslist'
+
 
 // export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
 export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
@@ -46,7 +48,7 @@ export const genres = [
 //   'North Vancouver',
 //   'West Vancouver',
 // ];
-//
+
 
 export const assistantPrompts: string[] = [
   "What is " + siteName + "?",

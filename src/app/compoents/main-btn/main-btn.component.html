@@ -20,7 +20,7 @@
 <!--      <app-back-btn></app-back-btn>-->
 <!--    }-->
 <!--  }-->
-@if (router.url != '/home') {
+@if (router.url != '/home' && router.url != '/login') {
   @if (router.url == '/chat') {
     <app-home-button></app-home-button>
   } @else {

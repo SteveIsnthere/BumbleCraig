@@ -1,4 +1,25 @@
+@import 'src/variables.scss';
 button{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 50px;
+  padding: 10px 25px;
+  color: #1c4746;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: $font-bold, cursive;
   width: 100%;
-  flex-grow: 1;
+  //background-color: rgba(0, 255, 0, 0.18);
+  background-color: #72e3e1;
+  //border: 2px solid gray;
+  border: none;
+  border-radius: 30px;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover{
+  background-color: #a8f8f6;
 }

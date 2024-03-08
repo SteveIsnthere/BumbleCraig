@@ -15,15 +15,16 @@ import {MatIcon} from '@angular/material/icon';
 import {MatMenuTrigger, MatMenu, MatMenuItem} from '@angular/material/menu';
 import {MatButton, MatMiniFabButton} from '@angular/material/button';
 import {RouterLink} from "@angular/router";
-import {MatSlider, MatSliderThumb} from "@angular/material/slider";
+import {MatSlider, MatSliderRangeThumb, MatSliderThumb} from "@angular/material/slider";
 import {FormsModule} from "@angular/forms";
+import {MatCardTitle} from "@angular/material/card";
 
 @Component({
   selector: 'app-post-section-view',
   templateUrl: './post-section-view.component.html',
   styleUrls: ['./post-section-view.component.scss'],
   standalone: true,
-  imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink, MatSlider, FormsModule, MatSliderThumb]
+  imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink, MatSlider, FormsModule, MatSliderThumb, MatCardTitle, MatSliderRangeThumb]
 })
 
 export class PostSectionViewComponent implements OnInit {
@@ -32,7 +33,9 @@ export class PostSectionViewComponent implements OnInit {
   loading = true;
   empty = false;
   maxPrice: number = 6000;
-  price: number = 0;
+  minPrice: number = 300;
+  priceCeil: number = 0;
+  priceFloor: number = 0;
   selectedRankingMode: string[] = rankingModes[0];
   genreSelected = genres[0];
   canShowReloadButton = false;
@@ -43,7 +46,8 @@ export class PostSectionViewComponent implements OnInit {
   showRequestMorePostsButton = false;
 
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
-    this.price = this.maxPrice;
+    this.priceCeil = this.maxPrice;
+    this.priceFloor = this.minPrice;
     this.main.appReopenEvent.subscribe(() => {
       if (this.canShowReloadButton) {
         this.showReloadButton = true;

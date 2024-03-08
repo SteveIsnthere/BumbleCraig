@@ -1,11 +1,16 @@
-/*#refresh-btn {*/
-/*  position: fixed;*/
-/*  z-index: 3;*/
-/*  bottom: 22px;*/
-/*  !*left: 20px;*!*/
-/*  right: 50%;*/
-/*  transform: translateX(50%);*/
-/*}*/
+@import "src/variables";
+
+
+#price-cap {
+  font-family: $font-bold;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  padding-right: 7px;
+}
+
 #refresh-btn {
   position: fixed;
   z-index: 3;
@@ -14,6 +19,7 @@
   right: 20px;
   /*transform: translateX(50%);*/
 }
+
 #new-post-btn {
   position: fixed;
   z-index: 3;
