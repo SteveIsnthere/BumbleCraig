@@ -22,7 +22,7 @@ import {
   MatCardAvatar,
   MatCardTitle,
   MatCardSubtitle,
-  MatCardContent
+  MatCardContent, MatCardActions
 } from '@angular/material/card';
 import {NgClass} from '@angular/common';
 
@@ -43,7 +43,8 @@ import {NgClass} from '@angular/common';
     MatButton,
     MatIcon,
     MatCardContent,
-    PostFilesViewerComponent
+    PostFilesViewerComponent,
+    MatCardActions
   ],
 })
 export class PostComponent implements OnInit {
