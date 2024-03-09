@@ -49,6 +49,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;
   post: Post | null = null;
   title: string = '';
+  price: number = 0;
   neighbourhoods = neighbourhoods.slice(1, neighbourhoods.length)
   neighbourhoodSelected = this.neighbourhoods[0];
   contents: Message[] = [];
@@ -105,6 +106,12 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   selectNeighbourhood(neighbourhood: string) {
     this.neighbourhoodSelected = neighbourhood;
     this.updateNeighbourhood().subscribe()
+  }
+
+  setPrice() {
+    this.http.get(apiEndPoint + '/post/update_post_price/' + this.postID + '/' + this.price + '/' + this.auth.selfUserID).subscribe(() => {
+      this._snackBar.open('Price updated', 'Understood')
+    })
   }
 
   // updateGenre() {
