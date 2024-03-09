@@ -128,6 +128,20 @@ export class PostComponent implements OnInit {
     this.dialog.open(PostFullViewComponent, dialogConfig);
   }
 
+  applyListing(e:Event): void {
+    e.stopPropagation()
+    this.http.get<Post>(apiEndPoint + '/application/make_application/' + this.auth.selfUserID + '/' + this.postID).subscribe(() => {
+      this.snackBar.open('You have applied for this listing', 'OK', {
+        duration: 2000,
+        // eventemitter to do something in section view
+      })
+    })
+  }
+
+  hidePost(e:Event): void {
+    e.stopPropagation()
+  }
+
   // writeComment(): void {
   //   const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
   //   bottomSheetRef.afterDismissed().subscribe(textContent => {

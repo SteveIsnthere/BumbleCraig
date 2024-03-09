@@ -3,12 +3,23 @@
     <div id="figure" [ngClass]="{'clipped':showClippedFigure}" (click)="showClippedFigure = !showClippedFigure">
       <app-simple-figure [figureID]="essentialUserData.figure_id"></app-simple-figure>
     </div>
+    @if (isLandlord){
+      <b style="color: darkgray; margin-top: 10px; margin-bottom: -10px">Landlord</b>
+    }
     <div class="classicTextBox" style="margin: 20px 0 10px">
       <span class="classicTitle"
       style="max-width: 70vw; overflow-wrap: anywhere;">{{ essentialUserData.name }}</span>
       <div id="stats">
-        <span>#{{ userID }}</span>
-        <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>
+<!--        <span>#{{ userID }}</span>-->
+<!--        <span style="margin-left: 1em;">Wisdom: {{ xp }}</span>-->
+        <span>Neighborhood: <b>{{neighborhood}}</b></span><br>
+        <span>Credit Score:
+          @if (creditScore != 0){
+            <b>{{creditScore}}</b>
+          } @else {
+            <b>Hidden</b>
+          }
+        </span>
       </div>
       <div id="description">
         <span>{{ userDescription }}</span>

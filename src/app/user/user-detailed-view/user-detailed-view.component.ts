@@ -33,6 +33,9 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
   showClippedFigure = true
   postsLoaded = false;
   xp = 0;
+  isLandlord = false;
+  creditScore = 0;
+  neighborhood = '';
   postIDs: number[] = [];
 
   constructor(http: HttpClient, cache: UserInfoCachingService, public route: ActivatedRoute, public auth: AuthService, private main: MainService, private dialogRef: MatDialog, private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet, private dialog: MatDialog) {
@@ -57,6 +60,15 @@ export class UserDetailedViewComponent extends UserComponent implements OnInit {
     })
     this.http.get<number>(apiEndPoint + '/user/experience/' + this.userID).subscribe((data) => {
       this.xp = data;
+    })
+    this.http.get<boolean>(apiEndPoint + '/user/is_landlord/' + this.userID).subscribe((data) => {
+      this.isLandlord = data;
+    })
+    this.http.get<number>(apiEndPoint + '/user/credit_score/' + this.userID).subscribe((data) => {
+      this.creditScore = data;
+    })
+    this.http.get<string>(apiEndPoint + '/user/neighbourhood/' + this.userID).subscribe((data) => {
+      this.neighborhood = data;
     })
 
     this.main.postReloadEvent.subscribe(() => {

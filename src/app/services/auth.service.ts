@@ -13,6 +13,7 @@ export class AuthService {
   loggedIn = false;
   selfUserID = 0;
   isVisitor = true;
+  isLandlord = false;
 
   @Output() loginEvent = new EventEmitter<string>()
 
@@ -114,11 +115,13 @@ export class AuthService {
         this.http.get<boolean>(apiEndPoint + '/user/is_visitor/' + this.selfUserID).subscribe((data) => {
           if (data !== this.isVisitor) this.isVisitor = data;
         });
+        this.http.get<boolean>(apiEndPoint + '/user/is_landlord/' + this.selfUserID).subscribe((data) => {
+          this.isLandlord = data;
+        })
         const expirationDate = new Date();
         expirationDate.setDate(expirationDate.getDate() + 5);
         this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
         this.loginEvent.emit("login");
-        console.log(data)
         this.router.navigate(["home"]).then();
       });
   }

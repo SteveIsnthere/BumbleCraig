@@ -6,12 +6,12 @@ export const colors = [
   "#263238", "#90a4ae", "#ec407a", "#ab47bc", "#42a5f5"
 ];
 
-export const siteName: string = 'Tidder'
-// export const siteName: string = 'Crabslist'
+// export const siteName: string = 'Tidder'
+export const siteName: string = 'Crabslist'
 
 
-// export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
-export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
+export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
+// export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
 
 export const rankingModes = [
   ['Recommended', 'star'],
@@ -21,33 +21,33 @@ export const rankingModes = [
   ['Worst', 'thumb_down'],
 ];
 
-export const neighbourhoods = [
-  'All-Genres',
-  'Others',
-  'News',
-  'Jokes',
-  'Creativity',
-  'irl',
-  'Tech',
-  'Sports',
-  'Memes',
-  'Controversial',
-  'Confession',
-  'Chinese',
-];
-
-
 // export const neighbourhoods = [
-//   'All Locations',
-//   'Downtown',
-//   'UBC',
-//   'SFU',
-//   'Richmond',
-//   'Surrey',
-//   'Burnaby',
-//   'North Vancouver',
-//   'West Vancouver',
+//   'All-Genres',
+//   'Others',
+//   'News',
+//   'Jokes',
+//   'Creativity',
+//   'irl',
+//   'Tech',
+//   'Sports',
+//   'Memes',
+//   'Controversial',
+//   'Confession',
+//   'Chinese',
 // ];
+
+
+export const neighbourhoods = [
+  'All Locations',
+  'Downtown',
+  'UBC',
+  'SFU',
+  'Richmond',
+  'Surrey',
+  'Burnaby',
+  'North Vancouver',
+  'West Vancouver',
+];
 
 
 export const assistantPrompts: string[] = [
