@@ -13,8 +13,8 @@
   <!--    <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>-->
   <!--    {{ selectedRankingMode[0] }}-->
   <!--  </button>-->
-  <button mat-stroked-button color="accent" [matMenuTriggerFor]="genreMenu" style="border-radius: 200px">
-    {{ genreSelected }}
+  <button mat-stroked-button color="accent" [matMenuTriggerFor]="neighbourhoodMenu" style="border-radius: 200px">
+    {{ neighbourhoodSelected }}
     <mat-icon>expand_more</mat-icon>
   </button>
   <mat-icon color="primary">map</mat-icon>
@@ -47,10 +47,10 @@
   }
 </mat-menu>
 
-<mat-menu #genreMenu="matMenu">
-  @for (genre of genres; track genre) {
-    <button mat-menu-item (click)="setGenre(genre)">
-      <span>{{ genre }}</span>
+<mat-menu #neighbourhoodMenu="matMenu">
+  @for (neighbourhood of neighbourhoods; track neighbourhood) {
+    <button mat-menu-item (click)="setNeighbourhood(neighbourhood)">
+      <span>{{ neighbourhood }}</span>
     </button>
   }
 </mat-menu>
@@ -76,7 +76,7 @@
 @if (empty) {
   <div>
     <p style="text-align: center; margin-top: 20px; color: antiquewhite">Sorry no post found, please try other
-      genres</p>
+      neighbourhoods</p>
   </div>
 }
 

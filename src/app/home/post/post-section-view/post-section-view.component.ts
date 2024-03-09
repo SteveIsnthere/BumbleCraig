@@ -7,7 +7,7 @@ import {apiEndPoint} from "../../../env";
 import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../../../services/states.service";
 import {rankingModes} from "../../../env";
-import {genres} from "../../../env";
+import {neighbourhoods} from "../../../env";
 import {LoadingPlaceholderComponent} from '../../../compoents/loading-placeholder/loading-placeholder.component';
 import {PostSectionViewBaseComponent} from './post-section-view-base/post-section-view-base.component';
 
@@ -37,7 +37,7 @@ export class PostSectionViewComponent implements OnInit {
   priceCeil: number = 0;
   priceFloor: number = 0;
   selectedRankingMode: string[] = rankingModes[0];
-  genreSelected = genres[0];
+  neighbourhoodSelected = neighbourhoods[0];
   canShowReloadButton = false;
   showReloadButton = false;
   showPostSection = true;
@@ -79,7 +79,7 @@ export class PostSectionViewComponent implements OnInit {
     this.showReloadButton = false;
     this.loading = true;
     this.canShowReloadButton = false;
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.genreSelected + '/' + this.auth.selfUserID).subscribe((data) => {
+    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.neighbourhoodSelected + '/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
         this.postIDs = data;
@@ -133,13 +133,13 @@ export class PostSectionViewComponent implements OnInit {
   loadSettingsFromLocalStorage() {
     // first check if the local storage is empty
     let storedRankingMode = localStorage.getItem('rankingMode');
-    let storedGenre = localStorage.getItem('genre');
+    let storedNeighbourhood = localStorage.getItem('neighbourhood');
     if (storedRankingMode != null && rankingModes.includes(JSON.parse((storedRankingMode)))) this.selectedRankingMode = JSON.parse(storedRankingMode);
-    if (storedGenre != null && genres.includes(storedGenre)) this.genreSelected = storedGenre;
+    if (storedNeighbourhood != null && neighbourhoods.includes(storedNeighbourhood)) this.neighbourhoodSelected = storedNeighbourhood;
   }
 
   saveSettingsToLocalStorage() {
-    localStorage.setItem('genre', this.genreSelected);
+    localStorage.setItem('neighbourhood', this.neighbourhoodSelected);
     localStorage.setItem('rankingMode', JSON.stringify(this.selectedRankingMode));
     this.fetchPosts();
   }
@@ -168,12 +168,12 @@ export class PostSectionViewComponent implements OnInit {
     this.saveSettingsToLocalStorage()
   }
 
-  setGenre(genre: string) {
-    this.genreSelected = genre;
+  setNeighbourhood(neighbourhood: string) {
+    this.neighbourhoodSelected = neighbourhood;
     this.saveSettingsToLocalStorage()
   }
 
   protected readonly rankingModes = rankingModes;
-  protected readonly genres = genres;
+  protected readonly neighbourhoods = neighbourhoods;
 
 }

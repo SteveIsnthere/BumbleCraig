@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
-import {genres} from "../../../env";
+import {neighbourhoods} from "../../../env";
 import {apiEndPoint} from "../../../env";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
@@ -49,8 +49,8 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   postID: number = 0;
   post: Post | null = null;
   title: string = '';
-  genres = genres.slice(1, genres.length)
-  genreSelected = this.genres[0];
+  neighbourhoods = neighbourhoods.slice(1, neighbourhoods.length)
+  neighbourhoodSelected = this.neighbourhoods[0];
   contents: Message[] = [];
   fileToUpload: File | null = null;
   uploadingFile: boolean = false;
@@ -69,7 +69,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.http.get(apiEndPoint + '/post/create_post/' + this.auth.selfUserID + '/' + this.genreSelected).subscribe((res: any) => {
+    this.http.get(apiEndPoint + '/post/create_post/' + this.auth.selfUserID).subscribe((res: any) => {
       this.postID = res;
       this.fileUploadRoute += this.postID;
       this.fileUploadRoute += '/' + this.auth.selfUserID;
@@ -95,16 +95,16 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
       this.firstFormGroup = this._formBuilder.group({
         firstCtrl: [this.title, Validators.required],
       });
-      if (this.genres.includes(this.post?.genre!)) {
-        this.genreSelected = this.post?.genre!;
+      if (this.neighbourhoods.includes(this.post?.neighbourhood!)) {
+        this.neighbourhoodSelected = this.post?.neighbourhood!;
       }
       this.contents = this.post?.content!;
     })
   }
 
-  selectGenre(genre: string) {
-    this.genreSelected = genre;
-    this.updateGenre().subscribe()
+  selectNeighbourhood(neighbourhood: string) {
+    this.neighbourhoodSelected = neighbourhood;
+    this.updateNeighbourhood().subscribe()
   }
 
   // updateGenre() {
@@ -170,7 +170,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
     }
     // Use forkJoin to run updateGenre() and updateTitle() in parallel
     forkJoin([
-      this.updateGenre(),
+      this.updateNeighbourhood(),
       this.updateTitle()
     ]).pipe(
       // Use switchMap to switch to the final HTTP request after both updateGenre() and updateTitle() complete
@@ -187,8 +187,8 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
     });
   }
 
-  updateGenre(): Observable<any> {
-    return this.http.get(apiEndPoint + '/post/update_post_genre/' + this.postID + '/' + this.genreSelected + '/' + this.auth.selfUserID);
+  updateNeighbourhood(): Observable<any> {
+    return this.http.get(apiEndPoint + '/post/update_post_neighbourhood/' + this.postID + '/' + this.neighbourhoodSelected + '/' + this.auth.selfUserID);
   }
 
   updateTitle(): Observable<any> {

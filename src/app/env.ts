@@ -21,7 +21,7 @@ export const rankingModes = [
   ['Worst', 'thumb_down'],
 ];
 
-export const genres = [
+export const neighbourhoods = [
   'All-Genres',
   'Others',
   'News',
@@ -37,7 +37,7 @@ export const genres = [
 ];
 
 
-// export const genres = [
+// export const neighbourhoods = [
 //   'All Locations',
 //   'Downtown',
 //   'UBC',

@@ -87,11 +87,11 @@
     <span class="classicTitle">Style</span>
     <form>
       <mat-chip-listbox aria-label="Fish selection">
-        @for (genre of genres; track genre) {
-          <mat-chip-option (click)="selectGenre(genre)"
-                           [selected]="genre == genreSelected"
+        @for (neighbourhood of neighbourhoods; track neighbourhood) {
+          <mat-chip-option (click)="selectNeighbourhood(neighbourhood)"
+                           [selected]="neighbourhood == neighbourhoodSelected"
                            color="warn">
-            {{ genre }}
+            {{ neighbourhood }}
           </mat-chip-option>
         }
       </mat-chip-listbox>

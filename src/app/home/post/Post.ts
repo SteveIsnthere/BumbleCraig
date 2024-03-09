@@ -5,7 +5,8 @@ export interface Post {
   author_id: number
   published: boolean
   title: string
-  genre: string
+  neighbourhood: string
+  price: number
   time_since_posted: string
   rating: number
   popularity: number
