@@ -45,6 +45,7 @@ export class PostSectionViewComponent implements OnInit {
   cacheKey: string = 'post-ids-cache';
   showRequestMorePostsButton = false;
 
+
   constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
     this.priceCeil = this.maxPrice;
     this.priceFloor = this.minPrice;
