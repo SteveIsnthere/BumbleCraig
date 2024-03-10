@@ -84,7 +84,29 @@
   </div>
 
   <div class="classicTextBox" style="max-width: 300px">
-    <span class="classicTitle">Style</span>
+    <span class="classicTitle">Price</span>
+    <form>
+      <div style="display: flex; justify-content: center">
+        <b>{{ price }}$</b>
+      </div>
+
+      <!--      <mat-form-field appearance="outline">-->
+      <!--        <mat-label>Price</mat-label>-->
+      <!--        <input matInput type="number" [(ngModel)]="price" autocomplete="off">-->
+      <!--      </mat-form-field>-->
+      <mat-slider
+        [max]=6000
+        [min]=300
+        [step]=100
+        [discrete]=true
+        [showTickMarks]=true>
+        <input matSliderThumb [(ngModel)]="price" name="p">
+      </mat-slider>
+    </form>
+  </div>
+
+  <div class="classicTextBox" style="max-width: 300px">
+    <span class="classicTitle">Neighbourhood</span>
     <form>
       <mat-chip-listbox aria-label="Fish selection">
         @for (neighbourhood of neighbourhoods; track neighbourhood) {
@@ -95,16 +117,6 @@
           </mat-chip-option>
         }
       </mat-chip-listbox>
-    </form>
-  </div>
-
-  <div class="classicTextBox" style="max-width: 300px">
-    <span class="classicTitle">Price</span>
-    <form>
-      <mat-form-field appearance="outline">
-        <mat-label>Price</mat-label>
-        <input matInput type="number" [(ngModel)]="price" autocomplete="off">
-      </mat-form-field>
     </form>
   </div>
 

@@ -22,6 +22,7 @@ import {MatInput} from '@angular/material/input';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 
 import {MatChipListbox, MatChipOption} from '@angular/material/chips';
+import {MatSlider, MatSliderThumb} from "@angular/material/slider";
 
 @Component({
   selector: 'app-new-post-view',
@@ -42,7 +43,9 @@ import {MatChipListbox, MatChipOption} from '@angular/material/chips';
     MatIcon,
     MatProgressBar,
     MatDivider,
-    MatButton
+    MatButton,
+    MatSlider,
+    MatSliderThumb
   ],
 })
 export class NewPostViewComponent implements OnInit, OnDestroy {

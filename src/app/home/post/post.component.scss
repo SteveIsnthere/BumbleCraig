@@ -4,8 +4,8 @@ mat-card {
   border-radius: 10px;
   box-shadow: none;
   min-height: 150px;
-  /*background-color: rgba(0, 0, 0, 0.4);*/
   background-color: rgba(0, 0, 0, 0);
+  //background-color: #72e3e1;
   /*border: 3px grey dashed;*/
   animation: appear 1s forwards;
   cursor: pointer;
@@ -40,7 +40,7 @@ mat-card {
 
 #price {
   font-size: x-large;
-  color: #c2185b;
+  color: #f44336;
 }
 
 mat-card-content {

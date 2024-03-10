@@ -27,7 +27,7 @@ export class LikedPostsViewComponent implements OnInit {
 
   fetchPosts() {
     this.loading = true;
-    this.http.get<number[]>(apiEndPoint + '/post/get_post_ids_liked_by_user/' + this.auth.selfUserID).subscribe((data) => {
+    this.http.get<number[]>(apiEndPoint + '/application/get_applications_of_user/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
         this.postIDs = data;

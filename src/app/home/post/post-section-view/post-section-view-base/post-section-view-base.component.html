@@ -1,7 +1,7 @@
 @if (!wideMode) {
   <div id="single-row-posts-container" class="posts-container" #postsContainer>
     @for (postID of postIDs; track postID) {
-      <app-post class="post" [postID]=postID [touchMode]=touchDevice></app-post>
+      <app-post class="post" [postID]=postID [touchMode]=touchDevice [applicationView]=applicationView></app-post>
       <mat-divider class="divider"></mat-divider>
     }
   </div>
@@ -12,7 +12,7 @@
       <div class="wide-mode-posts-row">
         @for (postID of postRow; track postID) {
           <app-post class="post-wide-mode" [postID]=postID [touchMode]=touchDevice
-                    [style.width]="wideModePostWidth()+'px'"></app-post>
+                    [style.width]="wideModePostWidth()+'px'" [applicationView]=applicationView></app-post>
           <mat-divider class="divider"></mat-divider>
         }
       </div>

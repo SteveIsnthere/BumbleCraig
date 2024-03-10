@@ -7,12 +7,12 @@ function transXAway(duration: number = 0.5) {
     transitionQuery,
     group([
       query(':enter', [
-        style({transform: 'translateX(100%)', height: '100%'}),
-        animate(duration + 's ease', style({transform: 'translateX(0%)', height: '100%'})),
+        style({transform: 'translateX(100%)'}),
+        animate(duration + 's ease', style({transform: 'translateX(0%)'})),
       ], {optional: true}),
       query(':leave', [
-        style({transform: 'translateX(0%)', height: '100%'}),
-        animate(duration + 's ease', style({transform: 'translateX(-100%)', height: '100%'})),
+        style({transform: 'translateX(0%)'}),
+        animate(duration + 's ease', style({transform: 'translateX(-100%)'})),
       ], {optional: true}),
     ]),
   ];
@@ -23,12 +23,12 @@ function transXABack(duration: number = 0.5) {
     transitionQuery,
     group([
       query(':enter', [
-        style({transform: 'translateX(-100%)', height: '100%'}),
-        animate(duration + 's ease', style({transform: 'translateX(0%)', height: '100%'})),
+        style({transform: 'translateX(-100%)'}),
+        animate(duration + 's ease', style({transform: 'translateX(0%)'})),
       ], {optional: true}),
       query(':leave', [
-        style({transform: 'translateX(0%)', height: '100%'}),
-        animate(duration + 's ease', style({transform: 'translateX(100%)', height: '100%'})),
+        style({transform: 'translateX(0%)'}),
+        animate(duration + 's ease', style({transform: 'translateX(100%)'})),
       ], {optional: true}),
     ]),
   ];
@@ -41,21 +41,21 @@ function stdTransitionAway(duration: number = 0.4) {
       query(':enter', [
         style({
           opacity: 1,
-          transform: 'scale(0.9) translateY(100%)', height: '100%'
+          transform: 'scale(0.9) translateY(100%)'
         }),
         animate(duration + 's ease', style({
           opacity: 1,
-          transform: 'scale(1) translateY(0%)', height: '100%'
+          transform: 'scale(1) translateY(0%)'
         })),
       ], {optional: true}),
       query(':leave', [
         style({
           opacity: 0.5,
-          transform: 'scale(1)', height: '100%'
+          transform: 'scale(1)'
         }),
         animate(duration + 's ease', style({
           opacity: 0,
-          transform: 'scale(0.8)', height: '100%'
+          transform: 'scale(0.8)'
         })),
       ], {optional: true}),
     ]),
@@ -69,21 +69,21 @@ function stdTransitionBack(duration: number = 0.3) {
       query(':enter', [
         style({
           opacity: 1,
-          transform: 'scale(1)', height: '100%'
+          transform: 'scale(1)'
         }),
         animate(duration + 's ease', style({
           opacity: 1,
-          transform: 'scale(1)', height: '100%'
+          transform: 'scale(1)'
         })),
       ], {optional: true}),
       query(':leave', [
         style({
           opacity: 0.4,
-          transform: 'scale(1) translateY(0%)', height: '100%'
+          transform: 'scale(1) translateY(0%)'
         }),
         animate(duration + 's ease', style({
           opacity: 0,
-          transform: 'scale(0.9) translateY(100%)', height: '100%'
+          transform: 'scale(0.9) translateY(100%)'
         })),
       ], {optional: true}),
     ]),
@@ -100,8 +100,8 @@ function epicZoomTransition(duration: number = 1.5) {
 //       //   animate('0.7s ease-out', style({transform: 'translateY(0%)', opacity: 1})),
 //       // ], {optional: true}),
     query(':leave', [
-      style({transform: 'scale(1)', opacity: 1, height: '100%'}),
-      animate(duration + 's ease-out', style({transform: 'scale(3)', opacity: 0, height: '100%'})),
+      style({transform: 'scale(1)', opacity: 1}),
+      animate(duration + 's ease-out', style({transform: 'scale(3)', opacity: 0})),
     ], {optional: true}),
   ]
 }

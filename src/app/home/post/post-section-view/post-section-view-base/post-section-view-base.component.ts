@@ -26,6 +26,7 @@ import {PostComponent} from '../../post.component';
 })
 export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() postIDs: number[] = [];
+  @Input() applicationView = false;
   @Output() postsRanOutEvent = new EventEmitter<string>();
   initLoadingSize = 4;
   postReloadSize = 2;

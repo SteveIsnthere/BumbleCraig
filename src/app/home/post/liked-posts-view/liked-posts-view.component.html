@@ -3,7 +3,7 @@
   <span>The posts you have previously liked</span>
 </div>
 @if (!loading) {
-  <app-post-section-view-base [postIDs]="postIDs"></app-post-section-view-base>
+  <app-post-section-view-base [postIDs]="postIDs" [applicationView] = true></app-post-section-view-base>
 } @else {
   <app-loading-placeholder></app-loading-placeholder>
 }

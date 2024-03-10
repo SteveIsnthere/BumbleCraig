@@ -7,7 +7,6 @@ import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {PostCommentsViewComponent} from "./post-comments-view/post-comments-view.component";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {PostFullViewComponent} from "./post-full-view/post-full-view.component";
-// import {TextEditViewComponent} from "../../chat/text-edit-view/text-edit-view.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../services/auth.service";
 import {PostCachingService} from "../../services/post-caching.service";
@@ -52,7 +51,9 @@ import {OptionBtnComponent} from "../../compoents/option-btn/option-btn.componen
 export class PostComponent implements OnInit {
   @Input() postID: number = 0;
   @Input() touchMode: boolean = true;
+  @Input() applicationView: boolean = false;
   post: Post | null = null;
+  status: number = 0; // 0: not applied, 1: applied, 2: disliked
   commentUploadRoute: string = '/post/create_comment/';
   textAttachments: Message[] = [];
   fileAttachments: Message[] = [];
@@ -88,6 +89,9 @@ export class PostComponent implements OnInit {
     }
     this.commentUploadRoute += this.postID;
     this.commentUploadRoute += '/' + this.auth.selfUserID;
+    if (this.applicationView) {
+      this.status = 1;
+    }
   }
 
   buildPostPreviewContent(): void {
@@ -128,38 +132,31 @@ export class PostComponent implements OnInit {
     this.dialog.open(PostFullViewComponent, dialogConfig);
   }
 
-  applyListing(e:Event): void {
+  applyListing(e: Event): void {
     e.stopPropagation()
+    this.status = 1;
     this.http.get<Post>(apiEndPoint + '/application/make_application/' + this.auth.selfUserID + '/' + this.postID).subscribe(() => {
       this.snackBar.open('You have applied for this listing', 'OK', {
         duration: 2000,
-        // eventemitter to do something in section view
       })
     })
   }
 
-  hidePost(e:Event): void {
+  dislikeListing(e: Event): void {
     e.stopPropagation()
+    this.status = 2;
+    this.snackBar.open('You have disliked this listing', 'OK', {
+      duration: 2000,
+    })
   }
 
-  // writeComment(): void {
-  //   const bottomSheetRef = this._bottomSheet.open(TextEditViewComponent, {data: 'Write a comment'});
-  //   bottomSheetRef.afterDismissed().subscribe(textContent => {
-  //     if (typeof textContent != 'string') {
-  //       console.log('Text content is not a string')
-  //       return
-  //     }
-  //     if (textContent.length == 0) {
-  //       console.log('Text content is empty')
-  //       return
-  //     }
-  //     this.http.post(apiEndPoint + this.commentUploadRoute, textContent)
-  //       .subscribe(() => {
-  //         this.post!.number_of_comments++;
-  //         this.snackBar.open('Your comment is live', 'OK', {
-  //           duration: 2000,
-  //         })
-  //       })
-  //   });
-  // }
+  cancelApplication(e: Event) {
+    e.stopPropagation()
+    this.status = 0;
+    this.http.get<Post>(apiEndPoint + '/application/cancel_application/' + this.auth.selfUserID + '/' + this.postID).subscribe(() => {
+      this.snackBar.open('You have cancelled your application', 'OK', {
+        duration: 2000,
+      })
+    })
+  }
 }
