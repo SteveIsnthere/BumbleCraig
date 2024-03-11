@@ -17,7 +17,7 @@ import {LoadingPlaceholderComponent} from './compoents/loading-placeholder/loadi
   imports: [LoadingPlaceholderComponent, CueCardComponent, RouterOutlet, RainbowStripComponent, MainBtnComponent, BackgroundComponent]
 })
 export class AppComponent {
-  title = 'Tidder';
+  title = 'Crabslist';
 
   constructor(public router: Router, public auth: AuthService) {
   }
