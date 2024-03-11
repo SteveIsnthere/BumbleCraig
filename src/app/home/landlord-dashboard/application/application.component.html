@@ -2,16 +2,16 @@
   <main>
     <app-user [userID]="application.user_id"></app-user>
     @if (creditScore == 0) {
-      <p>Credit Score Hidden</p>
+      <span style="margin-left: 15px">Credit score hidden</span>
     } @else {
-      <p>Credit Score: {{ creditScore }}</p>
+      <span style="margin-left: 15px">Credit Score: {{ creditScore }}</span>
     }
-    <b>{{ application.time }}</b>
+    <b style="margin-left: 15px">{{ application.time }}</b>
 
-    <p>{{ description }}</p>
+    <p style="margin: 15px 40px 10px; align-self: center;"><b>About me: </b>{{ description }}</p>
 
     @if (!accepted && !rejected) {
-      <div style="display: flex; justify-content: space-around; width: 100%">
+      <div style="display: flex; justify-content: space-between; width: 100%">
         <button mat-fab style="background-color: #72e3e1;color: #1c4746;" (click)="acceptApplication()">
           <mat-icon>check</mat-icon>
         </button>
@@ -21,13 +21,13 @@
       </div>
     } @else if (accepted) {
       <div style="background-color: #72e3e1; display: flex;justify-content: center; align-items: center;
-              border-radius: 30px; color: #1c4746;width: 200px">
+              border-radius: 30px; color: #1c4746;width: 200px; align-self: center">
         <mat-icon style="color: #1c4746; margin: 10px">check</mat-icon>
         <b style="font-size: large">Accepted</b>
       </div>
     } @else {
       <div style="background-color: #f3b1ab; display: flex;justify-content: center; align-items: center;
-              border-radius: 30px;;color: #391e1c; width: 200px">
+              border-radius: 30px;;color: #391e1c; width: 200px; align-self: center">
         <mat-icon style="color: #391e1c; margin: 10px">cancel</mat-icon>
         <b style="font-size: large">Rejected</b>
       </div>

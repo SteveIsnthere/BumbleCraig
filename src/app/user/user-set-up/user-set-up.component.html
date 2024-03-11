@@ -37,10 +37,53 @@
       </form>
     </mat-step>
 
-    <mat-step label="About">
+    <mat-step label="Neighbourhood">
+      <div class="classicTextBox">
+        <span>
+          @if (isLandlord) {
+            Select your neighbourhood
+          } @else {
+            Select your favourite neighbourhood
+          }
+        </span>
+        <form style="margin-top: 15px">
+          <mat-chip-listbox aria-label="Fish selection">
+            @for (neighbourhood of neighbourhoods; track neighbourhood) {
+              <mat-chip-option (click)="selectNeighbourhood(neighbourhood)"
+                               [selected]="neighbourhood == neighbourhoodSelected"
+                               color="warn">
+                {{ neighbourhood }}
+              </mat-chip-option>
+            }
+          </mat-chip-listbox>
+          <div style="margin-top: 15px">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-flat-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+    <mat-step label="Credit Score (Optional)">
+      <form style="max-width: 200px">
+        <b style="color: white">Credit Score: {{ creditScore }}</b>
+        <mat-slider
+          [max]=900
+          [min]=0
+          [step]=10>
+          <input matSliderThumb [(ngModel)]="creditScore" name="p">
+        </mat-slider>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-flat-button color="primary" matStepperNext (click)="setCreditScore()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step label="About (Optional)">
       <form>
         <mat-form-field appearance="outline">
-          <mat-label>About me (Optional)</mat-label>
+          <mat-label>About me</mat-label>
           <textarea matInput [cdkTextareaAutosize]=true
                     [(ngModel)]="inputDescription" name="desc"></textarea>
         </mat-form-field>
@@ -55,7 +98,7 @@
       <ng-template matStepLabel>Done</ng-template>
       <div class="classicTextBox" style="margin: 5px 0 10px">
         <span class="classicTitle">Well done!</span>
-        <span>Take a screenshot, just in case you forgot</span>
+        <span>Take a screenshot, just in case</span>
       </div>
       <div>
         <div class="acc-info-row">

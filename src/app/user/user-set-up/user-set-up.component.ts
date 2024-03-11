@@ -6,7 +6,7 @@ import {MatDialogRef, MatDialogClose} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../env";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
-import {MatChip} from '@angular/material/chips';
+import {MatChip, MatChipListbox, MatChipOption} from '@angular/material/chips';
 import {MatInput} from '@angular/material/input';
 import {MatFormField, MatLabel} from '@angular/material/form-field';
 import {MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
@@ -14,13 +14,16 @@ import {MatIcon} from '@angular/material/icon';
 import {MatButton, MatFabButton} from '@angular/material/button';
 import {MatSlideToggle} from "@angular/material/slide-toggle";
 import {CdkTextareaAutosize} from "@angular/cdk/text-field";
+import {neighbourhoods} from "../../env";
+import {MatSlider, MatSliderThumb} from "@angular/material/slider";
+
 
 @Component({
   selector: 'app-user-set-up',
   templateUrl: './user-set-up.component.html',
   styleUrls: ['./user-set-up.component.scss'],
   standalone: true,
-  imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton, MatSlideToggle, CdkTextareaAutosize]
+  imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton, MatSlideToggle, CdkTextareaAutosize, MatChipListbox, MatChipOption, MatSlider, MatSliderThumb]
 })
 export class UserSetUpComponent {
   inputName: string = '';
@@ -29,6 +32,9 @@ export class UserSetUpComponent {
   nameGood: boolean = false;
   passwordGood: boolean = false;
   inputDescription: string = '';
+  neighbourhoods = neighbourhoods.slice(1, neighbourhoods.length)
+  neighbourhoodSelected = this.neighbourhoods[0];
+  creditScore: number = 0;
 
   firstFormGroup = this._formBuilder.group({
     nameCtrl: ['', [Validators.minLength(5), Validators.maxLength(20)]],
@@ -92,12 +98,19 @@ export class UserSetUpComponent {
     });
   }
 
+  selectNeighbourhood(neighbourhood: string) {
+    this.neighbourhoodSelected = neighbourhood;
+    this.http.get<string>(apiEndPoint + '/user/neighbourhood/' + this.auth.selfUserID + '/' + neighbourhood).subscribe((res) => {
+      this.openSnackBar(res, 'close');
+    })
+  }
+
   updateDescription() {
     if (this.inputDescription.length > 1000) {
       this.openSnackBar('Description too long', 'close');
       return;
     }
-    if (this.inputDescription == '') this.inputDescription = 'Nothing to see here';
+    if (this.inputDescription == '') this.inputDescription = "I'm too lazy to write a description";
 
 
     this.http.post<string>(apiEndPoint + '/user/description/' + this.auth.selfUserID, this.inputDescription).subscribe((res) => {
@@ -140,5 +153,11 @@ export class UserSetUpComponent {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {duration: 4000});
+  }
+
+  setCreditScore() {
+    this.http.get<string>(apiEndPoint + '/user/credit_score/' + this.auth.selfUserID + '/' + this.creditScore).subscribe((res) => {
+      this.openSnackBar(res, 'close');
+    })
   }
 }

@@ -52,10 +52,10 @@ export const neighbourhoods = [
 
 export const assistantPrompts: string[] = [
   "What is " + siteName + "?",
-  "Who made this?",
+  "What is a crab?",
   "Tell me a lame joke",
-  "How can I be happy?",
-  "What is the best way to lose money?",
+  "What is credit score?",
+  "What does mortgage mean?",
 ]
 
 export const visionPrompts: string[] = [

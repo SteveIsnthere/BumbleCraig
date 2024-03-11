@@ -24,6 +24,7 @@ interface PostidAndApplicationids {
 })
 export class LandlordDashboardComponent implements OnInit {
   mainData: PostidAndApplicationids[] = [];
+  showButton = true;
 
   constructor(private http: HttpClient, private auth: AuthService) {
   }
@@ -43,6 +44,7 @@ export class LandlordDashboardComponent implements OnInit {
   }
 
   mostApplicationsFirst() {
+    this.showButton = false;
     this.mainData.sort((a, b) => {
       return b.applicationIDs.length - a.applicationIDs.length;
     });
