@@ -10,8 +10,8 @@ export const colors = [
 export const siteName: string = 'Crabslist'
 
 
-export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
-// export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
+// export const apiEndPoint: string = 'http://127.0.0.1:8000/' + siteName.toLowerCase()
+export const apiEndPoint: string = 'https://dogshit.ngrok.app/' + siteName.toLowerCase()
 
 export const rankingModes = [
   ['Recommended', 'star'],
@@ -62,15 +62,17 @@ export const visionPrompts: string[] = [
   "What is in the picture?",
   "Why is this funny?",
   "Make a joke about it",
-  "Solve it",
-  "Explain it",
-  "Solve and explain it",
+  "How much should I sell this for?",
 ]
 
 export const credits = [
   {
     "title": "CEO",
     "userid": 1,
+  },
+  {
+    "title": "CFO",
+    "userid": 2,
   },
   // {
   //   "title": "Lead Developer",
