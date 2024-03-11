@@ -1,31 +1,34 @@
 import {Component} from '@angular/core';
-import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
-import { MatDialogRef, MatDialogClose } from "@angular/material/dialog";
+import {MatDialogRef, MatDialogClose} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {apiEndPoint} from "../../env";
 import {StepperSelectionEvent} from "@angular/cdk/stepper";
-import { MatChip } from '@angular/material/chips';
-import { MatInput } from '@angular/material/input';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious } from '@angular/material/stepper';
-import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatFabButton } from '@angular/material/button';
+import {MatChip} from '@angular/material/chips';
+import {MatInput} from '@angular/material/input';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatStepper, MatStep, MatStepLabel, MatStepperNext, MatStepperPrevious} from '@angular/material/stepper';
+import {MatIcon} from '@angular/material/icon';
+import {MatButton, MatFabButton} from '@angular/material/button';
+import {MatSlideToggle} from "@angular/material/slide-toggle";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
-    selector: 'app-user-set-up',
-    templateUrl: './user-set-up.component.html',
-    styleUrls: ['./user-set-up.component.scss'],
-    standalone: true,
-    imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton]
+  selector: 'app-user-set-up',
+  templateUrl: './user-set-up.component.html',
+  styleUrls: ['./user-set-up.component.scss'],
+  standalone: true,
+  imports: [MatButton, MatDialogClose, MatIcon, MatStepper, MatStep, FormsModule, ReactiveFormsModule, MatStepLabel, MatFormField, MatLabel, MatInput, MatStepperNext, MatStepperPrevious, MatChip, MatFabButton, MatSlideToggle, CdkTextareaAutosize]
 })
 export class UserSetUpComponent {
   inputName: string = '';
   inputPassword: string = '';
-
+  isLandlord: boolean = false;
   nameGood: boolean = false;
   passwordGood: boolean = false;
+  inputDescription: string = '';
 
   firstFormGroup = this._formBuilder.group({
     nameCtrl: ['', [Validators.minLength(5), Validators.maxLength(20)]],
@@ -87,6 +90,20 @@ export class UserSetUpComponent {
       this.openSnackBar(res, 'close');
       this.passwordGood = true;
     });
+  }
+
+  updateDescription() {
+    this.http.post<string>(apiEndPoint + '/user/description/' + this.auth.selfUserID, this.inputDescription).subscribe((res) => {
+      this.openSnackBar(res, 'close');
+    });
+  }
+
+  updateIsLandlord() {
+    this.isLandlord = !this.isLandlord;
+    this.http.get<string>(apiEndPoint + '/user/is_landlord/' + this.auth.selfUserID + '/' + this.isLandlord).subscribe((res) => {
+      this.openSnackBar(res, 'close');
+    });
+    console.log(this.isLandlord)
   }
 
   confirmSetup() {

@@ -8,38 +8,32 @@
 <!--  {{ selectedRankingMode }} | {{ genreSelected }}-->
 <!--</button>-->
 
-<div style="display: flex; justify-content: flex-start; margin-left: 35px; margin-bottom: -13px; margin-top: -10px">
-  <div id="price-cap">
-    <div style="width: 110px">
-      <span>{{ priceFloor }} - {{ priceCeil }}$</span>
-    </div>
-    <mat-slider
-      [max]=maxPrice
-      [min]=minPrice
-      [step]=100
-      [discrete]=true
-      [showTickMarks]=true>
-      <input matSliderStartThumb [(ngModel)]="priceFloor">
-      <input matSliderEndThumb [(ngModel)]="priceCeil">
-    </mat-slider>
-  </div>
-</div>
 <div id="posts-modes-bar" style="align-items: center">
   <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">
     <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
     {{ selectedRankingMode[0] }}
-  </button><br>
+  </button>
+  <br>
   <button mat-stroked-button color="accent" [matMenuTriggerFor]="neighbourhoodMenu" style="border-radius: 200px">
     {{ neighbourhoodSelected }}
     <mat-icon>expand_more</mat-icon>
   </button>
-<!--  <mat-icon color="primary">map</mat-icon>-->
-<!--  <div style="flex: 1"></div>-->
+  <div id="price-cap" style="margin-left: 10px">
+    <mat-slider
+      [max]=maxPrice
+      [min]=minPrice
+      [step]=100>
+      <input matSliderStartThumb [(ngModel)]="priceFloor" (change)="setPriceRangeDebounced()">
+      <input matSliderEndThumb [(ngModel)]="priceCeil" (change)="setPriceRangeDebounced()">
+    </mat-slider>
+    <div>
+      <span>{{ priceFloor }} - {{ priceCeil }}$</span>
+    </div>
+  </div>
+  <!--  <mat-icon color="primary">map</mat-icon>-->
+  <!--  <div style="flex: 1"></div>-->
 </div>
-
-
-
-
+<!--<mat-divider></mat-divider>-->
 
 <mat-menu #rankingModeMenu="matMenu">
   @for (mode of rankingModes; track mode) {

@@ -6,6 +6,9 @@
   <mat-stepper linear="" orientation="vertical" (selectionChange)="selectionChange($event)">
     <mat-step label="Username" [stepControl]="firstFormGroup"> <!-- Post name -->
       <form [formGroup]="firstFormGroup">
+        <mat-slide-toggle style="margin-bottom: 15px" (change)="updateIsLandlord()"><b>I'm a Landlord</b>
+        </mat-slide-toggle>
+        <br>
         <ng-template matStepLabel>Username</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
@@ -30,6 +33,20 @@
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-flat-button color="primary" matStepperNext (click)="updatePassword()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step label="About">
+      <form>
+        <mat-form-field appearance="outline">
+          <mat-label>About me (Optional)</mat-label>
+          <textarea matInput [cdkTextareaAutosize]=true
+                    [(ngModel)]="inputDescription" name="desc"></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-flat-button color="primary" matStepperNext (click)="updateDescription()">Next</button>
         </div>
       </form>
     </mat-step>

@@ -62,6 +62,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   textUploadRoute: string = '/post/create_text_attachment/';
   observer: any;
   changeTitleTimeout: any;
+  changePriceTimeout: any;
   contentsContainer: any;
   firstLoad: boolean = true;
 
@@ -110,12 +111,22 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   selectNeighbourhood(neighbourhood: string) {
     this.neighbourhoodSelected = neighbourhood;
     this.updateNeighbourhood().subscribe()
+    console.log(this.price)
   }
 
   setPrice() {
     this.http.get(apiEndPoint + '/post/update_post_price/' + this.postID + '/' + this.price + '/' + this.auth.selfUserID).subscribe(() => {
-      this._snackBar.open('Price updated', 'Understood')
+      this._snackBar.open('Price updated', 'Understood', {
+        duration: 1000,
+      });
     })
+  }
+
+  setPriceDebounced() {
+    clearTimeout(this.changePriceTimeout);
+    this.changePriceTimeout = setTimeout(() => {
+      this.setPrice();
+    }, 300);
   }
 
   publishPost() {
@@ -171,6 +182,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   }
 
   updatePrice(): Observable<any> {
+    console.log(this.price)
     return this.http.get(apiEndPoint + '/post/update_post_price/' + this.postID + '/' + this.price + '/' + this.auth.selfUserID);
   }
 

@@ -18,13 +18,14 @@ import {RouterLink} from "@angular/router";
 import {MatSlider, MatSliderRangeThumb, MatSliderThumb} from "@angular/material/slider";
 import {FormsModule} from "@angular/forms";
 import {MatCardTitle} from "@angular/material/card";
+import {MatDivider} from "@angular/material/divider";
 
 @Component({
   selector: 'app-post-section-view',
   templateUrl: './post-section-view.component.html',
   styleUrls: ['./post-section-view.component.scss'],
   standalone: true,
-  imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink, MatSlider, FormsModule, MatSliderThumb, MatCardTitle, MatSliderRangeThumb]
+  imports: [MatButton, MatMenuTrigger, MatIcon, MatMenu, MatMenuItem, PostSectionViewBaseComponent, LoadingPlaceholderComponent, MatMiniFabButton, RouterLink, MatSlider, FormsModule, MatSliderThumb, MatCardTitle, MatSliderRangeThumb, MatDivider]
 })
 
 export class PostSectionViewComponent implements OnInit {
@@ -41,6 +42,7 @@ export class PostSectionViewComponent implements OnInit {
   canShowReloadButton = false;
   showReloadButton = false;
   showPostSection = true;
+  setTimeRangeTimeout: any;
   // isChecked = false;
   cacheKey: string = 'post-ids-cache';
   showRequestMorePostsButton = false;
@@ -77,10 +79,11 @@ export class PostSectionViewComponent implements OnInit {
   }
 
   fetchPosts() {
+    console.log(this.priceFloor, this.priceCeil, this.neighbourhoodSelected, this.selectedRankingMode[0])
     this.showReloadButton = false;
     this.loading = true;
     this.canShowReloadButton = false;
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.neighbourhoodSelected + '/' + this.auth.selfUserID).subscribe((data) => {
+    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.neighbourhoodSelected + '/' + this.priceFloor + '/' + this.priceCeil + '/' + this.auth.selfUserID).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
         this.postIDs = data;
@@ -135,13 +138,20 @@ export class PostSectionViewComponent implements OnInit {
     // first check if the local storage is empty
     let storedRankingMode = localStorage.getItem('rankingMode');
     let storedNeighbourhood = localStorage.getItem('neighbourhood');
+    let storedPriceCeil = localStorage.getItem('priceCeil');
+    let storedPriceFloor = localStorage.getItem('priceFloor');
+
     if (storedRankingMode != null && rankingModes.includes(JSON.parse((storedRankingMode)))) this.selectedRankingMode = JSON.parse(storedRankingMode);
     if (storedNeighbourhood != null && neighbourhoods.includes(storedNeighbourhood)) this.neighbourhoodSelected = storedNeighbourhood;
+    if (storedPriceCeil != null && parseInt(storedPriceCeil) <= this.priceCeil) this.priceCeil = parseInt(storedPriceCeil);
+    if (storedPriceFloor != null && parseInt(storedPriceFloor) >= this.priceFloor) this.priceFloor = parseInt(storedPriceFloor);
   }
 
   saveSettingsToLocalStorage() {
     localStorage.setItem('neighbourhood', this.neighbourhoodSelected);
     localStorage.setItem('rankingMode', JSON.stringify(this.selectedRankingMode));
+    localStorage.setItem('priceCeil', this.priceCeil.toString());
+    localStorage.setItem('priceFloor', this.priceFloor.toString());
     this.fetchPosts();
   }
 
@@ -162,6 +172,13 @@ export class PostSectionViewComponent implements OnInit {
 
   private savePostIDsToLocalStorage(): void {
     localStorage.setItem(this.cacheKey, JSON.stringify(this.postIDs));
+  }
+
+  setPriceRangeDebounced() {
+    clearTimeout(this.setTimeRangeTimeout);
+    this.setTimeRangeTimeout = setTimeout(() => {
+      this.saveSettingsToLocalStorage();
+    }, 200);
   }
 
   setRankingMode(mode: string[]) {

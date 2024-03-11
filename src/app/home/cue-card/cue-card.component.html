@@ -25,7 +25,8 @@
     <div style="flex: 1"></div>
 
     @if (notificationCount() == 0) {
-      <button mat-stroked-button color="primary" (click)="openAssistant()" style="border-radius: 100px; background-color: rgba(0,0,0,0.2)">
+      <button mat-stroked-button color="primary" (click)="openAssistant()"
+              style="border-radius: 100px; background-color: rgba(0,0,0,0.2)">
         <mat-icon>search</mat-icon>
         Search
       </button>
@@ -81,8 +82,8 @@
     <span>History</span>
   </button>
   <button mat-menu-item routerLink="/liked-posts">
-    <mat-icon class="menuIcon" color="warn">star</mat-icon>
-    <span>Liked</span>
+    <mat-icon class="menuIcon" color="warn">task</mat-icon>
+    <span>Applied</span>
   </button>
   <button mat-menu-item (click)="logout()">
     <mat-icon color="primary" class="menuIcon">logout</mat-icon>

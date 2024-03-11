@@ -69,23 +69,27 @@ export const visionPrompts: string[] = [
 
 export const credits = [
   {
-    "title": "Lead Developer",
-    "userid": 5,
+    "title": "CEO",
+    "userid": 1,
   },
-  {
-    "title": "Graphic Designer",
-    "userid": 5,
-  },
-  {
-    "title": "Tech Lead",
-    "userid": 5,
-  },
-  {
-    "title": "System Engineer",
-    "userid": 5,
-  },
-  {
-    "title": "Lead Moderator",
-    "userid": 5,
-  }
+  // {
+  //   "title": "Lead Developer",
+  //   "userid": 5,
+  // },
+  // {
+  //   "title": "Graphic Designer",
+  //   "userid": 5,
+  // },
+  // {
+  //   "title": "Tech Lead",
+  //   "userid": 5,
+  // },
+  // {
+  //   "title": "System Engineer",
+  //   "userid": 5,
+  // },
+  // {
+  //   "title": "Lead Moderator",
+  //   "userid": 5,
+  // }
 ]

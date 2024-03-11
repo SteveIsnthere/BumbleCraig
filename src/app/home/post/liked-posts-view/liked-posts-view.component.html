@@ -1,15 +1,16 @@
 <div class="classicTextBox" style="margin: 20px">
-  <span class="classicTitle">Liked Posts</span>
-  <span>The posts you have previously liked</span>
+  <span class="classicTitle">Applied Listings</span>
+  <span>The listings you have already applied</span>
 </div>
 @if (!loading) {
-  <app-post-section-view-base [postIDs]="postIDs" [applicationView] = true></app-post-section-view-base>
+  <app-post-section-view-base [postIDs]="postIDs" [applicationView]=true></app-post-section-view-base>
 } @else {
   <app-loading-placeholder></app-loading-placeholder>
 }
 
 @if (empty) {
   <div>
-    <p style="text-align: center; margin-top: 20px; color: white">You haven't liked a single post yet, do better</p>
+    <p style="text-align: center; margin-top: 20px; color: white">You haven't applied to a single listing yet, do
+      better</p>
   </div>
 }

@@ -138,7 +138,7 @@ export class PostSectionViewBaseComponent implements OnInit, OnDestroy, AfterVie
 
   resizeIfNecessary() {
     const width = window.innerWidth;
-    const postWidthMin = 500;
+    const postWidthMin = 400;
 
     const maxColumns = Math.floor((width - this.padding * 2) / postWidthMin);
 
