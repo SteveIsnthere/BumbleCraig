@@ -1,0 +1,20 @@
+<main>
+  <div id="listings">
+    <div
+      style="display: flex; justify-content: space-between; width: calc(100% - 30px); align-items: center; padding: 0 15px">
+      <span class="classicTitle">My Listings</span>
+      <button mat-flat-button (click)="mostApplicationsFirst()">Sort</button>
+    </div>
+    @for (postIdNApplicationIDs of mainData; track postIdNApplicationIDs) {
+      <app-post [postID]="postIdNApplicationIDs.postID"></app-post>
+      @if (postIdNApplicationIDs.applicationIDs.length > 0) {
+        <div id="applications" class="classicTextBox">
+          <span class="classicTitle" style="margin-bottom: -10px">Application</span>
+          @for (applicationID of postIdNApplicationIDs.applicationIDs; track applicationID) {
+            <app-application [applicationID]="applicationID"></app-application>
+          }
+        </div>
+      }
+    }
+  </div>
+</main>

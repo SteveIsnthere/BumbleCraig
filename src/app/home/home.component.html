@@ -1,7 +1,8 @@
 <main>
   @if (auth.isVisitor) {
     <div style="display: flex; justify-content: center">
-      <div class="classicTextBox" style="margin: 5px 20px 12px; animation: appear 1s forwards; flex-grow: 1; max-width: 650px">
+      <div class="classicTextBox"
+           style="margin: 2px 20px 8px; animation: appear 1s forwards; flex-grow: 1; max-width: 650px">
         <span class="classicTitle">Hey there</span>
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px">
           <span>One last step, login or signup to make your account permanent</span>
@@ -22,6 +23,19 @@
       </div>
     </div>
   }
-  <app-post-section-view></app-post-section-view>
+  @if (!auth.isLandlord){
+    <app-post-section-view></app-post-section-view>
+  } @else {
+    <app-landlord-dashboard></app-landlord-dashboard>
+  }
   <div style="height: 80px"></div>
 </main>
+
+@if (auth.isLandlord) {
+  <div id="new-post-btn">
+    <button mat-mini-fab routerLink="/new-post" color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+}
+

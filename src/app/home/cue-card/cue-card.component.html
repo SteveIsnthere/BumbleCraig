@@ -28,7 +28,11 @@
       <button mat-stroked-button color="primary" (click)="openAssistant()"
               style="border-radius: 100px; background-color: rgba(0,0,0,0.2)">
         <mat-icon>search</mat-icon>
-        Search
+        @if (auth.isLandlord) {
+          Assistant
+        } @else {
+          Search
+        }
       </button>
     } @else {
       <button mat-stroked-button (click)="openUserBriefView()"
@@ -77,14 +81,16 @@
     <mat-icon class="menuIcon" color="">people</mat-icon>
     <span>Friends</span>
   </button>
-  <button mat-menu-item routerLink="/viewed-posts">
-    <mat-icon class="menuIcon" color="">history</mat-icon>
-    <span>History</span>
-  </button>
-  <button mat-menu-item routerLink="/liked-posts">
-    <mat-icon class="menuIcon" color="warn">task</mat-icon>
-    <span>Applied</span>
-  </button>
+  @if (!auth.isLandlord) {
+    <button mat-menu-item routerLink="/viewed-posts">
+      <mat-icon class="menuIcon" color="">history</mat-icon>
+      <span>History</span>
+    </button>
+    <button mat-menu-item routerLink="/liked-posts">
+      <mat-icon class="menuIcon" color="warn">task</mat-icon>
+      <span>Applied</span>
+    </button>
+  }
   <button mat-menu-item (click)="logout()">
     <mat-icon color="primary" class="menuIcon">logout</mat-icon>
     <span>Logout</span>

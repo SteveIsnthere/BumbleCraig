@@ -145,8 +145,10 @@ export class PostComponent implements OnInit {
   dislikeListing(e: Event): void {
     e.stopPropagation()
     this.status = 2;
-    this.snackBar.open('You have disliked this listing', 'OK', {
-      duration: 2000,
+    this.http.get(apiEndPoint + '/post/dislike_post/' + this.postID + '/' + this.auth.selfUserID).subscribe(() => {
+      this.snackBar.open('You have disliked this listing', 'OK', {
+        duration: 2000,
+      })
     })
   }
 

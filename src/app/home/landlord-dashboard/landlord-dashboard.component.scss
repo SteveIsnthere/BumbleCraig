@@ -1,0 +1,15 @@
+main{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+#listings{
+  max-width: 500px;
+}
+
+#applications{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

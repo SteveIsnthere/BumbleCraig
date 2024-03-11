@@ -31,6 +31,7 @@ export interface Notification {
 export class MainService {
   notifications: Notification | null = null;
   shouldFetchNotifications = true;
+  searchTerms: string = 'null';
 
   @Output() appReopenEvent = new EventEmitter<string>()
   @Output() postReloadEvent = new EventEmitter<string>()

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../../services/auth.service";
 import {MainService} from "../../../services/main.service";
-import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {apiEndPoint} from "../../../env";
 import {MatDialog} from "@angular/material/dialog";
 import {StatesService} from "../../../services/states.service";
@@ -48,7 +47,7 @@ export class PostSectionViewComponent implements OnInit {
   showRequestMorePostsButton = false;
 
 
-  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, private _bottomSheet: MatBottomSheet, public dialog: MatDialog, public states: StatesService) {
+  constructor(public http: HttpClient, public auth: AuthService, public main: MainService, public dialog: MatDialog, public states: StatesService) {
     this.priceCeil = this.maxPrice;
     this.priceFloor = this.minPrice;
     this.main.appReopenEvent.subscribe(() => {
@@ -79,11 +78,14 @@ export class PostSectionViewComponent implements OnInit {
   }
 
   fetchPosts() {
-    console.log(this.priceFloor, this.priceCeil, this.neighbourhoodSelected, this.selectedRankingMode[0])
     this.showReloadButton = false;
     this.loading = true;
     this.canShowReloadButton = false;
-    this.http.get<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.neighbourhoodSelected + '/' + this.priceFloor + '/' + this.priceCeil + '/' + this.auth.selfUserID).subscribe((data) => {
+    let searchTerm = this.main.searchTerms;
+    if (searchTerm == '') {
+      searchTerm = 'null';
+    }
+    this.http.post<number[]>(apiEndPoint + '/post/get_recommended_post_ids/' + this.selectedRankingMode[0] + '/' + this.neighbourhoodSelected + '/' + this.priceFloor + '/' + this.priceCeil + '/' + this.auth.selfUserID, searchTerm).subscribe((data) => {
       if (data != this.postIDs) {
         this.loading = false;
         this.postIDs = data;
@@ -114,25 +116,6 @@ export class PostSectionViewComponent implements OnInit {
       }, 15000);
     })
   }
-
-
-  // openBottomSheet(): void {
-  //   const bottomSheetRef = this._bottomSheet.open(PostSectionOptionsComponent, {
-  //     data: [this.selectedRankingMode, this.genreSelected],
-  //   });
-  //
-  //   // subscribe to observable that emit event when bottom sheet closes
-  //   bottomSheetRef.afterDismissed().subscribe((dataFromChild) => {
-  //     // update the selectedRankingMode and genreSelected
-  //     if (dataFromChild == undefined) return;
-  //     this.selectedRankingMode = dataFromChild[0];
-  //     this.genreSelected = dataFromChild[1];
-  //
-  //     // update the postIDs
-  //     this.saveSettingsToLocalStorage();
-  //     this.fetchPosts();
-  //   });
-  // }
 
   loadSettingsFromLocalStorage() {
     // first check if the local storage is empty
@@ -193,5 +176,4 @@ export class PostSectionViewComponent implements OnInit {
 
   protected readonly rankingModes = rankingModes;
   protected readonly neighbourhoods = neighbourhoods;
-
 }

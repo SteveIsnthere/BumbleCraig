@@ -111,7 +111,6 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
   selectNeighbourhood(neighbourhood: string) {
     this.neighbourhoodSelected = neighbourhood;
     this.updateNeighbourhood().subscribe()
-    console.log(this.price)
   }
 
   setPrice() {
@@ -150,8 +149,7 @@ export class NewPostViewComponent implements OnInit, OnDestroy {
     ]).pipe(
       // Use switchMap to switch to the final HTTP request after both updateGenre() and updateTitle() complete
       switchMap(() => this.http.get(apiEndPoint + '/post/toggle_post_publish_status/' + this.postID + '/' + this.auth.selfUserID))
-    ).subscribe((res: any) => {
-      console.log(res);
+    ).subscribe(() => {
       this.main.reloadPosts();
       this._snackBar.open('Your Post is live!!', 'yay', {
         verticalPosition: 'top',

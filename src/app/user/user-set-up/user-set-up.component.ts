@@ -93,6 +93,13 @@ export class UserSetUpComponent {
   }
 
   updateDescription() {
+    if (this.inputDescription.length > 1000) {
+      this.openSnackBar('Description too long', 'close');
+      return;
+    }
+    if (this.inputDescription == '') this.inputDescription = 'Nothing to see here';
+
+
     this.http.post<string>(apiEndPoint + '/user/description/' + this.auth.selfUserID, this.inputDescription).subscribe((res) => {
       this.openSnackBar(res, 'close');
     });

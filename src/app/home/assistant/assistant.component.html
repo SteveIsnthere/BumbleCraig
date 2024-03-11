@@ -1,76 +1,83 @@
 <mat-dialog-content style="background-color:  #363636; padding: 15px">
   <main>
-    @if (!loading && response == '') {
-      <div id="input">
-        @if (imageToUpload == null) {
-          <div class="classicTextBox" style="margin-bottom: 15px">
-            <span class="classicTitle">Ask {{ siteName }}</span>
-            <div style="display: flex; justify-content: space-between">
-              <span>Ask me anything, and I'll try my best to answer</span>
+    @if (assistantView) {
+      @if (!loading && response == '') {
+        <div id="input">
+          @if (imageToUpload == null) {
+            <div class="classicTextBox" style="margin-bottom: 15px">
+              <span class="classicTitle">Ask {{ siteName }}</span>
+              <div style="display: flex; justify-content: space-between">
+                <span>Ask me anything, and I'll try my best to answer</span>
+              </div>
             </div>
-          </div>
-        }
-        <div id="prompts" style="width: 100%;">
-          @if (imageToUpload != null) {
-            <img [src]="url" alt="image" class="imagePreview">
-          } @else {
-            <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
-              <mat-icon>add_photo_alternate</mat-icon>
-              Upload Image
-            </button>
           }
-          <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
-          <mat-form-field appearance="outline" style="align-self: center;width: 100%;">
-            <mat-label>Question</mat-label>
-            <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
-          </mat-form-field>
+          <div id="prompts" style="width: 100%;">
+            @if (imageToUpload != null) {
+              <img [src]="url" alt="image" class="imagePreview">
+            } @else {
+              <button id="upload-button" mat-button color="warn" (click)="fileInput.click()">
+                <mat-icon>add_photo_alternate</mat-icon>
+                Upload Image
+              </button>
+            }
+            <input hidden type="file" id="img" name="img" accept="image/*" #fileInput (change)="selectImage($event)"/>
+            <mat-form-field appearance="outline" style="align-self: center;width: 100%;">
+              <mat-label>Question</mat-label>
+              <textarea id="promptInputField" matInput [cdkTextareaAutosize]=true #input></textarea>
+            </mat-form-field>
+          </div>
+          @if (imageToUpload == null) {
+            <div class="example-questions">
+              @for (p of examplePrompts; track p) {
+                <div (click)="applyPrompt(p)" class="example-question">
+                  <span>{{ p }}</span>
+                </div>
+              }
+            </div>
+          }
+          @if (imageToUpload != null) {
+            <div class="example-questions" style="margin: 0 0 15px">
+              @for (p of exampleVisionPrompts; track p) {
+                <div (click)="applyPrompt(p)" class="example-question">
+                  <span>{{ p }}</span>
+                </div>
+              }
+            </div>
+          }
         </div>
-        @if (imageToUpload == null) {
-          <div class="example-questions">
-            @for (p of examplePrompts; track p) {
-              <div (click)="applyPrompt(p)" class="example-question">
-                <span>{{ p }}</span>
-              </div>
-            }
-          </div>
-        }
-        @if (imageToUpload != null) {
-          <div class="example-questions" style="margin: 0 0 15px">
-            @for (p of exampleVisionPrompts; track p) {
-              <div (click)="applyPrompt(p)" class="example-question">
-                <span>{{ p }}</span>
-              </div>
-            }
-          </div>
-        }
-      </div>
-    }
-
-
-    @if (loading) {
-      <div id="loading">
-        <app-logo></app-logo>
-        on it...
-      </div>
-    }
-
-    @if (response != '') {
-      @if (imageToUpload != null; ) {
-        <img [src]="url" alt="image" class="imagePreview">
       }
-      <div id="response" [@inOutAnimation]="">
-        <span>{{ response }}</span>
-      </div>
-      <button mat-fab (click)="reset()" color="primary" style="margin-top: 30px;">
-        <mat-icon>restart_alt</mat-icon>
-      </button>
-    }
-    <!--  <app-rainbow-strip [bottom]=true></app-rainbow-strip>-->
-  </main>
+      @if (loading) {
+        <div id="loading">
+          <app-logo></app-logo>
+          on it...
+        </div>
+      }
+      @if (response != '') {
+        @if (imageToUpload != null; ) {
+          <img [src]="url" alt="image" class="imagePreview">
+        }
+        <div id="response" [@inOutAnimation]="">
+          <span>{{ response }}</span>
+        </div>
+        <button mat-fab (click)="reset()" color="primary" style="margin-top: 30px;">
+          <mat-icon>restart_alt</mat-icon>
+        </button>
+      }
+    } @else {
+      <mat-form-field appearance="outline" style="align-self: center;width: 100%;">
+        <mat-label>Keyword Search</mat-label>
+        <textarea matInput [cdkTextareaAutosize]=true [(ngModel)]="searchValue"></textarea>
+      </mat-form-field>
 
+      <div style="display: flex; justify-content: center; gap: 10px; margin-top: -5px">
+        <button mat-stroked-button (click)="assistantView = true" style="border-radius: 20px">Need Help?</button>
+        <button mat-flat-button color="warn" (click)="search()" style="border-radius: 20px" mat-dialog-close>Search</button>
+      </div>
+    }
+  </main>
 </mat-dialog-content>
 
-@if (!loading && response == '') {
+@if (!loading && response == '' && assistantView) {
   <mat-dialog-actions style="justify-content: center">
     <button mat-raised-button (click)="submit()" color="warn"
             style="border-radius: 10px">

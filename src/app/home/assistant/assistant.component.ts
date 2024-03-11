@@ -4,32 +4,34 @@ import {apiEndPoint, assistantPrompts, siteName, visionPrompts} from "../../env"
 import {AuthService} from "../../services/auth.service";
 
 import {animate, style, transition, trigger} from "@angular/animations";
-import { MatProgressBar } from '@angular/material/progress-bar';
-import { LogoComponent } from '../../compoents/logo/logo.component';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { MatInput } from '@angular/material/input';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import {MatProgressBar} from '@angular/material/progress-bar';
+import {LogoComponent} from '../../compoents/logo/logo.component';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {MatInput} from '@angular/material/input';
+import {MatFormField, MatLabel} from '@angular/material/form-field';
 
-import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatFabButton } from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatButton, MatFabButton} from '@angular/material/button';
 import {MatDialogContent, MatDialogClose, MatDialogActions} from '@angular/material/dialog';
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {BackgroundComponent} from "../../compoents/background/background.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MainService} from "../../services/main.service";
 
 @Component({
-    selector: 'app-assistant',
-    templateUrl: './assistant.component.html',
-    styleUrls: ['./assistant.component.scss'],
-    animations: [
-        trigger('inOutAnimation', [
-            transition(':enter', [
-                style({ opacity: 0, transform: 'translateY(100%)' }),
-                animate('0.5s ease-out', style({ opacity: 1, transform: 'translateY(0)' })) // Final state
-            ]),
-        ])
-    ],
-    standalone: true,
-  imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton, MatDialogActions, MatProgressSpinner, BackgroundComponent]
+  selector: 'app-assistant',
+  templateUrl: './assistant.component.html',
+  styleUrls: ['./assistant.component.scss'],
+  animations: [
+    trigger('inOutAnimation', [
+      transition(':enter', [
+        style({opacity: 0, transform: 'translateY(100%)'}),
+        animate('0.5s ease-out', style({opacity: 1, transform: 'translateY(0)'})) // Final state
+      ]),
+    ])
+  ],
+  standalone: true,
+  imports: [MatDialogContent, MatButton, MatDialogClose, MatIcon, MatFormField, MatLabel, MatInput, CdkTextareaAutosize, LogoComponent, MatProgressBar, MatFabButton, MatDialogActions, MatProgressSpinner, BackgroundComponent, ReactiveFormsModule, FormsModule]
 })
 
 export class AssistantComponent {
@@ -37,19 +39,30 @@ export class AssistantComponent {
   url: string = "";
   response: string = "";
   loading: boolean = false;
+  assistantView = false;
+  searchValue: string = '';
   @ViewChild('input') promptInputField!: ElementRef;
+
 
   examplePrompts: string[] = assistantPrompts;
 
   exampleVisionPrompts: string[] = visionPrompts;
 
-  constructor(private http: HttpClient, private auth: AuthService) {
+  constructor(private http: HttpClient, private auth: AuthService, private main: MainService) {
     let maxExamples = 4;
     // randomize examples
     if (this.examplePrompts.length > maxExamples) {
       this.examplePrompts.sort(() => Math.random() - 0.5);
       this.examplePrompts = this.examplePrompts.slice(0, maxExamples);
     }
+    if (auth.isLandlord){
+      this.assistantView = true;
+    }
+  }
+
+  search() {
+    this.main.searchTerms = this.searchValue;
+    this.main.reloadPosts();
   }
 
   selectImage(event: any) {
