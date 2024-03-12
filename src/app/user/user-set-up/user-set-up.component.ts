@@ -115,6 +115,7 @@ export class UserSetUpComponent {
 
     this.http.post<string>(apiEndPoint + '/user/description/' + this.auth.selfUserID, this.inputDescription).subscribe((res) => {
       this.openSnackBar(res, 'close');
+      this.confirmSetup()
     });
   }
 

@@ -89,35 +89,35 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-flat-button color="primary" matStepperNext (click)="updateDescription()">Next</button>
+          <button mat-flat-button color="primary" matStepperNext (click)="updateDescription()">Finish</button>
         </div>
       </form>
     </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <div class="classicTextBox" style="margin: 5px 0 10px">
-        <span class="classicTitle">Well done!</span>
-        <span>Take a screenshot, just in case</span>
-      </div>
-      <div>
-        <div class="acc-info-row">
-          <mat-chip>Username</mat-chip>
-          <span class="acc-info">{{ inputName }}</span>
-        </div>
+<!--    <mat-step>-->
+<!--      <ng-template matStepLabel>Done</ng-template>-->
+<!--      <div class="classicTextBox" style="margin: 5px 0 10px">-->
+<!--        <span class="classicTitle">Well done!</span>-->
+<!--        <span>Take a screenshot, just in case</span>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <div class="acc-info-row">-->
+<!--          <mat-chip>Username</mat-chip>-->
+<!--          <span class="acc-info">{{ inputName }}</span>-->
+<!--        </div>-->
 
-        <div class="acc-info-row">
-          <mat-chip>Password</mat-chip>
-          <span class="acc-info">{{ inputPassword }}</span>
-        </div>
+<!--        <div class="acc-info-row">-->
+<!--          <mat-chip>Password</mat-chip>-->
+<!--          <span class="acc-info">{{ inputPassword }}</span>-->
+<!--        </div>-->
 
-        <div style="display: flex; margin-top: 10px">
-          <div style="flex: 1"></div>
-          <button mat-fab (click)="confirmSetup()" color="primary">
-            <mat-icon>check</mat-icon>
-          </button>
-        </div>
-      </div>
-    </mat-step>
+<!--        <div style="display: flex; margin-top: 10px">-->
+<!--          <div style="flex: 1"></div>-->
+<!--          <button mat-fab (click)="confirmSetup()" color="primary">-->
+<!--            <mat-icon>check</mat-icon>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </mat-step>-->
   </mat-stepper>
 </main>
