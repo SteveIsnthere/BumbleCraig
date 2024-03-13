@@ -8,32 +8,49 @@
 <!--  {{ selectedRankingMode }} | {{ genreSelected }}-->
 <!--</button>-->
 
-<div id="posts-modes-bar" style="align-items: center">
-  <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">
-    <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
-    {{ selectedRankingMode[0] }}
-  </button>
-  <br>
-  <button mat-stroked-button color="accent" [matMenuTriggerFor]="neighbourhoodMenu" style="border-radius: 200px">
-    {{ neighbourhoodSelected }}
-    <mat-icon>expand_more</mat-icon>
-  </button>
-  <div id="price-cap" style="margin-left: 10px">
-    <mat-slider
-      [max]=maxPrice
-      [min]=minPrice
-      [step]=100>
-      <input matSliderStartThumb [(ngModel)]="priceFloor" (change)="setPriceRangeDebounced()">
-      <input matSliderEndThumb [(ngModel)]="priceCeil" (change)="setPriceRangeDebounced()">
-    </mat-slider>
-    <div>
-      <span>{{ priceFloor }} - {{ priceCeil }}$</span>
+
+<!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
+<!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
+<!--&lt;!&ndash;    <button mat-button>Posts Filter</button>&ndash;&gt;-->
+<!--    <mat-card-title>Tidder</mat-card-title>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+@if (showPostSection) {
+  @if (!loading) {
+    <div id="posts-modes-bar" style="align-items: center">
+      <button mat-stroked-button [matMenuTriggerFor]="rankingModeMenu" color="warn" style="border-radius: 200px">
+        <mat-icon>{{ selectedRankingMode[1] }}</mat-icon>
+        {{ selectedRankingMode[0] }}
+      </button>
+      <br>
+      <button mat-stroked-button color="accent" [matMenuTriggerFor]="neighbourhoodMenu" style="border-radius: 200px">
+        {{ neighbourhoodSelected }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <div id="price-cap" style="margin-left: 10px">
+        <mat-slider
+          [max]=maxPrice
+          [min]=minPrice
+          [step]=100>
+          <input matSliderStartThumb [(ngModel)]="priceFloor" (change)="setPriceRangeDebounced()">
+          <input matSliderEndThumb [(ngModel)]="priceCeil" (change)="setPriceRangeDebounced()">
+        </mat-slider>
+        <div>
+          <span>{{ priceFloor }} - {{ priceCeil }}$</span>
+        </div>
+      </div>
+      <!--  <mat-icon color="primary">map</mat-icon>-->
+      <!--  <div style="flex: 1"></div>-->
     </div>
-  </div>
-  <!--  <mat-icon color="primary">map</mat-icon>-->
-  <!--  <div style="flex: 1"></div>-->
-</div>
-<!--<mat-divider></mat-divider>-->
+    <!--<mat-divider></mat-divider>-->
+    <app-post-section-view-base [postIDs]="postIDs"
+                                (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
+  } @else {
+    <app-loading-placeholder></app-loading-placeholder>
+  }
+}
 
 <mat-menu #rankingModeMenu="matMenu">
   @for (mode of rankingModes; track mode) {
@@ -51,22 +68,6 @@
     </button>
   }
 </mat-menu>
-<!--  <div id="top-logo-option-bar" (click)="openBottomSheet()">-->
-<!--    <img src="assets/logo.png" style="height: 60px" alt="logo">-->
-<!--&lt;!&ndash;    <button mat-button>Posts Filter</button>&ndash;&gt;-->
-<!--    <mat-card-title>Tidder</mat-card-title>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-@if (showPostSection) {
-  @if (!loading) {
-    <app-post-section-view-base [postIDs]="postIDs"
-                                (postsRanOutEvent)="showRequestMorePostsButton = true"></app-post-section-view-base>
-  } @else {
-    <app-loading-placeholder></app-loading-placeholder>
-  }
-}
 
 <!--<div id="load-more">Load more</div>-->
 
