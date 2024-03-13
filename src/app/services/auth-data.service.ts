@@ -5,6 +5,7 @@ import {EventEmitter, Injectable, Output} from '@angular/core';
 })
 export class AuthDataService {
   sessionPassword = "";
+  shouldLoginAsVisitorEventFired = false;
 
   @Output() shouldLoginAsVisitorEvent = new EventEmitter<string>()
 
@@ -13,7 +14,9 @@ export class AuthDataService {
 
   fireShouldLoginAsVisitorEvent() {
     this.sessionPassword = ""
+    if (this.shouldLoginAsVisitorEventFired) return
     this.shouldLoginAsVisitorEvent.emit("should-login-as-visitor")
     alert("You have been logged out due to unauthorized access. Please login again.")
+    this.shouldLoginAsVisitorEventFired = true
   }
 }

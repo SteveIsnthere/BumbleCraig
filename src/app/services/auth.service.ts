@@ -122,6 +122,7 @@ export class AuthService {
         expirationDate.setDate(expirationDate.getDate() + 5);
         this.cookieService.set('sessionPassword', this.authData.sessionPassword, expirationDate);
         this.loginEvent.emit("login");
+        this.authData.shouldLoginAsVisitorEventFired = false;
         this.router.navigate(["home"]).then();
       });
   }
